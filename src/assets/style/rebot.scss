@@ -1,0 +1,65 @@
+@import "./light.scss";
+@import "./dark.scss";
+*, *:before, *:after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+:root{
+    --phx:14px;
+    --ph-fs:14px;
+    --ph-ff: -apple-system,blinkmacsystemfont,"Helvetica Neue",helvetica,segoe ui,arial,roboto,"PingFang SC","miui","Hiragino Sans GB","Microsoft Yahei",sans-serif;
+    
+    --ph-mg:16px;
+    --ph-md:16px;
+    --ph-5:5px;
+    --ph-8:8px;
+    --ph-10:10px;
+    --ph-15:15px;
+    --ph-16:16px;
+    --ph-20:20px;
+    --ph-30:30px;
+    --ph-32:32px;
+    --ph-40:40px;
+    --ph-50:50px;
+    
+
+    --ph-bg-disabled: var(--ph-c-l2);
+    --ph-c-disabled: var(--ph-c-l1);
+
+    --ph-bc: var(--ph-c-l3);
+    --ph-bg-theme:var(--ph-primary);
+    --ph-c-theme:var(--ph-c-ltop);
+    --ph-c-white:#FFFFFF;
+
+    --ph-zdx-mask: 1000;
+    --ph-zdx-notify: 1049;
+    --ph-zdx-popup: 1000;
+    --ph-zdx-popover: 1030;
+    --ph-zdx-floating-panel: 900;
+    --ph-zdx-keyboard: 1050;
+}
+body{
+    color: var(--ph-c);
+    font-size: var(--ph-fs);
+    font-family: var(--ph-ff);
+    background-color: var(--ph-doc-bg);
+}
+.ph-title{
+    padding: var(--ph-10) var(--ph-15);
+    font-size: var(--ph-fs);
+    color: var(--ph-c-d1);
+}
+.ph-block{
+    padding: var(--ph-15);
+    // background-color: var(--ph-c-ltop);
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: var(--ph-15);
+}
+a,button{
+    cursor: pointer;
+}

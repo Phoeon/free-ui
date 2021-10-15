@@ -1,0 +1,9 @@
+@mixin colorMx($cs){
+    $prefix : --ph;
+    @each $key,$value in $cs {
+        @each $v1 in $value {
+            $i : index($value,$v1) ;
+            #{$prefix}-#{$key}-#{$i} : $v1;
+        }
+    }    
+}

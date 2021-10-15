@@ -1,0 +1,34 @@
+/* 小型设备（平板电脑，768px 起） */
+
+/* 中型设备（台式电脑，992px 起） */
+
+/* 大型设备（大台式电脑，1200px 起） */
+
+
+@media screen and (max-width: 768px) {
+    :root{
+        --ph-topbar-height:calc(var(--phx) * 4.285714);
+        --ph-aside-width:calc(var(--phx) * 14.285714);
+        --ph-nav-padding:5px var(--phx);
+        --ph-nav-item-padding:var(--ph-action-pdv) var(--ph-5);
+    }
+    ::-webkit-scrollbar{
+        display: none!important;
+    }
+}
+@media screen and (min-width: 769px){
+    :root{
+        --ph-topbar-height:60px;
+        --ph-aside-width:250px;
+        --ph-nav-padding:5px var(--phx);
+        --ph-nav-item-padding:var(--ph-action-padding);
+    }
+}
+@media screen and (min-width: 769px) and (-webkit-min-device-pixel-ratio:2){
+    :root{
+        --ph-topbar-height:calc(var(--phx) * 4.285714);
+        --ph-aside-width:calc(var(--phx) * 14.285714);
+        --ph-nav-padding:5px var(--phx);
+        --ph-nav-item-padding:var(--ph-action-pdv) var(--ph-5);
+    }
+}

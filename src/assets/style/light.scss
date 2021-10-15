@@ -1,0 +1,76 @@
+@mixin fontMx($fs,$fc,$fw){
+    font-size: $fs;
+    color: $fc;
+    font-weight: $fw;
+}
+
+:root[f-mode=light]{
+    --ph-shadow-1:0 1px 2px -2px rgb(0 0 0 /16%),0  3px 6px 0 rgb(0 0 0 /12%),0 5px 12px 4px rgb(0 0 0 /9%);
+    --ph-shadow-2:0 3px 6px -4px rgb(0 0 0 /12%),0 6px 16px 0 rgb(0 0 0 /8%),0 9px 28px 8px rgb(0 0 0 /5%);
+    --ph-shadow-3:0 6px 16px -8px rgb(0 0 0 /8%),0 9px 28px 0 rgb(0 0 0 /5%),0 12px 48px 16px rgb(0 0 0 /3%);
+    --ph-shadow-dark:0 3px 6px -4px rgb(0 0 0 /12%),0 6px 16px 0 rgb(0 0 0 /8%),0 9px 28px 8px rgb(0 0 0 /5%);
+
+    --ph-c-ltop:#FFF;
+    --ph-c-l6:#FAFAFA;//rgb(0 0 0 /2%);table-header
+    --ph-c-l5:#F5F5F5;//rgb(0 0 0 /4%);background
+    --ph-c-l4:#F0F0F0;//rgb(0 0 0 /6%);divider
+    --ph-c-l3:#D9D9D9;//rgb(0 0 0 /15%);border
+    --ph-c-l2:#BFBFBF;//rgb(0 0 0 /25%);disabled
+    --ph-c-l1:#8C8C8C;//rgb(0 0 0 /45%);secondary text
+    --ph-c:#595959;//rgb(0 0 0 /65%);primary text
+    --ph-c-d1:#262626;//rgb(0 0 0 /85%);title
+    --ph-c-d2:#000000;//rgb(0 0 0 /100%);
+
+    
+    --ph-primary: #1677ff;
+    --ph-info:#1677ff;
+    --ph-success:#00b578;
+    --ph-warning:#ff8f1f;
+    --ph-danger:#ff3141;
+    --ph-error:#ff3141;
+    
+    --ph-backdrop-alpha:rgba(255,255,255,.8);
+    --ph-notify-bg:#FFFFFF;
+    --ph-doc-bg:var(--ph-c-l5);
+
+
+    --ph-ctr-bg-normal:#FFF;
+    --ph-ctr-cd-normal:#FFF;
+
+    --ph-ctr-bg-basic:#FFF;
+    --ph-ctr-cd-basic:#d9d9d9;
+
+    --ph-ctr-bg-disable:#FFF;
+    --ph-ctr-cd-disable:#d0d0d0;
+
+    --ph-ctr-bg-dash:#FFF;
+    --ph-ctr-cd-dash:#d9d9d9;
+
+    --ph-ctr-bg-danger:#FFF;
+    --ph-ctr-cd-danger:#FF4D4F;
+
+    --ph-ctr-bg-check:#FFF;
+    --ph-ctr-cd-check:#1890FF;
+
+    --ph-ctr-bg-badge:#FF4D4F;
+    --ph-ctr-cd-badge:#FFF;
+
+    --ph-ctr-bg-error:#FFF1F0;
+    --ph-ctr-cd-error:#FFA39E;
+
+    --ph-ctr-bg-info:#E6F7FF;
+    --ph-ctr-cd-info:#91D5FF;
+
+    --ph-ctr-bg-success:#F6FFED;
+    --ph-ctr-cd-success:#B7EB8F;
+
+    --ph-ctr-bg-warning:#FFFBE6;
+    --ph-ctr-cd-warning:#FFE58F;
+}
+.ph-container{
+    --ph-ctr-bd-style:solid;
+    --ph-ctr-bd-width:1px;
+    &[type=normal]{
+        --ph-ctr-bd-width:1px;
+    }
+}

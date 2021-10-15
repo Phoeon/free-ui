@@ -1,0 +1,64 @@
+:root[f-mode=dark]{
+    --ph-shadow-1:0 1px 2px -2px rgb(0 0 0 /64%),0 3px 6px 0 rgb(0 0 0 /48%),0 5px 12px 4px rgb(0 0 0 /36%);
+    --ph-shadow-2:0 3px 6px -4px rgb(0 0 0 /48%),0 6px 16px 0 rgb(0 0 0 /32%),0 9px 28px 8px rgb(0 0 0 /20%);
+    --ph-shadow-3:0 6px 15px -8px rgb(0 0 0 /32%),0 9px 28px 0 rgb(0 0 0 /20%),0 12px 48px 16px rgb(0 0 0 /12%);
+    --ph-shadow-dark:0 3px 6px -4px rgb(0 0 0 /48%),0 6px 16px 0 rgb(0 0 0 /32%),0 9px 28px 8px rgb(0 0 0 /20%);
+
+    --ph-c-ltop:#000000;
+    --ph-c-l6:#1D1D1D;//rgb(0 0 0 /2%);table-header
+    --ph-c-l5:#262626;//rgb(0 0 0 /4%);background
+    --ph-c-l4:#303030;//rgb(0 0 0 /6%);divider
+    --ph-c-l3:#434343;//rgb(0 0 0 /15%);border
+    --ph-c-l2:#5A5A5A;//rgb(0 0 0 /25%);disabled
+    --ph-c-l1:#7D7D7D;//rgb(0 0 0 /45%);secondary text
+    --ph-c:#ACACAC;//rgb(0 0 0 /65%);primary text
+    --ph-c-d1:#DBDBDB;//rgb(0 0 0 /85%);title
+    --ph-c-d2:#FFFFFF;//rgb(0 0 0 /100%);
+
+    
+    --ph-primary: #177DDC;
+    --ph-info:#177DDC;
+    --ph-success:#49AA19;
+    --ph-warning:#D89614;
+    --ph-danger:#A61D24;
+    --ph-error:#A61D24;
+    
+    --ph-notify-bg:#1F1F1F;
+    --ph-backdrop-alpha:rgba(0,0,0,.5);
+    --ph-doc-bg:#141414;
+
+    --ph-ctr-bg-normal:#FFF;
+
+    --ph-ctr-bg-basic:rgb(20 20 20 /8%);
+    --ph-ctr-cd-basic:rgb(255 255 255 /20%);
+
+    --ph-ctr-bg-ghost:transparent;
+    --ph-ctr-cd-ghost:rgb(255 255 255 /20%);
+
+    --ph-ctr-bg-disable:rgba(255 255 255 /8%);
+    --ph-ctr-cd-disable:rgb(255 255 255 /20%);;
+
+    --ph-ctr-bg-dash:transparent;
+    --ph-ctr-cd-dash:rgb(255 255 255 /20%);
+
+    --ph-ctr-bg-danger:transparent;
+    --ph-ctr-cd-danger:var(--ph-danger);
+
+    --ph-ctr-bg-check:transparent;
+    --ph-ctr-cd-check:var(--ph-primary);
+
+    --ph-ctr-bg-badge:var(--ph-danger);
+    --ph-ctr-cd-badge:#141414;
+
+    --ph-ctr-bg-error:#2A1215;
+    --ph-ctr-cd-error:#58181C;
+
+    --ph-ctr-bg-info:#111D2C;
+    --ph-ctr-cd-info:#15395B;
+
+    --ph-ctr-bg-success:#162312;
+    --ph-ctr-cd-success:#274916;
+
+    --ph-ctr-bg-warning:#2B2111;
+    --ph-ctr-cd-warning:#594214;
+}
