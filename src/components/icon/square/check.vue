@@ -1,6 +1,6 @@
 <template>
-    <tick v-if="checked==2" class="ph-icon-check" stroke="var(--ph-c-ltop)" fill="var(--ph-bg-theme)" borderColor="var(--ph-bg-theme)"/>
-    <minus v-else-if="checked==1" class="ph-icon-check" stroke="var(--ph-c-ltop)" fill="var(--ph-bg-theme)" borderColor="var(--ph-bg-theme)"/>
+    <tick v-if="checked==2" class="ph-icon-check" stroke="var(--ph-c-top)" fill="var(--ph-bg-theme)" borderColor="var(--ph-bg-theme)"/>
+    <minus v-else-if="checked==1" class="ph-icon-check" stroke="var(--ph-c-top)" fill="var(--ph-bg-theme)" borderColor="var(--ph-bg-theme)"/>
     <square v-else class="ph-icon-check" :hover="true"/>
 </template>
 <script lang="ts" setup>

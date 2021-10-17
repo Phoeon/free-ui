@@ -1,21 +1,14 @@
 <template>
-    <button 
-    :class="['ph-button',state.hover?'ph-pc':'']" 
-    :hover="state.hover&&!disabled"
-    :radius="radius" 
-    :ui="type" 
-    :fillMode="fillMode"
-    :size="size"
-    :disabled="disabled"
-    :loading="loading"
-    :block="block"
-    >
-    <spin v-if="loading" stroke="currentColor"/>
-    <span v-if="$slots.default" class="ph-btn-slot"><slot></slot></span>
-    <caret v-if="dropdown" :position="dropdown" stroke="currentColor"/></button>
+    <button :class="cns" v-tap="onTap" :disabled="disabled">
+        <spin v-if="loading" stroke="currentColor"/>
+        <span v-if="$slots.default" class="ph-btn-slot"><slot></slot></span>
+        <caret v-if="dropdown" :position="dropdown" stroke="currentColor"/>
+    </button>
 </template>
 <script lang="ts" setup>
-import { PropType, reactive, defineProps, defineAsyncComponent } from "vue";
+import { PropType, reactive, defineProps, defineEmits, defineAsyncComponent, computed } from "vue";
+import { tap as vTap } from "../../directives/gesture"
+
 const Caret = defineAsyncComponent(()=>import("../icon/caret.vue"))
 const Spin = defineAsyncComponent(()=>import("../icon/loading/spin.vue"))
 const props = defineProps({
@@ -23,19 +16,64 @@ const props = defineProps({
     block:Boolean,
     loading:Boolean,
     dropdown:String as PropType<'up'|'down'>,
+    shape:String as PropType<'circle'|'square'>,
     radius:{type:Boolean,default:true},
     type:{type:String as PropType<'primary'|'success'|'danger'|'warning'|'default'>,default:'default'},
     fillMode:{type:String as PropType<'outline'|'none'|'normal'>,default:'normal'},
     size:{type:String as PropType<'mini'|'small'|'large'|'normal'>,default:'normal'}
 })
-
+const cst = {
+    lock:false
+}
 const state = reactive({
     hover:!("ontouchstart" in window)
 })
+const cns = computed(()=>{
+    return {
+        'ph-btn':true,
+        'ph-btn-pc':state.hover,
+        'ph-btn-hover':state.hover&&!props.disabled,
+        'ph-btn-radius':props.radius,
+
+        'ph-btn-primary':props.type=="primary",
+        'ph-btn-success':props.type=="success",
+        'ph-btn-danger':props.type=="danger",
+        'ph-btn-warning':props.type=="warning",
+        'ph-btn-default':props.type=="default",
+
+        'ph-btn-outline':props.fillMode=="outline",
+        'ph-btn-none':props.fillMode=="none",
+
+        'ph-btn-mini':props.size=="mini",
+        'ph-btn-small':props.size=="small",
+        'ph-btn-large':props.size=="large",
+
+        'ph-btn-loading':props.loading,
+        'ph-btn-block':props.block,
+
+        'ph-btn-circle':props.shape=="circle",
+        'ph-btn-square':props.shape=="square",
+
+        'ph-btn-flex':!!props.dropdown
+    }
+})
+const emits = defineEmits(['tap'])
+const trigger = (e:unknown)=>{
+    if(cst.lock)return
+    cst.lock = true
+    emits("tap",e)
+    setTimeout(()=>{
+        cst.lock = false
+    },300)
+}
+
+const onTap = (e:Event)=>{
+    trigger(e)
+}
 </script>
 <style lang="scss">
-.ph-button{
-    --ph-btn-br: 4px;
+.ph-btn{
+    --ph-btn-br: 0;
     --ph-btn-bw: 1px;
     --ph-btn-bs: solid;
     --ph-btn-pd: 0px 16px;
@@ -49,16 +87,18 @@ const state = reactive({
     position: relative;
     display: inline-block;
     box-sizing: border-box;
+    outline:none;
     margin: 0;
     line-height: 1;
     text-align: center;
     cursor: pointer;
-    transition: opacity .15s ease;
     user-select: none;
     appearance: none;
     flex: 0 0 auto;
     height: fit-content;
     white-space: nowrap;
+    font-weight: 500;
+    transition: opacity .15s ease,color .15s ease,background-color .15s ease;
     
     &:before{
         content:'';
@@ -66,52 +106,62 @@ const state = reactive({
         height: 100%;
         vertical-align: middle;
     }
-    &[size=mini]{
+    &-mini{
         --ph-btn-pd: 0px 7px;
         --ph-btn-fs: 13px;
         --ph-btn-h: 26px;
     }
-    &[size=small]{
+    &-small{
         --ph-btn-pd: 0px 11px;
         --ph-btn-fs: 15px;
         --ph-btn-h: 30px;
     }
-    &[size=large]{
+    &-large{
         --ph-btn-pd: 0px 22px;
         --ph-btn-fs: 18px;
         --ph-btn-h: 46px;
     }
-    &.ph-pc{
+    &-pc{
         --ph-btn-h: 32px;
         --ph-btn-fs: 14px;
         --ph-btn-pd: 0px 15px;
-        &[size=mini]{
+        &.ph-btn-mini{
             --ph-btn-pd: 0px 10px;
             --ph-btn-fs: 12px;
             --ph-btn-h: 24px;
         }
-        &[size=small]{
+        &.ph-btn-small{
             --ph-btn-pd: 0px 12px;
             --ph-btn-fs: 14px;
             --ph-btn-h: 30px;
         }
-        &[size=large]{
+        &.ph-btn-large{
             --ph-btn-pd: 0px 12px;
             --ph-btn-fs: 18px;
             --ph-btn-h: 40px;
         }
-        &[hover=true]:hover:after{
+        &.ph-btn-hover:hover:after{
             opacity: .1;
         }
-        &[ui=default][hover=true]:hover{
-            --ph-btn-bg:var(--ph-bg-disabled);
-            --ph-btn-bc:var(--ph-bg-disabled);
+        &.ph-btn-default.ph-btn-hover:hover{
+            --ph-btn-bg:var(--ph-doc-bg);
+            --ph-btn-bc:var(--ph-bc);
+        }
+        &.ph-btn-default.ph-btn-none.ph-btn-hover:hover{
+            --ph-btn-bg:var(--ph-doc-bg);
+            --ph-btn-bc:var(--ph-doc-bg);
         }
     }
-    &[radius=false]{
-        --ph-btn-br:0;
+    &-square{
+        width: 32px;
+        --ph-btn-h: 32px;
+        --ph-btn-pd:0;
+        --ph-i-size:24px;
     }
-    &[ui=default]{
+    &-radius{
+        --ph-btn-br:4px;
+    }
+    &-default{
         --ph-btn-bc: var(--ph-bc);
         --ph-btn-c: var(--ph-c);
         --ph-btn-bg: transparent;
@@ -120,44 +170,44 @@ const state = reactive({
             opacity: .4;
         }
     }
-    &[ui=primary]{
+    &-primary{
         --ph-btn-theme:var(--ph-primary);
         --ph-btn-bg:var(--ph-primary);
         --ph-btn-bc:var(--ph-primary);
         --ph-btn-c:var(--ph-c-white);
     }
-    &[ui=success]{
+    &-success{
         --ph-btn-theme:var(--ph-success);
         --ph-btn-bg:var(--ph-success);
         --ph-btn-bc:var(--ph-success);
         --ph-btn-c:var(--ph-c-white);
     }
-    &[ui=warning]{
+    &-warning{
         --ph-btn-theme:var(--ph-warning);
         --ph-btn-bg:var(--ph-warning);
         --ph-btn-bc:var(--ph-warning);
         --ph-btn-c:var(--ph-c-white);
     }
-    &[ui=danger]{
+    &-danger{
         --ph-btn-theme:var(--ph-danger);
         --ph-btn-bg:var(--ph-danger);
         --ph-btn-bc:var(--ph-danger);
         --ph-btn-c:var(--ph-c-white);
     }
-    &[fillMode=outline]{
+    &-outline{
         --ph-btn-c:var(--ph-btn-theme);
         --ph-btn-bg:transparent;
     }
-    &[fillMode=none]{
+    &-none{
         --ph-btn-c:var(--ph-btn-theme);
         --ph-btn-bg:transparent;
         --ph-btn-bc:transparent;
     }
-    &[block=true]{
+    &-block{
         display: block;
         width: 100%;
     }
-    &:not([ui=default]):after{
+    &:not(.ph-btn-default):after{
         position: absolute;
         top: 50%;
         left: 50%;
@@ -174,23 +224,31 @@ const state = reactive({
         transition: opacity .15s ease;
     }
 
-    &:not([ui=default]):active:after{
+    &:not(.ph-btn-default):active:after{
         opacity: .1;
     }
     &:disabled{
         cursor: not-allowed!important;
     }
-    &:not([ui=default]):disabled{
+    &:not(.ph-btn-default):disabled{
         opacity: .4!important;
     }
-    &[ui=default]:active{
-        --ph-btn-bg:var(--ph-bg-disabled);
-        --ph-btn-bc:var(--ph-bg-disabled);
+    &-default:active{
+        --ph-btn-bg:var(--ph-doc-bg);
+        --ph-btn-bc:var(--ph-doc-bg);
     }
-    &[ui=default]:disabled{
+    &-default:disabled{
         --ph-btn-bg:var(--ph-bg-disabled)!important;
         --ph-btn-bc:var(--ph-bg-disabled)!important;
         --ph-btn-c:var(--ph-c-disabled)!important;
+    }
+    &-flex{
+        display: flex;
+        align-items: center;
+        padding-right: 8px;
+        .ph-btn-slot{
+            flex: 1;
+        }
     }
     .ph-icon,
     .ph-btn-slot{

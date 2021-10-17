@@ -1,5 +1,5 @@
 <template>
-    <div class="ph-view">
+    <f-view>
         <div class="ph-title">基本</div>
         <div class="ph-block">
             <minus/>
@@ -32,6 +32,7 @@
 
             <navicon/>
             <search/>
+            <theme/>
         </div>
         <div class="ph-title">square</div>
         <div class="ph-block">
@@ -79,10 +80,10 @@
         </div>
         <div class="ph-title">状态图标</div>
         <div class="ph-block">
-            <circle-tick fill="var(--ph-success)" stroke="var(--ph-c-ltop)"/>
-            <circle-exclam fill="var(--ph-primary)" stroke="var(--ph-c-ltop)"/>
-            <circle-times fill="var(--ph-danger)" stroke="var(--ph-c-ltop)"/>
-            <triangle fill="var(--ph-c-ltop)" stroke="var(--ph-warning)"/>
+            <circle-tick fill="var(--ph-success)" stroke="var(--ph-c-top)"/>
+            <circle-exclam fill="var(--ph-primary)" stroke="var(--ph-c-top)"/>
+            <circle-times fill="var(--ph-danger)" stroke="var(--ph-c-top)"/>
+            <triangle fill="var(--ph-c-top)" stroke="var(--ph-warning)"/>
         </div>
         <div class="ph-title">loading图标</div>
         <div class="ph-block">
@@ -116,10 +117,10 @@
             <square-check :checked="1" :outline="true" size="24px"/>
             <square-check :checked="2" :outline="true" size="24px"/>
         </div>
-    </div>
+    </f-view>
 </template>
 <script lang="ts" setup>
-import { FIcon } from '@/components'
+import { FView, FIcon } from '@/components'
 const { 
     CircleRadio, 
     CircleDot,
@@ -144,6 +145,7 @@ const {
     Caret,
     Arrow,
     Navicon,
-    Search
+    Search,
+    Theme
     } = FIcon
 </script>

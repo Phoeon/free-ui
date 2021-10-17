@@ -7,10 +7,9 @@
 
 @media screen and (max-width: 768px) {
     :root{
-        --ph-topbar-height:calc(var(--phx) * 4.285714);
-        --ph-aside-width:calc(var(--phx) * 14.285714);
-        --ph-nav-padding:5px var(--phx);
-        --ph-nav-item-padding:var(--ph-action-pdv) var(--ph-5);
+        --ph-aside-width:208px;
+        --ph-aside-toggle-width:48px;
+        --ph-pd:16px;
     }
     ::-webkit-scrollbar{
         display: none!important;
@@ -18,17 +17,16 @@
 }
 @media screen and (min-width: 769px){
     :root{
-        --ph-topbar-height:60px;
-        --ph-aside-width:250px;
-        --ph-nav-padding:5px var(--phx);
-        --ph-nav-item-padding:var(--ph-action-padding);
+        --ph-aside-width:208px;
+        --ph-aside-toggle-width:48px;
+        --ph-pd:24px;
     }
 }
 @media screen and (min-width: 769px) and (-webkit-min-device-pixel-ratio:2){
     :root{
-        --ph-topbar-height:calc(var(--phx) * 4.285714);
-        --ph-aside-width:calc(var(--phx) * 14.285714);
-        --ph-nav-padding:5px var(--phx);
-        --ph-nav-item-padding:var(--ph-action-pdv) var(--ph-5);
+        --ph-aside-width:208px;
+        --ph-aside-toggle-width:48px;
+        --ph-pd:24px;--ph-aside-toggle-width:80px;
+        --ph-pd:24px;
     }
 }

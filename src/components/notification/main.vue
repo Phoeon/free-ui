@@ -1,10 +1,10 @@
 <template>
     <transition name="ph-notify-fade">
-        <div :class="cns" :style="style" v-if="visible" :mini="mini">
-            <circle-tick class="ph-status-icon" v-if="type=='success'" fill="var(--ph-success)" stroke="var(--ph-c-ltop)"/>
-            <circle-exclam class="ph-status-icon" v-else-if="type=='info'" fill="var(--ph-info)" stroke="var(--ph-c-ltop)"/>
-            <triangle class="ph-status-icon" v-else-if="type=='warning'" fill="var(--ph-c-ltop)" stroke="var(--ph-warning)"/>
-            <circle-times class="ph-status-icon" v-else-if="type=='error'" fill="var(--ph-error)" stroke="var(--ph-c-ltop)"/>
+        <div :class="cns" :style="style" v-if="visible">
+            <circle-tick class="ph-status-icon" v-if="type=='success'" fill="var(--ph-success)" stroke="var(--ph-c-top)"/>
+            <circle-exclam class="ph-status-icon" v-else-if="type=='info'" fill="var(--ph-info)" stroke="var(--ph-c-top)"/>
+            <triangle class="ph-status-icon" v-else-if="type=='warning'" fill="var(--ph-c-top)" stroke="var(--ph-warning)"/>
+            <circle-times class="ph-status-icon" v-else-if="type=='error'" fill="var(--ph-error)" stroke="var(--ph-c-top)"/>
             <div class="ph-notify-wrap">
                 <h1 class="ph-notify-title">
                     <span>{{title}}</span>
@@ -37,7 +37,6 @@ const props = defineProps({
     title:String,
     content:String,
     clickClose:Boolean,
-    mini:Boolean,
 
     onClose:Function,
     onClick:Function,

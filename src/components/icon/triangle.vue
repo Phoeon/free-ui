@@ -1,5 +1,5 @@
 <template>
-    <icon class="ph-icon-triangle" fill="var(--ph-c-ltop)" stroke="var(--ph-c)">
+    <icon class="ph-icon-triangle" fill="var(--ph-c-top)" stroke="var(--ph-c)">
         <template v-slot:default="props">
             <exclam 
             :disabled="props.disabled" 

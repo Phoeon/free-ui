@@ -6,6 +6,7 @@ import Icon from '../exclam.vue'
 </script>
 <style lang="scss">
 .ph-icon-circle-exclam{
+    transform: rotate(180deg);
     &:before{
         top:calc(var(--ph-icon-ratio) * 3);
     }

@@ -7,7 +7,6 @@ export type PhNotifyOpt={
     position?:NotifyPosition,
     autoClose?:boolean,
     clickClose?:boolean,
-    mini?:boolean,
     confirm?:{doneText?:string,cancelText?:string}
 }
 export const CloseStatus = {

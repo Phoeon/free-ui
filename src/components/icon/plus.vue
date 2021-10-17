@@ -9,7 +9,7 @@ import Icon from './base.vue'
     &:before,
     &:after{
         content: "";
-        border-radius: 1px;
+        border-radius: var(--ph-icon-ratio);
         background-color: var(--ph-icon-c);
     }
     &:before{

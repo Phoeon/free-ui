@@ -4,10 +4,11 @@
     </transition>
 </template>
 <script lang="ts" setup>
-import { computed, defineProps } from 'vue'
+import { computed, defineProps, watch } from 'vue'
 const props = defineProps({
     alpha:Boolean,
     visible:Boolean,
+    scroll:Boolean,
     animation:{type:String,default:"ph-fade"}
 })
 const cn =computed(()=>{
@@ -15,6 +16,9 @@ const cn =computed(()=>{
         'ph-layer':true,
         'ph-layer-alpha':props.alpha
     }
+})
+watch(()=>props.visible,(v)=>{
+    document.body.setAttribute("f-scroll-forbidden",v+"")
 })
 </script>
 <style lang="scss">

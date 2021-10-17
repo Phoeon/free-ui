@@ -8,6 +8,7 @@ import Caret from './caret.vue'
 import Arrow from './arrow.vue'
 import Navicon from './navicon.vue'
 import Search from './search.vue'
+import Theme from './theme.vue'
 export * from './square'
 export * from './circle'
 export * from './loading'
@@ -21,5 +22,6 @@ export {
     Caret,
     Navicon,
     Search,
-    Arrow
+    Arrow,
+    Theme
 }

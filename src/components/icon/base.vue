@@ -33,19 +33,19 @@ const state = reactive({
 })
 const style = computed(()=>{
     const style = {} as {[k:string]:unknown}
-    if(props.fill) style['--ph-fill'] = props.fill;
-    if(props.stroke) style['--ph-stroke'] = props.stroke;
-    if(props.borderColor) style['--ph-borderColor'] = props.borderColor;
-    if(props.size) style['--ph-size'] = props.size
+    if(props.fill) style['--ph-icon-fill'] = props.fill;
+    if(props.stroke) style['--ph-icon-stroke'] = props.stroke;
+    if(props.borderColor) style['--ph-icon-bcolor'] = props.borderColor;
+    if(props.size) style['--ph-i-size'] = props.size
     return style
 })
 </script>
 <style lang="scss">
 .ph-icon{
-    --ph-icon-bg:var(--ph-fill,transparent);
-    --ph-icon-bc:var(--ph-borderColor,var(--ph-bc));
-    --ph-icon-c:var(--ph-stroke,var(--ph-c));
-    --ph-icon-ratio:calc(var(--ph-size,16px) * 0.0625);
+    --ph-icon-bg:var(--ph-icon-fill,transparent);
+    --ph-icon-bc:var(--ph-icon-bcolor,var(--ph-bc));
+    --ph-icon-c:var(--ph-icon-stroke,var(--ph-c));
+    --ph-icon-ratio:calc(var(--ph-i-size,16px) * 0.0625);
     --ph-icon-size:calc(var(--ph-icon-ratio) * 16);
     --ph-icon-2:calc(var(--ph-icon-ratio) * 2);
     --ph-icon-6:calc(var(--ph-icon-ratio) * 6);
@@ -55,8 +55,13 @@ const style = computed(()=>{
     position: relative;
     width: var(--ph-icon-size);
     height: var(--ph-icon-size);
+    font-size: var(--ph-icon-size);
     display: inline-block;
     box-sizing: border-box;
+    flex: 0 0 auto;
+    font-style: normal;
+    text-align: center;
+    line-height: inherit;
     
     &:before,
     &:after{
@@ -71,8 +76,8 @@ const style = computed(()=>{
         box-sizing: border-box;
     }
     &[outline=true]{
-        --ph-icon-bg:var(--ph-stroke,var(--ph-c));
-        --ph-icon-c:var(--ph-fill,var(--ph-c-ltop));
+        --ph-icon-bg:var(--ph-icon-stroke,var(--ph-c));
+        --ph-icon-c:var(--ph-icon-fill,var(--ph-c-top));
     }
     &[shape=circle]{
         border-radius: 50%;
