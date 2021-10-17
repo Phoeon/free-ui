@@ -1,4 +1,4 @@
-import FMenuTree from './tree-root.vue'
+import FMenuTree from './tree/tree-root.vue'
 export {
     FMenuTree
 }

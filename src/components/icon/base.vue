@@ -1,6 +1,6 @@
 <template>
     <i 
-    class="ph-icon" 
+    class="ph-icon ph-internal-icon" 
     :disabled="disabled" 
     :active="active&&!disabled" 
     :hover="hover&&state.hover&&!disabled" 
@@ -41,7 +41,8 @@ const style = computed(()=>{
 })
 </script>
 <style lang="scss">
-.ph-icon{
+@import './icon.scss';
+.ph-internal-icon{
     --ph-icon-bg:var(--ph-icon-fill,transparent);
     --ph-icon-bc:var(--ph-icon-bcolor,var(--ph-bc));
     --ph-icon-c:var(--ph-icon-stroke,var(--ph-c));

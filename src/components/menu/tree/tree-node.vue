@@ -1,14 +1,14 @@
 <template>
-    <div :class="['ph-menu-item',isRoot?'ph-menu-item-root':'']" :simple="simple" @mouseenter="onEnter" @mouseleave="onLeave">
-        <button class="ph-menu-btn ph-group" :data-title="node.name" v-if="isGroup" :flex="true" ref="emenu" :active="active" :hover="state.hover&&!state.open" @click="toggle">
-            <square-plus :stroke="simple&&active?'var(--ph-primary)':'currentColor'"/>
+    <div :class="['ph-menu-item',isRoot?'ph-menu-item-root':'']" :simple="simple" @mouseenter="onEnter" @mouseleave="onLeave" :style="{'--ph-menu-depth':depth}">
+        <button class="ph-menu-btn ph-group" :data-title="node.name" v-if="isGroup" :flex="true" ref="emenu" :active="active" :hover="state.hover&&!state.open&&!active" @click="toggle">
+            <custom-icon v-if="node.icon" :name="node.icon"/>
             <template v-if="showDetail">
                 <span class="ph-btn-text">{{node.name}}</span>
                 <caret :position="state.open?'up':'down'"/>
             </template>
         </button>
         <button v-stv="active" :data-title="node.name" class="ph-menu-btn ph-leaf" v-else :active="active" :hover="state.hover&&!active" @click="navigate">
-            <square-minus/>
+            <custom-icon v-if="node.icon" :name="node.icon"/>
             <template v-if="showDetail">
                 <span class="ph-btn-text">{{node.name}}</span>
             </template>
@@ -23,33 +23,34 @@
                 </nav>
             </transition>
             <nav v-else class="ph-menu-tree" v-toggle-height="state.open" ref="esubstree">
-                <menu-tree :paths="paths?paths.slice(1):[]" :node="item" v-for="(item,idx) in node.children" :key="idx"/>
+                <menu-tree :depth="depth+1" :paths="paths?paths.slice(1):[]" :node="item" v-for="(item,idx) in node.children" :key="idx"/>
             </nav>
         </template>
     </div>
 </template>
 <script lang="ts">
-import vToggleHeight from '../../directives/toggle-height'
+import vToggleHeight from '../../../directives/toggle-height'
 export default {
     name:"MenuTree"
 }
 </script>
 <script lang="ts" setup>
-import { computed, defineProps, inject, nextTick, onMounted, PropType, provide, reactive, ref, Ref } from 'vue'
-import { INavNode, ITreeNode } from './struct'
-import { Caret, SquarePlus, SquareMinus } from '../icon'
+import { computed, defineProps, inject, nextTick, onMounted, PropType, provide, reactive, ref, Ref, watch } from 'vue'
+import { INavNode, ITreeNode } from '../struct'
+import { Caret, CustomIcon } from '../../icon'
 import getPosition from 'ph-position'
-import vStv from '../../directives/scroll-to-view'
+import vStv from '../../../directives/scroll-to-view'
 
 const notify = inject("notify") as (paths:INavNode[])=>void
 const simple = inject("simple") as Ref<boolean>
 const props = defineProps({
-    node:Object as PropType<ITreeNode>,
     paths:{
         type:Array as PropType<Array<INavNode>>,
         default:()=>[]
     },
-    isRoot:Boolean
+    node:Object as PropType<ITreeNode>,
+    isRoot:Boolean,
+    depth:Number
 })
 
 const isGroup = computed(()=>props.node?.children&&props.node?.children.length)
@@ -111,6 +112,9 @@ provide("notify",(paths:INavNode[])=>{
         name,icon,action,id
     },...paths])
     
+})
+watch(()=>simple.value,()=>{
+    onLeave()
 })
 onMounted(()=>{
     cst.ct = Date.now()
@@ -228,9 +232,15 @@ onMounted(()=>{
     }
     .ph-menu-tree{
         --ph-menu-item-height:45px;
+        --ph-menu-item-pdl:calc(var(--ph-menu-depth) * 16px + var(--ph-pd));
         background-color: var(--ph-menu-bg);
         .ph-menu-tree{
             --ph-menu-item-height:40px;
+        }
+        &:not(.ph-menu-tree-abs){
+            .ph-menu-btn{
+                padding-left: var(--ph-menu-item-pdl);
+            }
         }
     }
     .ph-menu-tree-abs{
@@ -241,6 +251,7 @@ onMounted(()=>{
         top: 0;
         right: 0;
         transform: translate3d(100%,0,0);
+
         &:after{
             content: "";
             position: absolute;

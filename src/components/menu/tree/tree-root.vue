@@ -1,11 +1,11 @@
 <template>
     <nav :class="['ph-menu-tree-root',simple?'ph-menu-simple':'']">
-        <tree-node :isRoot="true" :paths="paths" :node="item" v-for="(item,idx) in tree" :key="idx"></tree-node>
+        <tree-node :depth="1" :isRoot="true" :paths="paths" :node="item" v-for="(item,idx) in tree" :key="idx"></tree-node>
     </nav>
 </template>
 <script lang="ts" setup>
 import { defineProps, PropType, provide, defineEmits, inject, toRef } from 'vue'
-import { ITreeNode, INavNode } from './struct'
+import { ITreeNode, INavNode } from '../struct'
 import TreeNode from './tree-node.vue'
 
 const phevt = inject("phevt") as {emit:(a:string,...b:any[])=>void}

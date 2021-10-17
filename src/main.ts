@@ -1,5 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-
-createApp(App).use(router).mount('#app')
+import {FIconConfig} from '@/components'
+createApp(App)
+.use(FIconConfig,{
+    cname:"fa",
+    prefix:"fa-"
+})
+.use(router).mount('#app')

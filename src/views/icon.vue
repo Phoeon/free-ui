@@ -89,6 +89,10 @@
         <div class="ph-block">
             <loading-spin/>
         </div>
+        <div class="ph-title">自定义图标库</div>
+        <div class="ph-block">
+            <custom-icon name="save"/>
+        </div>
         <div class="ph-title">size=32px</div>
         <div class="ph-block">
             <square-minus size="32px"/>
@@ -146,6 +150,8 @@ const {
     Arrow,
     Navicon,
     Search,
-    Theme
+    Theme,
+
+    CustomIcon
     } = FIcon
 </script>

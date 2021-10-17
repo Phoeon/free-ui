@@ -2,26 +2,32 @@ export default [
     {
         name:"按钮",
         id:"/button",
-        action:"/button"
+        action:"/button",
+        icon:"list"
     },{
         name:"图标",
         id:"/icon",
-        action:"/icon"
+        action:"/icon",
+        icon:"align-center"
     },{
         name:"通知",
         id:"/notification",
-        action:"/notification"
+        action:"/notification",
+        icon:"align-left"
     },{
         name:"卡片",
         id:"/card",
-        action:"/card"
+        action:"/card",
+        icon:"list-ol"
     },{
         name:"提示toast",
         id:"/toast",
-        action:"/toast"
+        action:"/toast",
+        icon:"chrome"
     },{
         name:"导航分类",
         id:"navigate",
+        icon:"safari",
         children:[{
             name:"分页",
             id:"/pager",
@@ -50,6 +56,7 @@ export default [
     },{
         name:"表单",
         id:"/form",
+        icon:"firefox",
         children:[{
             name:"日期时间",
             id:"/pager",
@@ -90,6 +97,7 @@ export default [
     },{
         name:"数据展示",
         id:"/data",
+        icon:"internet-explorer",
         children:[{
             name:"头像",
             id:"/pager",
@@ -130,6 +138,7 @@ export default [
     },{
         name:"反馈交互",
         id:"/pager",
+        icon:"opera",
         children:[{
             name:"通知",
             id:"/notification",
@@ -165,18 +174,22 @@ export default [
         }]
     },{
         name:"步骤条",
-        id:"/steps"
+        id:"/steps",
+        icon:"area-chart"
     },{
         name:"测试二级菜单",
         id:"/test2",
+        icon:"bar-chart",
         children:[{
             name:"二级菜单一",
             id:"/test2-1",
-            action:"/test2-1"
+            action:"/test2-1",
+            icon:"upload",
         },{
             name:"二级菜单二",
             id:"/test2-2",
-            action:"/test2-2"
+            action:"/test2-2",
+            icon:"university",
         },{
             name:"二级菜单三",
             id:"/test2-3",
@@ -185,14 +198,17 @@ export default [
             name:"测试三级菜单",
             id:"/test2-4",
             action:"/test2-4",
+            icon:"send",
             children:[{
                 name:"三级菜单一",
                 id:"/test3-1",
-                action:"/test3-1"
+                action:"/test3-1",
+                icon:"file",
             },{
                 name:"三级菜单二",
                 id:"/test3-2",
-                action:"/test3-2"
+                action:"/test3-2",
+                icon:"rss",
             },{
                 name:"三级菜单三",
                 id:"/test3-3",
