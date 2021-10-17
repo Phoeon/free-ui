@@ -1,21 +1,24 @@
 <template>
     <div :class="['ph-menu-item',isRoot?'ph-menu-item-root':'']" :simple="simple" @mouseenter="onEnter" @mouseleave="onLeave">
-        <button class="ph-menu-btn ph-group" v-if="isGroup" :flex="true" :active="state.open" :hover="state.hover&&!state.open" @click="toggle">
-            <square-plus/>
-            <template v-if="!hideDetail">
+        <button class="ph-menu-btn ph-group" :data-title="node.name" v-if="isGroup" :flex="true" ref="emenu" :active="active" :hover="state.hover&&!state.open" @click="toggle">
+            <square-plus :stroke="simple&&active?'var(--ph-primary)':'currentColor'"/>
+            <template v-if="showDetail">
                 <span class="ph-btn-text">{{node.name}}</span>
                 <caret :position="state.open?'up':'down'"/>
             </template>
         </button>
-        <button v-stv="active" class="ph-menu-btn ph-leaf" v-else :active="active" :hover="state.hover&&!active" @click="navigate">
+        <button v-stv="active" :data-title="node.name" class="ph-menu-btn ph-leaf" v-else :active="active" :hover="state.hover&&!active" @click="navigate">
             <square-minus/>
-            <template v-if="!hideDetail">
+            <template v-if="showDetail">
                 <span class="ph-btn-text">{{node.name}}</span>
             </template>
+            <transition name="ph-menuitem" mode="out-in" v-if="isRoot&&simple">
+                <div class="ph-menu-btn-mirror" v-if="state.hoverDetail">{{node.name}}</div>
+            </transition>
         </button>
         <template v-if="isGroup">
             <transition name="ph-menuitem" mode="out-in" v-if="simple">
-                <nav class="ph-menu-tree ph-menu-tree-abs" v-show="state.open">
+                <nav class="ph-menu-tree ph-menu-tree-abs" v-if="state.open" ref="esubstree" :show-title="state.hoverDetail" :data-title="node.name">
                     <menu-tree :paths="paths?paths.slice(1):[]" :node="item" v-for="(item,idx) in node.children" :key="idx"/>
                 </nav>
             </transition>
@@ -32,9 +35,10 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import { computed, defineProps, inject, PropType, provide, reactive, ref, Ref } from 'vue'
+import { computed, defineProps, inject, nextTick, onMounted, PropType, provide, reactive, ref, Ref } from 'vue'
 import { INavNode, ITreeNode } from './struct'
 import { Caret, SquarePlus, SquareMinus } from '../icon'
+import getPosition from 'ph-position'
 import vStv from '../../directives/scroll-to-view'
 
 const notify = inject("notify") as (paths:INavNode[])=>void
@@ -50,15 +54,29 @@ const props = defineProps({
 
 const isGroup = computed(()=>props.node?.children&&props.node?.children.length)
 const active = computed(()=>props.paths&&props.paths[0]&&props.paths[0].id==props.node?.id)
-const hideDetail = computed(()=>props.isRoot&&simple.value)
+
 const esubstree = ref() as Ref<HTMLElement>
+const emenu = ref() as Ref<HTMLElement>
+
+const cst = {
+    ct:0
+}
 const state = reactive({
-    open:active.value,
+    open:active.value&&!simple.value,
     hover:!("ontouchstart" in window),
+    hoverDetail:false
 })
+const showDetail = computed(()=>!props.isRoot||!simple.value)
+const onLeave = ()=>{
+    if(!simple.value)return
+    if(props.isRoot)
+        state.hoverDetail = false
+    state.open = false
+}
 const navigate = ()=>{
     const {name,icon,action,id} = props.node as ITreeNode
     notify&&notify([{name,icon,action,id}])
+    onLeave()
 }
 const toggle = ()=>{
     if(simple.value)return
@@ -70,18 +88,32 @@ const toggle = ()=>{
 }
 const onEnter = ()=>{
     if(!simple.value)return
+    if(props.isRoot)
+        state.hoverDetail = true
+    if(Date.now()-cst.ct<50)return
+    if(!emenu.value)return
     state.open = true
+    nextTick(()=>{
+        const rect = emenu.value.getBoundingClientRect()
+        const {offsetWidth,offsetHeight} = esubstree.value
+        const {y} = getPosition({offsetWidth,offsetHeight},rect,{top:false,dir:'vt'})
+        const ny = y<0?y+rect.height:y-rect.height
+        esubstree.value.style.cssText = `top:${ny}px`
+    })
 }
-const onLeave = ()=>{
-    if(!simple.value)return
-    state.open = false
-}
+
 if(isGroup.value)
 provide("notify",(paths:INavNode[])=>{
+    onLeave()
+        
     const {name,icon,action,id} = props.node as ITreeNode
     notify&&notify([{
         name,icon,action,id
     },...paths])
+    
+})
+onMounted(()=>{
+    cst.ct = Date.now()
 })
 </script>
 <style lang="scss">
@@ -163,6 +195,25 @@ provide("notify",(paths:INavNode[])=>{
             background-color: var(--ph-ctr-bg-info);
         }
     }
+    &-root{
+        .ph-menu-btn{
+            &-mirror{
+                position: absolute;
+                width: var(--ph-aside-width);
+                height: 100%;
+                right: 0;
+                top: 0 ;
+                padding-left: 5px;
+                transform: translate3d(100%,0,0);
+                background-color: var(--ph-block-bg);
+                background-clip: content-box;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                text-indent: var(--ph-pd);
+            }
+        }
+    }
     &-root[simple=true]{
         & > .ph-group{
             justify-content: center;
@@ -186,11 +237,11 @@ provide("notify",(paths:INavNode[])=>{
         padding-left: 5px;
         background-clip: content-box;
         position: absolute;
-        width: 208px;
+        width: var(--ph-aside-width);
         top: 0;
         right: 0;
-        transform: translate3d(calc(100% - 1px),0,0);
-        &:before{
+        transform: translate3d(100%,0,0);
+        &:after{
             content: "";
             position: absolute;
             height: 100%;
@@ -199,6 +250,21 @@ provide("notify",(paths:INavNode[])=>{
             top: 0;
             background-color: var(--ph-block-bg);
             box-shadow: var(--ph-shadow-3);
+        }
+        &[show-title=true]:before{
+            position: relative;
+            content: attr(data-title);
+            display: flex;
+            align-items: center;
+            background-color: var(--ph-block-bg);
+            font-size: inherit;
+            color: var(--ph-c-d2);
+            font-weight: inherit;
+            height: var(--ph-menu-item-height);
+            padding: 0 var(--ph-pd-small) 0 var(--ph-pd);
+            width: 100%;
+            z-index: 1;
+            border-bottom: 1px solid var(--ph-bc-1);
         }
         .ph-menu-item{
             z-index: 1;
