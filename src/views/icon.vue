@@ -15,24 +15,25 @@
             <tick :disabled="true"/>
             <times :disabled="true"/>
 
-            <caret position="up"/>
-            <caret position="down"/>
-            <caret position="left"/>
-            <caret position="right"/>
+            <caret direction="up"/>
+            <caret direction="down"/>
+            <caret direction="left"/>
+            <caret direction="right"/>
 
-            <arrow position="up"/>
-            <arrow position="down"/>
-            <arrow position="left"/>
-            <arrow position="right"/>
+            <arrow direction="up"/>
+            <arrow direction="down"/>
+            <arrow direction="left"/>
+            <arrow direction="right"/>
 
-            <arrow :double="true" position="up"/>
-            <arrow :double="true" position="down"/>
-            <arrow :double="true" position="left"/>
-            <arrow :double="true" position="right"/>
+            <arrow :double="true" direction="up"/>
+            <arrow :double="true" direction="down"/>
+            <arrow :double="true" direction="left"/>
+            <arrow :double="true" direction="right"/>
 
             <navicon/>
             <search/>
             <theme/>
+            <ellipsis/>
         </div>
         <div class="ph-title">square</div>
         <div class="ph-block">
@@ -80,10 +81,10 @@
         </div>
         <div class="ph-title">状态图标</div>
         <div class="ph-block">
-            <circle-tick fill="var(--ph-success)" stroke="var(--ph-c-top)"/>
-            <circle-exclam fill="var(--ph-primary)" stroke="var(--ph-c-top)"/>
-            <circle-times fill="var(--ph-danger)" stroke="var(--ph-c-top)"/>
-            <triangle fill="var(--ph-c-top)" stroke="var(--ph-warning)"/>
+            <circle-success />
+            <circle-info />
+            <circle-danger />
+            <circle-warning />
         </div>
         <div class="ph-title">loading图标</div>
         <div class="ph-block">
@@ -91,7 +92,11 @@
         </div>
         <div class="ph-title">自定义图标库</div>
         <div class="ph-block">
-            <custom-icon name="save"/>
+            <custom-icon name="chrome"/>
+            <custom-icon name="firefox"/>
+            <custom-icon name="safari"/>
+            <custom-icon name="opera"/>
+            <custom-icon name="internet-explorer"/>
         </div>
         <div class="ph-title">size=32px</div>
         <div class="ph-block">
@@ -133,6 +138,11 @@ const {
     CircleTimes,
     CircleTime,
 
+    CircleWarning,
+    CircleInfo,
+    CircleSuccess,
+    CircleDanger,
+
     SquareCheck, 
     SquareMinus,
     SquarePlus,
@@ -151,6 +161,7 @@ const {
     Navicon,
     Search,
     Theme,
+    Ellipsis,
 
     CustomIcon
     } = FIcon

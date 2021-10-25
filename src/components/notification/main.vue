@@ -1,92 +1,150 @@
 <template>
-    <transition name="ph-notify-fade">
-        <div :class="cns" :style="style" v-if="visible">
-            <circle-tick class="ph-status-icon" v-if="type=='success'" fill="var(--ph-success)" stroke="var(--ph-c-top)"/>
-            <circle-exclam class="ph-status-icon" v-else-if="type=='info'" fill="var(--ph-info)" stroke="var(--ph-c-top)"/>
-            <triangle class="ph-status-icon" v-else-if="type=='warning'" fill="var(--ph-c-top)" stroke="var(--ph-warning)"/>
-            <circle-times class="ph-status-icon" v-else-if="type=='error'" fill="var(--ph-error)" stroke="var(--ph-c-top)"/>
-            <div class="ph-notify-wrap">
-                <h1 class="ph-notify-title">
-                    <span>{{title}}</span>
-                    <times v-if="showClose" :active="false" @click="close(0,true)" class="ph-notify-close" :hover="true"/>
-                </h1>
-                <p class="ph-notify-body" @click="click">{{content}}</p>
-            </div>
-            <div class="ph-notify-action" v-if="confirm">
-                <f-button size="mini" @click="close(0,true)">{{confirm.cancelText||'关&ensp;闭'}}</f-button>
-                <f-button size="mini" type="primary" @click="close(1,true)">{{confirm.doneText||'确&ensp;认'}}</f-button>
-            </div>
-        </div>
-    </transition>
+<div :class="['ph-notify-container', 'ph-notify-'+position]" v-if="visible">
+    <NotificationGroup
+        v-for="item in state.groups"
+        :key="item.k"
+        :group="item" 
+        :list="state.notifications[item.k]" 
+        :hrp="dirs[0]" 
+        :vtp="dirs[1]"
+        @closeAll="onCloseGroup"
+        @close="onClose"/>
+</div>
 </template>
 <script lang="ts" setup>
-import './main.scss'
-import { computed, defineProps, defineExpose, PropType, ref, defineAsyncComponent } from 'vue'
-import { CircleTick, CircleTimes, CircleExclam, Triangle, Times } from '../icon'
-import { NotifyPosition, CloseStatus } from './types'
-const FButton = defineAsyncComponent(()=>import("../button/main.vue"))
+import { computed, defineExpose, defineProps, PropType, reactive } from 'vue'
+import { IPhNotifyOpt, Igroup} from './types'
+import type IEvt from 'ph-evt'
+import Env from '../../shared/env'
+import NotificationGroup from './group.vue'
 
+const notifyConfig = Env.get("notify")
+const position = (notifyConfig?.position)||"right-top"
+
+const dirs = position.split("-")
 const props = defineProps({
-    position:{
-        type: String as PropType<NotifyPosition>,
-        default:"right-bottom"
-    },
-    type:String as PropType<'success'|'error'|'warning'|'info'|'default'>,
-    showClose:{type:Boolean,default:true},
-    autoClose:{type:Boolean,default:true},
-    title:String,
-    content:String,
-    clickClose:Boolean,
-
-    onClose:Function,
-    onClick:Function,
-    confirm:Object as PropType<{
-        doneText?:string,cancelText?:string
-    }>
+    evt: Object as PropType<IEvt>
 })
-const nid = (Math.random()+"").replace(".","");
-const visible = ref(false)
-const y = ref("")
-const cns = computed(()=>{
-    return {
-        'ph-notify':true,
-        'ph-notify-right':props.position.startsWith("right"),
-        'ph-notify-left':props.position.startsWith("left")
+const state = reactive<{
+    groups:Array<Igroup>,
+    notifications:Record<string,Array<IPhNotifyOpt>>,
+}>({
+    groups:[],
+    notifications:{
+        "default":[]
     }
 })
-const style = computed(()=>{
-    const style = {} as Record<string,unknown>
-    const Y = props.position.split("-")[1]
-    if(Y)style[Y] = y.value
-    return style
+const visible = computed(()=>{
+    let i=0;
+    for(const key in state.notifications)
+        i+= state.notifications[key].length
+    return i
 })
-const show = (top:string)=>{
-    visible.value = true
-    y.value = top
-    if(props.autoClose&&!props.confirm){
-        setTimeout(()=>{
-            close(CloseStatus.close)
-        },10000)
+const show = (n:IPhNotifyOpt)=>{
+    const group = n.group||"default"
+    const idx = state.groups.findIndex(t=>t.k===group)
+    if(idx<0){
+        state.groups.push({k:group,v:n.groupDesc})
+        state.notifications[group] = []
     }
+    
+    const notifications = state.notifications[group]
+    if(dirs[1]=="top")
+    notifications.push(n)
+    else
+    notifications.unshift(n)
 }
-const close = (status:number,manu?:boolean)=>{
-    if(visible.value){
-        props.onClose&&props.onClose(nid,status,manu)
-        visible.value = false
-    }
+const onClose = ({nid,groupId}:{nid:string,groupId?:string})=>{
+    const group = groupId||"default"
+    const notifications = state.notifications[group]
+    state.notifications[group] = notifications.filter(item=>item.nid!=nid)
 }
-const click = ()=>{
-    props.onClick&&props.onClick({nid,manu:true})
-    if(!props.confirm&&props.clickClose)
-    close(CloseStatus.close)
+const onCloseGroup = (gid:string)=>{
+    state.notifications[gid] = []
 }
-
 defineExpose({
-    show,
-    nid,
-    position:props.position,
-    autoClose:props.autoClose,
-    showClose:props.showClose,
-    confirm:!!props.confirm
+    show
 })
 </script>
+<style lang="scss">
+.ph-notify-container{
+    position: fixed;
+    overflow: auto;
+    width: var(--ph-notify-width);
+    padding: var(--ph-notify-pd);
+    z-index:var(--ph-zdx-notify);
+    font-size: var(--ph-fs);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 100%;
+    -webkit-overflow-scrolling: touch;
+    &.ph-notify-right-top{
+        right: 8px;
+        top: 8px;
+        --ph-notify-mb: var(--ph-pd-small);
+        --ph-notify-mt: 0;
+    }
+    &.ph-notify-right-bottom{
+        right: 8px;
+        bottom: 8px;
+        --ph-notify-mt: var(--ph-pd-small);
+        --ph-notify-mb: 0;
+    }
+    &.ph-notify-left-top{
+        left: 8px;
+        top: 8px;
+        --ph-notify-mb: var(--ph-pd-small);
+        --ph-notify-mt: 0;
+    }
+    &.ph-notify-left-bottom{
+        left: 8px;
+        bottom: 8px;
+        --ph-notify-mt: var(--ph-pd-small);
+        --ph-notify-mb: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ph-notify-container{
+        left: 0;
+        right: 0;
+        margin: auto;
+        --ph-notify-title-mp:4px;
+        --ph-notify-title-lh:inherit;
+        --ph-notify-body-lh:inherit;
+        --ph-notify-body-mp:8px;
+        --ph-notify-title-fs:12px;
+        --ph-notify-body-fs:14px;
+        --ph-notify-width:320px;
+        --ph-notify-pd:16px;
+        --ph-notify-bg:var(--ph-backdrop-alpha);
+        --ph-notify-backdrop: blur(20px);
+    }
+}
+@media screen and (min-width: 769px){
+    .ph-notify-container{
+        --ph-notify-width:384px;
+        --ph-notify-title-fs:16px;
+        --ph-notify-body-fs:14px;
+        --ph-notify-title-mp:8px;
+        --ph-notify-title-lh:24px;
+        --ph-notify-body-lh:22px;
+        --ph-notify-body-mp:8px;
+        --ph-notify-pd:16px 24px;
+    }
+}
+@media screen and (min-width: 769px) and (-webkit-min-device-pixel-ratio:2){
+    .ph-notify-container{
+        --ph-notify-width:320px;
+        --ph-notify-title-fs:16px;
+        --ph-notify-body-fs:14px;
+        --ph-notify-title-mp:8px;
+        --ph-notify-title-lh:24px;
+        --ph-notify-body-lh:22px;
+        --ph-notify-body-mp:8px;
+        --ph-notify-pd:16px 24px;
+    }
+}
+
+</style>

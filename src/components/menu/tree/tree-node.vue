@@ -4,7 +4,7 @@
             <custom-icon v-if="node.icon" :name="node.icon"/>
             <template v-if="showDetail">
                 <span class="ph-btn-text">{{node.name}}</span>
-                <caret :position="state.open?'up':'down'"/>
+                <arrow :direction="state.open?'up':'down'"/>
             </template>
         </button>
         <button v-stv="active" :data-title="node.name" class="ph-menu-btn ph-leaf" v-else :active="active" :hover="state.hover&&!active" @click="navigate">
@@ -37,7 +37,7 @@ export default {
 <script lang="ts" setup>
 import { computed, defineProps, inject, nextTick, onMounted, PropType, provide, reactive, ref, Ref, watch } from 'vue'
 import { INavNode, ITreeNode } from '../struct'
-import { Caret, CustomIcon } from '../../icon'
+import { Arrow, CustomIcon } from '../../icon'
 import getPosition from 'ph-position'
 import vStv from '../../../directives/scroll-to-view'
 
@@ -53,7 +53,7 @@ const props = defineProps({
     depth:Number
 })
 
-const isGroup = computed(()=>props.node?.children&&props.node?.children.length)
+const isGroup = computed(()=>props.node?.children&&props.node?.children.length>0)
 const active = computed(()=>props.paths&&props.paths[0]&&props.paths[0].id==props.node?.id)
 
 const esubstree = ref() as Ref<HTMLElement>
@@ -68,16 +68,23 @@ const state = reactive({
     hoverDetail:false
 })
 const showDetail = computed(()=>!props.isRoot||!simple.value)
-const onLeave = ()=>{
-    if(!simple.value)return
+const restoreState = ()=>{
+    if(!simple.value){
+        state.open = active.value
+        return
+    }
     if(props.isRoot)
         state.hoverDetail = false
     state.open = false
 }
+const onLeave = ()=>{
+    if(!simple.value)return
+    restoreState()
+}
 const navigate = ()=>{
     const {name,icon,action,id} = props.node as ITreeNode
     notify&&notify([{name,icon,action,id}])
-    onLeave()
+    restoreState()
 }
 const toggle = ()=>{
     if(simple.value)return
@@ -92,9 +99,10 @@ const onEnter = ()=>{
     if(props.isRoot)
         state.hoverDetail = true
     if(Date.now()-cst.ct<50)return
-    if(!emenu.value)return
+    if(!isGroup.value)return
     state.open = true
     nextTick(()=>{
+        if(!esubstree.value)return
         const rect = emenu.value.getBoundingClientRect()
         const {offsetWidth,offsetHeight} = esubstree.value
         const {y} = getPosition({offsetWidth,offsetHeight},rect,{top:false,dir:'vt'})
@@ -105,7 +113,7 @@ const onEnter = ()=>{
 
 if(isGroup.value)
 provide("notify",(paths:INavNode[])=>{
-    onLeave()
+    restoreState()
         
     const {name,icon,action,id} = props.node as ITreeNode
     notify&&notify([{
@@ -113,8 +121,8 @@ provide("notify",(paths:INavNode[])=>{
     },...paths])
     
 })
-watch(()=>simple.value,()=>{
-    onLeave()
+watch(()=>simple.value,(v)=>{
+    restoreState()
 })
 onMounted(()=>{
     cst.ct = Date.now()
@@ -215,6 +223,7 @@ onMounted(()=>{
                 align-items: center;
                 justify-content: flex-start;
                 text-indent: var(--ph-pd);
+                box-shadow: var(--ph-shadow-3);
             }
         }
     }

@@ -1,4 +1,4 @@
-export function searchPath(tree:any[],id:any){
+export function searchPath(tree:any[],id:any):undefined|any[]{
     const len = tree.length
     for(let i=0;i<len;i++){
         const node = tree[i];

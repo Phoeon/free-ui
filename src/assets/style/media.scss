@@ -4,12 +4,12 @@
 
 /* 大型设备（大台式电脑，1200px 起） */
 
-
 @media screen and (max-width: 768px) {
     :root{
         --ph-aside-width:208px;
         --ph-aside-toggle-width:48px;
         --ph-pd:16px;
+        --phx:15px;
     }
     ::-webkit-scrollbar{
         display: none!important;
@@ -19,14 +19,283 @@
     :root{
         --ph-aside-width:208px;
         --ph-aside-toggle-width:48px;
-        --ph-pd:24px;
+        --phx:15px;
     }
 }
-@media screen and (min-width: 769px) and (-webkit-min-device-pixel-ratio:2){
-    :root{
-        --ph-aside-width:208px;
-        --ph-aside-toggle-width:48px;
-        --ph-pd:24px;--ph-aside-toggle-width:80px;
-        --ph-pd:24px;
-    }
+:root[f-pf=pc]{
+    --ph-300: 300px;
+    --ph-183: 183px;
+    --ph-90: 90px;
+    --ph-70: 70px;
+    --ph-62: 62px;
+    --ph-60: 60px;
+    --ph-50: 50px;
+    --ph-47: 47px;
+    --ph-45: 45px;
+    --ph-44: 44px;
+    --ph-42: 42px;
+    --ph-39: 39px;
+    --ph-36: 36px;
+    --ph-30: 30px;
+    --ph-25: 25px;
+    --ph-24: 24px;
+    --ph-22: 22px;
+    --ph-21: 21px;
+    --ph-18: 18px;
+    --ph-17: 17px;
+    --ph-16: 16px;
+    --ph-15: 15px;
+    --ph-14: 14px;
+    --ph-13: 13px;
+    --ph-12: 12px;
+    --ph-10: 10px;
+    --ph-9: 9px;
+    --ph-8: 8px;
+    --ph-6: 6px;
+    --ph-5: 5px;
+    --ph-2: 2px;
+    --ph-pd:24px;
+
+    --ph-gicon: 28px;
+    --ph-gicon-sm: 16px;
+
+    --ph-gtopbar-h:60px;
+    --ph-gtopbar-tfs:18px;
+    --ph-gtopbar-fs:15px;
+
+    --ph-gbtn-h-lg: 40px;
+    --ph-gbtn-h: 32px;
+    --ph-gbtn-h-sm: 30px;
+    --ph-gbtn-fs-lg: 18px;
+    --ph-gbtn-fs: 15px;
+    --ph-gbtn-fs-sm: 13px;
+
+    --ph-gcard-th:47px;
+    --ph-gcard-tfs:16px;
+    --ph-gcard-tfs-sm:14px;
+    --ph-gcard-fs:15px;
+    --ph-gcard-lh:24px;
+    --ph-gcard-fs-sm:13px;
+
+    --ph-gas-desc:14px;
+    --ph-gas-bh:32px;
+    --ph-gas-bfs:var(--ph-fs);
+    --ph-gas-gpd:21px;
+    --ph-gas-gitem-h:60px;
+    --ph-gas-gitem-ih:36px;
+    --ph-gas-gitem-gap:16px;
+    --ph-gas-gitem-fs:10px;
+
+    --ph-gmodal-w: 380px;
+    --ph-gmodal-pd: var(--ph-pd);
+    --ph-gmodal-tfs: 16px;
+    --ph-gmodal-tlh: 24px;
+    --ph-gmodal-tmb: 12px;
+    --ph-gmodal-bdfs: 14px;
+    --ph-gmodal-bdlh: 22px;
+    --ph-gmodal-ah: 32px;
+    --ph-gmodal-amt: var(--ph-pd);
+    --ph-gmodal-afs: 16px;
+    --ph-gmodal-apd: var(--ph-pd);
+
+    --ph-gtoast-h:95px;
+    --ph-gtoast-ih:36px;
+    --ph-gtoast-imb:6px;
+    --ph-gtoast-fs:12px;
+    --ph-gtoast-lh:21px;
+
+    --ph-gloading-h:95px;
+    --ph-gloading-ih:36px;
+    --ph-gloading-imb:6px;
+    --ph-gloading-fs:12px;
+    --ph-gloading-lh:21px;
+
+    --ph-gtabs-h:32px;
+    --ph-gtabs-fs:var(--ph-fs);
+    --ph-gtabs-iflex:0 0 auto;
+    --ph-gtabs-pd:0 var(--ph-pd-small);
+
+    --ph-gmsg-w:266px;
+    --ph-gmsg-h:40px;
+    --ph-gmsg-fs:14px;
+    --ph-gmsg-lh:22px;
+    --ph-gmsg-ih:16px;
+
+    --ph-galert-w:80%;
+    --ph-galert-h:40px;
+    --ph-galert-fs:14px;
+    --ph-galert-lh:22px;
+    --ph-galert-ih:16px;
+
+    --ph-glist-h-lg:var(--ph-70);
+    --ph-glist-h:46px;
+    --ph-glist-fs:var(--ph-17);
+    --ph-glist-lh:var(--ph-25);
+    --ph-glist-fs-sm:var(--ph-16);
+    --ph-glist-desc-fs:var(--ph-14);
+
+    --ph-gacd-h:45px;
+    --ph-gacd-fs:16px;
+}
+:root[f-pf=mb]{
+    --ph-rvw:0.13333333333333333vw;
+    --ph-300: calc(var(--ph-rvw) * 600);
+    --ph-270: calc(var(--ph-rvw) * 540);
+    --ph-183: calc(var(--ph-rvw) * 366);
+    --ph-90: calc(var(--ph-rvw) * 180);
+    --ph-70: calc(var(--ph-rvw) * 140);
+    --ph-62: calc(var(--ph-rvw) * 124);
+    --ph-60: calc(var(--ph-rvw) * 120);
+    --ph-50: calc(var(--ph-rvw) * 100);
+    --ph-47: calc(var(--ph-rvw) * 94);
+    --ph-45: calc(var(--ph-rvw) * 90);
+    --ph-44: calc(var(--ph-rvw) * 88);
+    --ph-42: calc(var(--ph-rvw) * 84);
+    --ph-39: calc(var(--ph-rvw) * 78);
+    --ph-36: calc(var(--ph-rvw) * 72);
+    --ph-32: calc(var(--ph-rvw) * 64);
+    --ph-30: calc(var(--ph-rvw) * 60);
+    --ph-25: calc(var(--ph-rvw) * 50);
+    --ph-24: calc(var(--ph-rvw) * 48);
+    --ph-22: calc(var(--ph-rvw) * 44);
+    --ph-21: calc(var(--ph-rvw) * 42);
+    --ph-18: calc(var(--ph-rvw) * 36);
+    --ph-17: calc(var(--ph-rvw) * 34);
+    --ph-16: calc(var(--ph-rvw) * 32);
+    --ph-15: calc(var(--ph-rvw) * 30);
+    --ph-14: calc(var(--ph-rvw) * 28);
+    --ph-13: calc(var(--ph-rvw) * 26);
+    --ph-12: calc(var(--ph-rvw) * 24);
+    --ph-10: calc(var(--ph-rvw) * 20);
+    --ph-9: calc(var(--ph-rvw) * 18);
+    --ph-8: calc(var(--ph-rvw) * 16);
+    --ph-6: calc(var(--ph-rvw) * 12);
+    --ph-2: calc(var(--ph-rvw) * 4);
+
+    --ph-pd:var(--ph-24);
+    --ph-pd-small:var(--ph-15);
+
+    --ph-gbtn-h-lg: var(--ph-50);
+    --ph-gbtn-h: calc(var(--phr) * 80);
+    --ph-gbtn-h-sm: var(--ph-32);
+    --ph-gbtn-fs-lg: var(--ph-18);
+    --ph-gbtn-fs: var(--ph-18);
+    --ph-gbtn-fs-sm: var(--ph-13);
+
+    --ph-gicon: var(--ph-22);
+    --ph-gicon-sm: var(--ph-18);
+
+    --ph-gtopbar-h:44px;//var(--ph-44);
+    --ph-gtopbar-tfs:var(--ph-18);
+    --ph-gtopbar-fs:var(--ph-16);
+
+    --ph-gbtmbar-h:var(--ph-50);
+    --ph-gbtmbar-fs:var(--ph-10);
+
+    --ph-gtabs-h:var(--ph-42);
+    --ph-gtabs-fs:var(--ph-15);
+    --ph-gtabs-iflex:1 1 auto;
+    --ph-gtabs-pd:0 var(--ph-8);
+
+    --ph-gdd-h:var(--ph-39);
+
+    --ph-gdrawer-w:var(--ph-300);
+
+    --ph-gmodal-w: var(--ph-270);
+    --ph-gmodal-pd: var(--ph-21);
+    --ph-gmodal-tfs: var(--ph-18);
+    --ph-gmodal-tlh: var(--ph-18);
+    --ph-gmodal-tmb: var(--ph-9);
+    --ph-gmodal-bdfs: var(--ph-15);
+    --ph-gmodal-bdlh: var(--ph-22);
+    --ph-gmodal-ah: var(--ph-50);
+    --ph-gmodal-amt: var(--ph-15);;
+    --ph-gmodal-afs: var(--ph-18);
+    --ph-gmodal-apd: 0;
+
+    --ph-gcard-th:var(--ph-47);
+    --ph-gcard-tfs:var(--ph-17);
+    --ph-gcard-tfs-sm:var(--ph-15);
+    --ph-gcard-fs:var(--ph-16);
+    --ph-gcard-lh:var(--ph-24);
+    --ph-gcard-fs-sm:var(--ph-14);
+
+    --ph-gtoast-h:var(--ph-90);
+    --ph-gtoast-ih:var(--ph-36);
+    --ph-gtoast-imb:var(--ph-6);
+    --ph-gtoast-fs:var(--ph-14);
+    --ph-gtoast-lh:var(--ph-21);
+
+    --ph-gas-desc:var(--ph-14);
+    --ph-gas-bh:var(--ph-50);
+    --ph-gas-bfs:var(--ph-18);
+    --ph-gas-gpd:var(--ph-21);
+    --ph-gas-gitem-h:var(--ph-60);
+    --ph-gas-gitem-ih:var(--ph-36);
+    --ph-gas-gitem-gap:var(--ph-12);
+    --ph-gas-gitem-fs:var(--ph-10);
+
+    --ph-gacd-h:var(--ph-45);
+    --ph-gacd-fs:var(--ph-17);
+
+    --ph-gpager-h:var(--ph-62);
+    --ph-gpager-bh:var(--ph-47);
+    --ph-gpager-bfs:var(--ph-18);
+
+    --ph-gloading-h:var(--ph-90);
+    --ph-gloading-ih:var(--ph-36);
+    --ph-gloading-imb:var(--ph-6);
+    --ph-gloading-fs:var(--ph-14);
+    --ph-gloading-lh:var(--ph-21);
+
+    --ph-gmenu-h:var(--ph-45);
+    --ph-gmenu-fs:var(--ph-16);
+
+    --ph-gcarousel-h:var(--ph-183);
+    --ph-gcarousel-dh:var(--ph-8);
+    --ph-gcarousel-dgap:var(--ph-9);
+
+    --ph-glist-h-lg:var(--ph-70);
+    --ph-glist-h:var(--ph-45);
+    --ph-glist-fs:var(--ph-17);
+    --ph-glist-lh:var(--ph-25);
+    --ph-glist-fs-sm:var(--ph-16);
+    --ph-glist-desc-fs:var(--ph-14);
+
+    --ph-gnotice-h:var(--ph-36);
+    --ph-gnotice-fs:var(--ph-14);
+    --ph-gnotice-ih:var(--ph-16);
+    --ph-gnotice-img:var(--ph-6);
+
+    --ph-gmsg-w:var(--ph-270);
+    --ph-gmsg-h:var(--ph-42);
+    --ph-gmsg-fs:var(--ph-14);
+    --ph-gmsg-lh:var(--ph-22);
+    --ph-gmsg-ih:var(--ph-16);
+
+    --ph-galert-w:var(--ph-270);
+    --ph-galert-h:var(--ph-42);
+    --ph-galert-fs:var(--ph-14);
+    --ph-galert-lh:var(--ph-22);
+    --ph-galert-ih:var(--ph-16);
+    
+    // --ph-btn-h:94 /36
+    // --ph-btn-small: 60 26 icon 36
+    // icon 44
+    // topnavbar: 88 pd 28 ,fs 36 fs-back 32 icon 44
+    // bottomtabbar : 100 fs 20 icon 44
+    // tabs 84 fs 30
+    // dropdown 78 fs 30 iconmb 12 icon 44 icon-mr:18
+    // drawer: w 600
+    // card : pd 30 title 94 fs 30 content 32 secondary content 28
+
+    // toast : 180 icon 72 fs 28 lh 42
+    // actionsheet btn 100 fs 36 desc 28 | grid pd:42 item 120 icon 72 gap /24 fs 20
+    // accounding th 90 pdhr 30 fs 34
+    // pager h 124 prev/next 94/36
+    // loading 180 icon 72 iconmb 12 font/28/42 
+    // menu h 90 fs 32 pdhr 28
+    // carousel h 366 dot h16 gap 18
+    // list checkicon-mr 30 h 90 pdhr 30 font/34/51 icon 58 arrow /complex h140 t1 34/51 t2 28 desc 32/32
+    // noticebar 72 pdhr 30 fs 28 icon-left fs 32 mr 12
 }

@@ -47,10 +47,10 @@ const state = reactive<{aside:unknown,paths:unknown}>({
 })
 const { aside } = toRefs(state)
 const router = useRouter()
-const theme = ref("light")
+const theme = ref("dark")
 
 const onShiftMode = ()=>{
-  theme.value = theme.value=='light'?'dark':'light'
+  theme.value = theme.value=='dark'?'light':'dark'
   document.documentElement.setAttribute("f-mode",theme.value)
 }
 const onLogoClick = ()=>{

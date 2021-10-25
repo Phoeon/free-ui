@@ -1,11 +1,11 @@
 <template>
-    <icon class="ph-icon-arrow" :position="position" :double="double"/>
+    <icon class="ph-icon-arrow" :direction="direction" :double="double"/>
 </template>
 <script lang="ts" setup>
 import { defineProps } from 'vue'
 import Icon from './base.vue'
 defineProps({
-    position:String,
+    direction:String,
     double:Boolean
 })
 </script>
@@ -38,16 +38,16 @@ defineProps({
             transform:  translateY(45%) rotate(45deg)
         }
     }
-    &[position=up]{
+    &[direction=up]{
         transform: rotate(0deg);
     }
-    &[position=down]{
+    &[direction=down]{
         transform: rotate(180deg);
     }
-    &[position=left]{
+    &[direction=left]{
         transform: rotate(-90deg);
     }
-    &[position=right]{
+    &[direction=right]{
         transform: rotate(90deg);
     }
 }

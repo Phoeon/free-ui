@@ -1,49 +1,48 @@
 <template>
     <flex :class="['ph-page',slots.aside?'ph-page-hasaside':'']" :dir="slots.aside?'row':'col'" :toggle="state.asideToggle">
-        <Mask v-if="state.mask" class="ph-page-mask" :visible="!state.asideToggle" v-tap="onMask"></Mask>
+        <f-mask v-model="showMask" class="ph-page-mask" v-tap="onMask"></f-mask>
         <slot name="aside"></slot>
         <slot></slot>
     </flex>
 </template>
 <script lang="ts" setup>
-import { onBeforeMount, provide, reactive, toRef, useSlots } from 'vue'
+import { computed, onBeforeMount, provide, reactive, toRef, useSlots } from 'vue'
 import { tap as vTap } from '../../directives/gesture'
 import Evt from 'ph-evt'
-import Mask from '../mask'
+import MediaQuery from '../../shared/media-query'
+import Autofit from '../../shared/autofit'
+import FMask from '../mask/main.vue'
 import Flex from './flex.vue'
 
 const evt = new Evt()
 const slots = useSlots()
 const cst = {
-    timer:-1
+    timer:-1,
+    dw:375,
+    dwfs:16
 }
 const state = reactive({
     asideToggle:false,
-    mask:false
+    sm:false
 })
+const showMask = computed(()=>state.sm&&!state.asideToggle)
 const onMask = ()=>{
     state.asideToggle=true
 }
-const mediaQuery = ()=>{
-    const dw = document.documentElement.clientWidth
+const mediaQuery = (matches:boolean,dw:number)=>{
     state.asideToggle = dw<992?true:false
-    state.mask = dw<769
+    state.sm = dw<769
+    Autofit(cst)
 }
+MediaQuery.all(mediaQuery)
 evt.on("aside:toggle",(from)=>{
-    if(from!="menu"||state.mask)
+    if(from!="menu"||showMask.value)
     state.asideToggle = !state.asideToggle
-})
-window.addEventListener("resize",()=>{
-    clearTimeout(cst.timer)
-    cst.timer = setTimeout(()=>{
-        mediaQuery()
-    },300)
 })
 provide("phevt",evt)
 provide("ph-aside-toggle",toRef(state,'asideToggle'))
-
 onBeforeMount(()=>{
-    mediaQuery()
+    mediaQuery(true,document.documentElement.clientWidth)
 })
 </script>
 <style lang="scss">

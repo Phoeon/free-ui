@@ -13,7 +13,7 @@ import Icon from './base.vue'
         background-color: var(--ph-icon-c);
     }
     &:before{
-        height: var(--ph-icon-6);
+        height: calc(var(--ph-icon-ratio) * 7);
         width: var(--ph-icon-2);
         top: var(--ph-icon-2);
         bottom: auto;

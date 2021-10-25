@@ -1,13 +1,21 @@
-export type PhNotifyType = 'success'|'error'|'warning'|'info'|'default'
-export type NotifyPosition = 'right-top'|'right-bottom'|'left-top'|'left-bottom'
-export type PhNotifyOpt={
-    type?:PhNotifyType,
+
+export type INotifyType = 'success'|'error'|'warning'|'info'|'default'
+export type INotifyPosition = 'right-top'|'right-bottom'|'left-top'|'left-bottom'
+export type IPhNotifyOpt={
+    nid?:string,
+    icon?:string,
+    group?:string,
+    groupDesc?:string,
+    type?:INotifyType,
     title?:string,
     showClose?:boolean,
-    position?:NotifyPosition,
     autoClose?:boolean,
     clickClose?:boolean,
     confirm?:{doneText?:string,cancelText?:string}
+}
+export type Igroup = {
+    k:string,
+    v?:string
 }
 export const CloseStatus = {
     close:0,

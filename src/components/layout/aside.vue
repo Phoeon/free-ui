@@ -9,8 +9,8 @@
         <slot :toggle="toggleStatus&&dw>768"></slot>
         <div class="ph-aside-action" v-if="showAction">
             <slot name="action">
-                <f-button shape="square" fillMode="none" @tap="toggle">
-                    <navicon/>
+                <f-button shape="square" fillMode="none" @click="toggle">
+                    <navicon size="28px"/>
                 </f-button>
             </slot>
         </div>
@@ -20,7 +20,7 @@
 import { defineExpose, defineProps, defineEmits, inject, Ref, watch, ref } from 'vue'
 import FButton from '../button/main.vue'
 import Navicon from '../icon/navicon.vue'
-
+import Mediaquery from '../../shared/media-query'
 const props = defineProps({
     showLogo:{type:Boolean,default:true},
     showAction:{type:Boolean,default:true},
@@ -34,8 +34,9 @@ const emits = defineEmits(['logo-click','update:toggle','toggle'])
 const toggle = ()=>{
     phevt?.emit("aside:toggle")
 }
-watch(()=>toggleStatus.value,()=>{
-    dw.value = document.documentElement.clientWidth
+
+Mediaquery.all((a,w:number)=>{
+    dw.value = w
 })
 defineExpose({
     toggle
@@ -105,7 +106,7 @@ defineExpose({
 }
 @media screen and (max-width: 769px){
     .ph-aside{
-        z-index: var(--ph-zdx-popup);
+        z-index: var(--ph-zdx-aside);
         box-shadow: var(--ph-shadow-2);
         transition: transform .3s ease,box-shadow .3s ease;
         transform: translateX(0);

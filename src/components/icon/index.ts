@@ -10,6 +10,7 @@ import Navicon from './navicon.vue'
 import Search from './search.vue'
 import Theme from './theme.vue'
 import CustomIcon from './custom.vue'
+import Ellipsis from './ellipsis.vue'
 export * from './square'
 export * from './circle'
 export * from './loading'
@@ -25,11 +26,6 @@ export {
     Search,
     Arrow,
     Theme,
+    Ellipsis,
     CustomIcon
-}
-export default {
-    install(app:any,option:{cname:string,prefix?:string}){
-        const ph:Record<string,unknown> = app.config.globalProperties.ph = app.config.globalProperties.ph||{}
-        ph.icon = option as Record<string,string>
-    }
 }

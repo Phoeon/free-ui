@@ -1,0 +1,17 @@
+.ph-accordion{
+    --ph-li-brt:2px 2px 0 0;
+    --ph-li-brl:0 0 2px 2px;
+    --ph-li-blr:1px;
+    background-color: var(--ph-block-bg);
+    margin: var(--ph-pd-small);
+    margin-top: 0;
+    border-radius: 2px;
+    &[block=true]{
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 0;
+        --ph-li-brt:0;
+        --ph-li-brl:0;
+        --ph-li-blr:0;
+    }
+}

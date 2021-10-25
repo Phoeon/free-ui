@@ -15,28 +15,20 @@
     overflow: hidden;
 }
 :root{
-    --phx:14px;
-    --ph-fs:15px;
+    --ph-rvw:0.13333333333333333vw;
+    --phr:0.5;
+    --ph-fs:var(--phx);
     --ph-ff: -apple-system,blinkmacsystemfont,"Helvetica Neue",helvetica,segoe ui,arial,roboto,"PingFang SC","miui","Hiragino Sans GB","Microsoft Yahei",sans-serif;
     
     --ph-mg:16px;
     --ph-pd-small:16px;
-    --ph-5:5px;
-    --ph-8:8px;
-    --ph-10:10px;
-    --ph-15:15px;
-    --ph-16:16px;
-    --ph-20:20px;
-    --ph-30:30px;
-    --ph-32:32px;
-    --ph-40:40px;
-    --ph-50:50px;
     
+    --ph-fw: 400;
+    --ph-fw-m: 500;
 
     --ph-bg-disabled: var(--ph-c-l2);
     --ph-c-disabled: var(--ph-c-l1);
 
-    --ph-bc: var(--ph-c-l3);
     --ph-bg-theme:var(--ph-primary);
     --ph-c-theme:var(--ph-c-top);
     --ph-c-white:#FFFFFF;
@@ -45,15 +37,17 @@
     --ph-cmp-bg:var(--ph-c-l6);
 
     --ph-zdx-mask: 1000;
+    --ph-zdx-aside: 1001;
     --ph-zdx-notify: 1049;
     --ph-zdx-popup: 1000;
     --ph-zdx-popover: 1030;
     --ph-zdx-floating-panel: 900;
+    --ph-zdx-modal: 9999;
     --ph-zdx-keyboard: 1050;
 }
 body{
     color: var(--ph-c);
-    font-size: var(--ph-fs);
+    font-size: var(--phx);
     font-family: var(--ph-ff);
     background-color: var(--ph-doc-bg);
     text-rendering: optimizeLegibility;
@@ -79,6 +73,26 @@ body{
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: var(--ph-pd-small);
+}
+.ph-link,
+.ph-text{
+    font-size: var(--ph-fs);
+    &-primary{
+        color: var(--ph-primary);
+    }
+    &-danger{
+        color: var(--ph-danger);
+    }
+    &-warning{
+        color: var(--ph-warning);
+    }
+    &-success{
+        color: var(--ph-success);
+    }
+}
+.ph-link{
+    color: var(--ph-primary);
+    text-decoration: none;
 }
 a,button{
     cursor: pointer;

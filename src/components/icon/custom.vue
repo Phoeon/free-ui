@@ -1,17 +1,19 @@
 <template>
-    <i :class="cns"></i>
+    <i :class="cns" :style="style"></i>
 </template>
 <script lang="ts" setup>
-import { computed, defineProps, getCurrentInstance } from 'vue'
-const ins = getCurrentInstance() as any
+import { computed, defineProps } from 'vue'
+
 const props = defineProps({
     name:{type:String,required:true},
     cname:String,
-    prefix:String
+    prefix:String,
+    size:String,
+    fill:String
 })
 const cns = computed(()=>{
     const cns = ['ph-icon','ph-custom-icon']
-    const icon:{cname:string,prefix?:string} = ins?.proxy?.ph?.icon
+    const icon:{cname:string,prefix?:string} = (window as any)?.$ph?.icon
     const cname = props.cname||icon?.cname
     const prefix = props.prefix||icon?.prefix
     if(props.name){
@@ -29,7 +31,17 @@ const cns = computed(()=>{
     }
     return cns
 })
+const style = computed(()=>{
+    const style = {} as {[k:string]:unknown}
+    if(props.size) style['--ph-i-size'] = props.size
+    if(props.fill) style['--ph-i-fill'] = props.fill
+    return style
+})
 </script>
 <style lang="scss">
 @import "./icon.scss";
+.ph-custom-icon{
+    font-size: var(--ph-i-size,inherit);
+    color: var(--ph-i-fill,inherit);
+}
 </style>

@@ -16,7 +16,6 @@
     --ph-c-d1:rgb(255 255 255 /85%);//title
     --ph-c-d2:rgb(255 255 255 /100%);
     --ph-c-reverse:#FFFFFF;
-
     
     --ph-primary: #177DDC;
     --ph-primary-alpha:#177DDC33;
@@ -26,17 +25,29 @@
     --ph-danger:#A61D24;
     --ph-error:#A61D24;
     
+    --ph-bg:#141414;
     --ph-backdrop-alpha:rgb(54 55 61 / 49%);
     --ph-backdrop-alpha-reverse:rgba(255,255,255,.7);
+    --ph-progress-bg:rgb(255 255 255 /8%);
+    --ph-modal-bg:#1F1F1F;
+    --ph-modal-bg-reverse:rgba(255,255,255,.8);
+    --ph-tooltip-bg:#434343;
+    --ph-tooltip-c:var(--ph-c-d2);
+    --ph-feedback-bg:#1F1F1F;
     --ph-notify-bg:#1F1F1F;
+    --ph-msg-bg: #1F1F1F;
     --ph-panel-bg:#141414;
     --ph-card-bg:#141414;
     --ph-block-bg:#141414;
     --ph-aside-bg:#1f1f1f;//#343436;
     --ph-topbar-bg:#1f1f1f;
     --ph-toast-bg:rgba(255,255,255,.8);
+    --ph-loading-bg:#1f1f1f;
     --ph-doc-bg:#050505;//#1c1c1e;
     --ph-menu-bg: rgb(0 0 0 /20%);
+    --ph-acd-title-bg:rgb(255 255 255 / 4%);
+    
+    --ph-bc: var(--ph-c-l4);
     --ph-bc-1:rgb(255 255 255 /10%);
 
     --ph-ctr-bg-normal:#FFF;

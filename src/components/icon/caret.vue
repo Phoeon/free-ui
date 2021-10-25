@@ -1,11 +1,11 @@
 <template>
-    <icon class="ph-icon-caret" :position="position"/>
+    <icon class="ph-icon-caret" :direction="direction"/>
 </template>
 <script lang="ts" setup>
 import { defineProps } from 'vue'
 import Icon from './base.vue'
 defineProps({
-    position:String
+    direction:String
 })
 </script>
 <style lang="scss">
@@ -20,19 +20,19 @@ defineProps({
         border-color: transparent;
         border-style: solid;
     }
-    &[position=up]:before{
+    &[direction=up]:before{
         border-top: none;
         border-bottom-color: var(--ph-icon-c);
     }
-    &[position=down]:before{
+    &[direction=down]:before{
         border-bottom: none;
         border-top-color: var(--ph-icon-c);
     }
-    &[position=left]:before{
+    &[direction=left]:before{
         border-left: none;
         border-right-color: var(--ph-icon-c);
     }
-    &[position=right]:before{
+    &[direction=right]:before{
         border-right: none;
         border-left-color: var(--ph-icon-c);
     }

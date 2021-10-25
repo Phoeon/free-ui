@@ -1,0 +1,48 @@
+<template>
+    <f-view style="position:relative">
+        <f-card title="案例展示" class="btn-container">
+            <f-button type="primary" @click="state.loading=true">打开局部loading</f-button>
+            <f-button type="primary" @click="openLoading()">打开全局loading,2s后关闭</f-button>
+        </f-card>
+        <f-card title="案例box展示" class="btn-container">
+            <f-button type="primary" @click="openLoading('always')">打开全局</f-button>
+        </f-card>
+        <f-card title="背景透明展示" class="btn-container">
+            <f-button type="primary" @click="openLoading1(true)">打开全局</f-button>
+        </f-card>
+        <f-card title="背景自定义展示" class="btn-container">
+            <f-button type="primary" @click="openLoading1(false,'#ff000033')">打开全局</f-button>
+        </f-card>
+        <f-card title="简单秒倒计展示" class="btn-container">
+            <f-button type="primary" @click="openCount(5)">打开全局倒计5s</f-button>
+        </f-card>
+        <f-loading v-model="state.loading" @click="state.loading = false"/>
+    </f-view>
+</template>
+<script lang="ts" setup>
+import { FView, FCard, FButton, FLoading, FGLoading } from '@/components'
+import { reactive } from 'vue'
+
+const state = reactive({
+    loading:false
+})
+const openLoading = (showBox?:"always")=>{
+    FGLoading.show({showBox}).then(hide=>{
+        setTimeout(()=>{
+            hide?.()
+        },2000)
+    })
+}
+const openLoading1 = (alpha:boolean,fill?:string)=>{
+    FGLoading.show({alpha:true,fill}).then(hide=>{
+        setTimeout(()=>{
+            hide?.()
+        },2000)
+    })
+}
+const openCount = (countdown:number)=>{
+    FGLoading.show({showBox:"always",countdown,title:"倒计时：{#}s"}).then(hide=>{
+        hide?.()
+    })
+}
+</script>

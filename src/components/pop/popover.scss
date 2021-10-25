@@ -1,0 +1,95 @@
+.ph-pop{
+    --ph-ppc-24:24px;
+    &:after{
+        content: "";
+        width: 0;
+        height: 0;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        position: absolute;
+    }
+    /*------------------------------*/ 
+    &.ph-pop-t,
+    &.ph-pop-tc,
+    &.ph-pop-tl,
+    &.ph-pop-tr{
+        &:after{
+            border-top-color: var(--ph-pop-bdc);
+            border-bottom:none;
+            top: auto;
+            transform: translateY(100%);
+        }
+    }
+    /*------------------------------*/ 
+    &.ph-pop-b,
+    &.ph-pop-bc,
+    &.ph-pop-bl,
+    &.ph-pop-br{
+        &:after{
+            border-bottom-color: var(--ph-pop-bdc);
+            border-top:none;
+            bottom: auto;
+            transform: translateY(-100%);
+        }
+    }
+    /*------------------------------*/ 
+    &.ph-pop-l,
+    &.ph-pop-lt,
+    &.ph-pop-lc,
+    &.ph-pop-lb{
+        &:after{
+            border-left-color: var(--ph-pop-bdc);
+            border-right:none;
+            left: auto;
+            transform: translateX(100%);
+        }
+    }
+    /*------------------------------*/ 
+    &.ph-pop-r,
+    &.ph-pop-rt,
+    &.ph-pop-rc,
+    &.ph-pop-rb{
+        &:after{
+            border-right-color: var(--ph-pop-bdc);
+            border-left:none;
+            right: auto;
+            transform: translateX(-100%);
+        }
+    }
+    
+    
+    &.ph-pop-bl,
+    &.ph-pop-tl{
+        &:after{
+            left: var(--ph-ppc-24);
+            right: auto;
+        }
+    }
+    &.ph-pop-br,
+    &.ph-pop-tr{
+        &:after{
+            right: var(--ph-ppc-24);
+            left: auto;
+        }
+    }
+    &.ph-pop-lt,
+    &.ph-pop-rt{
+        &:after{
+            top: var(--ph-ppc-24);
+            bottom: auto;
+        }
+    }
+    &.ph-pop-lb,
+    &.ph-pop-rb{
+        &:after{
+            bottom: var(--ph-ppc-24);
+            top: auto;
+        }
+    }
+}

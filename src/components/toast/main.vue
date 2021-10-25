@@ -1,35 +1,41 @@
 <template>
-<transition name="ph-fade" mode="out-in" >
+<teleport to="body">
+<transition name="ph-fade" mode="out-in" @after-leave="evt.emit('destroy')">
     <template v-if="state.visible">
         <div class="ph-toast-mask" v-if="modal">
-            <toast :title="title" :type="type" :position="position"/>
+            <toast :icon="icon" :title="title" :type="type" :position="position"/>
         </div>
-        <toast v-else :title="title" :type="type" :position="position"/>
+        <toast v-else :icon="icon" :title="title" :type="type" :position="position"/>
     </template>
 </transition>
+</teleport>
 </template>
 <script lang="ts" setup>
-import { reactive, defineExpose, PropType, defineProps } from 'vue'
+import { reactive, PropType, defineProps, nextTick } from 'vue'
+import type IEvt from 'ph-evt'
 import Toast from './toast.vue'
 
 const props = defineProps({
     title: String,
     modal: Boolean,
+    icon: String,
     type: String as PropType<'success'|'warning'|'error'|'info'>,
+    duration: {type:Number,default:3000},
     position: {type:String as PropType<'bottom'|'top'|'center'>,default:"center"},
+    evt: Object as PropType<IEvt> 
 })
 const state = reactive({
     visible:false
 })
-const show = (timer?:number)=>{
+const show = ()=>{
     state.visible = true
     setTimeout(()=>{
         state.visible = false
-    },timer||3000)
+        props.evt?.emit("close")
+    },props.duration||3000)
 }
-defineExpose({
-    show
-})
+
+nextTick(()=>show())
 </script>
 <style lang="scss">
 .ph-toast-mask{

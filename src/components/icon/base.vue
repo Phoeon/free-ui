@@ -1,6 +1,7 @@
 <template>
     <i 
     class="ph-icon ph-internal-icon" 
+    :type="type"
     :disabled="disabled" 
     :active="active&&!disabled" 
     :hover="hover&&state.hover&&!disabled" 
@@ -18,6 +19,7 @@
 <script lang="ts" setup>
 import { reactive, defineProps, computed, PropType } from "vue";
 const props = defineProps({
+    type:String as PropType<'primary'|'info'|'success'|'warning'|'danger'>,
     active:Boolean,
     disabled:Boolean,
     outline:Boolean,
@@ -100,6 +102,31 @@ const style = computed(()=>{
     &[disabled=true]{
         cursor:not-allowed!important;
         opacity: .4!important;
+    }
+    &[type=primary]{
+        --ph-icon-bg:var(--ph-primary);
+        --ph-icon-bc:var(--ph-primary);
+        --ph-icon-c:var(--ph-c-top);;
+    }
+    &[type=info]{
+        --ph-icon-bg:var(--ph-info);
+        --ph-icon-bc:var(--ph-info);
+        --ph-icon-c:var(--ph-c-top);;
+    }
+    &[type=success]{
+        --ph-icon-bg:var(--ph-success);
+        --ph-icon-bc:var(--ph-success);
+        --ph-icon-c:var(--ph-c-top);;
+    }
+    &[type=danger]{
+        --ph-icon-bg:var(--ph-danger);
+        --ph-icon-bc:var(--ph-danger);
+        --ph-icon-c:var(--ph-c-top);;
+    }
+    &[type=warning]{
+        --ph-icon-bg:var(--ph-warning);
+        --ph-icon-bc:var(--ph-warning);
+        --ph-icon-c:var(--ph-c-top);;
     }
 }
 </style>

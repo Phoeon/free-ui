@@ -1,61 +1,20 @@
 import Evt from 'ph-evt'
-import Notification from './main.vue'
-import { PhNotifyOpt, CloseStatus } from './types'
-import { createApp } from 'vue'
-let instances:Array<InstanceType<typeof Notification>> = []
-
-const notify =(content:string,opt?:PhNotifyOpt)=>{
-    const evt = new Evt()
+import NotificationMnger from './main.vue'
+import { IPhNotifyOpt, CloseStatus } from './types'
+import { createApp, nextTick } from 'vue'
+let mnger:InstanceType<typeof NotificationMnger>;
+const notify =(content:string,opt?:IPhNotifyOpt)=>{
     const 
-        position = opt?.position||"right-bottom",
-        offset = 14;
-    const onClose = (nid:string,status:number,man?:boolean)=>{
-        const 
-            inss = instances.filter(n=>n.position.startsWith(position)),
-            idx = inss.findIndex(n=>n.nid===nid),
-            ins = inss[idx],
-            ykey = position.split("-")[1];
-        if(idx>-1&&ins){
-            for(let i=idx+1;i<inss.length;i++){
-                const cmpcss = getComputedStyle(inss[i].$el) as any
-                const y = parseInt(cmpcss[ykey])||0
-                inss[i].show(y-ins.$el.offsetHeight-offset+"px")
-            }
-            instances = instances.filter(n=>n.nid!=nid)
-        }
-        if(man){
-            const en = status==CloseStatus.confirm?'confirm':'close'
-            evt.emit(en,{
-                man,
-                action:en,
-                meta:opt||{}
-            })
-        }
+        evt = new Evt,
+        nid = (Math.random()+"").replace(".",""),
+        option = Object.assign({type:""},opt,{content,nid,evt});
+    if(!mnger){
+        mnger = createApp(NotificationMnger,{}).mount(document.createElement("div")) as InstanceType<typeof NotificationMnger>
+        document.body.appendChild(mnger.$el as HTMLElement)
     }
-    const onClick = ({status,man}:{status:number,man?:boolean})=>{
-        evt.emit('click',{
-            man,
-            action:"click",
-            meta:opt||{}
-        })
-    }
-    const 
-        option = Object.assign({type:"",onClose,onClick},opt,{position,content}),
-        notification = createApp(Notification,option),
-        dom = document.createElement("div"),
-        ins = notification.mount(dom) as InstanceType<typeof Notification>,
-        inss = instances.filter(n=>n.position.startsWith(option.position));
-
-    document.body.appendChild(ins.$el as Node)
-    
-    let y = offset;
-    inss.forEach(n=>y+=n.$el.offsetHeight+offset)
-    if(y>document.documentElement.clientHeight){
-        const toClose = inss.filter(n=>n.autoClose&&!n.confirm)[0]
-        setTimeout(()=>{toClose?.close(0)})
-    }
-    ins.show(y+"px")
-    instances.push(ins)
+    nextTick(()=>{
+        mnger.show(option)
+    })
     return {
         click(fn:(arg:{action:string,man?:boolean,meta:Record<string,unknown>})=>void){
             evt.on("click",fn)
@@ -72,23 +31,23 @@ const notify =(content:string,opt?:PhNotifyOpt)=>{
     }
 }
 export default {
-    install(app:any){
+    install(app:any,option:any){
         app.config.globalProperties.$phNotify = notify
     },
-    notify(content:string,opt:PhNotifyOpt={}){
+    notify(content:string,opt:IPhNotifyOpt={}){
         return notify(content,opt)
     },
-    success(content:string,opt:PhNotifyOpt={}){
-        return notify(content,Object.assign(opt,{type:"success"}) as PhNotifyOpt)
+    success(content:string,opt:IPhNotifyOpt={}){
+        return notify(content,Object.assign(opt,{type:"success"}) as IPhNotifyOpt)
     },
-    error(content:string,opt:PhNotifyOpt={}){
-        return notify(content,Object.assign(opt,{type:"error"}) as PhNotifyOpt)
+    error(content:string,opt:IPhNotifyOpt={}){
+        return notify(content,Object.assign(opt,{type:"error"}) as IPhNotifyOpt)
     },
-    warning(content:string,opt:PhNotifyOpt={}){
-        return notify(content,Object.assign(opt,{type:"warning"}) as PhNotifyOpt)
+    warning(content:string,opt:IPhNotifyOpt={}){
+        return notify(content,Object.assign(opt,{type:"warning"}) as IPhNotifyOpt)
     },
-    info(content:string,opt:PhNotifyOpt={}){
-        return notify(content,Object.assign(opt,{type:"info"}) as PhNotifyOpt)
+    info(content:string,opt:IPhNotifyOpt={}){
+        return notify(content,Object.assign(opt,{type:"info"}) as IPhNotifyOpt)
     }
 }
 export * from './types'

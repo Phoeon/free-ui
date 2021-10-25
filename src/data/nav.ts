@@ -1,5 +1,10 @@
 export default [
     {
+        name:"碳层",
+        id:"/mask",
+        action:"/mask",
+        icon:"list"
+    },{
         name:"按钮",
         id:"/button",
         action:"/button",
@@ -19,11 +24,6 @@ export default [
         id:"/card",
         action:"/card",
         icon:"list-ol"
-    },{
-        name:"提示toast",
-        id:"/toast",
-        action:"/toast",
-        icon:"chrome"
     },{
         name:"导航分类",
         id:"navigate",
@@ -112,24 +112,24 @@ export default [
             action:"/pager"
         },{
             name:"文字提示tooltip",
-            id:"/pager",
-            action:"/pager"
+            id:"/tooltip",
+            action:"/tooltip"
         },{
             name:"气泡卡片",
-            id:"/pager",
-            action:"/pager"
+            id:"/popover",
+            action:"/popover"
         },{
             name:"表哥",
             id:"/pager",
             action:"/pager"
         },{
             name:"列表",
-            id:"/pager",
-            action:"/pager"
+            id:"/list",
+            action:"/list"
         },{
             name:"折叠面板",
-            id:"/pager",
-            action:"/pager"
+            id:"/accordion",
+            action:"/accordion"
         },{
             name:"时间线",
             id:"/pager",
@@ -144,33 +144,43 @@ export default [
             id:"/notification",
             action:"/notification"
         },{
+            name:"提示toast",
+            id:"/toast",
+            action:"/toast",
+            icon:"chrome"
+        },{
+            name:"加载中loading",
+            id:"/loading",
+            action:"/loading",
+            icon:"firefox"
+        },{
             name:"对话框",
-            id:"/pager",
-            action:"/pager"
+            id:"/modal",
+            action:"/modal"
+        },{
+            name:"actionsheet",
+            id:"/actionsheet",
+            action:"/actionsheet"
         },{
             name:"气泡确认框",
-            id:"/pager",
-            action:"/pager"
-        },{
-            name:"警告条",
-            id:"/pager",
-            action:"/pager"
+            id:"/popconfirm",
+            action:"/popconfirm"
         },{
             name:"消息提示",
-            id:"/pager",
-            action:"/pager"
+            id:"/message",
+            action:"/message"
+        },{
+            name:"警告反馈",
+            id:"/alert",
+            action:"/alert"
         },{
             name:"进度条",
-            id:"/pager",
-            action:"/pager"
-        },{
-            name:"结果反馈",
-            id:"/pager",
-            action:"/pager"
+            id:"/progress",
+            action:"/progress"
         },{
             name:"抽屉",
-            id:"/pager",
-            action:"/pager"
+            id:"/drawer",
+            action:"/drawer"
         }]
     },{
         name:"步骤条",

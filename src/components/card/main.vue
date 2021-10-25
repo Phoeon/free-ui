@@ -1,44 +1,81 @@
 <template>
     <section class="ph-card">
-        <div class="ph-card-header"><slot name="header">{{title}}</slot></div>
-        <div class="ph-card-body"><slot></slot></div>
+        <div class="ph-card-header" v-if="title">
+            <slot name="header">
+                <h1 class="ph-card-title">
+                    <custom-icon class="ph-card-icon" v-if="icon" :name="icon"/>
+                    <span>{{title}}</span>
+                </h1>
+                <h3 class="ph-card-subtitle">{{subTitle}}</h3>
+            </slot>
+        </div>
+        <div :class="['ph-card-body',slots.footer?'':'ph-card-pdb']"><slot></slot></div>
         <div class="ph-card-footer" v-if="slots.footer"><slot name="footer"></slot></div>
     </section>
 </template>
 <script lang="ts" setup>
 import { defineProps, useSlots } from 'vue'
+import { CustomIcon } from '../icon'
 const slots = useSlots()
 defineProps({
-    title:String
+    title:String,
+    subTitle:String,
+    icon:String,
 })
 </script>
 <style lang="scss">
+@import '../../assets/style/fn.scss';
 .ph-card{
     background-color: var(--ph-card-bg);
     color: var(--ph-c);
     overflow: hidden;
     border-radius: 4px;
-    margin-bottom: var(--ph-pd);
+    margin-bottom: var(--ph-pd-small);
+    font-size: var(--ph-fs);
     &-footer,
     &-header{
-        height: 45px;
         display: flex;
         align-items: center;
-        padding: 0 var(--ph-pd);
+        justify-content: space-between;
+        height: var(--ph-gcard-th);
+        padding: 0 var(--ph-pd-small);
     }
     &-header{
-        border-bottom: 1px solid var(--ph-bc-1);
-        color: var(--ph-c-d1);
-        font-weight: 500;
+        color: var(--ph-c-d2);
+        font-weight: var(--ph-fw-m);
+        font-size: var(--ph-gcard-tfs);
+        position: relative;
+        &:after{
+            @include bmMx(var(--ph-bc-1));
+            left: var(--ph-pd-small);
+            right: 0;
+        }
+    }
+    &-title{
+        font-weight: var(--ph-fw-m);
+        font-size: var(--ph-gcard-tfs);
+        .ph-card-icon{
+            margin-right: var(--ph-8);  
+        }
+    }
+    &-subtitle{
+        font-size: var(--ph-gcard-tfs-sm);
+        font-weight: var(--ph-fw);
     }
     &-footer{
-        border-top: 1px solid var(--ph-bc-1);
+        font-size: var(--ph-gcard-fs-sm);
+        color: var(--ph-c-l2);
     }
     &-body{
         flex: 1;
         overflow: auto;
-        padding: var(--ph-pd-small) var(--ph-pd);
+        padding: var(--ph-8) var(--ph-pd-small) 0;
+        font-size: var(--ph-gcard-fs);
+        line-height: var(--ph-gcard-lh);
         -webkit-overflow-scrolling: touch;
+        &.ph-card-pdb{
+            padding-bottom: var(--ph-pd-small);
+        }
     }
 }
 </style>

@@ -1,41 +1,54 @@
 <template>
-    <transition :name="animation">
-        <div v-show="visible" :class="cn"><slot></slot></div>
-    </transition>
+<transition :name="animation" :position="position" :style="{backgroundColor:fill}">
+    <div v-show="visible" :class="cn" @click="clickClose&&hide()"><slot :hide="hide" :visible="modelValue"></slot></div>
+</transition>
 </template>
 <script lang="ts" setup>
-import { computed, defineProps, watch } from 'vue'
+import { computed, defineEmits, defineExpose, defineProps, isRef, nextTick, PropType, Ref } from 'vue'
+const emits = defineEmits(["update:modelValue"])
+
 const props = defineProps({
+    modelValue:[Boolean,Object] as PropType<boolean|Ref<boolean>>,
     alpha:Boolean,
-    visible:Boolean,
+    fill:String,
     scroll:Boolean,
-    animation:{type:String,default:"ph-fade"}
+    clickClose:Boolean,
+    position:{type:String,default:"fixed"},
+    animation:{type:String,default:"ph-fade"},
 })
+const modelValue = computed({
+    set(v:boolean){
+        emits("update:modelValue",v)
+    },
+    get(){
+        return props.modelValue as boolean
+    }
+})
+const visible = isRef(props.modelValue)?props.modelValue:modelValue
+if(visible.value){
+    visible.value = false
+    nextTick(()=>visible.value = true)
+}
 const cn =computed(()=>{
     return {
         'ph-layer':true,
         'ph-layer-alpha':props.alpha
     }
 })
-watch(()=>props.visible,(v)=>{
-    document.body.setAttribute("f-scroll-forbidden",v+"")
+const style = computed(()=>{
+    const style ={} as Record<string,unknown>
+    if(props.fill) style['backgroundColor'] = props.fill
+    return style
+})
+const hide = ()=>{
+    visible.value = false
+}
+
+defineExpose({
+    hide
 })
 </script>
 <style lang="scss">
-.ph-fade-leave-to,
-.ph-fade-enter-from
- {
-	opacity: 0;
-}
-.ph-fade-leave-from,
-.ph-fade-enter-to {
-	opacity: 1;
-}
-.ph-fade-leave-active,
-.ph-fade-enter-active
-{
-	transition: opacity .3s ease,background-color .3s ease;
-}
 .ph-layer{
     position: fixed;
     display: flex;
@@ -49,6 +62,12 @@ watch(()=>props.visible,(v)=>{
     background-color: rgba(0,0,0,0.5);
     &-alpha{
         background-color: transparent;
+    }
+    &[position=fixed]{
+        position: fixed;
+    }
+    &[position=absolute]{
+        position: absolute;
     }
 }
 </style>

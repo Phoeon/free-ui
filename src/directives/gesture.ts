@@ -1,4 +1,4 @@
-import PhGesture,{ GestureType } from 'ph-gesture'
+import PhGesture,{ GestureType } from '../shared/gesture'
 export const swipe = {
     beforeMount(el:HTMLElement,binding:any){
         new PhGesture(el,GestureType.swipe,binding.value)
@@ -26,7 +26,7 @@ export const swiperight = {
 }
 export const tap = {
     beforeMount(el:HTMLElement,binding:any){
-        new PhGesture(el,GestureType.tap,binding.value)
+        new PhGesture(el,GestureType.tap,binding.value,{stop:true})
     }
 }
 export const longtap = {
