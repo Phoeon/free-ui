@@ -35,7 +35,6 @@ const style = computed(()=>{
     --ph-grid-row-span:1;
     --ph-grid-col-offset:auto;
     --ph-grid-row-offset:auto;
-    overflow: hidden;
     position: relative;
     transition: box-shadow .3s ease,background-color .3s ease;
     box-shadow: none;
@@ -45,6 +44,7 @@ const style = computed(()=>{
     place-self: var(--ph-grid-item-place);
     grid-column: var(--ph-grid-col-offset)/span var(--ph-grid-col-span);
     grid-row: var(--ph-grid-row-offset)/span var(--ph-grid-row-span);
+    align-self: flex-start;
     &:hover{
         box-shadow: var(--ph-grid-item-shadow);
         z-index: 1;

@@ -50,7 +50,7 @@ const onToggle = ()=>{
         padding: 0 var(--ph-pd-small);
         color: var(--ph-d1);
         font-weight: var(--ph-fw-m);
-        background-color: var(--ph-acd-title-bg);
+        background-color: var(--ph-acd-header-bg);
         position: relative;
         &:before{
             content: "";

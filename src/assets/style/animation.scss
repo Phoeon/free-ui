@@ -2,6 +2,81 @@
     0% {transform: rotate(0);}
     100% {transform: rotate(360deg);}
 }
+.ph-scaleup-leave-to,
+.ph-scaleup-enter-from
+ {
+	opacity: 0;
+    transform: scale(.5);
+}
+.ph-scaleup-leave-from,
+.ph-scaleup-enter-to {
+	opacity: 1;
+    transform: scale(1);
+}
+.ph-scaleup-leave-active,
+.ph-scaleup-enter-active
+{
+    transform-origin: top;
+	transition: opacity .15s ease,transform .15s ease;
+}
+
+.ph-scaledown-leave-to,
+.ph-scaledown-enter-from
+ {
+	opacity: 0;
+    transform: scale(.5);
+}
+.ph-scaledown-leave-from,
+.ph-scaledown-enter-to {
+	opacity: 1;
+    transform: scale(1);
+}
+.ph-scaledown-leave-active,
+.ph-scaledown-enter-active
+{
+    transform-origin: bottom;
+	transition: opacity .15s ease,transform .15s ease;
+}
+
+
+.ph-scaleleft-leave-to,
+.ph-scaleleft-enter-from
+ {
+	opacity: 0;
+    transform: scale(.5);
+}
+.ph-scaleleft-leave-from,
+.ph-scaleleft-enter-to {
+	opacity: 1;
+    transform: scale(1);
+}
+.ph-scaleleft-leave-active,
+.ph-scaleleft-enter-active
+{
+    transform-origin: left;
+	transition: opacity .15s ease,transform .15s ease;
+}
+
+
+.ph-scaleright-leave-to,
+.ph-scaleright-enter-from
+ {
+	opacity: 0;
+    transform: scale(.5);
+}
+.ph-scaleright-leave-from,
+.ph-scaleright-enter-to {
+	opacity: 1;
+    transform: scale(1);
+}
+.ph-scaleright-leave-active,
+.ph-scaleright-enter-active
+{
+    transform-origin: right;
+	transition: opacity .15s ease,transform .15s ease;
+}
+
+
 .ph-fade-out-enter-from,
 .ph-fade-out-leave-to {
     opacity:1;

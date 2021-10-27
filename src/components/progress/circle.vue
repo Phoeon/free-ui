@@ -6,8 +6,8 @@
                 <circle cx="50%" cy="50%" :r="r" class="ph-pb-ocircle" :stroke-dasharray="dasharray"/>
             </svg>
         </div>
-        <tick class="ph-indicator-icon" v-if="status===1" stroke="var(--ph-success)"/>
-        <exclam class="ph-indicator-icon" v-else-if="status===-1" stroke="var(--ph-danger)"/>
+        <tick class="ph-indicator-icon" v-if="status===1" color="var(--ph-success)"/>
+        <exclam class="ph-indicator-icon" v-else-if="status===-1" color="var(--ph-danger)"/>
         <label v-else class="ph-progress-label">{{progress}}</label>
     </div>
 </template>
@@ -83,7 +83,6 @@ const progress = computed(()=>{
         transform: translate3d(-50%,-50%,0);
     }
     .ph-indicator-icon{
-        border: none;
         left: 0;
         right: 0;
         top: 0;

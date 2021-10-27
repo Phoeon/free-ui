@@ -136,6 +136,20 @@
 
     --ph-gacd-h:45px;
     --ph-gacd-fs:16px;
+
+    --ph-gdd-h:34px;
+    --ph-gdd-fs:14px;
+
+    --ph-gstep-is:32px;
+    --ph-gstep-is-sm:24px;
+
+    --ph-ginput-h:32px;
+    --ph-ginput-h-lg:40px;
+    --ph-ginput-h-sm:24px;
+    --ph-ginput-lb-fs:14px;
+    --ph-ginput-fs:14px;
+    --ph-ginput-fs-lg:16px;
+    --ph-ginput-desc:12px;
 }
 :root[f-pf=mb]{
     --ph-rvw:0.13333333333333333vw;
@@ -176,7 +190,7 @@
     --ph-pd-small:var(--ph-15);
 
     --ph-gbtn-h-lg: var(--ph-50);
-    --ph-gbtn-h: calc(var(--phr) * 80);
+    --ph-gbtn-h: var(--ph-39);//calc(var(--phr) * 80);
     --ph-gbtn-h-sm: var(--ph-32);
     --ph-gbtn-fs-lg: var(--ph-18);
     --ph-gbtn-fs: var(--ph-18);
@@ -198,6 +212,7 @@
     --ph-gtabs-pd:0 var(--ph-8);
 
     --ph-gdd-h:var(--ph-39);
+    --ph-gdd-fs:var(--ph-15);
 
     --ph-gdrawer-w:var(--ph-300);
 
@@ -278,7 +293,15 @@
     --ph-galert-fs:var(--ph-14);
     --ph-galert-lh:var(--ph-22);
     --ph-galert-ih:var(--ph-16);
-    
+
+    --ph-gstep-is:var(--ph-32);
+    --ph-gstep-is-sm:var(--ph-24);
+
+    --ph-ginput-h:var(--ph-45);
+    --ph-ginput-lb-fs:var(--ph-17);
+    --ph-ginput-fs:var(--ph-17);
+    --ph-ginput-desc:var(--ph-16);
+
     // --ph-btn-h:94 /36
     // --ph-btn-small: 60 26 icon 36
     // icon 44

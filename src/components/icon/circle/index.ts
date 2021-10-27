@@ -1,3 +1,4 @@
+import Circle from './circle.vue'
 import CircleRadio from './radio.vue'
 import CircleDot from './dot.vue'
 import CircleTick from './tick.vue'
@@ -10,6 +11,7 @@ import CircleInfo from './info.vue'
 import CircleSuccess from './success.vue'
 import CircleDanger from './danger.vue'
 export {
+    Circle,
     CircleRadio,
     CircleDot,
     CircleTick,

@@ -2,13 +2,12 @@
     <f-view>
         <div class="ph-title">基本</div>
         <div class="ph-block">
+            <backtop/>
             <minus/>
             <plus/>
             <tick/>
             <times/>
             <exclam/>
-            <triangle/>
-            <triangle :outline="true"/>
 
             <minus :disabled="true"/>
             <plus :disabled="true"/>
@@ -41,43 +40,36 @@
             <square-plus/>
             <square-tick/>
 
+            <square/>
             <square-check/>
-            <square-check :checked="1"/>
-            <square-check :checked="2"/>
-
-            <square-check :outline="true"/>
-            <square-check :checked="1" :outline="true"/>
-            <square-check :checked="2" :outline="true"/>
+            <square-half-check/>
 
             <square-minus :disabled="true"/>
             <square-plus :disabled="true"/>
             <square-tick :disabled="true"/>
 
+            <square :disabled="true"/>
             <square-check :disabled="true"/>
-            <square-check :checked="1" :disabled="true"/>
-            <square-check :checked="2" :disabled="true"/>
-
-            <square-check :outline="true" :disabled="true"/>
-            <square-check :checked="1" :outline="true" :disabled="true"/>
-            <square-check :checked="2" :outline="true" :disabled="true"/>
+            <square-half-check :disabled="true"/>
 
         </div>
         <div class="ph-title">circle</div>
         <div class="ph-block">
             <circle-dot/>
             <circle-tick/>
+            <circle-exclam outline="true"/>
             <circle-exclam/>
             <circle-times/>
             <circle-time/>
 
+            <Circle/>
             <circle-radio/>
-            <circle-radio :checked="true"/>
 
             <circle-dot :disabled="true"/>
             <circle-tick :disabled="true"/>
 
+            <circle :disabled="true"/>
             <circle-radio :disabled="true"/>
-            <circle-radio :checked="true" :disabled="true"/>
         </div>
         <div class="ph-title">状态图标</div>
         <div class="ph-block">
@@ -131,6 +123,9 @@
 <script lang="ts" setup>
 import { FView, FIcon } from '@/components'
 const { 
+    Backtop,
+
+    Circle,
     CircleRadio, 
     CircleDot,
     CircleTick,
@@ -143,6 +138,8 @@ const {
     CircleSuccess,
     CircleDanger,
 
+    Square,
+    SquareHalfCheck,
     SquareCheck, 
     SquareMinus,
     SquarePlus,
@@ -155,7 +152,6 @@ const {
     Tick,
     Times,
     Exclam,
-    Triangle,
     Caret,
     Arrow,
     Navicon,

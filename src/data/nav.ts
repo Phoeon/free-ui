@@ -1,10 +1,5 @@
 export default [
     {
-        name:"碳层",
-        id:"/mask",
-        action:"/mask",
-        icon:"list"
-    },{
         name:"按钮",
         id:"/button",
         action:"/button",
@@ -15,16 +10,6 @@ export default [
         action:"/icon",
         icon:"align-center"
     },{
-        name:"通知",
-        id:"/notification",
-        action:"/notification",
-        icon:"align-left"
-    },{
-        name:"卡片",
-        id:"/card",
-        action:"/card",
-        icon:"list-ol"
-    },{
         name:"导航分类",
         id:"navigate",
         icon:"safari",
@@ -32,6 +17,10 @@ export default [
             name:"分页",
             id:"/pager",
             action:"/pager"
+        },{
+            name:"步骤条",
+            id:"/step",
+            icon:"exchange"
         },{
             name:"选项卡",
             id:"/tabs",
@@ -50,14 +39,18 @@ export default [
             action:"/menus"
         },{
             name:"锚定位",
-            id:"/hashnav",
-            action:"/hashnav"
+            id:"/anchor",
+            action:"/anchor"
         }]
     },{
         name:"表单",
         id:"/form",
         icon:"firefox",
         children:[{
+            name:"输入框",
+            id:"/input",
+            action:"/input"
+        },{
             name:"日期时间",
             id:"/pager",
             action:"/pager"
@@ -119,9 +112,9 @@ export default [
             id:"/popover",
             action:"/popover"
         },{
-            name:"表哥",
-            id:"/pager",
-            action:"/pager"
+            name:"表格",
+            id:"/table",
+            action:"/table"
         },{
             name:"列表",
             id:"/list",
@@ -134,7 +127,12 @@ export default [
             name:"时间线",
             id:"/pager",
             action:"/pager"
-        },]
+        },{
+            name:"卡片",
+            id:"/card",
+            action:"/card",
+            icon:"list-ol"
+        }]
     },{
         name:"反馈交互",
         id:"/pager",
@@ -182,10 +180,6 @@ export default [
             id:"/drawer",
             action:"/drawer"
         }]
-    },{
-        name:"步骤条",
-        id:"/steps",
-        icon:"area-chart"
     },{
         name:"测试二级菜单",
         id:"/test2",

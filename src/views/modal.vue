@@ -2,9 +2,9 @@
     <f-view>
         <f-card title="确认框">
             <f-button-group :container="true">
-                <f-button size="mini" type="primary" @click="openConfirm">确认框</f-button>
-                <f-button size="mini" type="danger" @click="openAlert">警告框</f-button>
-                <f-button size="mini" type="primary" @click="openOption">多选项框</f-button>
+                <f-button type="primary" @click="openConfirm">确认框</f-button>
+                <f-button type="danger" @click="openAlert">警告框</f-button>
+                <f-button type="primary" @click="openOption">多选项框</f-button>
             </f-button-group>
         </f-card>
     </f-view>

@@ -1,20 +1,8 @@
 <template>
-    <icon class="ph-icon-tick"/>
+    <icon>
+        <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M951.65 313.16l-495.81 495.81c-22.86 22.86-57.69 26.43-84.33 10.68-4.89-2.91-9.57-6.48-13.8-10.68 0-0.03 0-0.03 0-0.03l-285.42-285.39c-27.09-27.09-27.09-71.07 0-98.16s71.01-27.09 98.13 0l236.43 236.43 446.7-446.79c27.09-27.09 71.01-27.09 98.1 0 27.12 27.09 27.12 71.07 0 98.13l0 0z"></path></svg>
+    </icon>
 </template>
 <script lang="ts" setup>
-import Icon from './base.vue'
+import Icon from './built-in.vue'
 </script>
-<style lang="scss">
-.ph-icon-tick{
-    &:before{
-        content: "";
-        width: var(--ph-icon-6);
-        height: calc(var(--ph-icon-ratio) * 9);
-        border: var(--ph-icon-2) solid var(--ph-icon-c);
-        border-top-color: transparent;
-        border-left-color: transparent;
-        transform-origin: center;
-        transform: translateY(calc(var(--ph-icon-ratio) * -2)) rotate(30deg);
-    }
-}
-</style>

@@ -1,20 +1,28 @@
 import FPopConfirm from './confirm.vue'
 import FPopover from './over.vue'
 import FTooltip from './tooltip.vue'
+import FDropdownList from '././dropdown.vue'
 import Evt from 'ph-evt'
 import { createApp } from 'vue'
-import { IPopConfirm, IPopover, ITooltip } from './types'
+import { IPopConfirm, IPopover, ITooltip, IDropdown, IDropdownItem } from './types'
+import { unmount } from '../../shared/utils'
 const show = (opt:IPopover)=>{
-    const app = createApp(FPopover,{...opt,sample:false}),
+    const app = createApp(FPopover,{...opt}),
         ins = app.mount(document.createElement("div")) as InstanceType<typeof FPopover>;
     document.body.appendChild(ins.$el)
-    return ins.close as ()=>void
+    return ()=>{
+        unmount(app)
+        ins.close()
+    }
 }
 const showTip = (opt:ITooltip)=>{
-    const app = createApp(FTooltip,{...opt,sample:false}),
+    const app = createApp(FTooltip,{...opt}),
         ins = app.mount(document.createElement("div")) as InstanceType<typeof FTooltip>;
     document.body.appendChild(ins.$el)
-    return ins.close as ()=>void
+    return ()=>{
+        unmount(app)
+        ins.close()
+    }
 }
 const showConfirm = (opt:IPopConfirm)=>{
     const evt = new Evt()
@@ -24,30 +32,66 @@ const showConfirm = (opt:IPopConfirm)=>{
         else 
         evt.emit("cancel")
     }
-    const app = createApp(FPopConfirm,{...opt,sample:false,notify}),
+    const app = createApp(FPopConfirm,{...opt,notify}),
         ins = app.mount(document.createElement("div"));
     document.body.appendChild(ins.$el)
     return {
         done(fn:()=>void){
             evt.on("done",()=>{
-                app.unmount()
+                unmount(app)
                 fn()
             })
             return this
         },
         cancel(fn:()=>void){
             evt.on("cancel",()=>{
-                app.unmount()
+                unmount(app)
                 fn()
             })
             return this
         }
     }
 }
+const showDropdown = (opt:IDropdown)=>{
+    const evt = new Evt()
+    const notify = (item:IDropdownItem|number)=>{
+        if(item===1)
+            evt.emit("enter")
+        else if(item===0)
+            evt.emit("leave")
+        else
+        evt.emit("done",item)
+    }
+    const app = createApp(FDropdownList,{...opt,notify}),
+        ins = app.mount(document.createElement("div")) as InstanceType<typeof FDropdownList>;
+    document.body.appendChild(ins.$el)
+    return {
+        done(fn:(item:IDropdownItem)=>void){
+            evt.on("done",(item:IDropdownItem)=>{
+                unmount(app)
+                fn(item)
+            })
+            return this
+        },
+        enter(fn:()=>void){
+            evt.on("enter",fn)
+            return this
+        },
+        leave(fn:()=>void){
+            evt.on("leave",fn)
+            return this
+        },
+        hide(){
+            ins.close?.()
+            unmount(app)
+        }
+    }
+}
 export default {
     showConfirm,
     showTip,
-    show
+    show,
+    showDropdown
 }
 export {
     FPopConfirm,

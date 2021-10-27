@@ -1,12 +1,13 @@
 <template>
-    <icon class="ph-icon-times"/>
+    <icon class="ph-icon-times">
+        <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M753.365333 843.861333a64 64 0 0 0 90.496-90.496L602.496 512l241.365333-241.365333a64 64 0 0 0-90.496-90.496L512 421.504 270.634667 180.138667a64 64 0 1 0-90.496 90.496L421.504 512l-241.365333 241.365333a64 64 0 0 0 90.496 90.496L512 602.496l241.365333 241.365333z"></path></svg>
+    </icon>
 </template>
 <script lang="ts" setup>
-import Icon from './plus.vue'
+import Icon from './built-in.vue'
 </script>
 <style lang="scss">
 .ph-icon-times{
-    transform-origin: center;
-    transform: rotate(45deg);
+    transform: scale(.8);
 }
 </style>

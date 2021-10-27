@@ -7,20 +7,18 @@ export default {
         let lock = false
         let close:()=>void
         el.addEventListener("mouseenter",()=>{
-            console.log(Math.random(),binding)
             if(lock)return
             lock = true
             const {left,top,width,height} = el.getBoundingClientRect()
-            const {title,content,position} = value as {
-                title:string,
+            const {content,position} = value as {
                 content:string,
                 position?:string,
             }
-            const pos = position||"tc"
+            const pos = position||"t"
             const 
                 x = sumArray(xmatrix[pos],[left,top,width,height]),
                 y = sumArray(ymatrix[pos],[left,top,width,height]);
-            close = FPop.showTip({title,content,x,y,position:pos as 'tc'})
+            close = FPop.showTip({content,x,y,position:pos as 't'})
             setTimeout(()=>{
                 lock = false
             },300)

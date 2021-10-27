@@ -1,6 +1,6 @@
 <template>
-<transition name="ph-fade">
-    <div v-if="state.visible" @click.stop :class="['ph-pop-confirm','ph-pop','ph-pop-'+position]" ref="edom" :sample="sample" :style="style">
+<transition :name="state.animation">
+    <div v-if="state.visible" @click.stop :class="['ph-pop-confirm','ph-pop','ph-pop-'+position,'ph-pop-'+theme]" ref="edom" :sample="sample" :style="style">
         <div class="ph-pop-confirm-content">
             <circle-warning class="ph-ppc-icon"/>
             <p class="ph-pop-content">{{title}}</p>
@@ -13,10 +13,11 @@
 </transition>
 </template>
 <script lang="ts" setup>
+import './popover.scss';
 import { defineProps, nextTick, onBeforeUnmount, onMounted, PropType, reactive, ref } from 'vue'
 import { CircleWarning } from '../icon'
 import { IPopPosition } from './types'
-import { sumArray } from '../../shared/utils'
+import { getAnimation, sumArray } from '../../shared/utils'
 import { xmatrix,ymatrix } from './shared'
 import FButton from '../button/main.vue'
 
@@ -24,13 +25,16 @@ const edom = ref<HTMLElement>()
 const props = defineProps({
     title:String,
     position:{type:String as PropType<IPopPosition>,default:"tc"},
-    x:{type:Number,required:true},
-    y:{type:Number,required:true},
-    sample:{type:Boolean,default:true}, //仅用于文档展示，不用关注
-    notify:Function as PropType<(status:number)=>void>
+    theme:{type:String as PropType<'normal'|'reverse'>},
+    x:{type:Number,default:0},
+    y:{type:Number,default:0},
+    sample:Boolean, //仅用于文档展示，不用关注
+    notify:Function as PropType<(status:number)=>void>,
+    animation:String
 })
 const state = reactive({
-    visible:false
+    visible:false,
+    animation:props.animation||getAnimation(props.position+"")
 })
 const style = reactive({
     left:'auto',
@@ -69,17 +73,10 @@ onMounted(()=>{
 })
 </script>
 <style lang="scss">
-@import './popover.scss';
+
 .ph-pop-confirm{
-    --ph-pop-bdc: var(--ph-modal-bg);
-    position: fixed;
-    z-index: var(--ph-zdx-popup);
-    background-color: var(--ph-modal-bg);
     padding: var(--ph-pd-small);
     min-width: 180px;
-    display: inline-block;
-    box-shadow: var(--ph-shadow-2);
-    border-radius: 4px;
     &[sample=true]{
         position: relative;
         z-index: auto;
@@ -88,9 +85,10 @@ onMounted(()=>{
         display: flex;
         align-items: center;
         font-size: 14px;
-        color: var(--ph-c-d1);
+        color: var(--ph-pop-c-d1);
         .ph-ppc-icon{
             margin-right: var(--ph-8);
+            --ph-icon-bc:transparent;
         }
     }
     .ph-pop-confirm-action{

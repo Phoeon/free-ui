@@ -22,11 +22,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'icon',
     component: () => import(/* webpackChunkName: "icon" */ '../views/icon.vue')
   },
-  {
-    path: '/mask',
-    name: 'mask',
-    component: () => import(/* webpackChunkName: "mask" */ '../views/mask.vue')
-  },
+  // {
+  //   path: '/mask',
+  //   name: 'mask',
+  //   component: () => import(/* webpackChunkName: "mask" */ '../views/mask.vue')
+  // },
   {
     path: '/notification',
     name: 'notification',
@@ -116,6 +116,31 @@ const routes: Array<RouteRecordRaw> = [
     path: '/accordion',
     name: 'accordion',
     component: () => import(/* webpackChunkName: "accordion" */ '../views/accordion.vue')
+  },
+  {
+    path: '/table',
+    name: 'table',
+    component: () => import(/* webpackChunkName: "table" */ '../views/table.vue')
+  },
+  {
+    path: '/dropdown',
+    name: 'dropdown',
+    component: () => import(/* webpackChunkName: "dropdown" */ '../views/dropdown.vue')
+  },
+  {
+    path: '/step',
+    name: 'step',
+    component: () => import(/* webpackChunkName: "step" */ '../views/step.vue')
+  },
+  {
+    path: '/anchor',
+    name: 'anchor',
+    component: () => import(/* webpackChunkName: "anchor" */ '../views/anchor.vue')
+  },
+  {
+    path: '/input',
+    name: 'form/input',
+    component: () => import(/* webpackChunkName: "input" */ '../views/form/input.vue')
   }
 ]
 

@@ -1,22 +1,8 @@
 <template>
-    <dot v-if="checked" class="ph-icon-radio" stroke="var(--ph-bg-theme)" borderColor="var(--ph-bg-theme)"/>
-    <Circle v-else class="ph-icon-radio" :hover="true"/>
+    <icon>
+        <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M515.64088889 945.26577778c240.29866667 0 436.90666667-196.608 436.90666666-436.90666667s-196.608-436.90666667-436.90666666-436.90666666-436.90666667 196.608-436.90666667 436.90666666 196.608 436.90666667 436.90666667 436.90666667z m0-800.99555556c200.24888889 0 364.08888889 163.84 364.08888889 364.08888889s-163.84 364.08888889-364.08888889 364.08888889-364.08888889-163.84-364.08888889-364.08888889 163.84-364.08888889 364.08888889-364.08888889z" fill="#707070" p-id="2261"></path><path d="M515.64088889 508.35911111m-222.09422222 0a222.09422222 222.09422222 0 1 0 444.18844444 0 222.09422222 222.09422222 0 1 0-444.18844444 0Z"></path></svg>
+    </icon>
 </template>
 <script lang="ts" setup>
-import { defineProps } from 'vue'
-import Circle from './circle.vue'
-import Dot from './dot.vue'
-defineProps({
-    checked:Boolean
-})
+import Icon from '../built-in.vue'
 </script>
-<style lang="scss">
-.ph-icon-radio{
-    &:not([disabled=true]):active:after{
-        content: "";
-        border-radius: inherit;
-        background-color: #000000;
-        opacity: .1;
-    }
-}
-</style>

@@ -1,28 +1,32 @@
 <template>
-<transition name="ph-fade">
-    <div v-if="state.visible" @click.stop :class="['ph-popover','ph-pop','ph-pop-'+position]" ref="edom" :sample="sample" :style="style">
+<transition :name="state.animation">
+    <div v-if="state.visible" @click.stop :class="['ph-popover','ph-pop','ph-pop-'+position,'ph-pop-'+props.theme]" ref="edom" :sample="sample" :style="style">
         <div class="ph-popover-title">{{title}}</div>
         <div class="ph-popover-content">{{content}}</div>
     </div>
 </transition>
 </template>
 <script lang="ts" setup>
+import './popover.scss';
 import { defineExpose, defineProps, nextTick, onMounted, PropType, reactive, ref } from 'vue'
 import { IPopPosition } from './types'
-import { sumArray } from '../../shared/utils'
+import { getAnimation, sumArray } from '../../shared/utils'
 import { xmatrix,ymatrix } from './shared'
 
 const edom = ref<HTMLElement>()
 const props = defineProps({
     title:String,
     content:String,
+    theme:{type:String as PropType<'normal'|'reverse'>},
     position:{type:String as PropType<IPopPosition>,default:"tc"},
-    x:{type:Number,required:true},
-    y:{type:Number,required:true},
-    sample:{type:Boolean,default:true}, //仅用于文档展示，不用关注
+    x:{type:Number,default:0},
+    y:{type:Number,default:0},
+    sample:Boolean, //仅用于文档展示，不用关注
+    animation:String
 })
 const state = reactive({
-    visible:false
+    visible:false,
+    animation:props.animation||getAnimation(props.position+"")
 })
 const style = reactive({
     left:'auto',
@@ -54,16 +58,9 @@ defineExpose({
 })
 </script>
 <style lang="scss">
-@import './popover.scss';
+
 .ph-popover{
-    --ph-pop-bdc: var(--ph-modal-bg);
-    position: fixed;
-    z-index: var(--ph-zdx-popup);
-    background-color: var(--ph-modal-bg);
     width: 180px;
-    display: inline-block;
-    box-shadow: var(--ph-shadow-2);
-    border-radius: 4px;
     font-size:14px;
     line-height: 22px;
     &[sample=true]{
@@ -76,8 +73,8 @@ defineExpose({
         align-items: center;
         font-weight: var(--ph-fw-m);
         height: 32px;
-        border-bottom: 1px solid var(--ph-bc-1);
-        color: var(--ph-c-d1);
+        border-bottom: 1px solid var(--ph-pop-bc);
+        color: var(--ph-pop-c-d1);
     }
     .ph-popover-content{
         padding: var(--ph-8);

@@ -43,17 +43,27 @@
     --ph-block-bg:#FFFFFF;
     --ph-aside-bg:#FFFFFF;
     --ph-topbar-bg:#FFFFFF;
+
     --ph-modal-bg:#FFFFFF;
-    --ph-modal-bg-reverse:rgb(0 0 0 / 80%);
+    --ph-modal-bg-hover: rgb(0 0 0 /2%);
+    --ph-modal-bg-reverse:#333333;
+    --ph-modal-bc-reverse:rgb(255 255 255 /5%);
+    --ph-modal-bg-reverse-hover: rgb(0 0 0 /20%);
+    --ph-modal-c-reverse:var(--ph-c-top);
+    --ph-modal-c-reverse-d1:var(--ph-c-top);
+
     --ph-tooltip-bg:rgb(0 0 0 /90%);
     --ph-tooltip-c:var(--ph-c-top);
     --ph-toast-bg:rgb(0 0 0 / 80%);
     --ph-loading-bg:#FFFFFF;
     --ph-doc-bg:var(--ph-c-l5);
     --ph-menu-bg: rgb(0 0 0 /5%);
-    --ph-acd-title-bg:rgb(0 0 0 / 2%);
+    --ph-acd-header-bg:rgb(0 0 0 / 2%);
+    --ph-table-header-bg:rgb(0 0 0 / 2%);
     --ph-bc: var(--ph-c-l4);
     --ph-bc-1:rgb(0 0 0 /5%);
+    --ph-bg-disabled:rgb(250,250,250);
+    --ph-input-bg:#FFF;
 
 
     --ph-ctr-bg-normal:#FFF;

@@ -11,7 +11,6 @@
     "core-js": "^3.6.5",
     "ph-evt": "^1.0.0",
     "ph-gesture": "*",
-    "ph-media": "^1.0.1-beta.0",
     "ph-position": "*",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"

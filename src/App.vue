@@ -73,4 +73,15 @@ onBeforeMount(()=>{
         gap: var(--ph-pd-small)
     }
 }
+.flex-box-col{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ph-pd-small);
+}
+.flex-box{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    gap: var(--ph-pd-small);
+}
 </style>

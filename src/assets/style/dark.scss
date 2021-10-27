@@ -29,8 +29,15 @@
     --ph-backdrop-alpha:rgb(54 55 61 / 49%);
     --ph-backdrop-alpha-reverse:rgba(255,255,255,.7);
     --ph-progress-bg:rgb(255 255 255 /8%);
+
     --ph-modal-bg:#1F1F1F;
-    --ph-modal-bg-reverse:rgba(255,255,255,.8);
+    --ph-modal-bg-hover:rgb(255 255 255 /4%);
+    --ph-modal-bg-reverse:#434343;
+    --ph-modal-bc-reverse:rgb(255 255 255 /5%);
+    --ph-modal-bg-reverse-hover:rgb(0 0 0 /20%);
+    --ph-modal-c-reverse:var(--ph-c-d1);
+    --ph-modal-c-reverse-d1:var(--ph-c-d2);
+
     --ph-tooltip-bg:#434343;
     --ph-tooltip-c:var(--ph-c-d2);
     --ph-feedback-bg:#1F1F1F;
@@ -45,10 +52,12 @@
     --ph-loading-bg:#1f1f1f;
     --ph-doc-bg:#050505;//#1c1c1e;
     --ph-menu-bg: rgb(0 0 0 /20%);
-    --ph-acd-title-bg:rgb(255 255 255 / 4%);
-    
+    --ph-acd-header-bg:rgb(255 255 255 / 4%);
+    --ph-table-header-bg:rgb(255 255 255 / 4%);
     --ph-bc: var(--ph-c-l4);
-    --ph-bc-1:rgb(255 255 255 /10%);
+    --ph-bc-1:rgb(255 255 255 /5%);
+    --ph-bg-disabled:#5A5A5A;
+    --ph-input-bg:#050505;
 
     --ph-ctr-bg-normal:#FFF;
 

@@ -1,0 +1,8 @@
+.ph-tb-cell{
+    flex: 1 0 auto;
+    padding: var(--ph-pd-small);
+    overflow-wrap: break-word;
+    &[fixed=true]{
+        position: sticky!important;
+    }
+}

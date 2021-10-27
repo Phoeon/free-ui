@@ -1,13 +1,12 @@
 <template>
     <flex :class="['ph-page',slots.aside?'ph-page-hasaside':'']" :dir="slots.aside?'row':'col'" :toggle="state.asideToggle">
-        <f-mask v-model="showMask" class="ph-page-mask" v-tap="onMask"></f-mask>
+        <f-mask v-model="showMask" class="ph-page-mask" @click="onMask"></f-mask>
         <slot name="aside"></slot>
         <slot></slot>
     </flex>
 </template>
 <script lang="ts" setup>
 import { computed, onBeforeMount, provide, reactive, toRef, useSlots } from 'vue'
-import { tap as vTap } from '../../directives/gesture'
 import Evt from 'ph-evt'
 import MediaQuery from '../../shared/media-query'
 import Autofit from '../../shared/autofit'

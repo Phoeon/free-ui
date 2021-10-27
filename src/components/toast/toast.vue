@@ -1,10 +1,10 @@
 <template>
 <div class="ph-toast-container" :position="position">
     <div :class="['ph-toast',type||icon?'ph-toast-withicon':'']">
-        <circle-success class="ph-toast-icon" v-if="type=='success'" fill="var(--ph-c-top)" stroke="var(--ph-c-reverse)"/>
-        <circle-info class="ph-toast-icon" v-else-if="type=='info'" fill="var(--ph-c-top)" stroke="var(--ph-c-reverse)"/>
-        <circle-warning class="ph-toast-icon" v-else-if="type=='warning'" fill="var(--ph-c-top)" stroke="var(--ph-c-reverse)"/>
-        <circle-danger class="ph-toast-icon" v-else-if="type=='error'" fill="var(--ph-c-top)" stroke="var(--ph-c-reverse)"/>
+        <circle-success class="ph-toast-icon" v-if="type=='success'" color="var(--ph-c-top)"/>
+        <circle-info class="ph-toast-icon" v-else-if="type=='info'" color="var(--ph-c-top)"/>
+        <circle-warning class="ph-toast-icon" v-else-if="type=='warning'" color="var(--ph-c-top)"/>
+        <circle-danger class="ph-toast-icon" v-else-if="type=='error'" color="var(--ph-c-top)"/>
         <custom-icon class="ph-toast-icon" :name="icon" v-else-if="icon"/>
         <span class="ph-toast-text">{{title}}</span>
     </div>
@@ -70,8 +70,7 @@ const props = defineProps({
         min-height: var(--ph-toast-min-w);
     }
     .ph-toast-icon{
-        --ph-i-size: 32px;
-        font-size: var(--ph-gtoast-ih);
+        --ph-i-size: var(--ph-gtoast-ih);
         margin-bottom: var(--ph-gtoast-imb);
     }
 }

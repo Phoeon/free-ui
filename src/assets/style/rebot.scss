@@ -18,6 +18,7 @@
     --ph-rvw:0.13333333333333333vw;
     --phr:0.5;
     --ph-fs:var(--phx);
+    --ph-lh:1.4;
     --ph-ff: -apple-system,blinkmacsystemfont,"Helvetica Neue",helvetica,segoe ui,arial,roboto,"PingFang SC","miui","Hiragino Sans GB","Microsoft Yahei",sans-serif;
     
     --ph-mg:16px;
@@ -26,7 +27,6 @@
     --ph-fw: 400;
     --ph-fw-m: 500;
 
-    --ph-bg-disabled: var(--ph-c-l2);
     --ph-c-disabled: var(--ph-c-l1);
 
     --ph-bg-theme:var(--ph-primary);
@@ -49,11 +49,35 @@ body{
     color: var(--ph-c);
     font-size: var(--phx);
     font-family: var(--ph-ff);
+    line-height: var(--ph-lh);
     background-color: var(--ph-doc-bg);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     &[f-scroll-forbidden=true]{
         touch-action: none; overflow: hidden;
+    }
+}
+input,textarea{
+    outline: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    line-height: inherit;
+    appearance: none;
+    border-width: 1px;
+    border-style: solid;
+    transition: all .15s ease;
+    border-color: var(--ph-bc);
+    background-color: var(--ph-input-bg);
+    border-radius: 2px;
+    &:focus{
+        border-bottom-color: var(--ph-primary);
+    }
+    &:disabled{
+        background-color: var(--ph-bg-disabled);
+    }
+    &::-webkit-input-placeholder{
+        color: var(--ph-c-l2);
     }
 }
 .ph-height-anim{

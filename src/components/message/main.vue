@@ -1,6 +1,6 @@
 <template>
     <transition name="ph-msg-fade">
-        <div :class="['ph-msg','ph-msg-'+position]" :style="style" v-if="state.visible">
+        <div :class="['ph-msg','ph-msg-'+position,'ph-msg-'+type]" :style="style" v-if="state.visible">
             <div class="ph-msg-icon-wrap" v-if="type||icon">
                 <custom-icon :style="{color:iconColor}" class="ph-status-icon" :name="icon" v-if="icon" :type="type"/>
                 <circle-success class="ph-status-icon" v-else-if="type=='success'"/>
@@ -9,7 +9,6 @@
                 <circle-danger class="ph-status-icon" v-else-if="type=='error'"/>
             </div>
             <p class="ph-msg-body" @click.stop="clickClose&&onClose(1)">{{content}}</p>
-            <!-- <times v-if="showClose" :active="false" @click.stop="onClose()" class="ph-notify-close" :hover="true"/> -->
         </div>
     </transition>
 </template>
@@ -127,6 +126,18 @@ defineExpose({
         &[type=error]{
             color: var(--ph-error);
         }
+    }
+    &-warning{
+        background-color: var(--ph-ctr-bg-warning);
+    }
+    &-success{
+        background-color: var(--ph-ctr-bg-success);
+    }
+    &-info{
+        background-color: var(--ph-ctr-bg-info);
+    }
+    &-error{
+        background-color: var(--ph-ctr-bg-error);
     }
 }
 @media screen and (max-width: 768px) {

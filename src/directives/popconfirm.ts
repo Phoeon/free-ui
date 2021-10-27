@@ -9,9 +9,10 @@ export default {
             if(lock)return
             lock = true
             const {left,top,width,height} = el.getBoundingClientRect()
-            const {title,position,done,cancel} = value as {
+            const {title,position,theme,done,cancel} = value as {
                 title:string,
                 position?:string,
+                theme?:'normal'|'reverse',
                 done?:()=>void,
                 cancel?:()=>void
             }
@@ -20,7 +21,7 @@ export default {
                 x = sumArray(xmatrix[pos],[left,top,width,height]),
                 y = sumArray(ymatrix[pos],[left,top,width,height]);
             const noop = ()=>void(0)
-            FPop.showConfirm({title,x,y,position:pos as 'tc'}).done(done||noop).cancel(cancel||noop);
+            FPop.showConfirm({title,x,y,theme,position:pos as 'tc'}).done(done||noop).cancel(cancel||noop);
             setTimeout(()=>{
                 lock = false
             },300)

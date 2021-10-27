@@ -1,14 +1,14 @@
 <template>
     <f-view>
         <f-card title="静态展示<该组件为web端组件>">
-            <div class="flex-box-col">
-                <f-tooltip content="描述" position="t"></f-tooltip>
+            <div class="tooltip">
+                <f-tooltip :sample="true" content="描述" position="t"></f-tooltip>
                 <br/>
-                <f-tooltip content="描述文字" position="b"></f-tooltip>
+                <f-tooltip :sample="true" content="描述文字" position="b"></f-tooltip>
                 <br/>
-                <f-tooltip content="描述文字描述文" position="l"></f-tooltip>
+                <f-tooltip :sample="true" content="描述文字描述文" position="l"></f-tooltip>
                 <br/>
-                <f-tooltip content="描述文字描述文字描述文字描述" position="r"></f-tooltip>
+                <f-tooltip :sample="true" content="描述文字描述文字描述文字描述" position="r"></f-tooltip>
             </div>
         </f-card>
         <f-card title="动态展示">
@@ -22,14 +22,15 @@
     </f-view>
 </template>
 <script lang="ts" setup>
-import { FView, FCard, FButtonGroup, FButton, FPop, FTooltip ,FToast } from '@/components'
+import { FView, FCard, FButtonGroup, FButton, FPop ,FToast } from '@/components'
+import FTooltip from '@/components/pop/tooltip.vue'
 import vTooltip from '@/directives/tooltip'
 const data = {
     content:"描述文字描述文字"
 }
 </script>
 <style lang="scss">
-.flex-box-col{
+.tooltip{
     .ph-tooltip{
         margin-bottom: 20px;
     }

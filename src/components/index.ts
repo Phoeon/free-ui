@@ -1,7 +1,7 @@
 import Env from '../shared/env'
 import FNotification from './notification'
 import FMessage from './message'
-import FPop,{FPopConfirm,FPopover,FTooltip} from './pop'
+import FPop from './pop'
 import FToast from './toast'
 import FPanel from './panel'
 import FCard from './card'
@@ -21,6 +21,11 @@ export * from './alert'
 export * from './progress'
 export * from './list'
 export * from './accordion'
+export * from './table'
+export * from './dropdown'
+export * from './steps'
+export * from './anchors'
+export * from './form'
 export {
     FIcon,
     FNotification,
@@ -32,10 +37,7 @@ export {
     FCard,
     FModal,
     FMessage,
-    FPop,
-    FPopConfirm,
-    FPopover,
-    FTooltip
+    FPop
 }
 export default {
     install(app:any,options:Record<string,any>){

@@ -1,26 +1,29 @@
 <template>
-<transition name="ph-fade">
+<transition :name="state.animation">
     <div v-if="state.visible" @click.stop :class="['ph-tooltip','ph-pop','ph-pop-'+position]" ref="edom" :sample="sample" :style="style">
         {{content}}
     </div>
 </transition>
 </template>
 <script lang="ts" setup>
+import './popover.scss';
 import { defineExpose, defineProps, nextTick, onMounted, PropType, reactive, ref } from 'vue'
 import { ITooltip } from './types'
-import { sumArray } from '../../shared/utils'
+import { sumArray, getAnimation } from '../../shared/utils'
 import { xmatrix,ymatrix } from './shared'
 
 const edom = ref<HTMLElement>()
 const props = defineProps({
     content:String,
     position:{type:String as PropType<ITooltip>,default:"t"},
-    x:{type:Number,required:true},
-    y:{type:Number,required:true},
-    sample:{type:Boolean,default:true}, //仅用于文档展示，不用关注
+    x:{type:Number,default:0},
+    y:{type:Number,default:0},
+    sample:Boolean, //仅用于文档展示，不用关注
+    animation:String
 })
 const state = reactive({
-    visible:false
+    visible:false,
+    animation:props.animation||getAnimation(props.position+"")
 })
 const style = reactive({
     left:'auto',
@@ -52,16 +55,12 @@ defineExpose({
 })
 </script>
 <style lang="scss">
-@import './popover.scss';
+
 .ph-tooltip{
-    --ph-pop-bdc: var(--ph-tooltip-bg);
-    position: fixed;
-    z-index: var(--ph-zdx-popup);
-    background-color: var(--ph-tooltip-bg);
-    color: var(--ph-tooltip-c);
+    --ph-pop-bdc: var(--ph-modal-bg-reverse);
+    background-color: var(--ph-modal-bg-reverse);
+    color: var(--ph-modal-c-reverse-d1);
     max-width: 266px;
-    display: inline-block;
-    border-radius: 4px;
     font-size:14px;
     line-height: 22px;
     padding: var(--ph-8) var(--ph-pd-small);

@@ -1,5 +1,26 @@
 .ph-pop{
     --ph-ppc-24:24px;
+    --ph-pop-bdc: var(--ph-modal-bg);
+    --ph-pop-bg-hover: var(--ph-modal-bg-hover);
+    --ph-pop-c: var(--ph-c-d1);
+    --ph-pop-c-d1: var(--ph-c-d2);
+    --ph-pop-bc:var(--ph-bc-1);
+    --ph-pop-shadow:var(--ph-shadow-2);
+    position: fixed;
+    display: inline-block;
+    z-index: var(--ph-zdx-popup);
+    background-color: var(--ph-pop-bdc);
+    color: var(--ph-pop-c);
+    box-shadow: var(--ph-pop-shadow);
+    border-radius: 4px;
+    &.ph-pop-reverse{
+        --ph-pop-bdc: var(--ph-modal-bg-reverse);
+        --ph-pop-bg-hover: var(--ph-modal-bg-reverse-hover);
+        --ph-pop-c: var(--ph-modal-c-reverse);
+        --ph-pop-c-d1: var(--ph-modal-c-reverse-d1);
+        --ph-pop-bc:var(--ph-modal-bc-reverse);
+        --ph-pop-shadow:var(--ph-shadow-dark);
+    }
     &:after{
         content: "";
         width: 0;

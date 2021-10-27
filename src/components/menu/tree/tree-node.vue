@@ -1,6 +1,6 @@
 <template>
     <div :class="['ph-menu-item',isRoot?'ph-menu-item-root':'']" :simple="simple" @mouseenter="onEnter" @mouseleave="onLeave" :style="{'--ph-menu-depth':depth}">
-        <button class="ph-menu-btn ph-group" :data-title="node.name" v-if="isGroup" :flex="true" ref="emenu" :active="active" :hover="state.hover&&!state.open&&!active" @click="toggle">
+        <button class="ph-menu-btn ph-group" :data-title="node.name" v-if="isGroup" :flex="true" ref="emenu" :active="state.open||active" :hover="state.hover&&!state.open&&!active" @click="toggle">
             <custom-icon v-if="node.icon" :name="node.icon"/>
             <template v-if="showDetail">
                 <span class="ph-btn-text">{{node.name}}</span>
@@ -70,7 +70,7 @@ const state = reactive({
 const showDetail = computed(()=>!props.isRoot||!simple.value)
 const restoreState = ()=>{
     if(!simple.value){
-        state.open = active.value
+        state.open = state.open||active.value
         return
     }
     if(props.isRoot)
