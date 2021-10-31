@@ -1,7 +1,7 @@
 <template>
 <div :class="['ph-form',title?'ph-form-hasheader':'']">
     <div class="ph-form-header" v-if="title">{{title}}</div>
-    <f-grid padding="0" :sm="1" :md="2" :lg="2" :xl="3"><slot></slot></f-grid>
+    <f-grid padding="0" :sm="sm" :md="md" :lg="lg" :xl="xl"><slot></slot></f-grid>
     <div class="ph-form-action" v-if="slots.action">
         <slot name="action"></slot>
     </div>
@@ -13,7 +13,11 @@ import FGrid from '../grid/grid.vue'
 
 const slots = useSlots()
 defineProps({
-    title:String
+    title:String,
+    sm:{type:Number,default:1},
+    md:{type:Number,default:2},
+    lg:{type:Number,default:2},
+    xl:{type:Number,default:3},
 })
 provide('validator',null)
 </script>

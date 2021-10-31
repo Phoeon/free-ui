@@ -82,7 +82,6 @@ onBeforeUnmount(()=>{
 <style lang="scss">
 .ph-field{
     display: flex;
-    flex-wrap: wrap;
     position: relative;
     .ph-field-label{
         flex: 0 0 auto;
@@ -113,6 +112,7 @@ onBeforeUnmount(()=>{
 }
 @media screen and (max-width:768px){
     .ph-field{
+        flex-wrap: wrap;
         .ph-field-label{
             width: 100%;
             justify-content: flex-start;

@@ -101,6 +101,6 @@ const onClick = ()=>{
     padding: 0 12px;
     cursor: var(--ph-ip-cursor);
     background-color: var(--ph-ip-bg);
-    min-width: 0;
+    width: 0;
 }
 </style>

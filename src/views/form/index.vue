@@ -1,6 +1,6 @@
 <template>
     <f-view>
-        <f-form title="表单标题">
+        <f-form title="表单标题" :xl="2">
             <f-validator ref="evalidator">
                 <f-form-input v-model="formData.account" label="输入框" :validators="['required']"></f-form-input>
                 <f-form-input v-model="formData.email" label="禁用输入" placeholder="测试禁用" :disabled="true"></f-form-input>
@@ -9,7 +9,7 @@
                 <f-form-datetime-picker v-model="formData.datetime" label="日期时间" placeholder="日期时间" type="datetime"/>
                 <f-form-datetime-picker v-model="formData.birth" label="出生日期" placeholder="请选择日期"/>
                 <f-form-datetime-picker v-model="formData.alarm" label="闹钟时间" placeholder="请选择时间" type="time"/>
-                <f-form-datetime-picker v-model="formData.unitime" label="大学时间" placeholder="请选择日期" :block="true"/>
+                <f-form-datetime-picker v-model="formData.unitime" label="大学时间" placeholder="请选择日期"/>
                 <f-form-switch v-model="formData.married" label="开关"></f-form-switch>
                 <f-form-switch v-model="formData.married" label="禁用开关" :disabled="true" type="icon"></f-form-switch>
                 <f-form-checkbox :block="true" v-model="formData.cuni" :options="dataSource.options" label="复选框" :validators="['required']"></f-form-checkbox>
