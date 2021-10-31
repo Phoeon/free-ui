@@ -5,6 +5,7 @@
                 :modelValue="scope.value"
                 :disabled="scope.disabled"
                 :placeholder="scope.placeholder"
+                :valid="scope.valid"
                 @input="scope.onInput"
             />
         </template>

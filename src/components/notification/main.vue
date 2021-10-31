@@ -82,25 +82,25 @@ defineExpose({
     &.ph-notify-right-top{
         right: 8px;
         top: 8px;
-        --ph-notify-mb: var(--ph-pd-small);
+        --ph-notify-mb: var(--ph-pd);
         --ph-notify-mt: 0;
     }
     &.ph-notify-right-bottom{
         right: 8px;
         bottom: 8px;
-        --ph-notify-mt: var(--ph-pd-small);
+        --ph-notify-mt: var(--ph-pd);
         --ph-notify-mb: 0;
     }
     &.ph-notify-left-top{
         left: 8px;
         top: 8px;
-        --ph-notify-mb: var(--ph-pd-small);
+        --ph-notify-mb: var(--ph-pd);
         --ph-notify-mt: 0;
     }
     &.ph-notify-left-bottom{
         left: 8px;
         bottom: 8px;
-        --ph-notify-mt: var(--ph-pd-small);
+        --ph-notify-mt: var(--ph-pd);
         --ph-notify-mb: 0;
     }
 }

@@ -68,9 +68,9 @@ const style = computed(()=>{
     --ph-grid-cols-xl:6;
     --ph-grid-cols:var(--ph-grid-cols-all);
 
-    --ph-grid-cgap:var(--ph-pd-small);
-    --ph-grid-rgap:var(--ph-pd-small);
-    --ph-grid-item-padding:var(--ph-pd-small);
+    --ph-grid-cgap:var(--ph-pd);
+    --ph-grid-rgap:var(--ph-pd);
+    --ph-grid-item-padding:var(--ph-pd);
     --ph-grid-item-radius:4px;
     --ph-grid-item-border:none;
     --ph-grid-item-shadow:none;

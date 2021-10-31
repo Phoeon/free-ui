@@ -138,9 +138,24 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "anchor" */ '../views/anchor.vue')
   },
   {
+    path: '/tmp',
+    name: 'tmp',
+    component: () => import(/* webpackChunkName: "tmp" */ '../views/datetime.vue')
+  },
+  {
+    path: '/form',
+    name: 'form/form',
+    component: () => import(/* webpackChunkName: "form" */ '../views/form/index.vue')
+  },
+  {
     path: '/input',
     name: 'form/input',
     component: () => import(/* webpackChunkName: "input" */ '../views/form/input.vue')
+  },
+  {
+    path: '/select',
+    name: 'form/select',
+    component: () => import(/* webpackChunkName: "select" */ '../views/form/select.vue')
   }
 ]
 

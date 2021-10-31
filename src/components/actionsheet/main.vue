@@ -123,7 +123,7 @@ const drawerVisible = computed({
     }
     &-topbar{
         background-color: var(--ph-as-tbg);
-        padding-top: var(--ph-pd-small);
+        padding-top: var(--ph-pd);
         padding-bottom: 8px;
     }
     &-title{

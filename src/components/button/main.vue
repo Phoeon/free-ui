@@ -41,7 +41,7 @@ const cns = computed(()=>{
         'ph-btn-success':props.type=="success",
         'ph-btn-danger':props.type=="danger",
         'ph-btn-warning':props.type=="warning",
-        'ph-btn-default':(props.type=="default"||!props.type)&&props.fillMode=="normal",
+        'ph-btn-default':(props.type=="default"||!props.type),//&&props.fillMode=="normal",
 
         'ph-btn-outline':props.fillMode=="outline",
         'ph-btn-none':props.fillMode=="none",
@@ -268,7 +268,7 @@ const onTap = (e:Event)=>{
         margin-left: var(--ph-6);
     }
     .ph-btn-slot + .ph-icon{
-        margin-left: var(--ph-8);
+        margin-left: var(--ph-pd-sm);
     }
 
     color: var(--ph-btn-c);

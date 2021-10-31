@@ -1,3 +1,4 @@
+@import '../../assets/style/fn.scss';
 .ph-pop{
     --ph-ppc-24:24px;
     --ph-pop-bdc: var(--ph-modal-bg);
@@ -6,13 +7,18 @@
     --ph-pop-c-d1: var(--ph-c-d2);
     --ph-pop-bc:var(--ph-bc-1);
     --ph-pop-shadow:var(--ph-shadow-2);
+    --ph-pop-listh:300px;
+    --ph-pop-br:4px;
     position: fixed;
     display: inline-block;
     z-index: var(--ph-zdx-popup);
     background-color: var(--ph-pop-bdc);
     color: var(--ph-pop-c);
     box-shadow: var(--ph-pop-shadow);
-    border-radius: 4px;
+    border-radius: var(--ph-pop-br);
+    [disabled=true]{
+        @include disabledMx()
+    }
     &.ph-pop-reverse{
         --ph-pop-bdc: var(--ph-modal-bg-reverse);
         --ph-pop-bg-hover: var(--ph-modal-bg-reverse-hover);

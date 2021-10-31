@@ -76,7 +76,7 @@ const style = computed(()=>{
             opacity: 0.7;
         }
         &-icon-wrap{
-            margin-right: var(--ph-8);
+            margin-right: var(--ph-pd-sm);
             display: flex;
             flex-direction: column;
             &[line=true]{
@@ -88,7 +88,7 @@ const style = computed(()=>{
                     flex: 1 0 auto;
                     width:0;
                     height: var(--ph-step-line,150px);
-                    margin: var(--ph-pd-small) 0;
+                    margin: var(--ph-pd) 0;
                     border-left: 2px dashed var(--ph-step-linec);
                     left: 50%;
                     transform: translateX(-50%);
@@ -112,7 +112,7 @@ const style = computed(()=>{
                     display: inline-block;
                     flex: 1;
                     height: 0;
-                    margin: 0 var(--ph-pd-small);
+                    margin: 0 var(--ph-pd);
                     border-top: 2px dashed var(--ph-step-linec);
                     top: 50%;
                     transform: translateY(-50%);

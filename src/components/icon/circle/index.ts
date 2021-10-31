@@ -4,7 +4,6 @@ import CircleDot from './dot.vue'
 import CircleTick from './tick.vue'
 import CircleExclam from './exclam.vue'
 import CircleTimes from './times.vue'
-import CircleTime from './time.vue'
 
 import CircleWarning from './warning.vue'
 import CircleInfo from './info.vue'
@@ -17,7 +16,6 @@ export {
     CircleTick,
     CircleExclam,
     CircleTimes,
-    CircleTime,
 
     CircleWarning,
     CircleInfo,

@@ -94,7 +94,7 @@ defineExpose({
     overflow: hidden;
     display: flex;
     flex-wrap: nowrap;
-    padding: var(--ph-12) var(--ph-pd-small);
+    padding: var(--ph-12) var(--ph-pd);
     z-index:var(--ph-zdx-modal);
     box-shadow: var(--ph-shadow-1);
     background-color: var(--ph-msg-bg);
@@ -111,7 +111,7 @@ defineExpose({
     .ph-icon{
         --ph-i-size:16px;
         font-size: var(--ph-gmsg-ih);
-        margin-right: var(--ph-8);
+        margin-right: var(--ph-pd-sm);
     }
     .ph-custom-icon{
         &[type=success]{
@@ -140,10 +140,10 @@ defineExpose({
         background-color: var(--ph-ctr-bg-error);
     }
 }
-@media screen and (max-width: 768px) {
-    .ph-msg{
-        background-color:var(--ph-backdrop-alpha);
-        backdrop-filter: blur(20px);
-    }
-}
+// @media screen and (max-width: 768px) {
+//     .ph-msg{
+//         background-color:var(--ph-backdrop-alpha);
+//         backdrop-filter: blur(20px);
+//     }
+// }
 </style>

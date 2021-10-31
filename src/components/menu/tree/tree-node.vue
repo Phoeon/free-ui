@@ -134,7 +134,7 @@ onMounted(()=>{
     color: var(--ph-c);
     .ph-menu-btn{
         text-align: left;
-        padding: 0 var(--ph-pd-small) 0 var(--ph-pd);
+        padding: 0 var(--ph-pd) 0 var(--ph-pd-lg);
         height: var(--ph-menu-item-height);
         width: 100%;
         border: none;
@@ -222,7 +222,7 @@ onMounted(()=>{
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
-                text-indent: var(--ph-pd);
+                text-indent: var(--ph-pd-lg);
                 box-shadow: var(--ph-shadow-3);
             }
         }
@@ -241,7 +241,7 @@ onMounted(()=>{
     }
     .ph-menu-tree{
         --ph-menu-item-height:45px;
-        --ph-menu-item-pdl:calc(var(--ph-menu-depth) * 16px + var(--ph-pd));
+        --ph-menu-item-pdl:calc(var(--ph-menu-depth) * 16px + var(--ph-pd-lg));
         background-color: var(--ph-menu-bg);
         .ph-menu-tree{
             --ph-menu-item-height:40px;
@@ -281,7 +281,7 @@ onMounted(()=>{
             color: var(--ph-c-d2);
             font-weight: inherit;
             height: var(--ph-menu-item-height);
-            padding: 0 var(--ph-pd-small) 0 var(--ph-pd);
+            padding: 0 var(--ph-pd) 0 var(--ph-pd-lg);
             width: 100%;
             z-index: 1;
             border-bottom: 1px solid var(--ph-bc-1);

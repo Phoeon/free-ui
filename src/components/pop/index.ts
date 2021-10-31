@@ -1,11 +1,14 @@
 import FPopConfirm from './confirm.vue'
 import FPopover from './over.vue'
 import FTooltip from './tooltip.vue'
-import FDropdownList from '././dropdown.vue'
+import FDropdownList from './dropdown.vue'
+import FPopSelect from './select.vue'
+
 import Evt from 'ph-evt'
 import { createApp } from 'vue'
-import { IPopConfirm, IPopover, ITooltip, IDropdown, IDropdownItem } from './types'
+import { IPopConfirm, IPopover, ITooltip, IDropdown, IDropdownItem, ISelect } from './types'
 import { unmount } from '../../shared/utils'
+
 const show = (opt:IPopover)=>{
     const app = createApp(FPopover,{...opt}),
         ins = app.mount(document.createElement("div")) as InstanceType<typeof FPopover>;
@@ -87,14 +90,37 @@ const showDropdown = (opt:IDropdown)=>{
         }
     }
 }
+const showPopSelect = (opt:ISelect)=>{
+    const evt = new Evt()
+    const notify = (item:Array<IDropdownItem>)=>{
+        evt.emit("done",item)
+    }
+    const app = createApp(FPopSelect,{...opt,notify}),
+        ins = app.mount(document.createElement("div")) as InstanceType<typeof FPopSelect>;
+    document.body.appendChild(ins.$el)
+    return {
+        done(fn:(item:Array<IDropdownItem>)=>void){
+            evt.on("done",(item:Array<IDropdownItem>)=>{
+                unmount(app)
+                fn(item)
+            })
+            return this
+        },
+        hide(){
+            ins.close?.()
+            unmount(app)
+        }
+    }
+}
 export default {
     showConfirm,
     showTip,
     show,
-    showDropdown
+    showDropdown,
+    showPopSelect
 }
 export {
     FPopConfirm,
     FPopover,
-    FTooltip
+    FTooltip,
 }

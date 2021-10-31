@@ -1,35 +1,22 @@
 <template>
-    <div class="ph-input-wrap">
-        <input 
-        :class="cns" 
-        :value="modelValue"
-        :placeholder="placeholder" 
-        :disabled="disabled"
-        :type="type"
-        @input.stop="onInput"
-        />
-    </div>
+    <input-wrap>
+        <template v-slot:default="scope">
+            <input 
+            class="ph-input"
+            :placeholder="scope.placeholder" 
+            :disabled="scope.disabled"
+            :type="scope.type"
+            :value="modelValue"
+            @input.stop="onInput"
+            />
+        </template>
+    </input-wrap>
 </template>
 <script lang="ts" setup>
-import { computed, defineProps, defineEmits, PropType, reactive } from 'vue'
+import { defineProps, defineEmits, PropType } from 'vue'
+import InputWrap from './input-wrap.vue'
 const props = defineProps({
-    modelValue:[String,Number],
-    size:String as PropType<'small'|'large'|'normal'>,
-    disabled:Boolean,
-    valid:Boolean,
-    placeholder:String,
-    type:String as PropType<'text'|'number'>
-})
-
-const state = reactive({
-    pc:!('ontouchstart' in window)
-})
-const cns = computed(()=>{
-    return {
-        'ph-input':true,
-        'ph-ip-small':state.pc&&props.size==='small',
-        'ph-ip-large':state.pc&&props.size==='large',
-    }
+    modelValue:[String,Number]
 })
 const emits = defineEmits(['update:modelValue','input'])
 const onInput = (e:Event)=>{
@@ -39,23 +26,18 @@ const onInput = (e:Event)=>{
 }
 </script>
 <style lang="scss">
-.ph-input-wrap{
-    flex: 1;
-}
 .ph-input{
-    width: 100%;
-    border: 1px solid var(--ph-bc);
-    height: var(--ph-ginput-h);
-    font-size: var(--ph-ginput-fs);
-    color: var(--ph-c-d1);
+    flex: 1;
+    border-radius: var(--ph-ip-br);
+    border-color: var(--ph-bc);
+    border-bottom-color: var(--ph-ip-bbc);
+    font-size: var(--ph-ip-fs);
+    height: var(--ph-ip-h);
+    color: var(--ph-ip-c);
     padding: 0 12px;
-    &.ph-ip-small{
-        height: var(--ph-ginput-h-sm);
-        font-size: var(--ph-ginput-fs);
-    }
-    &.ph-ip-large{
-        height: var(--ph-ginput-h-lg);
-        font-size: var(--ph-ginput-fs-lg);
+    background-color: var(--ph-ip-bg);
+    &:disabled{
+        cursor: var(--ph-ip-cursor);
     }
 }
 </style>

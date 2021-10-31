@@ -70,23 +70,23 @@ const onLink = ()=>{
     overflow: hidden;
     display: flex;
     flex-wrap: nowrap;
-    padding: var(--ph-8) var(--ph-pd-small);
+    padding: var(--ph-pd-sm) var(--ph-pd);
     background-color: var(--ph-block-bg);
-    margin: var(--ph-pd-small) 0;
+    margin: var(--ph-pd) 0;
     &-warning{
-        border: 1px solid var(--ph-ctr-cd-warning);
+        border: 1px solid var(--ph-ctr-bd-warning);
         background-color: var(--ph-ctr-bg-warning);
     }
     &-success{
-        border: 1px solid var(--ph-ctr-cd-success);
+        border: 1px solid var(--ph-ctr-bd-success);
         background-color: var(--ph-ctr-bg-success);
     }
     &-info{
-        border: 1px solid var(--ph-ctr-cd-info);
+        border: 1px solid var(--ph-ctr-bd-info);
         background-color: var(--ph-ctr-bg-info);
     }
     &-error{
-        border: 1px solid var(--ph-ctr-cd-error);
+        border: 1px solid var(--ph-ctr-bd-error);
         background-color: var(--ph-ctr-bg-error);
     }
     &-icon-wrap{
@@ -112,7 +112,7 @@ const onLink = ()=>{
     .ph-status-icon{
         --ph-i-size:16px;
         font-size: var(--ph-galert-ih);
-        margin-right: var(--ph-8);
+        margin-right: var(--ph-pd-sm);
     }
     .ph-custom-icon{
         &[type=success]{
@@ -137,14 +137,14 @@ const onLink = ()=>{
         position: absolute;
         background-color: transparent;
         opacity: .5;
-        right: var(--ph-8);
+        right: var(--ph-pd-sm);
         top: var(--ph-12);
         &[hover=true]:hover{
             opacity: 1;
         }
     }
     &.ph-alert-large{
-        padding: var(--ph-pd-small) var(--ph-pd);
+        padding: var(--ph-pd) var(--ph-pd-lg);
         .ph-status-icon{
             --ph-i-size:var(--ph-21);
             font-size: var(--ph-21);

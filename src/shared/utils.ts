@@ -36,3 +36,4 @@ export const between = (now:number,from:number,to:number)=>{
 	const max = Math.max(from,to)
 	return now>=min&&now<=max
 }
+export const preZNumber = (n:number)=>n<10&&n>=0?'0'+n:n+""

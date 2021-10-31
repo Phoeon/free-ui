@@ -30,7 +30,7 @@ defineProps({
     color: var(--ph-c);
     overflow: hidden;
     border-radius: 4px;
-    margin-bottom: var(--ph-pd-small);
+    margin-bottom: var(--ph-pd);
     font-size: var(--ph-fs);
     &-footer,
     &-header{
@@ -38,7 +38,7 @@ defineProps({
         align-items: center;
         justify-content: space-between;
         height: var(--ph-gcard-th);
-        padding: 0 var(--ph-pd-small);
+        padding: 0 var(--ph-pd);
     }
     &-header{
         color: var(--ph-c-d2);
@@ -46,8 +46,8 @@ defineProps({
         font-size: var(--ph-gcard-tfs);
         position: relative;
         &:after{
-            @include bmMx(var(--ph-bc-1));
-            left: var(--ph-pd-small);
+            @include blMx(var(--ph-bc-1));
+            left: var(--ph-pd);
             right: 0;
         }
     }
@@ -55,7 +55,7 @@ defineProps({
         font-weight: var(--ph-fw-m);
         font-size: var(--ph-gcard-tfs);
         .ph-card-icon{
-            margin-right: var(--ph-8);  
+            margin-right: var(--ph-pd-sm);  
         }
     }
     &-subtitle{
@@ -69,12 +69,12 @@ defineProps({
     &-body{
         flex: 1;
         overflow: auto;
-        padding: var(--ph-8) var(--ph-pd-small) 0;
+        padding: var(--ph-pd-sm) var(--ph-pd) 0;
         font-size: var(--ph-gcard-fs);
         line-height: var(--ph-gcard-lh);
         -webkit-overflow-scrolling: touch;
         &.ph-card-pdb{
-            padding-bottom: var(--ph-pd-small);
+            padding-bottom: var(--ph-pd);
         }
     }
 }

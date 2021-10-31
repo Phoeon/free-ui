@@ -7,7 +7,7 @@
         }
     }    
 }
-@mixin bmMx($bc) {
+@mixin blMx($bc) {
     content: "";
     position: absolute;
     bottom: 0;
@@ -15,4 +15,18 @@
     width: 100%;
     height: 1px;
     background-color: $bc;
+}
+@mixin tlMx($bc) {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $bc;
+}
+@mixin disabledMx {
+    background-color: var(--ph-bg-disabled)!important;
+    color: var(--ph-c-disabled)!important;
+    cursor: not-allowed!important;
 }

@@ -47,7 +47,7 @@ const onToggle = ()=>{
         height: var(--ph-gacd-h);
         display: flex;
         align-items: center;
-        padding: 0 var(--ph-pd-small);
+        padding: 0 var(--ph-pd);
         color: var(--ph-d1);
         font-weight: var(--ph-fw-m);
         background-color: var(--ph-acd-header-bg);
@@ -76,7 +76,7 @@ const onToggle = ()=>{
         transition: height .3s ease;
     }
     .ph-acd-content{
-        padding: var(--ph-pd-small);
+        padding: var(--ph-pd);
     }
     &:nth-of-type(1){
         border-radius: var(--ph-li-brt);

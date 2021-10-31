@@ -48,7 +48,7 @@ watch(()=>current.value,(v,o)=>{
     position: absolute;
     top: 0;
     left: 0;
-    padding: var(--ph-pd-small);
+    padding: var(--ph-pd);
     transition: transform .3s ease;
     transform: translate3d(0,0,0);
     overflow: auto;

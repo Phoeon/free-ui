@@ -45,7 +45,7 @@ onMounted(()=>{
 <style lang="scss">
 .ph-view{
     flex: 1;
-    padding: var(--ph-pd);
+    padding: var(--ph-pd-lg);
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 }

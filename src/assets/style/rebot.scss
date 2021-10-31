@@ -18,16 +18,11 @@
     --ph-rvw:0.13333333333333333vw;
     --phr:0.5;
     --ph-fs:var(--phx);
-    --ph-lh:1.4;
+    --ph-lh:1.5;
     --ph-ff: -apple-system,blinkmacsystemfont,"Helvetica Neue",helvetica,segoe ui,arial,roboto,"PingFang SC","miui","Hiragino Sans GB","Microsoft Yahei",sans-serif;
-    
-    --ph-mg:16px;
-    --ph-pd-small:16px;
     
     --ph-fw: 400;
     --ph-fw-m: 500;
-
-    --ph-c-disabled: var(--ph-c-l1);
 
     --ph-bg-theme:var(--ph-primary);
     --ph-c-theme:var(--ph-c-top);
@@ -73,12 +68,14 @@ input,textarea{
     &:focus{
         border-bottom-color: var(--ph-primary);
     }
-    &:disabled{
-        background-color: var(--ph-bg-disabled);
-    }
     &::-webkit-input-placeholder{
         color: var(--ph-c-l2);
     }
+}
+*:disabled{
+    // background-color: var(--ph-bg-disabled);
+    // color: var(--ph-c-disabled);
+    cursor: not-allowed!important;
 }
 .ph-height-anim{
 	transition: height .3s ease;
@@ -91,12 +88,12 @@ input,textarea{
     color: var(--ph-c-d1);
 }
 .ph-block{
-    padding: var(--ph-pd);
+    padding: var(--ph-pd-lg);
     background-color: var(--ph-block-bg);
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: var(--ph-pd-small);
+    gap: var(--ph-pd);
 }
 .ph-link,
 .ph-text{

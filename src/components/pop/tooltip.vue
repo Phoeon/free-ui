@@ -63,7 +63,7 @@ defineExpose({
     max-width: 266px;
     font-size:14px;
     line-height: 22px;
-    padding: var(--ph-8) var(--ph-pd-small);
+    padding: var(--ph-pd-sm) var(--ph-pd);
     box-shadow: var(--ph-shadow-dark);
     &[sample=true]{
         position: relative;

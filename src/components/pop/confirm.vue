@@ -75,7 +75,7 @@ onMounted(()=>{
 <style lang="scss">
 
 .ph-pop-confirm{
-    padding: var(--ph-pd-small);
+    padding: var(--ph-pd);
     min-width: 180px;
     &[sample=true]{
         position: relative;
@@ -87,16 +87,16 @@ onMounted(()=>{
         font-size: 14px;
         color: var(--ph-pop-c-d1);
         .ph-ppc-icon{
-            margin-right: var(--ph-8);
+            margin-right: var(--ph-pd-sm);
             --ph-icon-bc:transparent;
         }
     }
     .ph-pop-confirm-action{
-        margin-top: var(--ph-pd-small);
+        margin-top: var(--ph-pd);
         display: flex;
         justify-content: right;
         .ph-btn{
-            margin-left: var(--ph-8);
+            margin-left: var(--ph-pd-sm);
         }
     }
 }

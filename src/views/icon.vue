@@ -8,6 +8,9 @@
             <tick/>
             <times/>
             <exclam/>
+            <Time/>
+            <date/>
+            <datetime/>
 
             <minus :disabled="true"/>
             <plus :disabled="true"/>
@@ -57,10 +60,9 @@
         <div class="ph-block">
             <circle-dot/>
             <circle-tick/>
-            <circle-exclam outline="true"/>
+            <circle-exclam :outline="true"/>
             <circle-exclam/>
             <circle-times/>
-            <circle-time/>
 
             <Circle/>
             <circle-radio/>
@@ -131,7 +133,6 @@ const {
     CircleTick,
     CircleExclam,
     CircleTimes,
-    CircleTime,
 
     CircleWarning,
     CircleInfo,
@@ -151,6 +152,9 @@ const {
     Plus,
     Tick,
     Times,
+    Time,
+    Date,
+    Datetime,
     Exclam,
     Caret,
     Arrow,

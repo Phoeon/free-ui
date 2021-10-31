@@ -18,6 +18,7 @@
     --ph-c-reverse:#FFFFFF;
     
     --ph-primary: #177DDC;
+    --ph-primary-l1:#111D2C;
     --ph-primary-alpha:#177DDC33;
     --ph-info:#177DDC;
     --ph-success:#49AA19;
@@ -56,41 +57,47 @@
     --ph-table-header-bg:rgb(255 255 255 / 4%);
     --ph-bc: var(--ph-c-l4);
     --ph-bc-1:rgb(255 255 255 /5%);
-    --ph-bg-disabled:#5A5A5A;
+    --ph-bg-disabled:#262626;
+    --ph-c-disabled:rgb( 255 255 255 /25%);
     --ph-input-bg:#050505;
+    --ph-fm-switch-bg:rgb(255 255 255 /30%);
+    --ph-fm-switch-bc:rgb(255 255 255 /30%);
+    --ph-fm-switch-irbg:#fff;
+
+    --ph-dt-btn-bg:rgb(255 255 255 /5%);
 
     --ph-ctr-bg-normal:#FFF;
 
     --ph-ctr-bg-basic:rgb(20 20 20 /8%);
-    --ph-ctr-cd-basic:rgb(255 255 255 /20%);
+    --ph-ctr-bd-basic:rgb(255 255 255 /20%);
 
     --ph-ctr-bg-ghost:transparent;
-    --ph-ctr-cd-ghost:rgb(255 255 255 /20%);
+    --ph-ctr-bd-ghost:rgb(255 255 255 /20%);
 
     --ph-ctr-bg-disable:rgba(255 255 255 /8%);
-    --ph-ctr-cd-disable:rgb(255 255 255 /20%);;
+    --ph-ctr-bd-disable:rgb(255 255 255 /20%);;
 
     --ph-ctr-bg-dash:transparent;
-    --ph-ctr-cd-dash:rgb(255 255 255 /20%);
+    --ph-ctr-bd-dash:rgb(255 255 255 /20%);
 
     --ph-ctr-bg-danger:transparent;
-    --ph-ctr-cd-danger:var(--ph-danger);
+    --ph-ctr-bd-danger:var(--ph-danger);
 
     --ph-ctr-bg-check:transparent;
-    --ph-ctr-cd-check:var(--ph-primary);
+    --ph-ctr-bd-check:var(--ph-primary);
 
     --ph-ctr-bg-badge:var(--ph-danger);
-    --ph-ctr-cd-badge:#141414;
+    --ph-ctr-bd-badge:#141414;
 
     --ph-ctr-bg-error:#2A1215;
-    --ph-ctr-cd-error:#58181C;
+    --ph-ctr-bd-error:#58181C;
 
     --ph-ctr-bg-info:#111D2C;
-    --ph-ctr-cd-info:#15395B;
+    --ph-ctr-bd-info:#15395B;
 
     --ph-ctr-bg-success:#162312;
-    --ph-ctr-cd-success:#274916;
+    --ph-ctr-bd-success:#274916;
 
     --ph-ctr-bg-warning:#2B2111;
-    --ph-ctr-cd-warning:#594214;
+    --ph-ctr-bd-warning:#594214;
 }

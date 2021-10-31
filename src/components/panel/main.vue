@@ -15,7 +15,7 @@ defineProps({
 <style lang="scss">
 .ph-panel{
     background-color: var(--ph-panel-bg);
-    padding: 0 var(--ph-pd);
+    padding: 0 var(--ph-pd-lg);
     color: var(--ph-c);
     overflow: hidden;
     border-radius: 4px;
@@ -36,7 +36,7 @@ defineProps({
     &-body{
         flex: 1;
         overflow: auto;
-        padding: var(--ph-pd-small) 0;
+        padding: var(--ph-pd) 0;
         -webkit-overflow-scrolling: touch;
     }
 }

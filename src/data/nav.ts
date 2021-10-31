@@ -1,5 +1,11 @@
 export default [
     {
+        name:"临时",
+        id:"/tmp",
+        action:"/tmp",
+        icon:"clock"
+    },
+    {
         name:"按钮",
         id:"/button",
         action:"/button",
@@ -47,6 +53,10 @@ export default [
         id:"/form",
         icon:"firefox",
         children:[{
+            name:"表单汇总",
+            id:"/form",
+            action:"/form"
+        },{
             name:"输入框",
             id:"/input",
             action:"/input"
@@ -60,8 +70,8 @@ export default [
             action:"/pager"
         },{
             name:"下拉",
-            id:"/pager",
-            action:"/pager"
+            id:"/select",
+            action:"/select"
         },{
             name:"单选",
             id:"/pager",

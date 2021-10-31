@@ -20,10 +20,10 @@
 import { reactive, defineProps, computed, PropType } from "vue";
 const props = defineProps({
     type:String as PropType<'primary'|'info'|'success'|'warning'|'danger'>,
+    hover:{type:Boolean,default:true},
     active:Boolean,
     disabled:Boolean,
     outline:Boolean,
-    hover:Boolean,
     fill:String,
     stroke:String,
     borderColor:String,

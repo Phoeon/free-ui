@@ -1,10 +1,13 @@
 <template>
     <grid-item :class="{'ph-field':true,'ph-field-required':isRequired}">
-        <label class="ph-field-label">{{label}}</label>
+        <label class="ph-field-label" :inline="labelInline">{{label}}</label>
         <slot 
         :onInput="onInput"
         :value="modelValue"
         :placeholder="placeholder"
+        :valid="state.valid"
+        :type="type"
+        :size="size"
         :disabled="disabled"></slot>
         <field-tip v-if="!state.valid">{{state.tip}}</field-tip>
     </grid-item>
@@ -21,10 +24,13 @@ const $validator = inject<IValidator|null>('validator')
 const fid = rand()
 const props = defineProps({
     modelValue:[String,Number,Boolean,Array],
+    type:String,
+    size:String as PropType<'small'|'large'|'normal'>,
     label:String,
+    labelInline:Boolean,
     disabled:Boolean,
     placeholder:String,
-    validators:Array as PropType<Array<IValidOption>>
+    validators:Array as PropType<Array<IValidOption>>,
 })
 const state = reactive({
     tip:'',
@@ -107,7 +113,6 @@ onBeforeUnmount(()=>{
 }
 @media screen and (max-width:768px){
     .ph-field{
-        flex-direction: column;
         .ph-field-label{
             width: 100%;
             justify-content: flex-start;
@@ -116,6 +121,10 @@ onBeforeUnmount(()=>{
             &:before,
             &:after{
                 display: none;
+            }
+            &[inline=true]{
+                width: auto;
+                margin-bottom: 0;
             }
         }
     }

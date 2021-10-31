@@ -39,7 +39,7 @@ const flex = !!(slots.topbar||slots.bottombar)
         align-items: center;
         justify-content: flex-end;
         z-index: 1;
-        padding: 0 var(--ph-pd);
+        padding: 0 var(--ph-pd-lg);
         height: var(--ph-gtopbar-h);
         font-size: var(--ph-gtopbar-fs);
         background-color: var(--ph-topbar-bg);

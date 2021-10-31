@@ -78,7 +78,7 @@ const props = defineProps({
     .ph-toast{
         --ph-toast-min-w:var(--ph-gtoast-h);
         --ph-toast-max-w:var(--ph-gmodal-w);
-        --ph-toast-pd:var(--ph-8) var(--ph-pd-small);
+        --ph-toast-pd:var(--ph-pd-sm) var(--ph-pd);
     }
     .ph-toast-text{
         font-size: var(--ph-gtoast-fs);

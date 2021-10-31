@@ -45,7 +45,7 @@ const state = reactive({
     align-items: center;
     margin-top: -1px;
     min-height: var(--ph-glist-h);
-    padding: 0 var(--ph-pd-small);
+    padding: 0 var(--ph-pd);
     background-color: var(--ph-block-bg);
     border: 1px solid var(--ph-c-l3);
     border-left-width: var(--ph-li-blr);
@@ -58,7 +58,7 @@ const state = reactive({
         --ph-li-cursor:pointer;
     }
     .ph-li-ileft{
-        margin-right: var(--ph-pd-small);
+        margin-right: var(--ph-pd);
         cursor: var(--ph-li-cursor);
     }
     .ph-li-content{

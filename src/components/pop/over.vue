@@ -68,7 +68,7 @@ defineExpose({
         z-index: auto;
     }
     .ph-popover-title{
-        padding: 0 var(--ph-8);
+        padding: 0 var(--ph-pd-sm);
         display: flex;
         align-items: center;
         font-weight: var(--ph-fw-m);
@@ -77,7 +77,7 @@ defineExpose({
         color: var(--ph-pop-c-d1);
     }
     .ph-popover-content{
-        padding: var(--ph-8);
+        padding: var(--ph-pd-sm);
         display: flex;
     }
 }

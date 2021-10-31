@@ -93,7 +93,7 @@ defineExpose({
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        padding: 0 var(--ph-8);
+        padding: 0 var(--ph-pd-sm);
         .ph-button[shape=square]{
             width: 32px;
             height: 32px;

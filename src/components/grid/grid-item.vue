@@ -8,23 +8,29 @@ const props = defineProps ({
     colSpan:Number,
     rowSpan:Number,
     colOffset:Number,
-    rowOffset:Number
+    rowOffset:Number,
+    block:Boolean
 })
 
 const style = computed(()=>{
     const style = {} as Record<string,unknown>
+
     if(props.place!==undefined)
         style['--ph-grid-item-place'] = props.place
-    if(props.colSpan!==undefined)
-        style['--ph-grid-col-span'] = props.colSpan
     if(props.rowSpan!==undefined)
         style['--ph-grid-row-span'] = props.rowSpan
-    if(props.colOffset!==undefined)
-        style['--ph-grid-col-offset'] = props.colOffset
     if(props.rowOffset!==undefined)
         style['--ph-grid-row-offset'] = props.rowOffset
     
-     return style
+    if(props.block){
+        style['--ph-grid-col-offset'] = 1
+        style['--ph-grid-col-span'] = 'var(--ph-grid-cols)'
+    }
+    if(props.colSpan!==undefined&&!props.block)
+        style['--ph-grid-col-span'] = props.colSpan
+    if(props.colOffset!==undefined&&!props.block)
+        style['--ph-grid-col-offset'] = props.colOffset
+    return style
 })
 </script>
 

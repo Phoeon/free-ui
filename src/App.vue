@@ -70,18 +70,18 @@ onBeforeMount(()=>{
     .ph-card-body{
         display: flex;
         flex-wrap:wrap;
-        gap: var(--ph-pd-small)
+        gap: var(--ph-pd)
     }
 }
 .flex-box-col{
     display: flex;
     flex-wrap: wrap;
-    gap: var(--ph-pd-small);
+    gap: var(--ph-pd);
 }
 .flex-box{
     display:flex;
     flex-wrap:wrap;
     justify-content: space-between;
-    gap: var(--ph-pd-small);
+    gap: var(--ph-pd);
 }
 </style>

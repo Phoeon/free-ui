@@ -1,5 +1,6 @@
 <template>
     <i class="ph-icon ph-builtin-icon" 
+    :type="type"
     :style="style"
     :disabled="disabled" 
     :hover="hover&&state.hover&&!disabled"><slot :outline="outline"></slot></i>
@@ -44,29 +45,19 @@ const style = computed(()=>{
         opacity: .4!important;
     }
     &[type=primary]{
-        --ph-icon-bg:var(--ph-primary);
-        --ph-icon-bc:var(--ph-primary);
-        --ph-icon-c:var(--ph-c-top);;
+        --ph-i-color:var(--ph-primary);
     }
     &[type=info]{
-        --ph-icon-bg:var(--ph-info);
-        --ph-icon-bc:var(--ph-info);
-        --ph-icon-c:var(--ph-c-top);;
+        --ph-i-color:var(--ph-info);
     }
     &[type=success]{
-        --ph-icon-bg:var(--ph-success);
-        --ph-icon-bc:var(--ph-success);
-        --ph-icon-c:var(--ph-c-top);;
+        --ph-i-color:var(--ph-success);
     }
     &[type=danger]{
-        --ph-icon-bg:var(--ph-danger);
-        --ph-icon-bc:var(--ph-danger);
-        --ph-icon-c:var(--ph-c-top);;
+        --ph-i-color:var(--ph-danger);
     }
     &[type=warning]{
-        --ph-icon-bg:var(--ph-warning);
-        --ph-icon-bc:var(--ph-warning);
-        --ph-icon-c:var(--ph-c-top);;
+        --ph-i-color:var(--ph-warning);
     }
     svg{
         vertical-align: top;

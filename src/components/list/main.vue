@@ -14,7 +14,7 @@ const props = defineProps({
     --ph-li-brt:2px 2px 0 0;
     --ph-li-brl:0 0 2px 2px;
     --ph-li-blr:1px;
-    margin: var(--ph-pd-small);
+    margin: var(--ph-pd);
     margin-top: 0;
     &-block{
         margin-left: 0;

@@ -54,7 +54,10 @@
     --ph-6: 6px;
     --ph-5: 5px;
     --ph-2: 2px;
-    --ph-pd:24px;
+
+    --ph-pd-sm:8px;
+    --ph-pd:16px;
+    --ph-pd-lg:24px;
 
     --ph-gicon: 28px;
     --ph-gicon-sm: 16px;
@@ -87,16 +90,16 @@
     --ph-gas-gitem-fs:10px;
 
     --ph-gmodal-w: 380px;
-    --ph-gmodal-pd: var(--ph-pd);
+    --ph-gmodal-pd: var(--ph-pd-lg);
     --ph-gmodal-tfs: 16px;
     --ph-gmodal-tlh: 24px;
     --ph-gmodal-tmb: 12px;
     --ph-gmodal-bdfs: 14px;
     --ph-gmodal-bdlh: 22px;
     --ph-gmodal-ah: 32px;
-    --ph-gmodal-amt: var(--ph-pd);
+    --ph-gmodal-amt: var(--ph-pd-lg);
     --ph-gmodal-afs: 16px;
-    --ph-gmodal-apd: var(--ph-pd);
+    --ph-gmodal-apd: var(--ph-pd-lg);
 
     --ph-gtoast-h:95px;
     --ph-gtoast-ih:36px;
@@ -113,7 +116,7 @@
     --ph-gtabs-h:32px;
     --ph-gtabs-fs:var(--ph-fs);
     --ph-gtabs-iflex:0 0 auto;
-    --ph-gtabs-pd:0 var(--ph-pd-small);
+    --ph-gtabs-pd:0 var(--ph-pd);
 
     --ph-gmsg-w:266px;
     --ph-gmsg-h:40px;
@@ -150,6 +153,7 @@
     --ph-ginput-fs:14px;
     --ph-ginput-fs-lg:16px;
     --ph-ginput-desc:12px;
+
 }
 :root[f-pf=mb]{
     --ph-rvw:0.13333333333333333vw;
@@ -186,8 +190,9 @@
     --ph-6: calc(var(--ph-rvw) * 12);
     --ph-2: calc(var(--ph-rvw) * 4);
 
-    --ph-pd:var(--ph-24);
-    --ph-pd-small:var(--ph-15);
+    --ph-pd-sm:var(--ph-8);
+    --ph-pd:var(--ph-15);
+    --ph-pd-lg:var(--ph-24);
 
     --ph-gbtn-h-lg: var(--ph-50);
     --ph-gbtn-h: var(--ph-39);//calc(var(--phr) * 80);

@@ -2,6 +2,9 @@ import Minus from './minus.vue'
 import Plus from './plus.vue'
 import Tick from './tick.vue'
 import Times from './times.vue'
+import Time from './time.vue'
+import Date from './date.vue'
+import Datetime from './datetime.vue'
 import Exclam from './exclam.vue'
 import Triangle from './triangle.vue'
 import Caret from './caret.vue'
@@ -20,6 +23,9 @@ export {
     Plus,
     Tick,
     Times,
+    Time,
+    Date,
+    Datetime,
     Exclam,
     Triangle,
     Caret,

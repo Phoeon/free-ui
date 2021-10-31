@@ -6,7 +6,7 @@
     @click.stop :class="cns" 
     ref="edom" :sample="sample" :style="style">
         <ul class="ph-ppdd-list">
-            <li class="ph-ppdd-li" v-for="(item,idx) in dataSource" :key="idx" @click="onClick(item)" :hover="state.hover">
+            <li class="ph-ppdd-li" :disabled="item.disabled" v-for="(item,idx) in dataSource" :key="idx" @click="item.disabled&&onClick(item)" :hover="state.hover">
                 <custom-icon class="ph-ppdd-icon" :name="item.icon" v-if="item.icon"/>
                 <span class="ph-ppdd-text">{{item.text}}</span>
             </li>
@@ -21,7 +21,6 @@ import { CustomIcon } from '../icon'
 import { IDropdownPosition, IDropdownItem } from './types'
 import { getAnimation, sumArray } from '../../shared/utils'
 import { xmatrix,ymatrix } from './shared'
-import FButton from '../button/main.vue'
 
 const edom = ref<HTMLElement>()
 const props = defineProps({
@@ -101,7 +100,7 @@ onMounted(()=>{
         z-index: auto;
     }
     .ph-ppdd-list{
-        max-height: 200px;
+        max-height: var(--ph-pop-listh);
         overflow: auto;
         .ph-ppdd-li{
             height: var(--ph-gdd-h);
@@ -109,7 +108,7 @@ onMounted(()=>{
             display: flex;
             align-items: center;
             color: var(--ph-pop-c);
-            padding: 0 var(--ph-pd-small);
+            padding: 0 var(--ph-pd);
             position: relative;
             cursor: pointer;
             &:after{
@@ -127,7 +126,7 @@ onMounted(()=>{
                 }
             }
             .ph-ppdd-icon{
-                margin-right: var(--ph-8);
+                margin-right: var(--ph-pd-sm);
             }
             .ph-ppdd-text{
                 flex: 1;
