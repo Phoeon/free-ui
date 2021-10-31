@@ -15,11 +15,12 @@
                 </template>
             </dt-header>
         </template>
-        <dt-body>
+        <dt-body style="padding: var(--ph-pd-sm);">
             <div class="ph-dt-swiper" ref="eswiper" v-touchmove="onTouchmove" :style="{transform:'translate3d('+state.tx+'px,0,0)'}">
                 <DtSimplepicker 
                     :modelValue="start"
                     :ctype="ctype"
+                    :utype="utype"
                     :lang="lang"
                     :min="min"
                     :max="smax"
@@ -28,6 +29,7 @@
                 <DtSimplepicker 
                     :modelValue="end"
                     :ctype="ctype"
+                    :utype="utype"
                     :lang="lang"
                     :min="emin"
                     :max="max"

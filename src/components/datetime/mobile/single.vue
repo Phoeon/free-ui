@@ -9,10 +9,11 @@
                 <span v-else>{{lang.timeSetting}}</span>
             </dt-header>
         </template>
-        <dt-body>
+        <dt-body style="padding: var(--ph-pd-sm);">
             <DtSimplepicker 
                 :modelValue="modelValue"
                 :ctype="ctype"
+                :utype="utype"
                 :lang="lang"
                 :min="min"
                 :max="max"

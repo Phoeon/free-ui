@@ -11,13 +11,13 @@
             v-if="ctype==DtType.date"
             :title="lang.date" :value="modelValue[2]" :list="days" tz="145px" @update="update([...modelValue.slice(0,2),$event,...modelValue.slice(3)])"/>
         <iscroll 
-            v-if="ctype==DtType.time"
+            v-if="utype==DtType.datetime||utype==DtType.time"
             :title="lang.hour" :value="modelValue[3]" :list="hours" tz="120px" @update="update([...modelValue.slice(0,3),$event,...modelValue.slice(4)])"/>
         <iscroll 
-            v-if="ctype==DtType.time"
+            v-if="utype==DtType.datetime||utype==DtType.time"
             :title="lang.min" :value="modelValue[4]" :list="minutes" tz="270px" @update="update([...modelValue.slice(0,4),$event,...modelValue.slice(5)])"/>
         <iscroll 
-            v-if="ctype==DtType.time"
+            v-if="utype==DtType.datetime||utype==DtType.time"
             :title="lang.sec" :value="modelValue[5]" :list="seconds" tz="270px" @update="update([...modelValue.slice(0,5),$event])"/>
     </div>
 </template>
