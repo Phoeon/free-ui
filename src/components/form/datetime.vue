@@ -80,6 +80,7 @@ const onClick = ()=>{
 </script>
 <style lang="scss">
 .ph-dt-cascade-ipwrap{
+    max-width: 100%;
     .ph-datetime-input:nth-of-type(1){
         border-radius: var(--ph-ip-br) 0 0 var(--ph-ip-br);
         border-right: none;
@@ -100,5 +101,6 @@ const onClick = ()=>{
     padding: 0 12px;
     cursor: var(--ph-ip-cursor);
     background-color: var(--ph-ip-bg);
+    min-width: 0;
 }
 </style>

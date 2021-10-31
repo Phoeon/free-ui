@@ -8,11 +8,11 @@
                         <arrow class="ph-dt-iaction" direction="left" @click="emits('shiftMonth',-1)"/>
                     </div>
                     <div class="ph-dt-header-center">
-                        <span class="ph-dt-iaction" :hover="scope.hover" title="设置年份" @click="emits('navigate',DtType.year)">{{state.yyyy}}年</span>
+                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang.yearSetting" @click="emits('navigate',DtType.year)">{{state.yyyy}}{{lang.year}}</span>
                         &ensp;
-                        <span class="ph-dt-iaction" :hover="scope.hover" title="设置月份" @click="emits('navigate',DtType.month)">{{state.MM+1}}月</span>
+                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang.monSetting" @click="emits('navigate',DtType.month)">{{state.MM+1}}{{lang.mon}}</span>
                         <template v-if="utype===DtType.datetime">
-                            &ensp;<Time class="ph-dt-iaction" title="设置时间" @click="emits('navigate',DtType.time)"/>
+                            &ensp;<Time class="ph-dt-iaction" title="lang.timeSetting" @click="emits('navigate',DtType.time)"/>
                         </template>
                     </div>
                     <div class="ph-dt-header-right">
@@ -24,7 +24,7 @@
         </template>
         <dt-body class="ph-dt-date-body">
             <div class="ph-dt-date-th">
-                <div v-for="item in cst.weekText" :key="item" class="ph-dt-date-thcell">{{item}}</div>
+                <div v-for="item in lang.week" :key="item" class="ph-dt-date-thcell">{{item}}</div>
             </div>
             <dt-grid class="ph-dt-dategrid" :dataSource="items" @item-click="onItemClick"></dt-grid>
         </dt-body>
@@ -32,9 +32,9 @@
             <dt-footer justify="space-between">
                 <div class="ph-dt-footer-left">{{dtstring}}</div>
                 <div class="ph-dt-footer-right">
-                    <dt-btn @click="emits('clear')" v-if="clear">清除</dt-btn>
-                    <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">现在</dt-now>
-                    <dt-btn @click="emits('done')" v-if="utype!==DtType.date">完成</dt-btn>
+                    <dt-btn @click="emits('clear')" v-if="clear">{{lang.clear}}</dt-btn>
+                    <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang.now}}</dt-now>
+                    <dt-btn @click="emits('done')" v-if="utype!==DtType.date">{{lang.done}}</dt-btn>
                 </div>
             </dt-footer>
         </template>
@@ -55,9 +55,6 @@ import { SharedSingleProps, DtType } from '../shared'
 import { IDateObject, IGridItem } from '../types'
 
 const emits = defineEmits(['update:modelValue','navigate','done','clear','now','shiftYear','shiftMonth'])
-const cst = {
-    weekText:['日','一','二','三','四','五','六']
-}
 const props = defineProps({
     ...SharedSingleProps,
     format:{type:String,default:"yyyy-MM-dd"},
@@ -73,9 +70,20 @@ const items = computed(()=>{
     const ymds = printDate(state.yyyy,state.MM)
     ymds.forEach(ymd=>{
         ymd.forEach(item=>{
+            const imps = props.importants||[]
+            const res = imps.filter(imp=>{
+                const md = imp.md.split("-"),
+                    m = md[0]=="*"?item[1]:+md[0],
+                    d = md[1]=="*"?item[2]:+md[1];
+                return m === item[1]&&d === item[2]
+            })[0]
+            const cna:Array<string> = []
+            if(item[1]==state.MM)cna.push('ph-dt-date-cell-cm')
+            if(res)cna.push('ph-dt-date-cell-imp')
             items.push({
-                text:item[2],
-                cn:item[1]==state.MM?'ph-dt-date-cell-cm':'',
+                text:res?res.text.slice(0,2):item[2],
+                title:res?res.desc:"",
+                cn:cna.join(" "),
                 active:compare((props.modelValue as number[]).slice(0,3),item)===0,
                 disabled:isDisabled(item,3),
                 meta:item

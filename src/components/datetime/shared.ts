@@ -1,11 +1,13 @@
 import { PropType } from 'vue'
-import { IDtType, IDateObject } from './types'
+import { IDtType, IDateObject, IDtImportant } from './types'
 import { compare, dt2obj } from '../../shared/datetime'
 export const SharedProps = {
     min:{type:Array as PropType<Array<number>>,default:()=>[-1,0,0,0,0,0]},
     max:{type:Array as PropType<Array<number>>,default:()=>[Number.MAX_SAFE_INTEGER,0,0,0,0,0]},
     clear:{type:Boolean,default:true},
-    now:{type:Boolean,default:true}
+    now:{type:Boolean,default:true},
+    importants:Array as PropType<Array<IDtImportant>>,
+    lang:Object as PropType<Record<string,unknown>>
 }
 export const SharedSingleProps = {
     ...SharedProps,

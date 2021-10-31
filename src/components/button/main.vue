@@ -100,6 +100,7 @@ const onTap = (e:Event)=>{
     flex: 0 0 auto;
     height: fit-content;
     white-space: nowrap;
+    font-family: inherit;
     font-weight: 500;
     transition: opacity .15s ease,color .15s ease,background-color .15s ease,border .15s ease;
     &:before{

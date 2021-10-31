@@ -3,7 +3,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, defineProps } from 'vue'
-
+import Env from '../../shared/env'
 const props = defineProps({
     name:{type:String,required:true},
     cname:String,
@@ -13,7 +13,7 @@ const props = defineProps({
 })
 const cns = computed(()=>{
     const cns = ['ph-icon','ph-custom-icon']
-    const icon:{cname:string,prefix?:string} = (window as any)?.$ph?.icon
+    const icon:{cname:string,prefix?:string} = Env.get('icon');
     const cname = props.cname||icon?.cname
     const prefix = props.prefix||icon?.prefix
     if(props.name){

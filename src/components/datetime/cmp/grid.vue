@@ -6,6 +6,7 @@
             :disabled="item.disabled"
             :active="item.active"
             :class="item.cn"
+            :title="item.title"
             :key="idx"
             >{{item.text}}</dt-btn>
     </div>

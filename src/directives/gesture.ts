@@ -1,4 +1,9 @@
 import PhGesture,{ GestureType } from 'ph-gesture'
+export const touchmove = {
+    beforeMount(el:HTMLElement,binding:any){
+        new PhGesture(el,GestureType.touchmove,binding.value,{select:true,capture:false})
+    }
+}
 export const swipe = {
     beforeMount(el:HTMLElement,binding:any){
         new PhGesture(el,GestureType.swipe,binding.value)

@@ -8,17 +8,18 @@
                         <arrow class="ph-dt-iaction" direction="left" @click="emits('shiftMonth',-1)"/>
                     </div>
                     <div class="ph-dt-header-center">
-                        <span class="ph-dt-iaction" :hover="scope.hover" title="设置年份" @click="emits('navigate',DtType.year)">{{startState.yyyy}}年</span>
-                        <span class="ph-dt-iaction" :hover="scope.hover" title="设置月份" @click="emits('navigate',DtType.month)">{{startState.MM+1}}月</span>
+                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang.yearSetting" @click="emits('navigate',DtType.year)">{{startState.yyyy}}{{lang.year}}&ensp;</span>
+                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang.monSetting" @click="emits('navigate',DtType.month)">{{startState.MM+1}}{{lang.mon}}</span>
                         &ensp;
                         <template v-if="utype===DtType.datetime">
                             &ensp;
-                            <Time class="ph-dt-iaction" title="设置时间" @click="emits('navigate',DtType.time)"/>
+                            <Time class="ph-dt-iaction" :title="lang.timeSetting" @click="emits('navigate',DtType.time)"/>
                             &ensp;
                         </template>
+                        <template v-else>~</template>
                         &ensp;
-                        <span class="ph-dt-iaction" :hover="scope.hover" title="设置年份" @click="emits('navigate',DtType.year)">{{endState.yyyy}}年</span>
-                        <span class="ph-dt-iaction" :hover="scope.hover" title="设置月份" @click="emits('navigate',DtType.month)">{{endState.MM+1}}月</span>
+                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang.yearSetting" @click="emits('navigate',DtType.year)">{{endState.yyyy}}{{lang.year}}&ensp;</span>
+                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang.monSetting" @click="emits('navigate',DtType.month)">{{endState.MM+1}}{{lang.mon}}</span>
                     </div>
                     <div class="ph-dt-header-right">
                         <arrow class="ph-dt-iaction" direction="right" @click="emits('shiftMonth',1)"/>
@@ -43,11 +44,11 @@
         </dt-body>
         <template #footer>
             <dt-footer justify="space-between">
-                <div class="ph-dt-footer-left">{{startString}}/{{endString}}</div>
+                <div class="ph-dt-footer-left"><dt-preview :startString="startString" :endString="endString"/></div>
                 <div class="ph-dt-footer-right">
-                    <dt-btn @click="emits('clear')" v-if="clear">清除</dt-btn>
-                    <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">现在</dt-now>
-                    <dt-btn @click="emits('done')">完成</dt-btn>
+                    <dt-btn @click="emits('clear')" v-if="clear">{{lang.clear}}</dt-btn>
+                    <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang.now}}</dt-now>
+                    <dt-btn @click="emits('done')">{{lang.done}}</dt-btn>
                 </div>
             </dt-footer>
         </template>
@@ -60,6 +61,7 @@ import DtFooter from '../layout/layout-footer.vue'
 import DtBody from '../layout/layout-body.vue'
 import DtBtn from './btn.vue'
 import DtNow from './now.vue'
+import DtPreview from './date-preview.vue'
 import DtGrid from './grid.vue'
 import {Time,Arrow} from '../../icon'
 import { defineProps, defineEmits, computed } from 'vue'
@@ -90,9 +92,20 @@ const itemsStart = computed(()=>{
     const ymds = printDate(startState.yyyy,startState.MM)
     ymds.forEach(ymd=>{
         ymd.forEach(item=>{
+            const imps = props.importants||[]
+            const res = imps.filter(imp=>{
+                const md = imp.md.split("-"),
+                    m = md[0]=="*"?item[1]:+md[0],
+                    d = md[1]=="*"?item[2]:+md[1];
+                return m === item[1]&&d === item[2]
+            })[0]
+            const cna:Array<string> = []
+            if(item[1]==startState.MM)cna.push('ph-dt-date-cell-cm')
+            if(res)cna.push('ph-dt-date-cell-imp')
             items.push({
-                text:item[2],
-                cn:item[1]==startState.MM?'ph-dt-date-cell-cm':'',
+                text:res?res.text.slice(0,2):item[2],
+                title:res?res.desc:"",
+                cn:cna.join(" "),
                 active:compare((props.start as number[]).slice(0,3),item)===0,
                 disabled:isStartDisabled(item,3),
                 meta:item
@@ -106,9 +119,20 @@ const itemsEnd = computed(()=>{
     const ymds = printDate(endState.yyyy,endState.MM)
     ymds.forEach(ymd=>{
         ymd.forEach(item=>{
+            const imps = props.importants||[]
+            const res = imps.filter(imp=>{
+                const md = imp.md.split("-"),
+                    m = md[0]=="*"?item[1]:+md[0],
+                    d = md[1]=="*"?item[2]:+md[1];
+                return m === item[1]&&d === item[2]
+            })[0]
+            const cna:Array<string> = []
+            if(item[1]==endState.MM)cna.push('ph-dt-date-cell-cm')
+            if(res)cna.push('ph-dt-date-cell-imp')
             items.push({
-                text:item[2],
-                cn:item[1]==endState.MM?'ph-dt-date-cell-cm':'',
+                text:res?res.text.slice(0,2):item[2],
+                title:res?res.desc:"",
+                cn:cna.join(" "),
                 active:compare((props.end as number[]).slice(0,3),item)===0,
                 disabled:isEndDisabled(item,3),
                 meta:item

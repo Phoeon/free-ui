@@ -1,5 +1,6 @@
 import Evt from 'ph-evt'
 import NotificationMnger from './main.vue'
+import Env from '../../shared/env'
 import { IPhNotifyOpt, CloseStatus } from './types'
 import { createApp, nextTick } from 'vue'
 let mnger:InstanceType<typeof NotificationMnger>;
@@ -32,6 +33,7 @@ const notify =(content:string,opt?:IPhNotifyOpt)=>{
 }
 export default {
     install(app:any,option:any){
+        Env.set("notify",option)
         app.config.globalProperties.$phNotify = notify
     },
     notify(content:string,opt:IPhNotifyOpt={}){

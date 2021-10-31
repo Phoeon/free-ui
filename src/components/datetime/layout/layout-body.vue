@@ -22,5 +22,21 @@
             background-color: var(--ph-modal-bg);
         }
     }
+    .ph-dt-date-cell-imp{
+        position: relative;
+        color: var(--ph-c-d1);
+        &:after{
+            content: "";
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: var(--ph-danger);
+            left: 0;
+            right: 0;
+            bottom: 3px;
+            margin: auto;
+        }
+    }
 }
 </style>

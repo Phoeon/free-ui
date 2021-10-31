@@ -19,6 +19,7 @@ const state = reactive({
     border: none;
     appearance: none;
     font-size: inherit;
+    font-family: inherit;
     color: inherit;
     font-weight: bold;
     transition: color .15s ease,background-color .15s ease,border-color .15s ease;

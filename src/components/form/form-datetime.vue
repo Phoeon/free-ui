@@ -1,5 +1,5 @@
 <template>
-    <form-field>
+    <form-field class="ph-form-datetime">
         <template v-slot:default="scope">
             <field-datetime
                 :modelValue="scope.value"
@@ -35,3 +35,8 @@ defineProps({
     type:String as PropType<IDtType>
 })
 </script>
+<style lang="scss">
+.ph-form-datetime{
+    overflow: hidden;
+}
+</style>

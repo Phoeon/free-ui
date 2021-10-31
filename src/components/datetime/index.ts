@@ -1,10 +1,12 @@
-import { createApp } from 'vue'
+import { createApp, App } from 'vue'
 import { IDtOption } from './types'
 import { unmount } from '../../shared/utils'
+import Env from '../../shared/env'
 import FDtPicker from './main.vue'
 import Evt from 'ph-evt'
 const show = (opt:IDtOption)=>{
     const evt = new Evt()
+    const gopt = Env.get("datetime")||{lang:"cn"}
     const done = (v?:string|Array<string>)=>{
         evt.emit('done',v)
         unmount(app)
@@ -14,6 +16,7 @@ const show = (opt:IDtOption)=>{
         unmount(app)
     }
     const app = createApp(FDtPicker,{
+        ...gopt,
         ...opt,
         done,
         close
@@ -30,5 +33,9 @@ const show = (opt:IDtOption)=>{
     }
 }
 export default {
+    install(app:App,opt:any){
+        Env.set('datetime',opt)
+        app.config.globalProperties.$phDtPicker = show
+    },
     show
 }

@@ -11,7 +11,7 @@
                 <f-form-datetime-picker v-model="formData.alarm" label="闹钟时间" placeholder="请选择时间" type="time"/>
                 <f-form-datetime-picker v-model="formData.unitime" label="大学时间" placeholder="请选择日期" :block="true"/>
                 <f-form-switch v-model="formData.married" label="开关"></f-form-switch>
-                <f-form-switch v-model="formData.married" label="禁用开关" :disabled="true"></f-form-switch>
+                <f-form-switch v-model="formData.married" label="禁用开关" :disabled="true" type="icon"></f-form-switch>
                 <f-form-checkbox :block="true" v-model="formData.cuni" :options="dataSource.options" label="复选框" :validators="['required']"></f-form-checkbox>
                 <f-form-radiobox :block="true" v-model="formData.runi" :options="dataSource.options" label="单选框" :validators="['required']"></f-form-radiobox>
             </f-validator>

@@ -11,6 +11,7 @@
     :min="state.min" 
     :max="state.max" 
     :utype="type" 
+    :ctype="state.ctype"
     :format="state.format" 
     :dtstring="dtfmt"
     :innerState="innerState"
@@ -27,6 +28,7 @@ import DtDate from './cmp/date.vue'
 const DtTime = defineAsyncComponent(()=>import('./cmp/time.vue'))
 const DtMonth = defineAsyncComponent(()=>import('./cmp/month.vue'))
 const DtYear = defineAsyncComponent(()=>import('./cmp/year.vue'))
+const DtSimple = defineAsyncComponent(()=>import('./mobile/single.vue'))
 
 const emits = defineEmits(["done"])
 const props = defineProps({
@@ -34,6 +36,7 @@ const props = defineProps({
     min:String,
     max:String,
     format:String,
+    simple:Boolean,
     type: {type:String as PropType<IDtType>,default:'date'}
 })
 
@@ -81,6 +84,7 @@ const modelValue = computed({
     }
 })
 const dcmp = computed(()=>{
+    if(props.simple)return DtSimple
     switch(state.ctype){
         case DtType.date:
             return DtDate
@@ -115,6 +119,7 @@ const updateState = (v:Array<number>)=>{
 const onUpdate = (v:Array<number>,type:IDtType)=>{
     console.log(v,type)
     if(type===DtType.time)return
+    if(props.simple)return
     updateState(v)
     if(props.type===type){
         //close done

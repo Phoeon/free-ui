@@ -3,7 +3,7 @@
         <template #header>
             <dt-header class="ph-dt-year-header" justify="space-between">
                 <arrow class="ph-dt-iaction" :double="true" direction="left" @click="emits('shiftYear',-15)"/>
-                <span>{{startState.yyyy-7}}年&ensp;-&ensp;{{endState.yyyy+7}}年</span>
+                <span>{{startState.yyyy-7}}{{lang.year}}&ensp;~&ensp;{{endState.yyyy+7}}{{lang.year}}</span>
                 <arrow class="ph-dt-iaction" :double="true" direction="right" @click="emits('shiftYear',15)"/>
             </dt-header>
         </template>
@@ -13,13 +13,13 @@
         </dt-body>
         <template #footer>
             <dt-footer justify="space-between">
-                <div class="ph-dt-footer-left">{{startString}}/{{endString}}</div>
+                <div class="ph-dt-footer-left"><dt-preview :startString="startString" :endString="endString"/></div>
                 <div class="ph-dt-footer-right">
                     <template v-if="utype===DtType.year">
-                        <dt-btn @click="emits('clear')" v-if="clear">清除</dt-btn>
-                        <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">现在</dt-now>
+                        <dt-btn @click="emits('clear')" v-if="clear">{{lang.clear}}</dt-btn>
+                        <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang.now}}</dt-now>
                     </template>
-                    <dt-btn @click="emits('done')">完成</dt-btn>
+                    <dt-btn @click="emits('done')">{{lang.done}}</dt-btn>
                 </div>
             </dt-footer>
         </template>
@@ -34,6 +34,7 @@ import DtBtn from './btn.vue'
 import DtNow from './now.vue'
 import Arrow from '../../icon/arrow.vue'
 import DtGrid from './grid.vue'
+import DtPreview from './date-preview.vue'
 import { defineProps, defineEmits, computed } from 'vue'
 import { SharedCascadeProps, DtType } from '../shared'
 import { IDateObject, IGridItem } from '../types'

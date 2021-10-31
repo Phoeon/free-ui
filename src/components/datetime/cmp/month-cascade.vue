@@ -3,9 +3,10 @@
         <template #header>
             <dt-header class="ph-dt-yearmonth-header" justify="space-between">
                 <arrow class="ph-dt-iaction" direction="left" @click="emits('shiftYear',-1)"/>
-                <span>{{startState.yyyy}}年</span>
-                &ensp;-&ensp;
-                <span>{{endState.yyyy}}年</span>
+                <span>
+                {{startState.yyyy}}{{lang.year}}
+                &ensp;~&ensp;
+                {{endState.yyyy}}{{lang.year}}</span>
                 <arrow class="ph-dt-iaction" direction="right" @click="emits('shiftYear',1)"/>
             </dt-header>
         </template>
@@ -15,13 +16,13 @@
         </dt-body>
         <template #footer>
             <dt-footer justify="space-between">
-                <div class="ph-dt-footer-left">{{startString}}/{{endString}}</div>
+                <div class="ph-dt-footer-left"><dt-preview :startString="startString" :endString="endString"/></div>
                 <div class="ph-dt-footer-right">
                     <template v-if="utype===DtType.month">
-                        <dt-btn @click="emits('clear')" v-if="clear">清除</dt-btn>
-                        <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">现在</dt-now>
+                        <dt-btn @click="emits('clear')" v-if="clear">{{lang.clear}}</dt-btn>
+                        <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang.now}}</dt-now>
                     </template>
-                    <dt-btn @click="emits('done')">完成</dt-btn>
+                    <dt-btn @click="emits('done')">{{lang.done}}</dt-btn>
                 </div>
             </dt-footer>
         </template>
@@ -35,6 +36,7 @@ import DtBody from '../layout/layout-body.vue'
 import DtBtn from './btn.vue'
 import DtNow from './now.vue'
 import Arrow from '../../icon/arrow.vue'
+import DtPreview from './date-preview.vue'
 import DtGrid from './grid.vue'
 import { defineProps, defineEmits, computed } from 'vue'
 import { compare } from '../../../shared/datetime'

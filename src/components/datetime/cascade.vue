@@ -2,7 +2,7 @@
     <component 
         v-model:start="start" 
         v-model:end="end" 
-        class="ph-dt-cascadepanel"
+        :class="['ph-dt-cascadepanel',simple?'ph-dt-simple-panel':'']"
         @navigate="onNavigate"
         @done="onDone(state.ctype)"
         @clear="onClear(state.ctype)"
@@ -15,6 +15,7 @@
         :smax="smax" 
         :emin="emin" 
         :utype="type" 
+        :ctype="state.ctype"
         :format="state.format" 
         :startString="dtfmt.start"
         :endString="dtfmt.end"
@@ -33,13 +34,14 @@ import DtDateCascade from './cmp/date-cascade.vue'
 const DtTimeCascade = defineAsyncComponent(()=>import('./cmp/time-cascade.vue'))
 const DtMonthCascade = defineAsyncComponent(()=>import('./cmp/month-cascade.vue'))
 const DtYearCascade = defineAsyncComponent(()=>import('./cmp/year-cascade.vue'))
-
+const DtSimple = defineAsyncComponent(()=>import('./mobile/cascade.vue'))
 const emits = defineEmits(["done"])
 const props = defineProps({
     value:Array as PropType<Array<string>>,
     min:String,
     max:String,
     format:String,
+    simple:Boolean,
     type: {type:String as PropType<IDtType>,default:'date'}
 })
 const state = reactive<{
@@ -76,6 +78,7 @@ const endState = reactive<IDateObject>({
     ss:0,
 })
 const dcmp = computed(()=>{
+    if(props.simple)return DtSimple
     switch(state.ctype){
         case DtType.date:
             return DtDateCascade
@@ -230,6 +233,7 @@ const dtfmt = computed(()=>{
 </script>
 <style lang="scss">
 .ph-dt-cascadepanel{
+    --ph-dt-cline:block;
     .ph-dt-body{
         position: relative;
         &:after{
@@ -241,7 +245,11 @@ const dtfmt = computed(()=>{
             left: 50%;
             transform: translateX(-50%);
             border-left: 1px solid var(--ph-bc-1);
+            display: var(--ph-dt-cline);
         }
+    }
+    &.ph-dt-simple-panel{
+        --ph-dt-cline:none;
     }
 }
 </style>
