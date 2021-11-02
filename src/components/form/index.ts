@@ -14,6 +14,8 @@ import FDatetimePicker from './datetime.vue'
 import FFormDatetimePicker from './form-datetime.vue'
 import FColorPicker from './color.vue'
 import FFormColorPicker from './form-color.vue'
+import FSlider from './slider.vue'
+import FFormSlider from './form-slider.vue'
 export {
     FValidator,
     FForm,
@@ -30,5 +32,7 @@ export {
     FDatetimePicker,
     FFormDatetimePicker,
     FColorPicker,
-    FFormColorPicker
+    FFormColorPicker,
+    FSlider,
+    FFormSlider
 }

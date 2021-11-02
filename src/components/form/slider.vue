@@ -1,10 +1,8 @@
 <template>
-    <input-wrap class="ph-slider-wrap">
-        <template v-slot:default="scope">
-            <div class="ph-slider" :disabled="scope.disabled" ref="eslider" @click="onClick" :style="sliderStyle">
-                <button class="ph-slider-handler" @click.stop :style="style" :hover="state.hover" :active="state.moving" :disabled="scope.disabled" v-touchmove="onTouchmove" ref="ehandler"></button>
-            </div>
-        </template>
+    <input-wrap class="ph-slider-wrap" :disabled="disabled">
+        <div class="ph-slider" :disabled="disabled" ref="eslider" @click="onClick" :style="sliderStyle">
+            <button class="ph-slider-handler" @click.stop :style="style" :hover="state.hover" :active="state.moving" :disabled="disabled" v-touchmove="onTouchmove" ref="ehandler"></button>
+        </div>
     </input-wrap>
 </template>
 <script lang="ts" setup>
@@ -14,11 +12,12 @@ import MediaQuery from '../../shared/media-query'
 import { touchmove as vTouchmove } from '../../directives/gesture'
 import vTooltip from '../../directives/tooltip'
 const props = defineProps({
+    // showTip:{type:Boolean,default:true},
     modelValue:{type:Number,default:0},
     max:{type:Number,default:100},
-    // showTip:{type:Boolean,default:true},
     handlerWidth:{type:Number,default:6},
-    height:{type:Number,default:10}
+    height:{type:Number,default:10},
+    disabled:Boolean
 })
 const emits = defineEmits(['update:modelValue','input'])
 const ehandler = ref<HTMLElement>()
@@ -41,18 +40,15 @@ const sliderStyle = computed(()=>{
         '--ph-slider-h':props.height+"px"
     }
 })
-const onInput = (e:Event)=>{
-    const v = (e.target as HTMLInputElement).value
-    emits('update:modelValue',v);
-    emits('input',v);
-}
 const onTouchmove = (e:Event,meta:{tx:number,end:boolean})=>{
+    if(props.disabled)return
     const t = ehandler.value as HTMLElement
     const {tx,end} = meta
     state.moving = !end
     update(tx)
 }
 const onClick = (e:PointerEvent)=>{
+    if(props.disabled)return
     const t = e.target as HTMLElement
     update(e.clientX-t.getBoundingClientRect().left)
 }
@@ -85,7 +81,6 @@ onBeforeUnmount(()=>{
     --ph-slider-hbg:var(--ph-c-modal);
     height: var(--ph-ip-h);
     align-items: center;
-    padding: 0 12px;
 }
 .ph-slider{
     flex: 1;
@@ -112,7 +107,7 @@ onBeforeUnmount(()=>{
         left: 0;
         margin: auto;
         padding: 0;
-        border: 1px solid var(--ph-slider-hbd,var(--ph-bc-1));
+        border: 1px solid var(--ph-slider-hbd,var(--ph-c-l2));
         transition: transform .15s ease;
         transform: translateX(0);
         cursor: pointer;

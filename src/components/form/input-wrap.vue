@@ -48,7 +48,7 @@ const cns = computed(()=>{
     --ph-ip-h: var(--ph-ginput-h);
     --ph-ip-bbc: var(--ph-bc);
     --ph-ip-br: var(--ph-gip-br);
-    --ph-ip-cursor: default;
+    // --ph-ip-cursor: default;
     --ph-ip-bg: inherit;
     --ph-ip-c: var(--ph-c-d1);
     &.ph-ip-invalid{
@@ -84,9 +84,8 @@ const cns = computed(()=>{
         display: flex;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
+        cursor: var(--ph-ip-cursor,pointer);
         border-radius: 0 var(--ph-gip-br) var(--ph-gip-br) 0;
-        cursor: var(--ph-ip-cursor);
         background-color:var(--ph-ip-bg);
         color:var(--ph-ip-c);
     }
@@ -100,6 +99,7 @@ const cns = computed(()=>{
         position: relative;
         display: flex;
         align-items: center;
+        background-color:var(--ph-ip-bg);
         &:before{
             content: "~";
         }

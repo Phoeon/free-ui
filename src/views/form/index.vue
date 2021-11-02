@@ -10,7 +10,8 @@
                 <f-form-datetime-picker v-model="formData.birth" label="出生日期" placeholder="请选择日期"/>
                 <f-form-datetime-picker v-model="formData.alarm" label="闹钟时间" placeholder="请选择时间" type="time"/>
                 <f-form-datetime-picker v-model="formData.unitime" label="大学时间" placeholder="请选择日期"/>
-                <f-form-color-picker v-model="formData.color" label="喜欢的颜色" placeholder="颜色选择" type="rgb"/>
+                <f-form-color-picker v-model="formData.color" label="喜欢的颜色" placeholder="颜色选择"/>
+                <f-form-slider v-model="formData.slider" :max="100" label="测试滑块"/>
                 <f-form-switch v-model="formData.married" label="开关"></f-form-switch>
                 <f-form-switch v-model="formData.married" label="禁用开关" :disabled="true" type="icon"></f-form-switch>
                 <f-form-checkbox :block="true" v-model="formData.cuni" :options="dataSource.options" label="复选框" :validators="['required']"></f-form-checkbox>
@@ -60,13 +61,15 @@ import {
         FFormCheckbox,
         FFormRadiobox,
         FFormSwitch,
+        FFormDatetimePicker,
+        FFormColorPicker,
+        FFormSlider,
+
         FCheckbox,
         FRadiobox,
         FSwitch,
         FDatetimePicker,
-        FFormDatetimePicker,
         FColorPicker,
-        FFormColorPicker,
         FMessage } from '@/components'
 import { reactive, ref } from 'vue'
 
@@ -85,7 +88,8 @@ const formData = reactive({
     birth:'2021-09-20',
     unitime:[],
     alarm:"12:30:35",
-    color:"#FF00FF"
+    color:"#FF00FF",
+    slider:30
 })
 const dataSource = {
     options:[{

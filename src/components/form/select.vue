@@ -103,6 +103,7 @@ const onClick = ()=>{
 <style lang="scss">
 .ph-select{
     flex: 1;
+    width: 0;
     border-radius: var(--ph-ip-br);
     border-color: var(--ph-bc);
     border-bottom-color: var(--ph-ip-bbc);

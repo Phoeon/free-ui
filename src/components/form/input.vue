@@ -36,6 +36,7 @@ const onInput = (e:Event)=>{
     color: var(--ph-ip-c);
     padding: 0 12px;
     background-color: var(--ph-ip-bg);
+    width: 0;
     &:disabled{
         cursor: var(--ph-ip-cursor);
     }

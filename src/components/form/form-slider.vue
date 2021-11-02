@@ -1,19 +1,28 @@
 <template>
-    <form-field flow="hr">
+    <form-field>
         <template v-slot:default="scope">
-            <field-switch
+            <field-slider
                 :modelValue="scope.value"
                 :disabled="scope.disabled"
                 :placeholder="scope.placeholder"
                 :valid="scope.valid"
                 :size="scope.size"
                 :type="scope.type"
+                :max="max"
+                :handlerWidth="handlerWidth"
+                :height="height"
                 @input="scope.onInput"
             />
         </template>
     </form-field>
 </template>
 <script lang="ts" setup>
+import { defineProps } from 'vue'
 import FormField from './field.vue'
-import FieldSwitch from './switch.vue'
+import FieldSlider from './slider.vue'
+defineProps({
+    max:{type:Number,default:100},
+    handlerWidth:{type:Number,default:6},
+    height:{type:Number,default:10}
+})
 </script>
