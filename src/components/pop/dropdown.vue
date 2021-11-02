@@ -6,7 +6,7 @@
     @click.stop :class="cns" 
     ref="edom" :sample="sample" :style="style">
         <ul class="ph-ppdd-list">
-            <li class="ph-ppdd-li" :disabled="item.disabled" v-for="(item,idx) in dataSource" :key="idx" @click="item.disabled&&onClick(item)" :hover="state.hover">
+            <li class="ph-ppdd-li" :disabled="item.disabled" v-for="(item,idx) in dataSource" :key="idx" @click="!item.disabled&&onClick(item)" :hover="state.hover">
                 <custom-icon class="ph-ppdd-icon" :name="item.icon" v-if="item.icon"/>
                 <span class="ph-ppdd-text">{{item.text}}</span>
             </li>
@@ -50,17 +50,20 @@ const cns = computed(()=>{
         cns.push("ph-pop-reverse")
     return cns
 })
+const  close = ()=>state.visible = false
 const onClick = (item:IDropdownItem)=>{
     props.notify?.(item)
+    close()
 }
 const onEnter = ()=>{
     props.notify?.(1)
 }
 const onLeave = ()=>{
     props.notify?.(0)
+    close()
 }
 defineExpose({
-    close:()=>state.visible = false
+    close
 })
 onMounted(()=>{
     state.visible = true

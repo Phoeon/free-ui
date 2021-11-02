@@ -105,10 +105,6 @@ const showPopSelect = (opt:ISelect)=>{
                 fn(item)
             })
             return this
-        },
-        hide(){
-            ins.close?.()
-            unmount(app)
         }
     }
 }

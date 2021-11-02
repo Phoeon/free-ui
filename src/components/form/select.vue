@@ -26,7 +26,6 @@ let hide:()=>void;
 const ewrap = ref<InstanceType<typeof InputWrap>>()
 const emits = defineEmits(['update:modelValue','input'])
 const state = reactive({
-    open:false,
     lock:false,
 })
 const props = defineProps({
@@ -47,16 +46,11 @@ const textValue = computed(()=>{
     const res = props.options.filter(opt=>values.value.includes(opt.value))
     return res.map(r=>r.text).join(",")
 })
-const onHide = ()=>{
-    if(!state.open)return
-    hide?.()
-    state.open = false
-}
+
 const done = (items:Array<IDropdownItem>)=>{
     console.log(items,'checked')
     const vs = items.map(item=>item.value)
     const res = props.multi?vs:vs[0]
-    onHide()
     emits('update:modelValue',res);
     emits('input',res);
 }
@@ -69,14 +63,14 @@ const showDropdown = (el:HTMLElement,opt:{
 })=>{
     if(state.lock)return
     state.lock = true
-    state.open = true
+    // state.open = true
     const {left,top,width,height} = el.getBoundingClientRect()
     const position = 'b'
     const 
         x = left,
         y = top+height;
     
-    hide = FPop.showPopSelect({
+    FPop.showPopSelect({
         ...opt,
         value:values.value,
         x,
@@ -85,14 +79,13 @@ const showDropdown = (el:HTMLElement,opt:{
         width,
         position})
     .done(done)
-    .hide
     setTimeout(()=>{
         state.lock = false
     },300)
 }
 const onClick = ()=>{
     if(props.disabled)return
-    if(state.open)return
+    // if(state.open)return
     showDropdown(ewrap.value.$el as HTMLElement,{
         dataSource:props.options,
         theme:props.theme,
@@ -100,12 +93,12 @@ const onClick = ()=>{
         title:props.placeholder
     })
 }
-onMounted(()=>{
-    document.addEventListener("click",onHide)
-})
-onBeforeUnmount(()=>{
-    document.removeEventListener("click",onHide)
-})
+// onMounted(()=>{
+//     document.addEventListener("click",onHide)
+// })
+// onBeforeUnmount(()=>{
+//     document.removeEventListener("click",onHide)
+// })
 </script>
 <style lang="scss">
 .ph-select{

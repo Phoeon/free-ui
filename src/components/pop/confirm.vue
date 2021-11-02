@@ -1,4 +1,5 @@
 <template>
+<f-mask :class="sample?'ph-sample':''" v-model="state.visible" :alpha="true" @click="state.visible = false">
 <transition :name="state.animation">
     <div v-if="state.visible" @click.stop :class="['ph-pop-confirm','ph-pop','ph-pop-'+position,'ph-pop-'+theme]" ref="edom" :sample="sample" :style="style">
         <div class="ph-pop-confirm-content">
@@ -11,15 +12,17 @@
         </div>
     </div>
 </transition>
+</f-mask>
 </template>
 <script lang="ts" setup>
 import './popover.scss';
-import { defineProps, nextTick, onBeforeUnmount, onMounted, PropType, reactive, ref } from 'vue'
+import { defineProps, nextTick, onMounted, PropType, reactive, ref } from 'vue'
 import { CircleWarning } from '../icon'
 import { IPopPosition } from './types'
 import { getAnimation, sumArray } from '../../shared/utils'
 import { xmatrix,ymatrix } from './shared'
 import FButton from '../button/main.vue'
+import FMask from '../mask/main.vue'
 
 const edom = ref<HTMLElement>()
 const props = defineProps({
@@ -40,26 +43,16 @@ const style = reactive({
     left:'auto',
     top:'auto'
 })
-
 const onClose = (status:number)=>{
     state.visible = false
     props.notify?.(status)
 }
-const t = Date.now()
-const bindClickEvent = (e:Event)=>{
-    if(Date.now() - t<300)return 
-    onClose(0)
-}
-onBeforeUnmount(()=>{
-    if(props.sample)return
-    document.removeEventListener("click",bindClickEvent)
-})
+
 onMounted(()=>{
     state.visible = true
     if(props.sample)return
     nextTick(()=>{
         if(!edom.value)return
-        document.addEventListener("click",bindClickEvent)
         const of = 24
         const { offsetWidth, offsetHeight } = edom.value
         const vs = [of,offsetWidth,offsetHeight,10]

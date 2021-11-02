@@ -29,7 +29,7 @@ const props = defineProps({
         type:String as PropType<'click'|'hover'>,
         default:'hover'
     },
-    theme:String,
+    theme:String as PropType<'normal'|'reverse'>,
     icon:String
 })
 const state = reactive({
@@ -44,6 +44,7 @@ const onHide = ()=>{
     state.enter = false
 }
 const done = (a:IDropdownItem)=>{
+    console.log(a)
     onHide()
     emits('action',a)
 }
@@ -53,12 +54,13 @@ const enter = ()=>{
 }
 const leave = ()=>{
     console.log("leave")
-    onHide()
+    state.open = false
+    state.enter = false
 }
 const showDropdown = (el:HTMLElement,opt:{
     dataSource:Array<IDropdownItem>,
     position:IDropdownPosition,
-    theme?:string
+    theme?:'normal'|'reverse'
 })=>{
     if(state.lock)return
     state.lock = true
@@ -78,7 +80,6 @@ const showDropdown = (el:HTMLElement,opt:{
         state.lock = false
     },300)
 }
-
 const onClick = (e:Event)=>{
     if(props.trigger!=='click')return
     if(state.open)return

@@ -1,4 +1,5 @@
 <template>
+<f-mask v-model="state.visible" :alpha="!state.sm" @click="onClose">
 <transition name="ph-upbit">
     <div :class="['ph-dt-container',isCascade?'ph-dt-container-cascade':'']" v-if="state.visible" :sample="sample" ref="edtpicker" :style="style" @click.stop>
         <dt-cascade 
@@ -26,12 +27,14 @@
         
     </div>
 </transition>
+</f-mask>
 </template>
 <script lang="ts" setup>
 import { computed, defineProps, nextTick, onMounted, PropType, reactive, ref } from 'vue'
 import { IDtImportant, IDtType } from './types'
 
 import Lang from './lang'
+import FMask from '../mask/main.vue'
 import DtSingle from './single.vue'
 import DtCascade from './cascade.vue'
 import getPosition from 'ph-position'
@@ -54,7 +57,6 @@ const isCascade = computed(()=>props.value instanceof Array)
 const state = reactive({
     loading:true,
     visible:false,
-    ct:-1,
     sm:false
 })
 const langs = computed(()=>(Lang as Record<string,any>)[props.lang]||Lang.cn);
@@ -67,31 +69,25 @@ const onDone = (v:string|Array<string>)=>{
     props.done?.(v)   
 }
 const onClose = ()=>{
-    if(Date.now()-state.ct<300)return
     state.visible = false
     props.close?.()
-    document.removeEventListener('click',onClose)
 }
 const mediaQuery = (a:boolean,dw:number)=>{
     state.sm = dw<=768
+    nextTick(()=>{
+        reposition()
+    })
 }
 Mediaquery.all(mediaQuery)
+const reposition = ()=>{
+    if(!edtpicker.value)return
+    const { x,y } = getPosition(edtpicker.value,props.rect,{top:true})
+    style.left = state.sm?'auto':x+"px"
+    style.top = state.sm?'auto':y+"px"
+}
 onMounted(()=>{
     state.visible = true
     mediaQuery(false,document.documentElement.clientWidth)
-    if(props.sample)return
-    state.ct = Date.now()
-    document.addEventListener('click',onClose)
-    if(state.sm)return
-    nextTick(()=>{
-        if(!edtpicker.value)return
-        const { x,y } = getPosition(edtpicker.value,props.rect,{top:true})
-        style.left = x+"px"
-        style.top = y+"px"
-        // setTimeout(()=>{
-        //     state.loading = false
-        // },300)
-    })
 })
 </script>
 <style lang="scss">

@@ -52,6 +52,7 @@ body{
         touch-action: none; overflow: hidden;
     }
 }
+
 input,textarea{
     outline: 0;
     font-family: inherit;
@@ -118,4 +119,7 @@ input,textarea{
 a,button{
     cursor: pointer;
     font-weight: 500;
+}
+.ph-sample{
+    position: static!important;display: inline!important;
 }

@@ -1,4 +1,5 @@
 <template>
+<f-mask v-model="state.visible" :alpha="!state.sm" @click="onClose">
 <transition name="ph-upbit">
     <div class="ph-color-container" v-if="state.visible" :sample="sample" ref="ecolorpicker" :style="style" @click.stop>
         <div class="ph-color-header">{{title}}</div>
@@ -10,8 +11,10 @@
         <Cft :color="state.value" @pre-click="onPreClick"/>
     </div>
 </transition>
+</f-mask>
 </template>
 <script lang="ts" setup>
+import FMask from '../mask/main.vue'
 import Csv from './sv.vue'
 import Cha from './ha.vue'
 import Cmb from './modebar.vue'
@@ -20,6 +23,8 @@ import Cpdf from './predef.vue'
 import Cft from './footer.vue'
 
 import getPosition from 'ph-position'
+import Mediaquery from '../../shared/media-query'
+
 import { computed, defineProps, PropType, reactive, defineEmits, onMounted, ref, nextTick } from 'vue'
 import { parseColor, ColorMode, rgb2hsb, rgb2hexstr, hsb2rgb, rgb2rgbstr, n2hex } from '../../shared/color'
 import { ColorType } from './types'
@@ -45,14 +50,12 @@ const state = reactive({
     oc:props.value,
     value:props.value,
     visible:false,
-    ct:-1,
-    cmode : initColorMeta.mode
+    cmode : initColorMeta.mode,
+    sm:false
 })
 const onClose = ()=>{
-    if(Date.now()-state.ct<300)return
     state.visible = false
     props.close?.()
-    document.removeEventListener('click',onClose)
 }
 const modelValue = computed({
     set(v:string){
@@ -85,7 +88,6 @@ const onReset = ()=>{
     modelValue.value=state.oc as string
 }
 const onColorInput = (v:Array<unknown>)=>{
-    console.log(v,'color-input')
     if(state.cmode===ColorMode.hex){
         const [hex,a] = v
         modelValue.value=hex+n2hex((a as number)*255/100)
@@ -127,23 +129,22 @@ const onSv = (sv:Array<number>)=>{
 const onPreClick = (c:string)=>{
     modelValue.value=c
 }
-
+const mediaQuery = (a:boolean,dw:number)=>{
+    state.sm = dw<=768
+    nextTick(()=>{
+        reposition()
+    })
+}
+const reposition = ()=>{
+    if(!ecolorpicker.value)return
+    const { x,y } = getPosition(ecolorpicker.value,props.rect,{top:true})
+    style.left = state.sm?'auto':x+"px"
+    style.top = state.sm?'auto':y+"px"
+}
+Mediaquery.all(mediaQuery)
 onMounted(()=>{
     state.visible = true
-    // mediaQuery(false,document.documentElement.clientWidth)
-    if(props.sample)return
-    state.ct = Date.now()
-    document.addEventListener('click',onClose)
-    // if(state.sm)return
-    nextTick(()=>{
-        if(!ecolorpicker.value)return
-        const { x,y } = getPosition(ecolorpicker.value,props.rect,{top:true})
-        style.left = x+"px"
-        style.top = y+"px"
-        // setTimeout(()=>{
-        //     state.loading = false
-        // },300)
-    })
+    mediaQuery(false,document.documentElement.clientWidth)
 })
 </script>
 <style lang="scss">
@@ -166,12 +167,9 @@ onMounted(()=>{
     --ph-c-pv-w:28px;//预览大小
 
     width:var(--ph-c-w);
-    // box-shadow: var(--ph-shadow-2);
+    box-shadow: var(--ph-shadow-2);
     background-color: var(--ph-c-bg);
-
-    // position: absolute;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 25%);
     font-size: 12px;
     position: fixed;
     z-index: var(--ph-zdx-modal);
@@ -197,6 +195,15 @@ onMounted(()=>{
         &:after{
             @include tlMx(var(--ph-c-bd));
         }
+    }
+}
+@media screen and (max-width:768px){
+    .ph-color-container{
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 12px 12px 0 0;
     }
 }
 </style>

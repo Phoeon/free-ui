@@ -1,4 +1,5 @@
 <template>
+<f-mask v-model="state.visible" :alpha="!state.sm" @click="close">
 <transition :name="state.animation">
     <div v-if="state.visible" 
     @click.stop :class="cns" 
@@ -16,15 +17,17 @@
         </div>
     </div>
 </transition>
+</f-mask>
 </template>
 <script lang="ts" setup>
 import './popover.scss';
-import { defineProps, defineExpose, nextTick, onMounted, PropType, reactive, ref, computed } from 'vue'
+import { defineProps, nextTick, onMounted, PropType, reactive, ref, computed } from 'vue'
 import { CustomIcon, Tick } from '../icon'
 import { ISelectPosition, IDropdownItem } from './types'
 import { getAnimation, sumArray } from '../../shared/utils'
 import FButton from '../button/main.vue'
 import MediqQuery from '../../shared/media-query'
+import FMask from '../mask/main.vue'
 
 const edom = ref<HTMLElement>()
 const props = defineProps({
@@ -62,13 +65,16 @@ const cns = computed(()=>{
         cns.push("ph-pop-reverse")
     return cns
 })
-
+const close = ()=>{
+    state.visible = false
+}
 const onClick = (item:IDropdownItem)=>{
     if(!props.multi){
         if(item.value===state.value[0])
         props.notify?.([])
         else
         props.notify?.([item])
+        close()
     }
     else{
         const checked = state.value.findIndex(v=>v===item.value)>-1
@@ -78,13 +84,11 @@ const onClick = (item:IDropdownItem)=>{
 }
 const onDone = ()=>{
     props.notify?.(props.dataSource.filter(item=>state.value.includes(item.value)))
+    close()
 }
 const mediaQuery = (a:any,dw:number)=>{
     state.sm = dw<768
 }
-defineExpose({
-    close:()=>state.visible = false
-})
 MediqQuery.all(mediaQuery)
 onMounted(()=>{
     mediaQuery(true,document.documentElement.clientWidth)
@@ -100,7 +104,7 @@ onMounted(()=>{
         if(!edom.value)return
         const of = 24
         const { offsetWidth, offsetHeight } = edom.value
-        const vs = [of,offsetWidth,offsetHeight,5]
+        const vs = [of,offsetWidth,offsetHeight,0]
         let position = props.position,
             btnH = 0;
         if(position == "b"){
