@@ -19,6 +19,9 @@ app
             desc:"发工资了，去三里屯逛哟",
             md:"*-15"
         }]
+    },
+    colorpicker:{
+        // colors:['#00ff00']
     }
 })
 .use(router).mount('#app')

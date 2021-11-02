@@ -72,6 +72,7 @@ const cns = computed(()=>{
     }
     .ph-ipw-addonr{
         flex: 0 0 auto;
+        position: relative;
         border-color: var(--ph-bc);
         border-bottom-color: var(--ph-ip-bbc);
         font-size: var(--ph-ip-fs);

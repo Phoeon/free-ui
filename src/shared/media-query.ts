@@ -66,6 +66,9 @@ export default {
     },
     all(fn:(matches:boolean,dw:number)=>void){
         evt.on("all",fn)
+    },
+    off(type:string,fn:()=>void){
+        evt.off(type as string,fn)
     }
 }
 export { MediaBreak }

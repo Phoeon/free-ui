@@ -27,13 +27,16 @@
                 <f-button @click="onClick3" data-type="time">打开时间</f-button>
             </f-button-group>
         </f-card>
+        <f-card title="colorpicker">
+            <dt-color/>
+        </f-card>
     </f-view>
 </template>
 <script lang="ts" setup>
 import { FView , FCard, FButton, FButtonGroup, FDtPicker, FMessage} from '@/components'
 import { reactive } from 'vue'
 import DtPicker from '@/components/datetime/main.vue'
-
+import DtColor from '@/components/color/main.vue'
 const state = reactive({
     year:[2021],
     yearmonth:[2021,3],

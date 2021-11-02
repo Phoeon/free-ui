@@ -46,6 +46,7 @@
             <square/>
             <square-check/>
             <square-half-check/>
+            <square-half-check :outline="true"/>
 
             <square-minus :disabled="true"/>
             <square-plus :disabled="true"/>

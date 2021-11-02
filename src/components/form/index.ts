@@ -12,6 +12,8 @@ import FFormSwitch from './form-switch.vue'
 import FSwitch from './switch.vue'
 import FDatetimePicker from './datetime.vue'
 import FFormDatetimePicker from './form-datetime.vue'
+import FColorPicker from './color.vue'
+import FFormColorPicker from './form-color.vue'
 export {
     FValidator,
     FForm,
@@ -26,5 +28,7 @@ export {
     FFormSwitch,
     FSwitch,
     FDatetimePicker,
-    FFormDatetimePicker
+    FFormDatetimePicker,
+    FColorPicker,
+    FFormColorPicker
 }

@@ -26,9 +26,11 @@ const show = (opt:IDtOption)=>{
     return {
         done(fn:(v?:string|Array<string>)=>void){
             evt.on('done',fn)
+            return this
         },
         close(fn:()=>void){
             evt.on('close',fn)
+            return this
         }
     }
 }

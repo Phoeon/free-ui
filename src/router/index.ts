@@ -140,7 +140,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/tmp',
     name: 'tmp',
-    component: () => import(/* webpackChunkName: "tmp" */ '../views/datetime.vue')
+    component: () => import(/* webpackChunkName: "tmp" */ '../views/tmp.vue')
   },
   {
     path: '/form',

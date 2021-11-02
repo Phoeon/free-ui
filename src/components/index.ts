@@ -7,6 +7,7 @@ import FPanel from './panel'
 import FCard from './card'
 import FMask from './mask/main.vue'
 import FDtPicker from './datetime'
+import FCPicker from './color'
 import * as FIcon from './icon'
 import FGLoading,{FLoading} from './loading'
 import FModal from './modal'
@@ -39,7 +40,8 @@ export {
     FModal,
     FMessage,
     FPop,
-    FDtPicker
+    FDtPicker,
+    FCPicker
 }
 export default {
     install(app:any,options:Record<string,any>){
