@@ -1,7 +1,7 @@
 <template>
     <input-wrap class="ph-slider-wrap" :disabled="disabled">
-        <div class="ph-slider" :disabled="disabled" ref="eslider" @click="onClick" :style="sliderStyle">
-            <button class="ph-slider-handler" @click.stop :style="style" :hover="state.hover" :active="state.moving" :disabled="disabled" v-touchmove="onTouchmove" ref="ehandler"></button>
+        <div :class="['ph-slider',showProgress?'ph-slider-progress':'']" :disabled="disabled" ref="eslider" @click="onClick" :style="sliderStyle">
+            <button class="ph-slider-handler" @click.stop :style="style" :hover="state.hover" :disabled="disabled" v-touchmove="onTouchmove" ref="ehandler"></button>
         </div>
     </input-wrap>
 </template>
@@ -13,31 +13,33 @@ import { touchmove as vTouchmove } from '../../directives/gesture'
 import vTooltip from '../../directives/tooltip'
 const props = defineProps({
     // showTip:{type:Boolean,default:true},
+    showProgress:{type:Boolean,default:true},
     modelValue:{type:Number,default:0},
     max:{type:Number,default:100},
-    handlerWidth:{type:Number,default:6},
+    handlerWidth:{type:Number,default:8},
     height:{type:Number,default:10},
     disabled:Boolean
 })
 const emits = defineEmits(['update:modelValue','input'])
 const ehandler = ref<HTMLElement>()
 const eslider = ref<HTMLElement>()
-const tip = computed(()=>props.modelValue.toFixed(2))
+// const tip = computed(()=>props.modelValue.toFixed(2))
 const state = reactive({
     moving:false,
     sw:1,
     hover:!('ontouchstart' in window)
 })
+const tx = computed(()=>props.modelValue*state.sw/props.max)
 const style = computed(()=>{
-    const tx = props.modelValue*state.sw/props.max;
     return {
-        transform:`translateX(${tx}px)`
+        transform:`translateX(${tx.value}px)`
     }
 })
 const sliderStyle = computed(()=>{
     return {
         '--ph-slider-hw':props.handlerWidth+"px",
-        '--ph-slider-h':props.height+"px"
+        '--ph-slider-h':props.height+"px",
+        '--ph-slider-tx':tx.value+"px"
     }
 })
 const onTouchmove = (e:Event,meta:{tx:number,end:boolean})=>{
@@ -62,7 +64,7 @@ const update = (tx:number)=>{
 }
 const updateSW = ()=>{
     if(eslider.value)
-        state.sw = eslider.value.offsetWidth-props.handlerWidth-2
+        state.sw = eslider.value.offsetWidth
 }
 onMounted(()=>{
     MediaQuery.all(updateSW)
@@ -76,9 +78,10 @@ onBeforeUnmount(()=>{
 </script>
 <style lang="scss">
 .ph-slider-wrap{
-    --ph-slider-hw:6px;
+    --ph-slider-hw:8px;
     --ph-slider-h:10px;
     --ph-slider-hbg:var(--ph-c-modal);
+    --ph-slider-hbd:var(--ph-c-white);
     height: var(--ph-ip-h);
     align-items: center;
 }
@@ -96,30 +99,31 @@ onBeforeUnmount(()=>{
     &[disabled=true]{
         cursor: var(--ph-ip-cursor);
     }
-    &-handler{
+    &-progress:before{
+        content: "";
         position: absolute;
         height: 100%;
+        left: 0;
+        top: 0;
+        border-radius: inherit;
+        background-color: var(--ph-primary);
+        width: var(--ph-slider-tx,0);
+    }
+    &-handler{
+        position: absolute;
+        height: calc(var(--ph-slider-h) + 2px);
         width: var(--ph-slider-hw);
-        box-sizing: content-box;
         z-index: 1;
         top:0;
         bottom: 0;
-        left: 0;
+        left: calc(var(--ph-slider-hw) * -0.5);
         margin: auto;
         padding: 0;
-        border: 1px solid var(--ph-slider-hbd,var(--ph-c-l2));
-        transition: transform .15s ease;
+        border: 2px solid var(--ph-slider-hbd);
         transform: translateX(0);
         cursor: pointer;
         border-radius: 2px;
-        background-color: var(--ph-slider-hbg,var(--ph-modal-bg));
-        // &[active=true],
-        // &[hover=true]:hover{
-        //     border-color: var(--ph-c-reverse);
-        // }
-        &[active=true]{
-            transition: none;
-        }
+        background-color: var(--ph-slider-hbg,var(--ph-primary));
     }
 }
 </style>

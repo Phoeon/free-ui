@@ -1,12 +1,12 @@
 @import '../../assets/style/fn.scss';
 .ph-pop{
     --ph-ppc-24:24px;
-    --ph-pop-bdc: var(--ph-modal-bg);
-    --ph-pop-bg-hover: var(--ph-modal-bg-hover);
+    --ph-pop-bdc: var(--ph-popover-bg);
+    --ph-pop-bg-hover: var(--ph-popover-bg-hover);
     --ph-pop-c: var(--ph-c-d1);
     --ph-pop-c-d1: var(--ph-c-d2);
     --ph-pop-bc:var(--ph-bc-1);
-    --ph-pop-shadow:var(--ph-shadow-2);
+    --ph-pop-shadow:var(--ph-shadow-popover);
     --ph-pop-listh:300px;
     --ph-pop-br:4px;
     position: fixed;
@@ -18,14 +18,6 @@
     border-radius: var(--ph-pop-br);
     [disabled=true]{
         @include disabledMx()
-    }
-    &.ph-pop-reverse{
-        --ph-pop-bdc: var(--ph-modal-bg-reverse);
-        --ph-pop-bg-hover: var(--ph-modal-bg-reverse-hover);
-        --ph-pop-c: var(--ph-modal-c-reverse);
-        --ph-pop-c-d1: var(--ph-modal-c-reverse-d1);
-        --ph-pop-bc:var(--ph-modal-bc-reverse);
-        --ph-pop-shadow:var(--ph-shadow-dark);
     }
     &:after{
         content: "";

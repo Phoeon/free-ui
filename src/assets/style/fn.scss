@@ -25,8 +25,37 @@
     height: 1px;
     background-color: $bc;
 }
+@mixin llMx($bc) {
+    content: "";
+    position: absolute;
+    left:0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    margin: auto;
+    background-color: $bc;
+}
 @mixin disabledMx {
     background-color: var(--ph-bg-disabled)!important;
     color: var(--ph-c-disabled)!important;
     cursor: not-allowed!important;
+}
+@mixin input {
+    flex: 1;
+    border-radius: var(--ph-ip-br);
+    border-color: var(--ph-ip-bc);
+    border-bottom-color: var(--ph-ip-bbc);
+    font-size: var(--ph-ip-fs);
+    height: var(--ph-ip-h);
+    color: var(--ph-ip-c);
+    background-color: var(--ph-ip-bg);
+    background-clip: padding-box;
+    padding: 0 12px;
+    width: 0;
+    &::-webkit-input-placeholder{
+        color: var(--ph-c-l2);
+    }
+    &:disabled::-webkit-input-placeholder{
+        color: var(--ph-ip-c);
+    }
 }

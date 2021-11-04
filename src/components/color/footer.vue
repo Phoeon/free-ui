@@ -39,7 +39,7 @@ const onMinus = (i:number)=>{
 <style lang="scss">
 .ph-color-footer{
     height: var(--ph-c-bar);
-    color: #fff;
+    color: var(--ph-c);
     display: grid;
     grid-template-columns: repeat(9, var(--ph-c-predef-item));
     gap: var(--ph-c-predef-item-gap);

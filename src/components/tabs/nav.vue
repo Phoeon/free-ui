@@ -1,6 +1,6 @@
 <template>
     <div class="ph-tabs-nav" :underline="showIndicator">
-        <f-button class="ph-tabs-nav-btn" :hover="false" :fillMode="fillMode" v-indicator="currentIndex===item.index" :disabled="item.disabled" :type="currentIndex===item.index?'primary':''" v-for="(item,index) in navs" :key="index" @click="$emit('shift',item.index)">
+        <f-button class="ph-tabs-nav-btn" :fillMode="fillMode" v-indicator="currentIndex===item.index" :disabled="item.disabled" :type="currentIndex===item.index?'primary':''" v-for="(item,index) in navs" :key="index" @click="$emit('shift',item.index)">
             <template v-if="item.icon" v-slot:leftIcon><custom-icon :name="item.icon"/></template>
             {{item.title}}
         </f-button>
@@ -59,7 +59,6 @@ const vIndicator = {
     display: flex;
     flex: 0 0 auto;
     position: relative;
-    // padding-bottom: var(--ph-tabs-nav-mb,0);
     overflow: auto;
     height: var(--ph-gtabs-h);
 
@@ -74,7 +73,8 @@ const vIndicator = {
         background-color: var(--ph-bc);
     }
     &[underline=true]{
-        --ph-tabs-nav-mb:8px;
+        padding-bottom: var(--ph-pd-sm);
+        height: var(--ph-39);
     }
     .ph-tabs-indicator{
         position: absolute;
@@ -93,23 +93,8 @@ const vIndicator = {
         border-radius: 2px;
         margin-left: -1px;
         flex: var(--ph-gtabs-iflex);
-        &:not(.ph-btn-primary)[hover=true]:hover{
-            color: var(--ph-c-d1);
-        }
-        &.ph-btn-primary{
-            border: 1px solid var(--ph-bc);
-            background-color: var(--ph-bg);
-            color: var(--ph-primary);
-        }
-        &.ph-btn-none.ph-btn-primary{
-            border: 1px solid transparent;
-            background-color: transparent;
-            color: var(--ph-primary);
-        }
-        &.ph-btn-outline.ph-btn-primary{
-            border: 1px solid var(--ph-bc);
-            background-color: var(--ph-bg);
-            color: var(--ph-primary);
+        &:nth-of-type(1){
+            margin-left: 0;
         }
     }
 }

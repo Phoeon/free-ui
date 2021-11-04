@@ -15,7 +15,7 @@
     </input-wrap>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, PropType, onMounted, onBeforeUnmount, reactive, computed, ref } from 'vue'
+import { defineProps, defineEmits, PropType, reactive, computed, ref } from 'vue'
 import { IDropdownItem } from '../pop/types'
 import { Caret } from '../icon'
 
@@ -63,7 +63,6 @@ const showDropdown = (el:HTMLElement,opt:{
 })=>{
     if(state.lock)return
     state.lock = true
-    // state.open = true
     const {left,top,width,height} = el.getBoundingClientRect()
     const position = 'b'
     const 
@@ -93,25 +92,11 @@ const onClick = ()=>{
         title:props.placeholder
     })
 }
-// onMounted(()=>{
-//     document.addEventListener("click",onHide)
-// })
-// onBeforeUnmount(()=>{
-//     document.removeEventListener("click",onHide)
-// })
+
 </script>
 <style lang="scss">
+@import '../../assets/style/fn.scss';
 .ph-select{
-    flex: 1;
-    width: 0;
-    border-radius: var(--ph-ip-br);
-    border-color: var(--ph-bc);
-    border-bottom-color: var(--ph-ip-bbc);
-    font-size: var(--ph-ip-fs);
-    height: var(--ph-ip-h);
-    color: var(--ph-ip-c);
-    padding: 0 12px;
-    cursor: var(--ph-ip-cursor);
-    background-color: var(--ph-ip-bg);
+    @include input()
 }
 </style>

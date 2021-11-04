@@ -78,7 +78,7 @@ onMounted(()=>{
         background-image: linear-gradient(180deg,transparent,#000);
     }
     .ph-color-sv-handler{
-        border: 1px solid #FFF;
+        border: 1px solid var(--ph-c-white);
         border-radius: 50%;
         width: 10px;
         height: 10px;

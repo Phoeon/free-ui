@@ -38,6 +38,7 @@ const cns = computed(()=>{
 })
 </script>
 <style lang="scss">
+@import '../../assets/style/fn.scss';
 .ph-input-wrap{
     flex: 1;
     position: relative;
@@ -46,10 +47,10 @@ const cns = computed(()=>{
     --ph-gip-br: 3px;
     --ph-ip-fs: var(--ph-ginput-fs);
     --ph-ip-h: var(--ph-ginput-h);
-    --ph-ip-bbc: var(--ph-bc);
+    --ph-ip-bbc: var(--ph-input-bc);
+    --ph-ip-bc: var(--ph-input-bc);
+    --ph-ip-bg: var(--ph-input-bg);
     --ph-ip-br: var(--ph-gip-br);
-    // --ph-ip-cursor: default;
-    --ph-ip-bg: inherit;
     --ph-ip-c: var(--ph-c-d1);
     &.ph-ip-invalid{
         --ph-ip-bbc: var(--ph-danger)!important;
@@ -57,6 +58,7 @@ const cns = computed(()=>{
     &.ph-ip-disabled{
         --ph-ip-cursor: not-allowed!important;
         --ph-ip-bg:var(--ph-bg-disabled);
+        --ph-ip-bc:var(--ph-bd-disabled);
         --ph-ip-c:var(--ph-c-disabled);
     }
     &.ph-ip-small{
@@ -73,8 +75,7 @@ const cns = computed(()=>{
     .ph-ipw-addonr{
         flex: 0 0 auto;
         position: relative;
-        border-color: var(--ph-bc);
-        border-bottom-color: var(--ph-ip-bbc);
+        border-color: var(--ph-ip-bc);
         font-size: var(--ph-ip-fs);
         height: var(--ph-ip-h);
         width: var(--ph-ip-h);
@@ -87,13 +88,20 @@ const cns = computed(()=>{
         cursor: var(--ph-ip-cursor,pointer);
         border-radius: 0 var(--ph-gip-br) var(--ph-gip-br) 0;
         background-color:var(--ph-ip-bg);
+        background-clip: padding-box;
         color:var(--ph-ip-c);
+        &:before{
+            @include llMx(var(--ph-bd));
+            top: 3px;
+            bottom: 3px;
+        }
     }
     .ph-ip-divider{
         height: var(--ph-ip-h);
         border-width: 1px;
         border-style: solid;
-        border-color: var(--ph-bc);
+        border-color: var(--ph-ip-bc);
+        border-bottom-color: var(--ph-ip-bbc);
         border-left: none;
         border-right: none;
         position: relative;

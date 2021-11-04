@@ -46,7 +46,7 @@ provide('validator',null)
         position: relative;
         margin-bottom: var(--ph-pd);
         &:after{
-            @include blMx(var(--ph-bc-1));
+            @include blMx(var(--ph-bd));
         }
     }
     &-action{

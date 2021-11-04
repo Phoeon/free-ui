@@ -51,18 +51,9 @@ const onClick = ()=>{
 }
 </script>
 <style lang="scss">
+@import '../../assets/style/fn.scss';
 .ph-colorpicker-input{
-    flex: 1;
-    border-radius: var(--ph-ip-br);
-    border-color: var(--ph-bc);
-    border-bottom-color: var(--ph-ip-bbc);
-    font-size: var(--ph-ip-fs);
-    height: var(--ph-ip-h);
-    color: var(--ph-ip-c);
-    padding: 0 12px;
-    cursor: var(--ph-ip-cursor);
-    background-color: var(--ph-ip-bg);
-    width: 0;
+    @include input();
 }
 .ph-colorpicker-addon{
     --ph-color-btn-mg:4px;

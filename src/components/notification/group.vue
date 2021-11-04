@@ -4,7 +4,7 @@
             <span class="ph-notify-group-title">{{group.v||'通知中心'}}</span>
             <div class="ph-notify-group-actions">
                 <circle-times @click="$emit('closeAll',group.k)" title="移除全部"/>
-                <arrow shape="circle" :double="true" :position="state.collapsed?'down':'up'" @click="toggle" :title="state.collapsed?'展开':'收起'"/>
+                <arrow :double="true" :direction="state.collapsed?'down':'up'" @click="toggle" :title="state.collapsed?'展开':'收起'"/>
             </div>
         </div>
         <transition-group name="ph-notify-fade" mode="out-in">
@@ -124,7 +124,8 @@ const toggle = ()=>{
         margin-bottom: 8px;
         .ph-notify-group-actions{
             flex: 1;
-            text-align: right;
+            display: flex;
+            justify-content: flex-end;
             .ph-icon{
                 margin-left: 8px;
                 cursor: pointer;

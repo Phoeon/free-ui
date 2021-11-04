@@ -1,4 +1,5 @@
-export const ColorMode = {
+type IColorMode = 'hex'|'rgb'|'hsb'
+export const ColorMode:{[k:string]:IColorMode} = {
     hex:'hex',
     rgb:'rgb',
     hsb:'hsb'
@@ -168,7 +169,7 @@ export function rgbastr2rgb(color:string):number[]{
     const a = parseAlpha(raw[4])
     return [...rgb,a]
 }
-export function hslstr2rgb(color:string):boolean|number[]{
+export function hslstr2rgb(color:string):number[]{
     const raw = color.match(ColorReg.hsl)
     if(!raw)return transparent()
     if(!raw[2].endsWith("%"))return transparent()
@@ -181,7 +182,7 @@ export function hslstr2rgb(color:string):boolean|number[]{
         l = between(parseInt(hsl[2]));
     return [...hsl2rgb(h,s,l),100]
 }
-export function hslastr2ggb(color:string):boolean|number[]{
+export function hslastr2ggb(color:string):number[]{
     const raw = color.match(ColorReg.hsla)
     if(!raw)return transparent()
     if(!raw[2].endsWith("%"))return transparent()
@@ -196,7 +197,7 @@ export function hslastr2ggb(color:string):boolean|number[]{
 }
 
 export function parseColor(color:string) :{
-    mode:keyof typeof ColorMode,
+    mode:IColorMode,
     rgba:number[]
 }{
     if(!color)return {
@@ -205,7 +206,7 @@ export function parseColor(color:string) :{
     }
     let 
         rgba:number[],
-        mode:ColorMode;
+        mode:IColorMode;
     const c = color.replace(/\s+/g,"")
     const prefix = (c.match(/^\w+/)||c.match(/^#/)||[])[0];
     switch(prefix){

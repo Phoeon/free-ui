@@ -5,8 +5,8 @@
             <div class="ph-cpreview-c"></div>
         </div>
         <div class="ph-color-ha-zone">
-            <slider class="ph-color-hue-slider" v-model="hue" :max="360"/>
-            <slider class="ph-color-alpha-slider" v-model="alpha" :max="100"/>
+            <slider class="ph-color-hue-slider" v-model="hue" :max="360" :showProgress="false"/>
+            <slider class="ph-color-alpha-slider" v-model="alpha" :max="100" :showProgress="false"/>
         </div>
     </div>
 </template>
@@ -87,8 +87,7 @@ const style = computed(()=>{
         .ph-color-hue-slider,
         .ph-color-alpha-slider{
             --ph-slider-bg:transparent;
-            --ph-slider-hbg:transparent;
-            --ph-slider-hbd:#FFFFFF;
+            --ph-slider-hbg:var(--ph-c-ac);
             height: 10px;
             border-radius: 2px;
             flex: 0 0 auto;

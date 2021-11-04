@@ -17,7 +17,7 @@
         }
     }
     .ph-dt-date-cell-cm{
-        background-color: var(--ph-primary-l1);//var(--ph-c-l5);
+        background-color: var(--ph-primary-a1);//var(--ph-c-l5);
         &[hover=true]:hover{
             background-color: var(--ph-modal-bg);
         }

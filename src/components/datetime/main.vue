@@ -98,7 +98,7 @@ onMounted(()=>{
     height: 326px;
     width: var(--ph-dt-w);
     box-shadow: var(--ph-shadow-2);
-    background-color: var(--ph-modal-bg);
+    background-color: var(--ph-dt-bg);
     color: var(--ph-c);
     &[sample=true]{
         position: relative;

@@ -13,7 +13,7 @@
             </li>
         </ul>
         <div class="ph-ppdd-action" v-if="multi">
-            <f-button :radius="false" :block="true" fillMode="none" @click="onDone">确定</f-button>
+            <f-button :radius="false" :block="true" fillMode="reverse" type="primary" @click="onDone">确定</f-button>
         </div>
     </div>
 </transition>
@@ -149,13 +149,10 @@ onMounted(()=>{
         background-color: var(--ph-block-bg);
     }
     .ph-ppdd-action{
-        background-color: var(--ph-block-bg);
         border-radius: var(--ph-select-btn-br);
         overflow: hidden;
         .ph-btn{
             --ph-btn-h:var(--ph-gdd-h);
-            --ph-btn-c:var(--ph-primary);
-            border-top: 1px solid var(--ph-bc);
         }
     }
     .ph-ppdd-list{
@@ -197,8 +194,8 @@ onMounted(()=>{
                 background-color: var(--ph-pop-bg-hover);
             }
             &[active=true]{
-                background-color: var(--ph-ctr-bg-info);
-                color: var(--ph-primary);
+                background-color: var(--ph-primary-a3);
+                color: var(--ph-c-white);
             }
         }
     }

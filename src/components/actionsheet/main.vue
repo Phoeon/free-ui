@@ -21,7 +21,7 @@
                     </template>
                     <f-button 
                         v-else
-                        fillMode="reverse" 
+                        fillMode="reverse"
                         :radius="false" 
                         :disabled="item.disabled" 
                         :block="true" 
@@ -79,7 +79,7 @@ const drawerVisible = computed({
 .ph-as{
     --ph-as-cmp: 8px;
     border-radius: inherit;
-    background-color: var(--ph-doc-bg);
+    background-color: var(--ph-modal-bg);
     &-grid{
         --ph-as-tbg:transparent;
         .ph-as-ul{
@@ -98,7 +98,7 @@ const drawerVisible = computed({
             }
             .ph-as-gicon{
                 --ph-btn-h: var(--ph-gas-gitem-h);
-                background-color: var(--ph-block-bg);
+                background-color: var(--ph-modal-bg);
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -113,7 +113,7 @@ const drawerVisible = computed({
         }
     }
     &-list{
-        --ph-as-tbg:var(--ph-block-bg);
+        --ph-as-tbg:var(--ph-modal-bg);
         .ph-as-li{
             margin-top: 1px;
         }
@@ -122,7 +122,7 @@ const drawerVisible = computed({
         }
     }
     &-topbar{
-        background-color: var(--ph-as-tbg);
+        background-color: var(--ph-bg-a1-reverse);
         padding-top: var(--ph-pd);
         padding-bottom: 8px;
     }
@@ -140,7 +140,6 @@ const drawerVisible = computed({
     &-title,
     &-desc{
         text-align: center;
-        background-color: var(--ph-block-bg);
     }
     .ph-btn{
         font-weight: initial;

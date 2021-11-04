@@ -30,7 +30,7 @@ defineProps({
             position: absolute;
             width: 100%;
             height: 100%;
-            border: 1px solid var(--ph-c-white);
+            border: 1px solid var(--ph-c-reverse);
         }
         &:hover:after{
             content: "";

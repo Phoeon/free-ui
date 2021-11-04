@@ -125,11 +125,11 @@ const onMinus = (e:Event)=>{
         height: 26px;
         padding: 3px 5px;
         min-width: 42px;
-        background-color: var(--ph-c-bg-d1);
+        background-color: var(--ph-input-bg);
         border-radius: 4px;
         display: flex;
         align-items: center;
-        color: var(--ph-c-white);
+        color: var(--ph-c-reverse);
         &-hex{
             min-width: 70px;
         }

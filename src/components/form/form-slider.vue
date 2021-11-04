@@ -22,7 +22,7 @@ import FormField from './field.vue'
 import FieldSlider from './slider.vue'
 defineProps({
     max:{type:Number,default:100},
-    handlerWidth:{type:Number,default:6},
-    height:{type:Number,default:10}
+    height:{type:Number,default:10},
+    handlerWidth:Number,
 })
 </script>

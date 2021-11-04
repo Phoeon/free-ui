@@ -57,14 +57,10 @@ defineExpose({
 <style lang="scss">
 
 .ph-tooltip{
-    --ph-pop-bdc: var(--ph-modal-bg-reverse);
-    background-color: var(--ph-modal-bg-reverse);
-    color: var(--ph-modal-c-reverse-d1);
     max-width: 266px;
     font-size:14px;
     line-height: 22px;
     padding: var(--ph-pd-sm) var(--ph-pd);
-    box-shadow: var(--ph-shadow-dark);
     &[sample=true]{
         position: relative;
         z-index: auto;

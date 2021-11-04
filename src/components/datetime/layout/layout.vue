@@ -8,7 +8,6 @@
 <style lang="scss">
 .ph-datetime-layout{
     --ph-dt-barh:40px;
-    background-color: var(--ph-modal-bg);
     color: var(--ph-c);
     font-size: 14px;
     font-weight: var(--ph-fw-m);

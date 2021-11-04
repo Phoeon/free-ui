@@ -83,8 +83,7 @@ onMounted(()=>{
 .ph-loading-mask{
     &[position=fixed]{
         .ph-loading[showbox=always]{
-            background-color: var(--ph-loading-bg);
-            box-shadow: var(--ph-shadow-1);
+            background-color: var(--ph-modal-bg);
         }
     }
 }
@@ -92,8 +91,7 @@ onMounted(()=>{
     .ph-loading-mask{
         &[position=fixed]{
             .ph-loading[showbox=fit]{
-                background-color: var(--ph-loading-bg);
-                box-shadow: var(--ph-shadow-1);
+                background-color: var(--ph-modal-bg);
             }
         }
     }

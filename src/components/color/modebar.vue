@@ -38,7 +38,7 @@ const update = (v:ColorType)=>{
         justify-content: center;
         line-height: 1.6;
         margin: 0 5px;
-        color: var(--ph-c-white);
+        color: var(--ph-c-reverse);
         &:before,
         &:after{
             position: absolute;

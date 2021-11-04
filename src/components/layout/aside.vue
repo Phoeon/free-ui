@@ -17,7 +17,7 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { defineExpose, defineProps, defineEmits, inject, Ref, watch, ref } from 'vue'
+import { defineExpose, defineProps, defineEmits, inject, Ref, ref } from 'vue'
 import FButton from '../button/main.vue'
 import Navicon from '../icon/navicon.vue'
 import Mediaquery from '../../shared/media-query'
@@ -48,7 +48,6 @@ defineExpose({
     width: var(--ph-aside-width);
     background-color: var(--ph-aside-bg);
     background-clip: padding-box;
-    border-right: 1px solid transparent;
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -89,7 +88,7 @@ defineExpose({
         width: 100%;
         left: 0;
         bottom: 0;
-        border-top: 1px solid var(--ph-doc-bg);
+        border-top: 1px solid var(--ph-bg-doc);
         display: flex;
         align-items: center;
         justify-content: flex-start;

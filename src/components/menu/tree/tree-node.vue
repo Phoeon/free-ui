@@ -204,7 +204,7 @@ onMounted(()=>{
             background-color: var(--ph-menu-bg);
         }
         &[active=true]{
-            background-color: var(--ph-ctr-bg-info);
+            background-color: var(--ph-primary-a1);
         }
     }
     &-root{

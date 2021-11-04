@@ -26,7 +26,7 @@ export default [
         },{
             name:"步骤条",
             id:"/step",
-            icon:"exchange"
+            action:"/step"
         },{
             name:"选项卡",
             id:"/tabs",
@@ -50,7 +50,7 @@ export default [
         }]
     },{
         name:"表单",
-        id:"/form",
+        id:"/formgroup",
         icon:"firefox",
         children:[{
             name:"表单汇总",

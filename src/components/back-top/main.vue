@@ -13,8 +13,8 @@ const props = defineProps({
 </script>
 <style lang="scss">
 .ph-backtop{
-    background-color: var(--ph-modal-bg-reverse);
-    color: var(--ph-modal-c-reverse);
+    background-color: var(--ph-popover-bg);
+    color: var(--ph-c);
     z-index: var(--ph-zdx-popover);
     position: fixed;
     bottom: 80px;
@@ -24,7 +24,7 @@ const props = defineProps({
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: var(--ph-shadow-dark);
+    box-shadow: var(--ph-shadow-popover);
     width: 40px;
     height: 40px;
     --ph-i-size:24px;

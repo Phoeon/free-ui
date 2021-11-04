@@ -26,19 +26,8 @@ const onInput = (e:Event)=>{
 }
 </script>
 <style lang="scss">
+@import '../../assets/style/fn.scss';
 .ph-input{
-    flex: 1;
-    border-radius: var(--ph-ip-br);
-    border-color: var(--ph-bc);
-    border-bottom-color: var(--ph-ip-bbc);
-    font-size: var(--ph-ip-fs);
-    height: var(--ph-ip-h);
-    color: var(--ph-ip-c);
-    padding: 0 12px;
-    background-color: var(--ph-ip-bg);
-    width: 0;
-    &:disabled{
-        cursor: var(--ph-ip-cursor);
-    }
+    @include input();
 }
 </style>

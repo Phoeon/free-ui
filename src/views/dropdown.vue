@@ -31,16 +31,6 @@
                 <f-dropdownlist :sample="true" position="bc" :dataSource="data.dataSource"></f-dropdownlist>
                 <f-dropdownlist :sample="true" position="br" :dataSource="data.dataSource"></f-dropdownlist>
             </div>
-            <div class="flex-box-col" style="margin-bottom:16px;">
-                <f-dropdownlist theme="reverse" :sample="true" position="tl" :dataSource="data.dataSource"></f-dropdownlist>
-                <f-dropdownlist theme="reverse" :sample="true" position="tc" :dataSource="data.dataSource"></f-dropdownlist>
-                <f-dropdownlist theme="reverse" :sample="true" position="tr" :dataSource="data.dataSource"></f-dropdownlist>
-            </div>
-            <div class="flex-box-col" style="margin-bottom:16px;">
-                <f-dropdownlist theme="reverse" :sample="true" position="bl" :dataSource="data.dataSource"></f-dropdownlist>
-                <f-dropdownlist theme="reverse" :sample="true" position="bc" :dataSource="data.dataSource"></f-dropdownlist>
-                <f-dropdownlist theme="reverse" :sample="true" position="br" :dataSource="data.dataSource"></f-dropdownlist>
-            </div>
         </f-card>
     </f-view>
 </template>

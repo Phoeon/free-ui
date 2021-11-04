@@ -19,7 +19,7 @@
     </transition>
 </template>
 <script lang="ts" setup>
-import { computed, defineProps, defineEmits, PropType, reactive, toRef } from 'vue'
+import { defineProps, defineEmits, PropType, reactive } from 'vue'
 import { CircleSuccess, CircleDanger, CircleInfo, CircleWarning, Times, CustomIcon } from '../icon'
 import { IAlertType } from './types'
 
@@ -74,20 +74,20 @@ const onLink = ()=>{
     background-color: var(--ph-block-bg);
     margin: var(--ph-pd) 0;
     &-warning{
-        border: 1px solid var(--ph-ctr-bd-warning);
-        background-color: var(--ph-ctr-bg-warning);
+        // border: 1px solid var(--ph-ctr-bd-warning);
+        background-color: var(--ph-warning-a1);
     }
     &-success{
-        border: 1px solid var(--ph-ctr-bd-success);
-        background-color: var(--ph-ctr-bg-success);
+        // border: 1px solid var(--ph-ctr-bd-success);
+        background-color: var(--ph-success-a1);
     }
     &-info{
-        border: 1px solid var(--ph-ctr-bd-info);
-        background-color: var(--ph-ctr-bg-info);
+        // border: 1px solid var(--ph-ctr-bd-info);
+        background-color: var(--ph-info-a1);
     }
     &-error{
-        border: 1px solid var(--ph-ctr-bd-error);
-        background-color: var(--ph-ctr-bg-error);
+        // border: 1px solid var(--ph-ctr-bd-error);
+        background-color: var(--ph-danger-a1);
     }
     &-icon-wrap{
         height: var(--ph-galert-lh);
@@ -98,6 +98,7 @@ const onLink = ()=>{
         line-height: var(--ph-galert-lh);
         word-break: break-word;
         flex: 1;
+        color: var(--ph-c-reverse);
     }
     &-title{
         font-size: var(--ph-18);

@@ -151,10 +151,10 @@ onMounted(()=>{
 @import '../../assets/style/fn.scss';
 .ph-color-container{
     --ph-c-w:230px;
-    --ph-c-bg:#2e2f33;
-    --ph-c-primary:#eb666c;
-    --ph-c-bg-d1:#292a2e;
-    --ph-c-bd:#232328;
+    --ph-c-bg:var(--ph-bg-4);
+    --ph-c-primary:var(--ph-primary);
+    --ph-c-bd:var(--ph-bd);
+    --ph-c-bg-d1:var(--ph-bg-a15);
     --ph-c-alpha-bg:url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJub25lIj48cGF0aCBmaWxsPSIjRkZGIiBkPSJNMCAwaDE1djE1SDB6Ii8+PHBhdGggZmlsbD0iI0U2RTZFNiIgZD0iTTAgMGg3LjV2Ny41SDB6TTcuNSA3LjVIMTVWMTVINy41eiIvPjwvZz48L3N2Zz4=");
     --ph-c-bar:38px;
     --ph-c-sv:150px;
@@ -184,7 +184,7 @@ onMounted(()=>{
         height: var(--ph-c-bar);
         justify-content: center;
         align-items: center;
-        color: #FFFFFF;
+        color: var(--ph-c-reverse);
         display: flex;
         font-weight: var(--ph-fw-m);
         &:after{

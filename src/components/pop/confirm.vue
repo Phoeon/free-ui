@@ -44,6 +44,7 @@ const style = reactive({
     top:'auto'
 })
 const onClose = (status:number)=>{
+    if(props.sample)return
     state.visible = false
     props.notify?.(status)
 }

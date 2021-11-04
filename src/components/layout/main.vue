@@ -22,6 +22,7 @@ const slots = useSlots()
 const flex = !!(slots.topbar||slots.bottombar)
 </script>
 <style lang="scss">
+@import '../../assets/style/fn.scss';
 .ph-main{
     min-height: 100%;
     max-width: 100%;
@@ -45,7 +46,6 @@ const flex = !!(slots.topbar||slots.bottombar)
         background-color: var(--ph-topbar-bg);
     }
     &-topbar{
-        box-shadow: 0 3px 3px 0 rgb(0 0 0 /10%);
         justify-content: space-between;
         &-action{
             display: flex;
@@ -60,6 +60,9 @@ const flex = !!(slots.topbar||slots.bottombar)
         .ph-icon{
             --ph-i-size:var(--ph-gicon);
             font-size:var(--ph-gicon);
+        }
+        &:after{
+            @include blMx(var(--ph-bd));
         }
     }
 }

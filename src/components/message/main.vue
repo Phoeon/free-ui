@@ -98,6 +98,7 @@ defineExpose({
     z-index:var(--ph-zdx-modal);
     box-shadow: var(--ph-shadow-1);
     background-color: var(--ph-msg-bg);
+    backdrop-filter: blur(12px);
     &-icon-wrap{
         height: var(--ph-gmsg-lh);
         display: flex;
@@ -107,6 +108,7 @@ defineExpose({
         line-height: var(--ph-gmsg-lh);
         word-break: break-word;
         flex: 1;
+        color: var(--ph-c-reverse);
     }
     .ph-icon{
         --ph-i-size:16px;
@@ -118,7 +120,7 @@ defineExpose({
             color: var(--ph-success);
         }
         &[type=info]{
-            color: var(--ph-link);
+            color: var(--ph-info);
         }
         &[type=warning]{
             color: var(--ph-warning);
@@ -128,22 +130,16 @@ defineExpose({
         }
     }
     &-warning{
-        background-color: var(--ph-ctr-bg-warning);
+        background-color: var(--ph-warning-a4);
     }
     &-success{
-        background-color: var(--ph-ctr-bg-success);
+        background-color: var(--ph-success-a4);
     }
     &-info{
-        background-color: var(--ph-ctr-bg-info);
+        background-color: var(--ph-info-a4);
     }
     &-error{
-        background-color: var(--ph-ctr-bg-error);
+        background-color: var(--ph-danger-a4);
     }
 }
-// @media screen and (max-width: 768px) {
-//     .ph-msg{
-//         background-color:var(--ph-backdrop-alpha);
-//         backdrop-filter: blur(20px);
-//     }
-// }
 </style>

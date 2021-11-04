@@ -38,6 +38,7 @@ const onToggle = ()=>{
 }
 </script>
 <style lang="scss">
+@import '../../assets/style/fn.scss';
 .ph-accordion-item{
     border: 1px solid var(--ph-c-l3);
     border-left-width: var(--ph-li-blr);
@@ -50,16 +51,11 @@ const onToggle = ()=>{
         padding: 0 var(--ph-pd);
         color: var(--ph-d1);
         font-weight: var(--ph-fw-m);
-        background-color: var(--ph-acd-header-bg);
+        background-color: var(--ph-block-bg);
         position: relative;
         &:before{
-            content: "";
-            position: absolute;
-            background-color: var(--ph-c-l3);
-            width: 100%;
+            @include blMx(var(--ph-c-l3));
             bottom: -1px;
-            left: 0;
-            height: 1px;
         }
         .ph-acd-title{
             flex: 1;

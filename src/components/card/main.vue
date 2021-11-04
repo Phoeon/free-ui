@@ -46,7 +46,7 @@ defineProps({
         font-size: var(--ph-gcard-tfs);
         position: relative;
         &:after{
-            @include blMx(var(--ph-bc-1));
+            @include blMx(var(--ph-bd));
             left: var(--ph-pd);
             right: 0;
         }

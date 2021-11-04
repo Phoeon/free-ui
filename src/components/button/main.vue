@@ -20,7 +20,7 @@ const props = defineProps({
     shape:String as PropType<'circle'|'square'>,
     radius:{type:Boolean,default:true},
     hover:{type:Boolean,default:true},
-    type:{type:String as PropType<'primary'|'success'|'danger'|'warning'|'default'>,default:'default'},
+    type:{type:String as PropType<'primary'|'success'|'danger'|'warning'|'info'|'default'>,default:'default'},
     fillMode:{type:String as PropType<'outline'|'reverse'|'none'|'normal'>,default:'normal'},
     size:{type:String as PropType<'mini'|'small'|'large'|'normal'>,default:'normal'}
 })
@@ -41,6 +41,7 @@ const cns = computed(()=>{
         'ph-btn-success':props.type=="success",
         'ph-btn-danger':props.type=="danger",
         'ph-btn-warning':props.type=="warning",
+        'ph-btn-info':props.type=="info",
         'ph-btn-default':(props.type=="default"||!props.type),//&&props.fillMode=="normal",
 
         'ph-btn-outline':props.fillMode=="outline",
@@ -82,9 +83,9 @@ const onTap = (e:Event)=>{
     --ph-btn-pd: 0px 16px;
     --ph-btn-fs: var(--ph-gbtn-fs);
     --ph-btn-h: var(--ph-gbtn-h);
-    --ph-btn-bc: var(--ph-bc);
     --ph-btn-c: var(--ph-c);
-    --ph-btn-bg: var(--ph-bg);
+    --ph-btn-bc: var(--ph-bc-a15);
+    --ph-btn-bg: var(--ph-bg-a15);
     --ph-btn-theme: var(--ph-c);
 
     position: relative;
@@ -103,6 +104,7 @@ const onTap = (e:Event)=>{
     font-family: inherit;
     font-weight: 500;
     transition: opacity .15s ease,color .15s ease,background-color .15s ease,border .15s ease;
+    background-clip: padding-box;
     &:before{
         content:'';
         display: inline-block;
@@ -136,17 +138,6 @@ const onTap = (e:Event)=>{
         &.ph-btn-large{
             --ph-btn-pd: 0px 22px;
         }
-        &.ph-btn-hover:hover:after{
-            opacity: .1;
-        }
-        &.ph-btn-default.ph-btn-hover:hover{
-            --ph-btn-bg:var(--ph-doc-bg);
-            --ph-btn-bc:var(--ph-bc);
-        }
-        &.ph-btn-default.ph-btn-none.ph-btn-hover:hover{
-            --ph-btn-bg:var(--ph-doc-bg);
-            --ph-btn-bc:var(--ph-doc-bg);
-        }
     }
     &.ph-btn-circle,
     &.ph-btn-square{
@@ -161,10 +152,10 @@ const onTap = (e:Event)=>{
         --ph-btn-br:4px;
     }
     &-default{
-        --ph-btn-bc: var(--ph-bc);
-        --ph-btn-c: var(--ph-c);
-        --ph-btn-bg: var(--ph-bg);
-        --ph-btn-theme: var(--ph-c);
+        --ph-btn-bc: var(--ph-bg-a1-reverse);
+        --ph-btn-bg: var(--ph-bg-a1-reverse);
+        --ph-btn-c: var(--ph-c-reverse);
+        --ph-btn-theme: var(--ph-c-reverse);
         &:disabled{
             opacity: .4;
         }
@@ -187,6 +178,12 @@ const onTap = (e:Event)=>{
         --ph-btn-bc:var(--ph-warning);
         --ph-btn-c:var(--ph-c-white);
     }
+    &-info{
+        --ph-btn-theme:var(--ph-info);
+        --ph-btn-bg:var(--ph-info);
+        --ph-btn-bc:var(--ph-info);
+        --ph-btn-c:var(--ph-c-white);
+    }
     &-danger{
         --ph-btn-theme:var(--ph-danger);
         --ph-btn-bg:var(--ph-danger);
@@ -204,42 +201,39 @@ const onTap = (e:Event)=>{
     }
     &-reverse{
         --ph-btn-c:var(--ph-btn-theme);
-        --ph-btn-bg:var(--ph-bg);
-        --ph-btn-bc:var(--ph-bg);
+        --ph-btn-bg:var(--ph-bg-a1-reverse);
+        --ph-btn-bc:var(--ph-bg-a1-reverse);
     }
     &-block{
         display: block;
         width: 100%;
     }
-    &:not(.ph-btn-default):after{
+    &:after{
         position: absolute;
         top: 50%;
         left: 50%;
         width: 100%;
         height: 100%;
-        background-color: var(--ph-c-d2);
-        border-color: var(--ph-c-d2);
         border: inherit;
+        border-color: var(--ph-bg-a1);
+        background-color: var(--ph-bg-a1);
+        background-clip: padding-box;
         border-radius: inherit;
         transform: translate(-50%,-50%);
         opacity: 0;
         content: " ";
         box-sizing: content-box;
-        transition: opacity .15s ease;
+        transition: var(--ph-ts-ei);
     }
-
-    &:not(.ph-btn-default):active:after{
-        opacity: .1;
+    &:active:after,
+    &-hover:hover:after{
+        opacity: 1;
     }
     &:disabled{
         cursor: not-allowed!important;
     }
     &:not(.ph-btn-default):disabled{
         opacity: .4!important;
-    }
-    &-default:active{
-        --ph-btn-bg:var(--ph-doc-bg);
-        --ph-btn-bc:var(--ph-doc-bg);
     }
     &-default:disabled{
         --ph-btn-bg:var(--ph-bg-disabled)!important;

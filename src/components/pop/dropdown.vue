@@ -50,7 +50,10 @@ const cns = computed(()=>{
         cns.push("ph-pop-reverse")
     return cns
 })
-const  close = ()=>state.visible = false
+const  close = ()=>{
+    if(props.sample)return
+    state.visible = false
+}
 const onClick = (item:IDropdownItem)=>{
     props.notify?.(item)
     close()
