@@ -4,7 +4,10 @@ export default ({dw,dwfs}:{dw:number,dwfs:number})=>{
 	const doc = 
 		document.documentElement;
 	const flag = isMobile()
-	if(flag){
+	if(window!==top){
+		php = "mb"
+	}
+	else if(flag){
 		if(doc.clientWidth<=768){
 			const ratio = Math.max(doc.clientWidth/dw,0.875)
 			phx = ratio*dwfs //375下默认 字体大小 会四舍五入

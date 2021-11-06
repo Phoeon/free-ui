@@ -9,7 +9,7 @@ const show = (opt:{title?:string,alpha?:boolean,fill?:string,icon?:string,showBo
         const ins = createApp(FLoading,{...opt,modelValue:ref(true),position:"fixed",resolve}).mount(document.createElement("div")) as InstanceType<typeof FLoading>
         document.body.appendChild(ins.$el)
         // resolve(ins.hide as ()=>void)
-    })
+    }) as Promise<()=>void>
 }
 export default {
     install(app:any){

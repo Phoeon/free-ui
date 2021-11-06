@@ -11,6 +11,9 @@
             <Time/>
             <date/>
             <datetime/>
+            <sun/>
+            <moon/>
+            <mobile/>
 
             <minus :disabled="true"/>
             <plus :disabled="true"/>
@@ -163,6 +166,9 @@ const {
     Search,
     Theme,
     Ellipsis,
+    Sun,
+    Moon,
+    Mobile,
 
     CustomIcon
     } = FIcon

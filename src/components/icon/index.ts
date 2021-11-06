@@ -17,6 +17,7 @@ import Ellipsis from './ellipsis.vue'
 import Backtop from './back-top.vue'
 import Sun from './sun.vue'
 import Moon from './moon.vue'
+import Mobile from './mobile.vue'
 export * from './square'
 export * from './circle'
 export * from './loading'
@@ -39,5 +40,6 @@ export {
     Backtop,
     CustomIcon,
     Sun,
-    Moon
+    Moon,
+    Mobile
 }

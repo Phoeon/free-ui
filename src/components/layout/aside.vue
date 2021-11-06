@@ -56,7 +56,7 @@ defineExpose({
     bottom: 0;
     max-height: 100vh;
     z-index: 2;
-    transition: width .3s ease;
+    transition: all .3s ease;
     .ph-logo{
         display: flex;
         flex: 0 0 60px;
@@ -111,7 +111,7 @@ defineExpose({
         transform: translateX(0);
         &[simple=true]{
             transform: translateX(-100%);
-            box-shadow: var(--ph-shadow-1);
+            box-shadow: none;
         }
     }
 }

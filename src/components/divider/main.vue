@@ -25,6 +25,9 @@ const style = computed(()=>{
     color:var(--ph-normal-c);
     font-weight: var(--ph-fw-m);
     position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     &-primary{
         color:var(--ph-primary);
     }

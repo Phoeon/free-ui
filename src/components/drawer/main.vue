@@ -51,7 +51,7 @@ const style = computed(()=>{
     border-radius: var(--ph-drawer-br);
     overflow: hidden;
     background-color: var(--ph-modal-bg);
-
+    width: var(--ph-drawer-w,auto);
     &.bottom{
         left:0;
         right:0;

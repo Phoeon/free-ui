@@ -22,8 +22,8 @@
                 <f-button type="primary" @click="onSubmit">提交表单</f-button>
             </template>
         </f-form>
-        <f-card title="临时案例">
-        </f-card>
+        <!-- <f-card title="临时案例">
+        </f-card> -->
     </f-view>
 </template>
 <script lang="ts" setup>
