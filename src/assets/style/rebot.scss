@@ -53,10 +53,6 @@
     --ph-noble-a1:rgb(145, 102, 255,.1);
     --ph-noble-a4:rgb(145, 102, 255,.4);
 
-    --ph-primary: var(--ph-danger);
-    --ph-primary-a1:var(--ph-danger-a1);//#111D2C;
-    --ph-primary-a3:var(--ph-danger-a3);
-
     --ph-danger-bg:#fef0f0;
     --ph-danger-c:#a94442;
     --ph-danger-bd:#fde2e2;
@@ -77,6 +73,9 @@
     --ph-noble-c:#6d33ff;
     --ph-noble-bd:#b699ff;
 
+    --ph-primary: var(--ph-danger);
+    --ph-primary-a1:var(--ph-danger-a1);//#111D2C;
+    --ph-primary-a3:var(--ph-danger-a3);
     --ph-primary-bg:var(--ph-danger-bg);
     --ph-primary-c:var(--ph-danger-c);
     --ph-primary-bd:var(--ph-danger-bd);
@@ -164,6 +163,47 @@
     --ph-orchid-200: #e3a4d5;
     --ph-orchid-100: #edcae4;
     --ph-orchid-50: #f7ebf4;
+
+    &[f-theme=danger]{
+        --ph-primary: var(--ph-danger);
+        --ph-primary-a1:var(--ph-danger-a1);//#111D2C;
+        --ph-primary-a3:var(--ph-danger-a3);
+        --ph-primary-bg:var(--ph-danger-bg);
+        --ph-primary-c:var(--ph-danger-c);
+        --ph-primary-bd:var(--ph-danger-bd);
+    }
+    &[f-theme=success]{
+        --ph-primary: var(--ph-success);
+        --ph-primary-a1:var(--ph-success-a1);//#111D2C;
+        --ph-primary-a3:var(--ph-success-a3);
+        --ph-primary-bg:var(--ph-success-bg);
+        --ph-primary-c:var(--ph-success-c);
+        --ph-primary-bd:var(--ph-success-bd);
+    }
+    &[f-theme=info]{
+        --ph-primary: var(--ph-info);
+        --ph-primary-a1:var(--ph-info-a1);//#111D2C;
+        --ph-primary-a3:var(--ph-info-a3);
+        --ph-primary-bg:var(--ph-info-bg);
+        --ph-primary-c:var(--ph-info-c);
+        --ph-primary-bd:var(--ph-info-bd);
+    }
+    &[f-theme=warning]{
+        --ph-primary: var(--ph-warning);
+        --ph-primary-a1:var(--ph-warning-a1);//#111D2C;
+        --ph-primary-a3:var(--ph-warning-a3);
+        --ph-primary-bg:var(--ph-warning-bg);
+        --ph-primary-c:var(--ph-warning-c);
+        --ph-primary-bd:var(--ph-warning-bd);
+    }
+    &[f-theme=noble]{
+        --ph-primary: var(--ph-noble);
+        --ph-primary-a1:var(--ph-noble-a1);//#111D2C;
+        --ph-primary-a3:var(--ph-noble-a3);
+        --ph-primary-bg:var(--ph-noble-bg);
+        --ph-primary-c:var(--ph-noble-c);
+        --ph-primary-bd:var(--ph-noble-bd);
+    }
 }
 body{
     color: var(--ph-c);

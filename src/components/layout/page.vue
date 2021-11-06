@@ -22,7 +22,7 @@ const cst = {
 }
 const props = defineProps({
     mode:{type:String as PropType<'dark'|'light'>,default:"dark"},
-    theme:{type:String , default: ""}
+    theme:{type:String , default: "danger"}
 })
 const state = reactive({
     asideToggle:false,
@@ -40,6 +40,9 @@ const mediaQuery = (matches:boolean,dw:number)=>{
 const setAppMode = (mode:string)=>{
     document.documentElement.setAttribute("f-mode",mode)
 }
+const setAppTheme = (theme:string)=>{
+    document.documentElement.setAttribute("f-theme",theme)
+}
 MediaQuery.all(mediaQuery)
 evt.on("aside:toggle",(from)=>{
     if(from!="menu"||showMask.value)
@@ -48,11 +51,13 @@ evt.on("aside:toggle",(from)=>{
 provide("phevt",evt)
 provide("ph-aside-toggle",toRef(state,'asideToggle'))
 watch(()=>props.mode,setAppMode)
+watch(()=>props.theme,setAppTheme)
 onBeforeMount(()=>{
     mediaQuery(true,document.documentElement.clientWidth)
 })
 onMounted(()=>{
     setAppMode(props.mode||'dark')
+    setAppTheme(props.theme||"danger")
 })
 </script>
 <style lang="scss">

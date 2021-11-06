@@ -1,5 +1,5 @@
 <template>
-<f-page :mode="mode">
+<f-page :mode="state.mode" :theme="state.theme">
   <template #aside>
     <f-aside :showLogo="aside.showLogo" :avatar="aside.avatar" :appName="aside.appName" @logo-click="onLogoClick">
       <template v-slot:default="props">
@@ -11,7 +11,7 @@
     <template #topbar>
       <div class="block">
         <f-button @click="state.preview=true" shape="square" fillMode="none" v-tooltip="{content:'自适应预览',position:'br'}" v-if="state.isTop"><mobile/></f-button>
-        <f-button @click="onShiftMode" shape="square" fillMode="none" v-tooltip="{content:'黑白切换',position:'br'}"><moon v-if="mode==='light'"/><sun v-else/></f-button>
+        <f-theme-picker v-model:mode="state.mode" v-model:theme="state.theme"/>
       </div>
     </template>
     <router-view v-slot="{ Component, route }">
@@ -33,6 +33,7 @@
 import { 
   FDrawer,
   FGLoading,
+  FThemePicker,
   FPage,
   FAside,
   FMenuTree,
@@ -50,6 +51,8 @@ const state = reactive<{
   preview:boolean,
   aside:unknown,
   cpath:any,
+  theme:string,
+  mode:string,
   paths:Array<Record<string,any>>}>({
   isTop:window===top,
   preview:false,
@@ -58,17 +61,15 @@ const state = reactive<{
     avatar:"https://v3.cn.vuejs.org/logo.png",
     appName:"ui组件库"
   },
-  paths:[],
+  paths:searchPath(menuData,location.pathname)||[],
+  theme:"danger",
+  mode:"dark",
   cpath:location.pathname
 })
 
 const { aside } = toRefs(state)
 const router = useRouter()
-const mode = ref("dark")
 
-const onShiftMode = ()=>{
-  mode.value = mode.value=='dark'?'light':'dark'
-}
 const onLogoClick = ()=>{
   router.push("/")
 }

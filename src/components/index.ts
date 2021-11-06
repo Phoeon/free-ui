@@ -31,6 +31,7 @@ export * from './form'
 export * from './blockquote'
 export * from './divider'
 export * from './tag'
+export * from './theme'
 export {
     FIcon,
     FNotification,

@@ -4,6 +4,7 @@
             <f-slider v-model="slider.v" :max="slider.max"></f-slider>
             <f-button @click="onClick" :style="{backgroundColor:color.value}">打开取色器</f-button>
         </f-card>
+        <f-theme-picker mode="dark" theme="danger"/>
         <f-card title="块引用">
             <f-blockquote type="primary">阿死了都快减肥撒懒得看阿死掉<span>了飞机撒</span>到了副科级阿死了大家发送大量开发阿死里打飞机撒代理</f-blockquote>
             <f-blockquote type="info">阿死了都快减肥撒懒得看阿死掉了飞机撒到了副科级阿死了大<a>家发送大量</a>开发阿死里打飞机撒代理</f-blockquote>
@@ -37,6 +38,7 @@
             <f-tag role="close">标签</f-tag>
             <f-tag type="light" :outline="true" role="add">标签</f-tag>
         </f-card>
+        
     </f-view>
 </template>
 <script lang="ts" setup>
@@ -44,6 +46,7 @@ import { FView,FCard,FButton, FCPicker,FBlockquote,FDivider} from '@/components'
 import FSlider from '@/components/form/slider.vue'
 import DtColor from '@/components/color/main.vue'
 import FTag from '@/components/tag/main.vue'
+import FThemePicker from '@/components/theme/main.vue'
 import { reactive } from 'vue'
 const slider = reactive({
     max:100,

@@ -31,8 +31,8 @@
             <f-button-group>
                 <f-button type="primary" :block="true">Block</f-button>
                 <f-button disabled type="primary" :block="true">Block</f-button>
-                <f-button type="default" :block="true">Default</f-button>
-                <f-button disabled type="default" :block="true">Default</f-button>
+                <f-button type="normal" :block="true">Default</f-button>
+                <f-button disabled type="normal" :block="true">Default</f-button>
             </f-button-group>
         </f-card>
         <f-card title="不同尺寸">
@@ -45,12 +45,12 @@
         </f-card>
         <f-card title="不同状态">
             <f-button-group>
-                <f-button type="default"><template v-slot:leftIcon><custom-icon name="filter"></custom-icon></template>Icon</f-button>
-                <f-button type="default" dropdown="down">Dropdown</f-button>
-                <f-button type="default">Default</f-button>
-                <f-button type="default" fillMode="outline">outline</f-button>
-                <f-button type="default" fillMode="none">transparent</f-button>
-                <f-button type="default" :disabled="true">Default</f-button>
+                <f-button type="normal"><template v-slot:leftIcon><custom-icon name="filter"></custom-icon></template>Icon</f-button>
+                <f-button type="normal" dropdown="down">Dropdown</f-button>
+                <f-button type="normal">Default</f-button>
+                <f-button type="normal" fillMode="outline">outline</f-button>
+                <f-button type="normal" fillMode="none">transparent</f-button>
+                <f-button type="normal" :disabled="true">Default</f-button>
             </f-button-group>
             <br />
             <f-button-group>
@@ -64,11 +64,11 @@
         </f-card>
         <f-card title="禁止状态">
             <f-button-group>
-                <f-button disabled type="default"><template v-slot:leftIcon><custom-icon name="filter"></custom-icon></template>Icon</f-button>
-                <f-button disabled type="default" dropdown="down">Dropdown</f-button>
-                <f-button disabled type="default">Default</f-button>
-                <f-button disabled type="default" fillMode="outline">outline</f-button>
-                <f-button disabled type="default" fillMode="none">transparent</f-button>
+                <f-button disabled type="normal"><template v-slot:leftIcon><custom-icon name="filter"></custom-icon></template>Icon</f-button>
+                <f-button disabled type="normal" dropdown="down">Dropdown</f-button>
+                <f-button disabled type="normal">Default</f-button>
+                <f-button disabled type="normal" fillMode="outline">outline</f-button>
+                <f-button disabled type="normal" fillMode="none">transparent</f-button>
             </f-button-group>
             <br />
             <f-button-group>

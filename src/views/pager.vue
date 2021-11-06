@@ -104,6 +104,22 @@
                 v-model:pagesize="data.pagesize"
             />
             <br/>
+            <f-pager 
+                @page="onPage"
+                :total="data.total"
+                theme="noble"
+                v-model:page="data.page"
+                v-model:pagesize="data.pagesize"
+            />
+            <br/>
+            <f-pager 
+                @page="onPage"
+                :total="data.total"
+                theme="info"
+                v-model:page="data.page"
+                v-model:pagesize="data.pagesize"
+            />
+            <br/>
         </f-card>
     </f-view>
 </template>

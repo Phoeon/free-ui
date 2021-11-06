@@ -8,9 +8,10 @@
 <script lang="ts" setup>
 import './icon.scss'
 import { reactive, defineProps , PropType, computed } from "vue";
+import { IThemeType } from '../../shared/types'
 const props = defineProps({
     hover:{type:Boolean,default:true},
-    type:String as PropType<'primary'|'info'|'success'|'warning'|'danger'>,
+    type:String as PropType<IThemeType>,
     disabled:Boolean,
     color:String,
     size:String,
@@ -58,6 +59,9 @@ const style = computed(()=>{
     }
     &[type=warning]{
         --ph-i-color:var(--ph-warning);
+    }
+    &[type=noble]{
+        --ph-i-color:var(--ph-noble);
     }
     svg{
         vertical-align: top;

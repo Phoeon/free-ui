@@ -122,6 +122,7 @@ provide("notify",(paths:INavNode[])=>{
     
 })
 watch(()=>simple.value,(v)=>{
+    console.log(Math.random())
     restoreState()
 })
 onMounted(()=>{

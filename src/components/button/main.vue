@@ -9,7 +9,7 @@
 </template>
 <script lang="ts" setup>
 import { PropType, reactive, defineProps, defineEmits, defineAsyncComponent, computed } from "vue";
-
+import { IThemeType } from '../../shared/types'
 const Caret = defineAsyncComponent(()=>import("../icon/caret.vue"))
 const Spin = defineAsyncComponent(()=>import("../icon/loading/spin.vue"))
 const props = defineProps({
@@ -20,7 +20,7 @@ const props = defineProps({
     shape:String as PropType<'circle'|'square'>,
     radius:{type:Boolean,default:true},
     hover:{type:Boolean,default:true},
-    type:{type:String as PropType<'primary'|'success'|'danger'|'warning'|'info'|'default'>,default:'default'},
+    type:{type:String as PropType<IThemeType>,default:'normal'},
     fillMode:{type:String as PropType<'outline'|'reverse'|'none'|'normal'>,default:'normal'},
     size:{type:String as PropType<'mini'|'small'|'large'|'normal'>,default:'normal'}
 })
@@ -42,7 +42,7 @@ const cns = computed(()=>{
         'ph-btn-danger':props.type=="danger",
         'ph-btn-warning':props.type=="warning",
         'ph-btn-info':props.type=="info",
-        'ph-btn-default':(props.type=="default"||!props.type),//&&props.fillMode=="normal",
+        'ph-btn-normal':(props.type=="normal"||!props.type),//&&props.fillMode=="normal",
 
         'ph-btn-outline':props.fillMode=="outline",
         'ph-btn-none':props.fillMode=="none",
@@ -151,7 +151,7 @@ const onTap = (e:Event)=>{
     &-radius{
         --ph-btn-br:4px;
     }
-    &-default{
+    &-normal{
         --ph-btn-bc: var(--ph-bg-a1-reverse);
         --ph-btn-bg: var(--ph-bg-a1-reverse);
         --ph-btn-c: var(--ph-c-reverse);
@@ -232,10 +232,10 @@ const onTap = (e:Event)=>{
     &:disabled{
         cursor: not-allowed!important;
     }
-    &:not(.ph-btn-default):disabled{
+    &:not(.ph-btn-normal):disabled{
         opacity: .4!important;
     }
-    &-default:disabled{
+    &-normal:disabled{
         --ph-btn-bg:var(--ph-bg-disabled)!important;
         --ph-btn-bc:var(--ph-bg-disabled)!important;
         --ph-btn-c:var(--ph-c-disabled)!important;
