@@ -123,6 +123,21 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "table" */ '../views/table.vue')
   },
   {
+    path: '/blockquote',
+    name: 'blockquote',
+    component: () => import(/* webpackChunkName: "blockquote" */ '../views/blockquote.vue')
+  },
+  {
+    path: '/divider',
+    name: 'divider',
+    component: () => import(/* webpackChunkName: "divider" */ '../views/divider.vue')
+  },
+  {
+    path: '/tag',
+    name: 'tag',
+    component: () => import(/* webpackChunkName: "tag" */ '../views/tag.vue')
+  },
+  {
     path: '/dropdown',
     name: 'dropdown',
     component: () => import(/* webpackChunkName: "dropdown" */ '../views/dropdown.vue')

@@ -27,7 +27,7 @@ const style = computed(()=>{
     justify-content: var(--ph-dth-justify,space-between);
     align-items: center;
     &:after{
-        @include blMx(var(--ph-bc-1));
+        @include blMx(var(--ph-bd-2));
     }
     .ph-dt-header-center{
         flex: 1;

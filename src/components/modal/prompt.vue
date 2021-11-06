@@ -58,7 +58,7 @@ mediaQuery(true,document.documentElement.clientWidth)
                 &:after{
                     content: "";
                     position: absolute;
-                    background-color: var(--ph-bc-1);
+                    background-color: var(--ph-bd-2);
                     z-index: 1;
                 }
                 &:before{

@@ -1,3 +1,8 @@
+@mixin fontMx($fs,$fc,$fw){
+    font-size: $fs;
+    color: $fc;
+    font-weight: $fw;
+}
 @mixin colorMx($cs){
     $prefix : --ph;
     @each $key,$value in $cs {

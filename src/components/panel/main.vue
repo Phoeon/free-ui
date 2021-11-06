@@ -26,12 +26,12 @@ defineProps({
         align-items: center;
     }
     &-header{
-        border-bottom: 1px solid var(--ph-bc);
+        border-bottom: 1px solid var(--ph-bd-1);
         color: var(--ph-c-d1);
         font-weight: 500;
     }
     &-footer{
-        border-top: 1px solid var(--ph-bc);
+        border-top: 1px solid var(--ph-bd-1);
     }
     &-body{
         flex: 1;

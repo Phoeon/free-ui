@@ -13,7 +13,7 @@
     </input-wrap>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, PropType } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 import InputWrap from './input-wrap.vue'
 const props = defineProps({
     modelValue:[String,Number]

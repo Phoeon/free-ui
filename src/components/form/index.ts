@@ -16,6 +16,8 @@ import FColorPicker from './color.vue'
 import FFormColorPicker from './form-color.vue'
 import FSlider from './slider.vue'
 import FFormSlider from './form-slider.vue'
+import FTextarea from './textarea.vue'
+import FFormTextarea from './form-textarea.vue'
 export {
     FValidator,
     FForm,
@@ -34,5 +36,7 @@ export {
     FColorPicker,
     FFormColorPicker,
     FSlider,
-    FFormSlider
+    FFormSlider,
+    FTextarea,
+    FFormTextarea
 }

@@ -28,6 +28,9 @@ export * from './dropdown'
 export * from './steps'
 export * from './anchors'
 export * from './form'
+export * from './blockquote'
+export * from './divider'
+export * from './tag'
 export {
     FIcon,
     FNotification,

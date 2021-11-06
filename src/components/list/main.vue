@@ -16,6 +16,7 @@ const props = defineProps({
     --ph-li-blr:1px;
     margin: var(--ph-pd);
     margin-top: 0;
+    line-height: var(--ph-24);
     &-block{
         margin-left: 0;
         margin-right: 0;

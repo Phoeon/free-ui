@@ -112,8 +112,8 @@ const onSelect = (idx:number)=>{
             bottom: 0;
             margin: auto;
             background-color: var(--ph-modal-bg);
-            border-top: 1px solid var(--ph-bc-1);
-            border-bottom: 1px solid var(--ph-bc-1);
+            border-top: 1px solid var(--ph-bd-2);
+            border-bottom: 1px solid var(--ph-bd-2);
             box-sizing: border-box;
         }
     }

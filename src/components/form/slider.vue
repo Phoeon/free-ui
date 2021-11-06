@@ -89,7 +89,7 @@ onBeforeUnmount(()=>{
     flex: 1;
     position: relative;
     border-radius: var(--ph-ip-br);
-    border-color: var(--ph-bc);
+    border-color: var(--ph-bd-1);
     border-bottom-color: var(--ph-ip-bbc);
     font-size: var(--ph-ip-fs);
     height: var(--ph-slider-h);

@@ -12,8 +12,8 @@
                 <h1 class="ph-alert-title" v-if="title">{{title}}</h1>
                 <p class="ph-alert-content"><slot>{{content}}</slot></p>
             </div>
-            <a v-if="link" :hover="state.hover" class="ph-link ph-alert-right" @click="onLink">查看详情</a>
-            <a v-else-if="action" :hover="state.hover" class="ph-link ph-alert-right" @click="onAction">查看详情</a>
+            <a v-if="link" :hover="state.hover" class="ph-alert-right" @click="onLink">查看详情</a>
+            <a v-else-if="action" :hover="state.hover" class="ph-alert-right" @click="onAction">查看详情</a>
             <times v-else @click="onClose" class="ph-alert-right ph-alert-close" :hover="true"/>
         </div>
     </transition>
@@ -74,20 +74,24 @@ const onLink = ()=>{
     background-color: var(--ph-block-bg);
     margin: var(--ph-pd) 0;
     &-warning{
-        // border: 1px solid var(--ph-ctr-bd-warning);
-        background-color: var(--ph-warning-a1);
+        background-color: var(--ph-warning-bg);
+        color: var(--ph-warning-c);
+        border: 1px solid var(--ph-warning-bd);
     }
     &-success{
-        // border: 1px solid var(--ph-ctr-bd-success);
-        background-color: var(--ph-success-a1);
+        background-color: var(--ph-success-bg);
+        color: var(--ph-success-c);
+        border: 1px solid var(--ph-success-bd);
     }
     &-info{
-        // border: 1px solid var(--ph-ctr-bd-info);
-        background-color: var(--ph-info-a1);
+        background-color: var(--ph-info-bg);
+        color: var(--ph-info-c);
+        border: 1px solid var(--ph-info-bd);
     }
     &-error{
-        // border: 1px solid var(--ph-ctr-bd-error);
-        background-color: var(--ph-danger-a1);
+        background-color: var(--ph-danger-bg);
+        color: var(--ph-danger-c);
+        border: 1px solid var(--ph-danger-bd);
     }
     &-icon-wrap{
         height: var(--ph-galert-lh);
@@ -98,7 +102,6 @@ const onLink = ()=>{
         line-height: var(--ph-galert-lh);
         word-break: break-word;
         flex: 1;
-        color: var(--ph-c-reverse);
     }
     &-title{
         font-size: var(--ph-18);
@@ -132,6 +135,7 @@ const onLink = ()=>{
     .ph-alert-right{
         cursor: pointer;
         margin: auto;
+        font-weight: bold;
     }
     .ph-alert-close{
         --ph-stroke:var(--ph-c-l1);
@@ -140,6 +144,7 @@ const onLink = ()=>{
         opacity: .5;
         right: var(--ph-pd-sm);
         top: var(--ph-12);
+        color: var(--ph-c-l1);
         &[hover=true]:hover{
             opacity: 1;
         }

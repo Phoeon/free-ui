@@ -84,7 +84,7 @@ const onTap = (e:Event)=>{
     --ph-btn-fs: var(--ph-gbtn-fs);
     --ph-btn-h: var(--ph-gbtn-h);
     --ph-btn-c: var(--ph-c);
-    --ph-btn-bc: var(--ph-bc-a15);
+    --ph-btn-bc: var(--ph-bd-1-a15);
     --ph-btn-bg: var(--ph-bg-a15);
     --ph-btn-theme: var(--ph-c);
 

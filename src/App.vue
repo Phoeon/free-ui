@@ -1,5 +1,5 @@
 <template>
-<f-page>
+<f-page :mode="mode">
   <template #aside>
     <f-aside :showLogo="aside.showLogo" :avatar="aside.avatar" :appName="aside.appName" @logo-click="onLogoClick">
       <template v-slot:default="props">
@@ -10,7 +10,7 @@
   <f-main>
     <template #topbar>
       <div class="block">
-        <f-button @click="onShiftMode" shape="square" fillMode="none" title="切换全局主题"><Theme/></f-button>
+        <f-button @click="onShiftMode" shape="square" fillMode="none" title="切换全局主题"><moon v-if="mode==='light'"/><sun v-else/></f-button>
       </div>
     </template>
     <router-view v-slot="{ Component, route }">
@@ -30,7 +30,7 @@ import {
   FMenuTree,
   FMain,
   FButton } from '@/components'
-import { Theme } from '@/components/icon'
+import { Sun,Moon } from '@/components/icon'
 import { onBeforeMount, reactive, ref, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 import { searchPath } from '@/shared/tree'
@@ -47,11 +47,10 @@ const state = reactive<{aside:unknown,paths:unknown}>({
 })
 const { aside } = toRefs(state)
 const router = useRouter()
-const theme = ref("light")
+const mode = ref("light")
 
 const onShiftMode = ()=>{
-  document.documentElement.setAttribute("f-mode",theme.value)
-  theme.value = theme.value=='dark'?'light':'dark'
+  mode.value = mode.value=='dark'?'light':'dark'
 }
 const onLogoClick = ()=>{
   router.push("/")
@@ -60,9 +59,6 @@ const onNavigate = (paths:Array<{id:string,action:string}>)=>{
   state.paths = paths
   router.push(paths[paths.length-1].action)
 }
-onBeforeMount(()=>{
-  onShiftMode()
-})
 </script>
 <style lang="scss">
 @import '@/assets/style/rebot.scss';

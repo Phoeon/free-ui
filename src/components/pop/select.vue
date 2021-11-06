@@ -6,7 +6,7 @@
     ref="edom" :style="style">
         <div class="ph-ppdd-header" v-if="title&&state.sm">{{title}}</div>
         <ul class="ph-ppdd-list">
-            <li class="ph-ppdd-li" :disabled="item.disabled" :active="state.value.includes(item.value)" v-for="(item,idx) in dataSource" :key="idx" @click="(!item.disabled)&&onClick(item)" :hover="state.hover">
+            <li class="ph-ppdd-li" :disabled="item.disabled" :active="state.value.includes(item.value)" v-for="(item,idx) in dataSource" :key="idx" @click="(!item.disabled)&&onClick(item)" :hover="state.hover&&!item.disabled">
                 <custom-icon class="ph-ppdd-icon" :name="item.icon" v-if="item.icon"/>
                 <span class="ph-ppdd-text">{{item.text}}</span>
                 <tick v-if="state.value.includes(item.value)" type="primary"/>
@@ -145,8 +145,7 @@ onMounted(()=>{
         align-items: center;
         color: var(--ph-c-d1);
         font-weight: var(--ph-fw-m);
-        border-bottom: 1px solid var(--ph-bc);
-        background-color: var(--ph-block-bg);
+        border-bottom: 1px solid var(--ph-bd-1);
     }
     .ph-ppdd-action{
         border-radius: var(--ph-select-btn-br);
@@ -195,7 +194,7 @@ onMounted(()=>{
             }
             &[active=true]{
                 background-color: var(--ph-primary-a3);
-                color: var(--ph-c-white);
+                color: var(--ph-primary);
             }
         }
     }
@@ -210,6 +209,7 @@ onMounted(()=>{
         --ph-last-bd-line:block;
         --ph-select-btn-br:0;
         --ph-gdd-h:var(--ph-45);
+        --ph-pop-br:0;
     }
 }
 </style>

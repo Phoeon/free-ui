@@ -62,57 +62,49 @@ export default [
             action:"/input"
         },{
             name:"日期时间",
-            id:"/pager",
-            action:"/pager"
+            id:"/datetime",
+            action:"/datetime"
         },{
             name:"颜色选择",
-            id:"/pager",
-            action:"/pager"
+            id:"/color",
+            action:"/color"
         },{
             name:"下拉",
             id:"/select",
             action:"/select"
         },{
             name:"单选",
-            id:"/pager",
-            action:"/pager"
+            id:"/radio",
+            action:"/radio"
         },{
             name:"多选",
-            id:"/pager",
-            action:"/pager"
+            id:"/checkbox",
+            action:"/checkbox"
         },{
             name:"切换开关",
-            id:"/pager",
-            action:"/pager"
+            id:"/switch",
+            action:"/switch"
         },{
             name:"滑块",
-            id:"/pager",
-            action:"/pager"
-        },{
-            name:"评分",
-            id:"/pager",
-            action:"/pager"
-        },{
-            name:"上传",
-            id:"/pager",
-            action:"/pager"
+            id:"/slider",
+            action:"/slider"
+        // },{
+        //     name:"评分",
+        //     id:"/rate",
+        //     action:"/rate"
+        // },{
+        //     name:"上传",
+        //     id:"/upload",
+        //     action:"/upload"
         },]
     },{
         name:"数据展示",
         id:"/data",
         icon:"internet-explorer",
         children:[{
-            name:"头像",
-            id:"/pager",
-            action:"/pager"
-        },{
-            name:"徽标",
-            id:"/pager",
-            action:"/pager"
-        },{
             name:"标签",
-            id:"/pager",
-            action:"/pager"
+            id:"/tag",
+            action:"/tag"
         },{
             name:"文字提示tooltip",
             id:"/tooltip",
@@ -122,9 +114,17 @@ export default [
             id:"/popover",
             action:"/popover"
         },{
-            name:"表格",
-            id:"/table",
-            action:"/table"
+        //     name:"表格",
+        //     id:"/table",
+        //     action:"/table"
+        // },{
+            name:"块引用",
+            id:"/blockquote",
+            action:"/blockquote"
+        },{
+            name:"分割线",
+            id:"/divider",
+            action:"/divider"
         },{
             name:"列表",
             id:"/list",
@@ -134,10 +134,10 @@ export default [
             id:"/accordion",
             action:"/accordion"
         },{
-            name:"时间线",
-            id:"/pager",
-            action:"/pager"
-        },{
+        //     name:"时间线",
+        //     id:"/pager",
+        //     action:"/pager"
+        // },{
             name:"卡片",
             id:"/card",
             action:"/card",
@@ -145,7 +145,7 @@ export default [
         }]
     },{
         name:"反馈交互",
-        id:"/pager",
+        id:"/feedback",
         icon:"opera",
         children:[{
             name:"通知",

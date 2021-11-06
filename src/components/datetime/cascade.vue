@@ -244,7 +244,7 @@ const dtfmt = computed(()=>{
             bottom: var(--ph-pd-sm);
             left: 50%;
             transform: translateX(-50%);
-            border-left: 1px solid var(--ph-bc-1);
+            border-left: 1px solid var(--ph-bd-2);
             display: var(--ph-dt-cline);
         }
     }

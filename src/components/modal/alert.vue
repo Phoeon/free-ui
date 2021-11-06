@@ -30,6 +30,7 @@ MediaQuery.all(mediaQuery)
 mediaQuery(true,document.documentElement.clientWidth)
 </script>
 <style lang="scss">
+@import '../../assets/style/fn.scss';
 .ph-modal-alert{
     .ph-modal{
         &-action{
@@ -49,14 +50,8 @@ mediaQuery(true,document.documentElement.clientWidth)
                     height: 100%;
                 }
                 &:before{
-                    content: "";
-                    position: absolute;
-                    background-color: var(--ph-bc-1);
+                    @include tlMx(var(--ph-bd-2));
                     z-index: 1;
-                    width: 100%;
-                    height: 1px;
-                    top: 0;
-                    left: 0;
                 }
             }
         }

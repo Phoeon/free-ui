@@ -1,14 +1,14 @@
 .ph-notify{
     backface-visibility: hidden;
-    border-radius: 8px;
+    border-radius: 4px;
     box-sizing: border-box;
     flex-wrap: wrap;
     overflow: hidden;
     width: 100%;
     flex: 0 0 auto;
     background-color: var(--ph-notify-bg);
-    box-shadow: var(--ph-shadow-popover);
-    padding: var(--ph-notify-pd);
+    box-shadow: var(--ph-shadow-l12);
+    padding: var(--ph-pd) 20px;
     margin-top: var(--ph-notify-mt);
     margin-bottom: var(--ph-notify-mb);
     transform: translate3d(0,0,0);
@@ -29,7 +29,7 @@
         color: var(--ph-c-d1);
         font-size: var(--ph-notify-title-fs);
         line-height: var(--ph-notify-title-lh);
-        margin-bottom: var(--ph-notify-title-mp);
+        // margin-bottom: var(--ph-notify-title-mp);
         display: flex;
         justify-content: space-between;
         .ph-notify-close{
@@ -47,12 +47,13 @@
         color: var(--ph-c); 
         font-size: var(--ph-notify-body-fs);
         line-height: var(--ph-notify-body-lh);
-        margin-bottom: var(--ph-notify-body-mp);
+        // margin-bottom: var(--ph-notify-body-mp);
     }
     &-action{
         display: flex;
         justify-content: right;
         width: 100%;
+        margin-top: var(--ph-pd-sm);
         .ph-btn{
             margin-left: 8px;
         }

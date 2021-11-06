@@ -23,7 +23,7 @@ const style = computed(()=>{
     height: var(--ph-dt-barh);
     justify-content: var(--ph-dth-justify,'flex-start');
     &:after{
-        @include tlMx(var(--ph-bc-1));
+        @include tlMx(var(--ph-bd-2));
     }
     .ph-dt-btn{
         --ph-dtbtn-pdv:3px;

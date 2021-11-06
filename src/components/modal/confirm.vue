@@ -37,6 +37,7 @@ MediaQuery.all(mediaQuery)
 mediaQuery(true,document.documentElement.clientWidth)
 </script>
 <style lang="scss">
+@import '../../assets/style/fn.scss';
 .ph-modal-confirm{
     .ph-modal{
         &-layout{
@@ -66,24 +67,15 @@ mediaQuery(true,document.documentElement.clientWidth)
                 }
                 &:before,
                 &:after{
-                    content: "";
-                    position: absolute;
-                    background-color: var(--ph-bc-1);
                     z-index: 1;
                 }
                 &:before{
-                    width: 100%;
-                    height: 1px;
-                    top: 0;
-                    left: 0;
+                    @include tlMx(var(--ph-bd-2));
                 }
                 &:after{
-                    height: 100%;
-                    width: 1px;
-                    left: 0;
-                    right: 0;
-                    top: 0;
-                    margin: auto;
+                   @include llMx(var(--ph-bd-2));
+                   right: 0;
+                   margin: auto;
                 }
             }
         }

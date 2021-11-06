@@ -15,6 +15,8 @@ import Theme from './theme.vue'
 import CustomIcon from './custom.vue'
 import Ellipsis from './ellipsis.vue'
 import Backtop from './back-top.vue'
+import Sun from './sun.vue'
+import Moon from './moon.vue'
 export * from './square'
 export * from './circle'
 export * from './loading'
@@ -35,5 +37,7 @@ export {
     Theme,
     Ellipsis,
     Backtop,
-    CustomIcon
+    CustomIcon,
+    Sun,
+    Moon
 }

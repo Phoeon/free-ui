@@ -70,7 +70,7 @@ const vIndicator = {
         bottom: 0;
         height: 1px;
         width: 100%;
-        background-color: var(--ph-bc);
+        background-color: var(--ph-bd-1);
     }
     &[underline=true]{
         padding-bottom: var(--ph-pd-sm);

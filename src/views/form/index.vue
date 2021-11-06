@@ -16,36 +16,13 @@
                 <f-form-switch v-model="formData.married" label="禁用开关" :disabled="true" type="icon"></f-form-switch>
                 <f-form-checkbox :block="true" v-model="formData.cuni" :options="dataSource.options" label="复选框" :validators="['required']"></f-form-checkbox>
                 <f-form-radiobox :block="true" v-model="formData.runi" :options="dataSource.options" label="单选框" :validators="['required']"></f-form-radiobox>
+                <f-form-textarea v-model="formData.intro" :limit="9" label="个人介绍" :block="true"/>
             </f-validator>
             <template v-slot:action>
                 <f-button type="primary" @click="onSubmit">提交表单</f-button>
             </template>
         </f-form>
         <f-card title="临时案例">
-            <f-checkbox :options="dataSource.options" v-model="formData.funi"></f-checkbox>
-            <f-checkbox :options="dataSource.options" v-model="formData.funi" :disabled="true"></f-checkbox>
-            <f-radiobox :options="dataSource.options" v-model="formData.uni"></f-radiobox>
-            <f-switch v-model="formData.married"></f-switch>
-            <br/>
-            <f-switch v-model="formData.married" type="text"></f-switch>
-            <br/>
-            <f-switch v-model="formData.married" type="icon"></f-switch>
-            <br/>
-            <f-switch v-model="formData.married" :disabled="true"></f-switch>
-            <br/>
-            <f-switch v-model="formData.married" size="small"></f-switch>
-            <br/>
-            <f-switch v-model="formData.married" size="small" type="text"></f-switch>
-            <br/>
-            <f-switch v-model="formData.married" size="small" type="icon"></f-switch>
-            <br/>
-            <f-datetime-picker v-model="formData.birth"/>
-            <!-- <br/>
-            <f-datetime-picker v-model="formData.unitime" type="datetime"/> -->
-            <br/>
-            <f-datetime-picker v-model="formData.alarm" type="time"/>
-            <br/>
-            <f-color-picker v-model="formData.color"></f-color-picker>
         </f-card>
     </f-view>
 </template>
@@ -64,12 +41,8 @@ import {
         FFormDatetimePicker,
         FFormColorPicker,
         FFormSlider,
+        FFormTextarea,
 
-        FCheckbox,
-        FRadiobox,
-        FSwitch,
-        FDatetimePicker,
-        FColorPicker,
         FMessage } from '@/components'
 import { reactive, ref } from 'vue'
 
@@ -89,7 +62,8 @@ const formData = reactive({
     unitime:[],
     alarm:"12:30:35",
     color:"#FF00FF",
-    slider:30
+    slider:30,
+    intro:""
 })
 const dataSource = {
     options:[{

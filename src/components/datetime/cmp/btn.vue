@@ -35,7 +35,7 @@ const state = reactive({
     &[hover=true]:active,
     &[hover=true]:hover{
         color: var(--ph-c-d2);
-        background-color: var(--ph-dt-btn-bg);
+        background-color: var(--ph-bg-a1-reverse);
     }
     &[active=true]{
         color: var(--ph-c-white)!important;

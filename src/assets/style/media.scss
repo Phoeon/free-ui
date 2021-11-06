@@ -6,9 +6,8 @@
 
 @media screen and (max-width: 768px) {
     :root{
-        --ph-aside-width:208px;
+        --ph-aside-width:228px;
         --ph-aside-toggle-width:48px;
-        --ph-pd:16px;
         --phx:15px;
     }
     ::-webkit-scrollbar{
@@ -17,7 +16,7 @@
 }
 @media screen and (min-width: 769px){
     :root{
-        --ph-aside-width:208px;
+        --ph-aside-width:228px;
         --ph-aside-toggle-width:48px;
         --phx:15px;
     }

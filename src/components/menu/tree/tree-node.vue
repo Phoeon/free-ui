@@ -284,7 +284,7 @@ onMounted(()=>{
             padding: 0 var(--ph-pd) 0 var(--ph-pd-lg);
             width: 100%;
             z-index: 1;
-            border-bottom: 1px solid var(--ph-bc-1);
+            border-bottom: 1px solid var(--ph-bd-2);
         }
         .ph-menu-item{
             z-index: 1;

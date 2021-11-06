@@ -18,7 +18,7 @@ import { CircleSuccess, CircleDanger, CircleInfo, CircleWarning, CustomIcon } fr
 import { IMsgType } from './types'
 const props = defineProps({
     type:{
-        type:String as PropType<IMsgType>
+        type:String as PropType<IMsgType>,default:"default"
     },
     position:{type:String as PropType<'top'|'bottom'>,default:'top'},
     icon:String,
@@ -94,11 +94,11 @@ defineExpose({
     overflow: hidden;
     display: flex;
     flex-wrap: nowrap;
-    padding: var(--ph-12) var(--ph-pd);
+    padding: var(--ph-pd-sm) var(--ph-pd);
     z-index:var(--ph-zdx-modal);
-    box-shadow: var(--ph-shadow-1);
     background-color: var(--ph-msg-bg);
-    backdrop-filter: blur(12px);
+    border: 1px solid var(--ph-bd-1);
+    
     &-icon-wrap{
         height: var(--ph-gmsg-lh);
         display: flex;
@@ -108,38 +108,34 @@ defineExpose({
         line-height: var(--ph-gmsg-lh);
         word-break: break-word;
         flex: 1;
-        color: var(--ph-c-reverse);
     }
     .ph-icon{
         --ph-i-size:16px;
         font-size: var(--ph-gmsg-ih);
         margin-right: var(--ph-pd-sm);
     }
-    .ph-custom-icon{
-        &[type=success]{
-            color: var(--ph-success);
-        }
-        &[type=info]{
-            color: var(--ph-info);
-        }
-        &[type=warning]{
-            color: var(--ph-warning);
-        }
-        &[type=error]{
-            color: var(--ph-error);
-        }
+    &-default{
+        box-shadow: var(--ph-shadow-l8);
     }
     &-warning{
-        background-color: var(--ph-warning-a4);
+        background-color: var(--ph-warning-bg);
+        color: var(--ph-warning-c);
+        border-color: var(--ph-warning-bd);
     }
     &-success{
-        background-color: var(--ph-success-a4);
+        background-color: var(--ph-success-bg);
+        color: var(--ph-success-c);
+        border-color: var(--ph-success-bd);
     }
     &-info{
-        background-color: var(--ph-info-a4);
+        background-color: var(--ph-info-bg);
+        color: var(--ph-info-c);
+        border-color: var(--ph-info-bd);
     }
     &-error{
-        background-color: var(--ph-danger-a4);
+        background-color: var(--ph-danger-bg);
+        color: var(--ph-danger-c);
+        border-color: var(--ph-danger-bd);
     }
 }
 </style>

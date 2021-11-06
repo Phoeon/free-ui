@@ -122,6 +122,9 @@ defineExpose({
             .ph-logo-appname{
                 display: none;
             }
+            .ph-aside-action{
+                justify-content: center;
+            }
         }
     }
 }

@@ -61,7 +61,7 @@ mediaQuery(true,document.documentElement.clientWidth)
                     flex: 1 0 auto;
                     margin: 0;
                     height: var(--ph-gmodal-ah);
-                    border-top: 1px solid var(--ph-bc-1)!important;
+                    border-top: 1px solid var(--ph-bd-2)!important;
                 }
             }
         }

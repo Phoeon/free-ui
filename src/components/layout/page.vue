@@ -6,7 +6,7 @@
     </flex>
 </template>
 <script lang="ts" setup>
-import { computed, onBeforeMount, provide, reactive, toRef, useSlots } from 'vue'
+import { defineProps, watch , computed, onBeforeMount, provide, reactive, toRef, useSlots, PropType, onMounted } from 'vue'
 import Evt from 'ph-evt'
 import MediaQuery from '../../shared/media-query'
 import Autofit from '../../shared/autofit'
@@ -20,6 +20,10 @@ const cst = {
     dw:375,
     dwfs:16
 }
+const props = defineProps({
+    mode:{type:String as PropType<'dark'|'light'>,default:"dark"},
+    theme:{type:String , default: ""}
+})
 const state = reactive({
     asideToggle:false,
     sm:false
@@ -33,6 +37,9 @@ const mediaQuery = (matches:boolean,dw:number)=>{
     state.sm = dw<769
     Autofit(cst)
 }
+const setAppMode = (mode:string)=>{
+    document.documentElement.setAttribute("f-mode",mode)
+}
 MediaQuery.all(mediaQuery)
 evt.on("aside:toggle",(from)=>{
     if(from!="menu"||showMask.value)
@@ -40,8 +47,12 @@ evt.on("aside:toggle",(from)=>{
 })
 provide("phevt",evt)
 provide("ph-aside-toggle",toRef(state,'asideToggle'))
+watch(()=>props.mode,setAppMode)
 onBeforeMount(()=>{
     mediaQuery(true,document.documentElement.clientWidth)
+})
+onMounted(()=>{
+    setAppMode(props.mode||'dark')
 })
 </script>
 <style lang="scss">

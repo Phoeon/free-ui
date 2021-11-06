@@ -6,7 +6,7 @@
                 <f-button size="small" type="success" @click="openMsg('success')">打开msg</f-button>
                 <f-button size="small" type="danger" @click="openMsg('error')">打开msg</f-button>
                 <f-button size="small" type="warning" @click="openMsg('warning')">打开msg</f-button>
-                <f-button size="small" @click="openMsg">打开msg</f-button>
+                <f-button size="small" @click="openMsg()">打开msg</f-button>
             </f-button-group>
         </f-card>
         <f-card title="底部出现">

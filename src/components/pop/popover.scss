@@ -5,7 +5,7 @@
     --ph-pop-bg-hover: var(--ph-popover-bg-hover);
     --ph-pop-c: var(--ph-c-d1);
     --ph-pop-c-d1: var(--ph-c-d2);
-    --ph-pop-bc:var(--ph-bc-1);
+    --ph-pop-bc:var(--ph-bd-2);
     --ph-pop-shadow:var(--ph-shadow-popover);
     --ph-pop-listh:300px;
     --ph-pop-br:4px;
@@ -17,7 +17,8 @@
     box-shadow: var(--ph-pop-shadow);
     border-radius: var(--ph-pop-br);
     [disabled=true]{
-        @include disabledMx()
+        color: var(--ph-c-disabled)!important;
+        cursor: not-allowed!important;
     }
     &:after{
         content: "";
