@@ -1,5 +1,5 @@
 export type IPopPosition = 'tl'|'tc'|'tr'|'bl'|'bc'|'br'|'lt'|'lc'|'lr'|'rt'|'rc'|'rb'
-export type IToolPosition = 't'|'b'|'l'|'r'
+export type IToolPosition = 'tl'|'tc'|'tr'|'bl'|'bc'|'br'|'l'|'r'
 export type IDropdownPosition = 'tl'|'tc'|'tr'|'bl'|'bc'|'br'
 export type ISelectPosition = 't'|'b'
 type IPop = {

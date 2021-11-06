@@ -15,7 +15,7 @@ import { xmatrix,ymatrix } from './shared'
 const edom = ref<HTMLElement>()
 const props = defineProps({
     content:String,
-    position:{type:String as PropType<ITooltip>,default:"t"},
+    position:{type:String as PropType<ITooltip>,default:"tc"},
     x:{type:Number,default:0},
     y:{type:Number,default:0},
     sample:Boolean, //仅用于文档展示，不用关注
@@ -57,10 +57,13 @@ defineExpose({
 <style lang="scss">
 
 .ph-tooltip{
+    --ph-pop-bdc:var(--ph-tooltip-bg);
     max-width: 266px;
     font-size:14px;
     line-height: 22px;
-    padding: var(--ph-pd-sm) var(--ph-pd);
+    padding: 4px var(--ph-pd);
+    background-color: var(--ph-tooltip-bg);
+    color: var(--ph-tooltip-c);
     &[sample=true]{
         position: relative;
         z-index: auto;

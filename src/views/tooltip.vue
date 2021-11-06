@@ -2,9 +2,9 @@
     <f-view>
         <f-card title="静态展示<该组件为web端组件>">
             <div class="tooltip">
-                <f-tooltip :sample="true" content="描述" position="t"></f-tooltip>
+                <f-tooltip :sample="true" content="描述" position="tc"></f-tooltip>
                 <br/>
-                <f-tooltip :sample="true" content="描述文字" position="b"></f-tooltip>
+                <f-tooltip :sample="true" content="描述文字" position="bc"></f-tooltip>
                 <br/>
                 <f-tooltip :sample="true" content="描述文字描述文" position="l"></f-tooltip>
                 <br/>
@@ -13,8 +13,8 @@
         </f-card>
         <f-card title="动态展示">
             <f-button-group :container="true">
-                <f-button type="success" v-tooltip="{...data,position:'t'}">上</f-button>
-                <f-button type="danger" v-tooltip="{...data,position:'b'}">下</f-button>
+                <f-button type="success" v-tooltip="{...data,position:'tc'}">上</f-button>
+                <f-button type="danger" v-tooltip="{...data,position:'bc'}">下</f-button>
                 <f-button type="warning" v-tooltip="{...data,position:'l'}">左</f-button>
                 <f-button type="warning" v-tooltip="{...data,position:'r'}">右</f-button>
             </f-button-group>

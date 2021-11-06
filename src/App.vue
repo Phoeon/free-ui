@@ -10,7 +10,7 @@
   <f-main>
     <template #topbar>
       <div class="block">
-        <f-button @click="onShiftMode" shape="square" fillMode="none" title="切换全局主题"><moon v-if="mode==='light'"/><sun v-else/></f-button>
+        <f-button @click="onShiftMode" shape="square" fillMode="none" v-tooltip="{content:'黑白切换',position:'br'}"><moon v-if="mode==='light'"/><sun v-else/></f-button>
       </div>
     </template>
     <router-view v-slot="{ Component, route }">
@@ -34,7 +34,7 @@ import { Sun,Moon } from '@/components/icon'
 import { onBeforeMount, reactive, ref, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 import { searchPath } from '@/shared/tree'
-
+import vTooltip from '@/directives/tooltip'
 import menuData from './data/nav'
 
 const state = reactive<{aside:unknown,paths:unknown}>({
