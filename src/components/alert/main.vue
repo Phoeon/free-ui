@@ -12,8 +12,8 @@
                 <h1 class="ph-alert-title" v-if="title">{{title}}</h1>
                 <p class="ph-alert-content"><slot>{{content}}</slot></p>
             </div>
-            <a v-if="link" :hover="state.hover" class="ph-alert-right" @click="onLink">查看详情</a>
-            <a v-else-if="action" :hover="state.hover" class="ph-alert-right" @click="onAction">查看详情</a>
+            <f-action type="primary" v-if="link" :hover="state.hover" class="ph-alert-right" @click="onLink">查看详情</f-action>
+            <f-action type="primary" v-else-if="action" :hover="state.hover" class="ph-alert-right" @click="onAction">查看详情</f-action>
             <times v-else @click="onClose" class="ph-alert-right ph-alert-close" :hover="true"/>
         </div>
     </transition>
@@ -22,7 +22,7 @@
 import { defineProps, defineEmits, PropType, reactive } from 'vue'
 import { CircleSuccess, CircleDanger, CircleInfo, CircleWarning, Times, CustomIcon } from '../icon'
 import { IAlertType } from './types'
-
+import FAction from '../action/main.vue'
 const emits = defineEmits(['update:modelValue','action'])
 const props = defineProps({
     type:{

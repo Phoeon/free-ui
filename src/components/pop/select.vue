@@ -132,8 +132,8 @@ onMounted(()=>{
 })
 </script>
 <style lang="scss">
+@import '../../assets/style/fn.scss';
 .ph-pop-select{
-    --ph-last-bd-line:none;
     --ph-select-btn-br: 0 0 var(--ph-pop-br) var(--ph-pop-br);
     &:after{
         display: none!important;
@@ -152,8 +152,9 @@ onMounted(()=>{
         overflow: hidden;
         .ph-btn{
             --ph-btn-h:var(--ph-gdd-h);
-            --ph-btn-bg:var(--ph-mode);
-            --ph-btn-bc:var(--ph-mode);
+            --ph-btn-bg:var(--ph-pop-bdc);
+            --ph-btn-bc:var(--ph-pop-bdc);
+            border-top-color: var(--ph-pop-bc);
         }
     }
     .ph-ppdd-list{
@@ -169,19 +170,10 @@ onMounted(()=>{
             padding: 0 var(--ph-pd);
             position: relative;
             cursor: pointer;
-            &:after{
-                content: "";
+            &:nth-last-of-type(n+2):after{
+                @include blMx(var(--ph-pop-bc));
                 left: 10px;
                 right: 10px;
-                bottom: 0;
-                height: 1px;
-                background-color: var(--ph-pop-bc);
-                position: absolute;
-            }
-            &:nth-last-of-type(1){
-                &:after{
-                    display: var(--ph-last-bd-line);
-                }
             }
             .ph-ppdd-icon{
                 margin-right: var(--ph-pd-sm);
@@ -208,7 +200,6 @@ onMounted(()=>{
         right: 0;
         left: 0;
         width: 100%;
-        --ph-last-bd-line:block;
         --ph-select-btn-br:0;
         --ph-gdd-h:var(--ph-45);
         --ph-pop-br:0;

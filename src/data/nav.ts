@@ -50,44 +50,45 @@ export default [
         }]
     },{
         name:"表单",
-        id:"/formgroup",
+        id:"/form",
         icon:"firefox",
-        children:[{
-            name:"表单汇总",
-            id:"/form",
-            action:"/form"
-        },{
-            name:"输入框",
-            id:"/input",
-            action:"/input"
-        },{
-            name:"日期时间",
-            id:"/datetime",
-            action:"/datetime"
-        },{
-            name:"颜色选择",
-            id:"/color",
-            action:"/color"
-        },{
-            name:"下拉",
-            id:"/select",
-            action:"/select"
-        },{
-            name:"单选",
-            id:"/radio",
-            action:"/radio"
-        },{
-            name:"多选",
-            id:"/checkbox",
-            action:"/checkbox"
-        },{
-            name:"切换开关",
-            id:"/switch",
-            action:"/switch"
-        },{
-            name:"滑块",
-            id:"/slider",
-            action:"/slider"
+        action:"/form"
+        // children:[{
+        //     name:"表单汇总",
+        //     id:"/form",
+        //     action:"/form"
+        // },{
+        //     name:"输入框",
+        //     id:"/input",
+        //     action:"/input"
+        // },{
+        //     name:"日期时间",
+        //     id:"/datetime",
+        //     action:"/datetime"
+        // },{
+        //     name:"颜色选择",
+        //     id:"/color",
+        //     action:"/color"
+        // },{
+        //     name:"下拉",
+        //     id:"/select",
+        //     action:"/select"
+        // },{
+        //     name:"单选",
+        //     id:"/radio",
+        //     action:"/radio"
+        // },{
+        //     name:"多选",
+        //     id:"/checkbox",
+        //     action:"/checkbox"
+        // },{
+        //     name:"切换开关",
+        //     id:"/switch",
+        //     action:"/switch"
+        // },{
+        //     name:"滑块",
+        //     id:"/slider",
+        //     action:"/slider"
         // },{
         //     name:"评分",
         //     id:"/rate",
@@ -96,7 +97,7 @@ export default [
         //     name:"上传",
         //     id:"/upload",
         //     action:"/upload"
-        },]
+        // },]
     },{
         name:"数据展示",
         id:"/data",
@@ -114,10 +115,10 @@ export default [
             id:"/popover",
             action:"/popover"
         },{
-        //     name:"表格",
-        //     id:"/table",
-        //     action:"/table"
-        // },{
+            name:"表格",
+            id:"/table",
+            action:"/table"
+        },{
             name:"块引用",
             id:"/blockquote",
             action:"/blockquote"

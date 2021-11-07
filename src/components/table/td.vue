@@ -1,5 +1,5 @@
 <template>
-    <div class="ph-tb-cell ph-tb-td"><slot></slot></div>
+    <td class="ph-tb-cell ph-tb-td"><slot></slot></td>
 </template>
 <style lang="scss">
 @import './cell.scss';

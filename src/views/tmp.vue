@@ -4,6 +4,15 @@
             <f-slider v-model="slider.v" :max="slider.max"></f-slider>
             <f-button @click="onClick" :style="{backgroundColor:color.value}">打开取色器</f-button>
         </f-card>
+        <f-card title="action">
+            <f-action>删除</f-action>
+            <f-action type="success">新增</f-action>
+            <f-action type="danger">新增</f-action>
+            <f-action type="info">新增</f-action>
+            <f-action type="warning">新增</f-action>
+            <f-action type="primary">新增</f-action>
+            <f-action type="noble">新增</f-action>
+        </f-card>
         <f-card title="pop">
             <f-button @click="onPop">按钮</f-button>
             <f-pop-container v-model="state.pop" :rect="state.rect" position="tr">alskjf</f-pop-container>
@@ -44,7 +53,15 @@
     </f-view>
 </template>
 <script lang="ts" setup>
-import { FView,FCard,FButton, FCPicker,FBlockquote,FDivider,FPopContainer} from '@/components'
+import { 
+        FView,
+        FCard,
+        FButton,
+         FCPicker,
+        FBlockquote,
+        FDivider,
+        FAction,
+        FPopContainer} from '@/components'
 import FSlider from '@/components/form/slider.vue'
 import DtColor from '@/components/color/main.vue'
 import FTag from '@/components/tag/main.vue'

@@ -51,6 +51,8 @@ provide("simple",toRef(props,'simple'))
 .ph-menu-tree-root{
     flex: 1;
     overflow: auto;
+    position: relative;
+    z-index: 1;
     -webkit-overflow-scrolling: touch;
     --ph-menu-item-height:50px;
     &.ph-menu-simple{

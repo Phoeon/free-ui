@@ -285,5 +285,7 @@ a,button{
     font-weight: 500;
 }
 .ph-sample{
-    position: static!important;display: inline!important;
+    position: static!important;
+    display: inline!important;
+    z-index: 0;
 }

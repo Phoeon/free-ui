@@ -40,7 +40,7 @@ watch(()=>props.modelValue,()=>{
     nextTick(()=>{
         if(!edom.value)return
         
-        const of = 24
+        const of = 16
         const { offsetWidth, offsetHeight } = edom.value
 
         const

@@ -9,7 +9,7 @@
         <circle-warning class="ph-status-icon" v-else />
     </template>
     <template v-slot:action="scope">
-        <f-button :fillMode="state.sm?'none':'normal'" @click="scope.close(0)">{{cancelText||'关&ensp;闭'}}</f-button>
+        <f-button :fillMode="state.sm?'none':'outline'" @click="scope.close(0)">{{cancelText||'关&ensp;闭'}}</f-button>
         <f-button :fillMode="state.sm?'none':'normal'" type="primary" @click="scope.close(1)">{{doneText||'确&ensp;认'}}</f-button>
     </template>
 </base-modal>

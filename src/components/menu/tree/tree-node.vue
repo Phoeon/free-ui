@@ -211,6 +211,7 @@ onMounted(()=>{
         .ph-menu-btn{
             &-mirror{
                 position: absolute;
+                z-index: var(--ph-zdx-popover);
                 width: var(--ph-aside-width);
                 height: 100%;
                 right: 0;
@@ -223,7 +224,7 @@ onMounted(()=>{
                 align-items: center;
                 justify-content: flex-start;
                 text-indent: var(--ph-pd-lg);
-                box-shadow: var(--ph-shadow-3);
+                box-shadow: var(--ph-shadow-1);
             }
         }
     }
@@ -266,6 +267,7 @@ onMounted(()=>{
         top: 0;
         right: 0;
         transform: translate3d(100%,0,0);
+        z-index: var(--ph-zdx-popover);
 
         &:after{
             content: "";
@@ -275,7 +277,7 @@ onMounted(()=>{
             right: 0;
             top: 0;
             background-color: var(--ph-block-bg);
-            box-shadow: var(--ph-shadow-3);
+            box-shadow: var(--ph-shadow-1);
         }
         &[show-title=true]:before{
             position: relative;

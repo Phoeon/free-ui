@@ -15,7 +15,7 @@ defineProps({
 .ph-breadcrumb{
     display: flex;
     align-items: center;
-    color: var(--ph-c-d1);
+    color: var(--ph-c);
     font-weight: var(--ph-fw-m);
     font-size: 15px;
     line-height: 1;

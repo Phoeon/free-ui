@@ -5,7 +5,7 @@
     :content="content"
     >
     <template v-slot:action="scope">
-        <f-button :fillMode="state.sm?'none':'normal'" :type="state.sm?'primary':'default'" @click="scope.close(1)">{{doneText||'知道了'}}</f-button>
+        <f-button :fillMode="state.sm?'none':'outline'" :type="state.sm?'primary':''" @click="scope.close(1)">{{doneText||'知道了'}}</f-button>
     </template>
 </base-modal>
 </template>

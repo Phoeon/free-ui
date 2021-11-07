@@ -33,6 +33,7 @@ export * from './divider'
 export * from './tag'
 export * from './theme'
 export * from './breadcrumb'
+export * from './action'
 export {
     FIcon,
     FNotification,

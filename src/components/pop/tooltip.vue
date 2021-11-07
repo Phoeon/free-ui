@@ -64,6 +64,7 @@ defineExpose({
     padding: 4px var(--ph-pd);
     background-color: var(--ph-tooltip-bg);
     color: var(--ph-tooltip-c);
+    backdrop-filter: blur(10px);
     &[sample=true]{
         position: relative;
         z-index: auto;

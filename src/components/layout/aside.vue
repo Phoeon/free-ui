@@ -55,7 +55,7 @@ defineExpose({
     left: 0;
     bottom: 0;
     max-height: 100vh;
-    z-index: 2;
+    z-index: 99;
     transition: all .3s ease;
     .ph-logo{
         display: flex;
