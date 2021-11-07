@@ -122,7 +122,6 @@ provide("notify",(paths:INavNode[])=>{
     
 })
 watch(()=>simple.value,(v)=>{
-    console.log(Math.random())
     restoreState()
 })
 onMounted(()=>{
@@ -229,6 +228,12 @@ onMounted(()=>{
         }
     }
     &-root[simple=true]{
+        & > .ph-group,
+        & > .ph-leaf{
+            &[active=true]{
+                background-color: var(--ph-primary-a1);
+            }
+        }
         & > .ph-group{
             justify-content: center;
             padding: 0;
@@ -279,13 +284,13 @@ onMounted(()=>{
             align-items: center;
             background-color: var(--ph-block-bg);
             font-size: inherit;
-            color: var(--ph-c-d2);
-            font-weight: inherit;
+            color: var(--ph-primary);
+            font-weight: bold;
             height: var(--ph-menu-item-height);
             padding: 0 var(--ph-pd) 0 var(--ph-pd-lg);
             width: 100%;
             z-index: 1;
-            border-bottom: 1px solid var(--ph-bd-2);
+            border-bottom: 1px solid var(--ph-bd);
         }
         .ph-menu-item{
             z-index: 1;

@@ -1,5 +1,5 @@
 <template>
-    <div :class="cns" :style="style">
+    <div class="ph-pager" :style="style">
         <f-button v-if="prev" :size="state.size" :fillMode="fillMode" :disabled="prevDisabled" @click="goPrev" class="ph-pager-action">
             <template v-slot:leftIcon><caret direction="left"/></template>{{prev}}
         </f-button>
@@ -14,7 +14,7 @@
                 <f-button shape="square" v-if="p>0"
                     class="ph-pager-action"
                     :type="cpage===p?'primary':''"
-                    :fillMode="cpage!=p?fillMode:'normal'" 
+                    :fillMode="fillMode" 
                     :size="state.size"
                     :key="p"
                     @click="go(p)"
@@ -29,15 +29,19 @@
             <template v-slot:rightIcon><caret direction="right"/></template>
         </f-button> 
         <template v-if="!state.small&&!simple">
-            <!-- <ph-select v-if="showPagesize" :value="state.pagesize" @change="onPagesize" dropdownClass="ph-dd-pagesize">
-                <ph-option v-for="(ps,k) in psOptions" :key="k" :value="ps.value">{{ps.title}}</ph-option>
-            </ph-select>
-            <div v-if="showJump" class="ph-pager-jump">
-                <span>去 </span>
-                <input class="ph-input" type="number" min="1" max="pages" :value="pages" @change="onJump"/>
-                <span> 页</span>
-            </div>  -->
-            <div v-if="showTotal" class="ph-pager-total"> 共{{total}}条 </div> 
+            <div class="ph-pager-group" v-if="showPagesize||showJump||showTotal">
+                <f-select 
+                    v-if="showPagesize" 
+                    class="ph-pager-select"
+                    v-model="state.pagesize" 
+                    :options="psOptions" 
+                    @input="onPagesize"/> 
+                <f-number v-if="showJump" class="ph-pager-jump" :min="1" :max="pages" v-model="cpage">
+                    <template #left>去</template>
+                    <template #right>页</template>
+                </f-number>
+                <div v-if="showTotal" class="ph-pager-total"> 共{{total}}条 </div> 
+            </div>
         </template>
     </div>
 </template>
@@ -46,13 +50,13 @@ import { defineProps, defineEmits, computed, ref, PropType, reactive, watch, onB
 import { Ellipsis, Caret } from '../icon'
 import FButton from '../button/main.vue'
 import MediaQuery, { MediaBreak } from '../../shared/media-query'
-
+import { FSelect,FNumber } from '../form'
 const emits = defineEmits(["page","update:page","update:pagesize"])
 const props = defineProps({
-    "show-total":Boolean,
-    "show-pagesize":Boolean,
-    "show-jump":Boolean,
-    "pagesize-options":{
+    showTotal:Boolean,
+    showPagesize:Boolean,
+    showJump:Boolean,
+    pagesizeOptions:{
         type:Array as PropType<Array<number>>,
         default:()=>[10,20,30,50,100]
     },
@@ -67,42 +71,38 @@ const props = defineProps({
     fillMode:String,
     theme:String,
     size:String,
-    pagercount:Number // 奇数 >= 3
+    pagerCount:Number // 奇数 >= 3
 })
 
 const state = reactive({
     pagesize:props.pagesize,
-    pagercount:props.pagercount||5,
+    pagerCount:props.pagerCount||5,
     small:false,
     size:"normal"
 })
 const mediaQuery = (placeholder:boolean,dw:number)=>{
-    let pagercount = props.pagercount
+    let pagerCount = props.pagerCount
     let size = "normal"
     if(dw<MediaBreak.xs){
-        pagercount = 3
+        pagerCount = 3
         size = "mini"
     }
     else if(dw<MediaBreak.sm){
-        pagercount = 5
+        pagerCount = 5
         size = "small"
     }
     else if(dw<MediaBreak.md)
-        pagercount = 7
+        pagerCount = 7
     else if(dw<MediaBreak.lg)
-        pagercount = 9
+        pagerCount = 9
     else 
-        pagercount = 11
+        pagerCount = 11
     state.small = dw<MediaBreak.sm&&props.autoSize
-    state.pagercount = props.pagercount||pagercount
+    state.pagerCount = props.pagerCount||pagerCount
     state.size = props.size||size
 }
 MediaQuery.all(mediaQuery)
-const cns = computed(()=>{
-    return {
-        'ph-pager':true
-    }
-})
+
 const style = computed(()=>{
     const style = {} as Record<string,unknown>
     if(props.justify){
@@ -115,19 +115,17 @@ const psOptions = computed(()=>{
     return ((props as Record<string,unknown>).pagesizeOptions as number[]).map((o:number)=>{
         return {
             value:o,
-            title:o+'条/页'
+            text:o+'条/页'
         }
     })
 })
-const pages = computed(()=>{
-    return Math.ceil(props.total / state.pagesize);
-})
+const pages = computed(()=>Math.ceil(props.total / state.pagesize))
 const cpage = ref(Math.min(props.page,pages.value));
 const prevDisabled = computed(()=>cpage.value<=1);
 const nextDisabled = computed(()=>cpage.value>=pages.value);
 
 const cps = computed(()=>{
-    const ps = state.pagercount
+    const ps = state.pagerCount
     let cps:number[]=[],
         lp:number;
     if(pages.value<=ps){
@@ -180,21 +178,13 @@ const goPage = (page:number,ps?:number)=>{
     emits("update:pagesize",pagesize)
     emits("page",{page,pagesize:pagesize})
 }
-const onJump = (e:Event)=>{
-    const value = +(e.target as HTMLInputElement).value
-    console.log(value)
-    if(!value)return
-    if(value<1||value>pages.value)return
-    goPage(value)
-}
 const onPagesize = (value:number)=>{
     if(!value)return
     //避免抖动
     setTimeout(()=>{
         //判断当前page是否溢出
-        const pages = Math.ceil(props.total / value)
-        if(props.page>pages)
-            goPage(pages,value)
+        const pages = Math.min(props.page,Math.ceil(props.total / value))
+        goPage(pages,value)
         state.pagesize = value
     },200)
 }
@@ -218,9 +208,32 @@ onBeforeMount(()=>{
 <style lang="scss">
 .ph-pager{
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     align-items: center;
     justify-content: var(--ph-pager-justify,flex-start);
     font-size: var(--ph-fs);
+    &-total,
+    &-jump,
+    &-select{
+        margin-right: 8px;
+    }
+    &-total{
+        font-size:12px;
+    }
+    &-jump,
+    &-select{
+        width: 100px;
+        flex: 0 0 auto;
+        --ph-ip-fs: 12px;
+        input{
+            padding: 0 5px;
+            text-align: center;
+        }
+    }
+    .ph-pager-group{
+        display: flex;
+        align-items: center;
+    }
 }
 </style>

@@ -79,7 +79,7 @@ const drawerVisible = computed({
 .ph-as{
     --ph-as-cmp: 8px;
     border-radius: inherit;
-    background-color: var(--ph-modal-bg);
+    background-color: var(--ph-bg-view);
     &-grid{
         --ph-as-tbg:transparent;
         .ph-as-ul{
@@ -113,16 +113,20 @@ const drawerVisible = computed({
         }
     }
     &-list{
-        --ph-as-tbg:var(--ph-modal-bg);
+        --ph-as-tbg:var(--ph-bg-view);
         .ph-as-li{
             margin-top: 1px;
         }
         .ph-as-cancelwrap{
             padding: 5px 0;
         }
+        .ph-btn{
+            --ph-btn-bg:var(--ph-mode);
+            --ph-btn-bc:var(--ph-mode);
+        }
     }
     &-topbar{
-        background-color: var(--ph-bg-a1-reverse);
+        background-color: var(--ph-mode);//var(--ph-bg-a1-reverse);
         padding-top: var(--ph-pd);
         padding-bottom: 8px;
     }
@@ -148,6 +152,8 @@ const drawerVisible = computed({
     &-cancelwrap{
         .ph-btn{
             --ph-btn-fs:var(--ph-gas-bfs);
+            --ph-btn-bg:var(--ph-mode);
+            --ph-btn-bc:var(--ph-mode);
         }
     }
 }

@@ -8,11 +8,16 @@
     </f-aside>
   </template>
   <f-main>
-    <template #topbar>
-      <div class="block">
-        <f-button @click="state.preview=true" shape="square" fillMode="none" v-tooltip="{content:'自适应预览',position:'br'}" v-if="state.isTop"><mobile/></f-button>
-        <f-theme-picker v-model:mode="state.mode" v-model:theme="state.theme"/>
-      </div>
+    <template #header>
+      <f-header>
+        <template #left>
+          <f-breadcrumb :paths="state.paths"></f-breadcrumb>
+        </template>
+        <template #right>
+          <f-button sm-visible="false" @click="state.preview=true" shape="square" fillMode="none" v-tooltip="{content:'自适应预览',position:'br'}" v-if="state.isTop"><mobile/></f-button>
+          <f-theme-picker v-model:mode="state.mode" v-model:theme="state.theme" popposition="br"/>
+        </template>
+      </f-header>
     </template>
     <router-view v-slot="{ Component, route }">
       <transition name="ph-fs" mode="out-in">
@@ -34,11 +39,14 @@ import {
   FDrawer,
   FGLoading,
   FThemePicker,
+  FBreadcrumb,
   FPage,
   FAside,
+  FHeader,
   FMenuTree,
   FMain,
   FButton } from '@/components'
+
 import { Sun,Moon,Mobile } from '@/components/icon'
 import { onMounted, reactive, ref, toRefs } from 'vue'
 import { useRouter } from 'vue-router'

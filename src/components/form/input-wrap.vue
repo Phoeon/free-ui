@@ -1,5 +1,8 @@
 <template>
     <div :class="cns">
+        <div class="ph-ipw-addonl" v-if="slots.left">
+            <slot name="left"></slot>
+        </div>
         <slot 
             :valid="valid"
             :size="size"
@@ -72,13 +75,14 @@ const cns = computed(()=>{
     &.ph-ip-hasradd{
         --ph-ip-br: var(--ph-gip-br) 0 0 var(--ph-gip-br);
     }
+    .ph-ipw-addonl,
     .ph-ipw-addonr{
         flex: 0 0 auto;
         position: relative;
         border-color: var(--ph-ip-bc);
         font-size: var(--ph-ip-fs);
         height: var(--ph-ip-h);
-        width: var(--ph-ip-h);
+        min-width: var(--ph-ip-h);
         border-width: 1px;
         border-style: solid;
         border-left: none;
@@ -86,10 +90,20 @@ const cns = computed(()=>{
         align-items: center;
         justify-content: center;
         cursor: var(--ph-ip-cursor,pointer);
-        border-radius: 0 var(--ph-gip-br) var(--ph-gip-br) 0;
         background-color:var(--ph-ip-bg);
         background-clip: padding-box;
         color:var(--ph-ip-c);
+    }
+    .ph-ipw-addonl{
+        border-radius: var(--ph-gip-br) 0 0 var(--ph-gip-br);
+        &:before{
+            @include rlMx(var(--ph-bd));
+            top: 3px;
+            bottom: 3px;
+        }
+    }
+    .ph-ipw-addonr{
+        border-radius: 0 var(--ph-gip-br) var(--ph-gip-br) 0;
         &:before{
             @include llMx(var(--ph-bd));
             top: 3px;

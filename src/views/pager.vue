@@ -8,6 +8,48 @@
                 v-model:pagesize="data.pagesize"
             />
         </f-card>
+        <f-card title="showTotal">
+            <f-pager 
+                @page="onPage"
+                :showTotal="true"
+                :total="data.total"
+                v-model:page="data.page"
+                v-model:pagesize="data.pagesize"
+            />
+        </f-card>
+        <f-card title="showPagesize">
+            <f-pager 
+                @page="onPage"
+                :showTotal="true"
+                :showPagesize="true"
+                :total="data.total"
+                v-model:page="data.page"
+                v-model:pagesize="data.pagesize"
+            />
+        </f-card>
+        <f-card title="showJump">
+            <f-pager 
+                @page="onPage"
+                :showTotal="true"
+                :showPagesize="true"
+                :showJump="true"
+                :total="data.total"
+                v-model:page="data.page"
+                v-model:pagesize="data.pagesize"
+            />
+        </f-card>
+        <f-card title="pagerCount">
+            <f-pager 
+                @page="onPage"
+                :showTotal="true"
+                :showPagesize="true"
+                :showJump="true"
+                :pagerCount="5"
+                :total="data.total"
+                v-model:page="data.page"
+                v-model:pagesize="data.pagesize"
+            />
+        </f-card>
         <f-card title="水平分布">
             <f-pager 
                 @page="onPage"
@@ -36,6 +78,14 @@
             <f-pager 
                 @page="onPage"
                 :total="data.total"
+                fillMode="normal"
+                v-model:page="data.page"
+                v-model:pagesize="data.pagesize"
+            />
+            <br/>
+            <f-pager 
+                @page="onPage"
+                :total="data.total"
                 fillMode="none"
                 v-model:page="data.page"
                 v-model:pagesize="data.pagesize"
@@ -45,6 +95,14 @@
                 @page="onPage"
                 :total="data.total"
                 fillMode="outline"
+                v-model:page="data.page"
+                v-model:pagesize="data.pagesize"
+            />
+            <br/>
+            <f-pager 
+                @page="onPage"
+                :total="data.total"
+                fillMode="reverse"
                 v-model:page="data.page"
                 v-model:pagesize="data.pagesize"
             />
@@ -145,7 +203,7 @@ import { reactive } from 'vue'
 
 const data = reactive({
     page:1,
-    pagesiz:10,
+    pagesize:10,
     total:250
 })
 const onPage = (meta:{page:number,pagesize:number})=>{

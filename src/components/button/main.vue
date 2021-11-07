@@ -20,7 +20,7 @@ const props = defineProps({
     shape:String as PropType<'circle'|'square'>,
     radius:{type:Boolean,default:true},
     hover:{type:Boolean,default:true},
-    type:{type:String as PropType<IThemeType>,default:'normal'},
+    type:{type:String as PropType<IThemeType|'mode'>,default:'normal'},
     fillMode:{type:String as PropType<'outline'|'reverse'|'none'|'normal'>,default:'normal'},
     size:{type:String as PropType<'mini'|'small'|'large'|'normal'>,default:'normal'}
 })
@@ -41,6 +41,8 @@ const cns = computed(()=>{
         'ph-btn-success':props.type=="success",
         'ph-btn-danger':props.type=="danger",
         'ph-btn-warning':props.type=="warning",
+        'ph-btn-noble':props.type=="noble",
+        'ph-btn-mode':props.type=="mode",
         'ph-btn-info':props.type=="info",
         'ph-btn-normal':(props.type=="normal"||!props.type),//&&props.fillMode=="normal",
 
@@ -177,6 +179,18 @@ const onTap = (e:Event)=>{
         --ph-btn-bg:var(--ph-warning);
         --ph-btn-bc:var(--ph-warning);
         --ph-btn-c:var(--ph-c-white);
+    }
+    &-noble{
+        --ph-btn-theme:var(--ph-noble);
+        --ph-btn-bg:var(--ph-noble);
+        --ph-btn-bc:var(--ph-noble);
+        --ph-btn-c:var(--ph-c-white);
+    }
+    &-mode{
+        --ph-btn-theme:var(--ph-mode);
+        --ph-btn-bg:var(--ph-mode);
+        --ph-btn-bc:var(--ph-mode);
+        --ph-btn-c:var(--ph-c-d1);
     }
     &-info{
         --ph-btn-theme:var(--ph-info);

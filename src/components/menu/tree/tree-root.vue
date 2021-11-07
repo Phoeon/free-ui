@@ -5,7 +5,8 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, PropType, provide, defineEmits, inject, toRef } from 'vue'
-import { ITreeNode, INavNode } from '../struct'
+import { ITreeNode } from '../struct'
+import { INavNode  } from '../../../shared/types'
 import TreeNode from './tree-node.vue'
 
 const phevt = inject("phevt") as {emit:(a:string,...b:any[])=>void}

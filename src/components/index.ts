@@ -1,7 +1,7 @@
 import Env from '../shared/env'
 import FNotification from './notification'
 import FMessage from './message'
-import FPop from './pop'
+import FPop,{FPopContainer} from './pop'
 import FToast from './toast'
 import FPanel from './panel'
 import FCard from './card'
@@ -32,6 +32,7 @@ export * from './blockquote'
 export * from './divider'
 export * from './tag'
 export * from './theme'
+export * from './breadcrumb'
 export {
     FIcon,
     FNotification,
@@ -44,6 +45,7 @@ export {
     FModal,
     FMessage,
     FPop,
+    FPopContainer,
     FDtPicker,
     FCPicker
 }

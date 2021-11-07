@@ -4,7 +4,10 @@
             <f-slider v-model="slider.v" :max="slider.max"></f-slider>
             <f-button @click="onClick" :style="{backgroundColor:color.value}">打开取色器</f-button>
         </f-card>
-        <f-theme-picker mode="dark" theme="danger"/>
+        <f-card title="pop">
+            <f-button @click="onPop">按钮</f-button>
+            <f-pop-container v-model="state.pop" :rect="state.rect" position="tr">alskjf</f-pop-container>
+        </f-card>
         <f-card title="块引用">
             <f-blockquote type="primary">阿死了都快减肥撒懒得看阿死掉<span>了飞机撒</span>到了副科级阿死了大家发送大量开发阿死里打飞机撒代理</f-blockquote>
             <f-blockquote type="info">阿死了都快减肥撒懒得看阿死掉了飞机撒到了副科级阿死了大<a>家发送大量</a>开发阿死里打飞机撒代理</f-blockquote>
@@ -38,19 +41,24 @@
             <f-tag role="close">标签</f-tag>
             <f-tag type="light" :outline="true" role="add">标签</f-tag>
         </f-card>
-        
     </f-view>
 </template>
 <script lang="ts" setup>
-import { FView,FCard,FButton, FCPicker,FBlockquote,FDivider} from '@/components'
+import { FView,FCard,FButton, FCPicker,FBlockquote,FDivider,FPopContainer} from '@/components'
 import FSlider from '@/components/form/slider.vue'
 import DtColor from '@/components/color/main.vue'
 import FTag from '@/components/tag/main.vue'
 import FThemePicker from '@/components/theme/main.vue'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
+
+const epop = ref<InstanceType<typeof FPopContainer>>()
+const state = reactive({
+    pop:false,
+    rect:{left:0,top:0,width:0,height:0}
+})
 const slider = reactive({
     max:100,
-    v:30
+    v:30,
 })
 const color = reactive({
     value:"#F10fcf"
@@ -66,5 +74,10 @@ const onClick = (e:Event)=>{
     }).done(v=>{
         color.value = v
     })
+}
+const onPop = (e:Event)=>{
+    const t = e.target as HTMLElement
+    state.pop = true
+    state.rect = t.getBoundingClientRect()
 }
 </script>

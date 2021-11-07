@@ -36,14 +36,14 @@ export default [
             id:"/dropdown",
             action:"/dropdown"
         },{
-            name:"面包屑",
-            id:"/breadcrumb",
-            action:"/breadcrumb"
-        },{
-            name:"侧边栏导航",
-            id:"/menus",
-            action:"/menus"
-        },{
+        //     name:"面包屑",
+        //     id:"/breadcrumb",
+        //     action:"/breadcrumb"
+        // },{
+        //     name:"侧边栏导航",
+        //     id:"/menus",
+        //     action:"/menus"
+        // },{
             name:"锚定位",
             id:"/anchor",
             action:"/anchor"

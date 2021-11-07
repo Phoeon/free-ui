@@ -3,13 +3,13 @@ import FPopover from './over.vue'
 import FTooltip from './tooltip.vue'
 import FDropdownList from './dropdown.vue'
 import FPopSelect from './select.vue'
-
+import FPopContainer from './base.vue'
 import Evt from 'ph-evt'
 import { createApp } from 'vue'
 import { IPopConfirm, IPopover, ITooltip, IDropdown, IDropdownItem, ISelect } from './types'
 import { unmount } from '../../shared/utils'
 
-const show = (opt:IPopover)=>{
+const showPopover = (opt:IPopover)=>{
     const app = createApp(FPopover,{...opt}),
         ins = app.mount(document.createElement("div")) as InstanceType<typeof FPopover>;
     document.body.appendChild(ins.$el)
@@ -111,12 +111,13 @@ const showPopSelect = (opt:ISelect)=>{
 export default {
     showConfirm,
     showTip,
-    show,
+    showPopover,
     showDropdown,
     showPopSelect
 }
 export {
-    FPopConfirm,
-    FPopover,
-    FTooltip,
+    // FPopConfirm,
+    // FPopover,
+    // FTooltip,
+    FPopContainer
 }

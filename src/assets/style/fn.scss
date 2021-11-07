@@ -17,7 +17,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
+    right: 0;
     height: 1px;
     background-color: $bc;
 }
@@ -26,7 +26,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    right: 0;
     height: 1px;
     background-color: $bc;
 }
@@ -34,6 +34,16 @@
     content: "";
     position: absolute;
     left:0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    margin: auto;
+    background-color: $bc;
+}
+@mixin rlMx($bc) {
+    content: "";
+    position: absolute;
+    right:0;
     top: 0;
     bottom: 0;
     width: 1px;

@@ -152,6 +152,8 @@ onMounted(()=>{
         overflow: hidden;
         .ph-btn{
             --ph-btn-h:var(--ph-gdd-h);
+            --ph-btn-bg:var(--ph-mode);
+            --ph-btn-bc:var(--ph-mode);
         }
     }
     .ph-ppdd-list{
@@ -193,7 +195,7 @@ onMounted(()=>{
                 background-color: var(--ph-pop-bg-hover);
             }
             &[active=true]{
-                background-color: var(--ph-primary-a3);
+                background-color: var(--ph-primary-a1);
                 color: var(--ph-primary);
             }
         }

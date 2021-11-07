@@ -20,7 +20,7 @@ export default {
             const 
                 x = sumArray(xmatrix[pos],[left,top,width,height]),
                 y = sumArray(ymatrix[pos],[left,top,width,height]);
-            close = FPop.show({title,content,x,y,theme,position:pos as 'tc'})
+            close = FPop.showPopover({title,content,x,y,theme,position:pos as 'tc'})
             setTimeout(()=>{
                 lock = false
             },300)
