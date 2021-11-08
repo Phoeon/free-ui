@@ -3,7 +3,7 @@
         <template v-for="(item,idx) in steps" :key="idx">
             <div :class="{'ph-step':true,'ph-step-ing':item.status===0,'ph-step-to':item.status===-1}">
                 <div class="ph-step-icon-wrap" :line="direction==='vt'&&idx<steps.length-1">
-                    <circle-success class="ph-step-icon" color="var(--ph-primary)" :outline="true" v-if="item.status===1"/>
+                    <circle-success class="ph-step-icon" type="primary" :outline="true" v-if="item.status===1"/>
                     <i :class="['ph-icon','ph-step-icon',item.status===0?'ph-step-icon-ing':'ph-step-icon-to']" v-else>{{item.value===undefined?idx+1:item.value}}</i>
                 </div>
                 <div class="ph-step-text">

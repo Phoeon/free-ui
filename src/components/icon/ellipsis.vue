@@ -1,17 +1,8 @@
 <template>
-    <icon class="ph-icon-ellipsis"/>
+    <icon>
+        <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" ><path d="M764.43496297 512a97.09037037 97.09037037 0 1 0 194.18074073 0 97.09037037 97.09037037 0 0 0-194.18074073 0zM414.90962963 512a97.09037037 97.09037037 0 1 0 194.18074074 0 97.09037037 97.09037037 0 0 0-194.18074074 0zM65.3842963 512a97.09037037 97.09037037 0 1 0 194.18074073 0 97.09037037 97.09037037 0 0 0-194.18074073 0z"></path></svg>
+    </icon>
 </template>
 <script lang="ts" setup>
-import Icon from './base.vue'
+import Icon from './built-in.vue'
 </script>
-<style lang="scss">
-.ph-icon-ellipsis{
-    &:before{
-        content: "";
-        width: var(--ph-icon-2);
-        height: var(--ph-icon-2);
-        background-color: var(--ph-icon-c);
-        box-shadow: calc(var(--ph-icon-ratio) * 4) 0 0 0 var(--ph-icon-c),calc(var(--ph-icon-ratio) * -4) 0 0 0 var(--ph-icon-c);
-    }
-}
-</style>

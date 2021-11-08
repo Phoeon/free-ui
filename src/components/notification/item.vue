@@ -2,10 +2,10 @@
 <div class="ph-notify">
     <div class="ph-notify-layout">
         <custom-icon class="ph-status-icon" :name="icon" v-if="icon" :type="type"/>
-        <circle-success class="ph-status-icon" v-else-if="type=='success'"/>
-        <circle-info class="ph-status-icon" v-else-if="type=='info'"/>
-        <circle-warning class="ph-status-icon" v-else-if="type=='warning'"/>
-        <circle-danger class="ph-status-icon" v-else-if="type=='error'"/>
+        <circle-success class="ph-status-icon" v-else-if="type=='success'" type='success'/>
+        <circle-info class="ph-status-icon" v-else-if="type=='info'" type='info'/>
+        <circle-warning class="ph-status-icon" v-else-if="type=='warning'" type='warning'/>
+        <circle-danger class="ph-status-icon" v-else-if="type=='error'" type='danger'/>
         <div class="ph-notify-wrap">
             <h1 class="ph-notify-title">
                 <span>{{title||'通知'}}</span>

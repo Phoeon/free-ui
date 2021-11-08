@@ -3,10 +3,10 @@
         <div :class="['ph-alert','ph-alert-'+type,title?'ph-alert-large':'']" v-if="modelValue">
             <div class="ph-alert-icon-wrap" v-if="type||icon">
                 <custom-icon :style="{color:iconColor}" class="ph-status-icon" :name="icon" v-if="icon" :type="type"/>
-                <circle-success class="ph-status-icon" v-else-if="type=='success'" />
-                <circle-info class="ph-status-icon" v-else-if="type=='info'" />
-                <circle-warning class="ph-status-icon" v-else-if="type=='warning'" />
-                <circle-danger class="ph-status-icon" v-else-if="type=='error'" />
+                <circle-success class="ph-status-icon" type='success' v-else-if="type=='success'"/>
+                <circle-info class="ph-status-icon" type='info' v-else-if="type=='info'"/>
+                <circle-warning class="ph-status-icon" type='warning' v-else-if="type=='warning'"/>
+                <circle-danger class="ph-status-icon" type='error' v-else-if="type=='error'"/>
             </div>
             <div class="ph-alert-body">
                 <h1 class="ph-alert-title" v-if="title">{{title}}</h1>

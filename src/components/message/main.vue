@@ -3,10 +3,10 @@
         <div :class="['ph-msg','ph-msg-'+position,'ph-msg-'+type]" :style="style" v-if="state.visible">
             <div class="ph-msg-icon-wrap" v-if="type||icon">
                 <custom-icon :style="{color:iconColor}" class="ph-status-icon" :name="icon" v-if="icon" :type="type"/>
-                <circle-success class="ph-status-icon" v-else-if="type=='success'"/>
-                <circle-info class="ph-status-icon" v-else-if="type=='info'"/>
-                <circle-warning class="ph-status-icon" v-else-if="type=='warning'"/>
-                <circle-danger class="ph-status-icon" v-else-if="type=='error'"/>
+                <circle-success class="ph-status-icon" type='success' v-else-if="type=='success'"/>
+                <circle-info class="ph-status-icon" type='info' v-else-if="type=='info'"/>
+                <circle-warning class="ph-status-icon" type='warning' v-else-if="type=='warning'"/>
+                <circle-danger class="ph-status-icon" type='danger' v-else-if="type=='error'"/>
             </div>
             <p class="ph-msg-body" @click.stop="clickClose&&onClose(1)">{{content}}</p>
         </div>

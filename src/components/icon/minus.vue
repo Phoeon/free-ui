@@ -1,17 +1,8 @@
 <template>
-    <icon class="ph-icon-minus"/>
+    <icon>
+        <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" ><path d="M883.77734375 434.04101562H140.22265625C97.33203125 434.04101562 62.26367187 469.109375 62.26367187 512c0 42.890625 35.06835938 77.95898438 77.95898438 77.95898438h743.5546875c42.890625 0 77.95898438-35.06835938 77.95898438-77.95898438 0-42.890625-35.06835938-77.95898438-77.95898438-77.95898438z"></path></svg>
+    </icon>
 </template>
 <script lang="ts" setup>
-import Icon from './base.vue'
+import Icon from './built-in.vue'
 </script>
-<style lang="scss">
-.ph-icon-minus{
-    &:before{
-        content: "";
-        width: var(--ph-icon-10);
-        height: var(--ph-icon-2);
-        background-color: var(--ph-icon-c);
-        border-radius: 1px;
-    }
-}
-</style>

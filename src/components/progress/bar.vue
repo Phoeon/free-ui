@@ -3,8 +3,8 @@
         <div class="ph-indicator-wrap">
             <div class="ph-indicator" :style="transform"></div>
         </div>
-        <circle-success class="ph-indicator-icon" v-if="status===1" />
-        <circle-danger class="ph-indicator-icon" v-else-if="status===-1" />
+        <circle-success type="success" class="ph-indicator-icon" v-if="status===1" />
+        <circle-danger type="danger" class="ph-indicator-icon" v-else-if="status===-1" />
         <label v-else class="ph-progress-label">{{progress}}</label>
     </div>
 </template>

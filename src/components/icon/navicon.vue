@@ -1,30 +1,8 @@
 <template>
-    <icon class="ph-icon-nav"/>
+    <icon>
+        <svg viewBox="0 0 1204 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" ><path d="M1025.0162376 427.625H190.5474876C146.87101687 427.625 111.45833333 465.34558862 111.45833333 512s35.41268353 84.375 79.11397073 84.375h834.41911789C1068.66789187 596.375 1104.10539186 558.65441138 1104.10539186 512s-35.41268353-84.375-79.11396991-84.375zM1025.0162376 90.125H190.5474876C146.87101687 90.125 111.45833333 127.84558862 111.45833333 174.5s35.41268353 84.375 79.11397073 84.375h834.41911789C1068.66789187 258.875 1104.10539186 221.15441138 1104.10539186 174.5S1068.69270833 90.125 1024.99142195 90.125zM1025.0162376 765.125H190.5474876C146.87101687 765.125 111.45833333 802.84558862 111.45833333 849.5S146.87101687 933.875 190.57230406 933.875h834.41911789C1068.66789187 933.875 1104.10539186 896.15441138 1104.10539186 849.5s-35.41268353-84.375-79.11396991-84.375z"></path></svg>
+    </icon>
 </template>
 <script lang="ts" setup>
-import Icon from './base.vue'
+import Icon from './built-in.vue'
 </script>
-<style lang="scss">
-.ph-icon-nav{
-    background-color: transparent;
-    border: none;
-    &:before{
-        content: "";
-        border-style: solid;
-        border-width: var(--ph-icon-2);;
-        border-color: var(--ph-icon-c);
-        border-left: none;
-        border-right: none;
-        width: var(--ph-icon-10);
-        height: var(--ph-icon-10);
-    }
-    &:after{
-        content: "";
-        border: none;
-        border-width: 0;
-        height: var(--ph-icon-2);
-        width: var(--ph-icon-10);
-        background-color: var(--ph-icon-c);
-    }
-}
-</style>

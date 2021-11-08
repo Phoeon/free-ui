@@ -6,7 +6,7 @@
     >
     <template v-slot:icon v-if="!state.sm">
         <custom-icon class="ph-status-icon" :name="icon" v-if="icon"/>
-        <circle-warning class="ph-status-icon" v-else />
+        <circle-warning type="warning" class="ph-status-icon" v-else />
     </template>
     <template v-slot:action="scope">
         <f-button :fillMode="state.sm?'none':'outline'" @click="scope.close(0)">{{cancelText||'关&ensp;闭'}}</f-button>

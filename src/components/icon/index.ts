@@ -18,6 +18,7 @@ import Backtop from './back-top.vue'
 import Sun from './sun.vue'
 import Moon from './moon.vue'
 import Mobile from './mobile.vue'
+import Sort from './sort.vue'
 export * from './square'
 export * from './circle'
 export * from './loading'
@@ -41,5 +42,6 @@ export {
     CustomIcon,
     Sun,
     Moon,
-    Mobile
+    Mobile,
+    Sort
 }

@@ -1,5 +1,6 @@
 <template>
     <f-view>
+        <f-blockquote type="primary">内置icon</f-blockquote>
         <div class="ph-title">基本</div>
         <div class="ph-block">
             <backtop/>
@@ -14,11 +15,9 @@
             <sun/>
             <moon/>
             <mobile/>
-
-            <minus :disabled="true"/>
-            <plus :disabled="true"/>
-            <tick :disabled="true"/>
-            <times :disabled="true"/>
+            <sort/>
+            <sort direction="up"/>
+            <sort direction="down"/>
 
             <caret direction="up"/>
             <caret direction="down"/>
@@ -42,7 +41,6 @@
         </div>
         <div class="ph-title">square</div>
         <div class="ph-block">
-            <square-minus/>
             <square-plus/>
             <square-tick/>
 
@@ -50,14 +48,6 @@
             <square-check/>
             <square-half-check/>
             <square-half-check :outline="true"/>
-
-            <square-minus :disabled="true"/>
-            <square-plus :disabled="true"/>
-            <square-tick :disabled="true"/>
-
-            <square :disabled="true"/>
-            <square-check :disabled="true"/>
-            <square-half-check :disabled="true"/>
 
         </div>
         <div class="ph-title">circle</div>
@@ -71,11 +61,6 @@
             <Circle/>
             <circle-radio/>
 
-            <circle-dot :disabled="true"/>
-            <circle-tick :disabled="true"/>
-
-            <circle :disabled="true"/>
-            <circle-radio :disabled="true"/>
         </div>
         <div class="ph-title">状态图标</div>
         <div class="ph-block">
@@ -88,7 +73,8 @@
         <div class="ph-block">
             <loading-spin/>
         </div>
-        <div class="ph-title">自定义图标库</div>
+        <f-blockquote type="primary">自定义icon</f-blockquote>
+        <div class="ph-title">自定义图标库(可以引入三方字体库)</div>
         <div class="ph-block">
             <custom-icon name="chrome"/>
             <custom-icon name="firefox"/>
@@ -96,38 +82,10 @@
             <custom-icon name="opera"/>
             <custom-icon name="internet-explorer"/>
         </div>
-        <div class="ph-title">size=32px</div>
-        <div class="ph-block">
-            <square-minus size="32px"/>
-            <square-plus size="32px"/>
-            <square-tick size="32px"/>
-
-            <square-check size="32px"/>
-            <square-check :checked="1" size="32px"/>
-            <square-check :checked="2" size="32px"/>
-
-            <square-check :outline="true" size="32px"/>
-            <square-check :checked="1" :outline="true" size="32px"/>
-            <square-check :checked="2" :outline="true" size="32px"/>
-        </div>
-        <div class="ph-title">size=24px</div>
-        <div class="ph-block">
-            <square-minus size="24px"/>
-            <square-plus size="24px"/>
-            <square-tick size="24px"/>
-
-            <square-check size="24px"/>
-            <square-check :checked="1" size="24px"/>
-            <square-check :checked="2" size="24px"/>
-
-            <square-check :outline="true" size="24px"/>
-            <square-check :checked="1" :outline="true" size="24px"/>
-            <square-check :checked="2" :outline="true" size="24px"/>
-        </div>
     </f-view>
 </template>
 <script lang="ts" setup>
-import { FView, FIcon } from '@/components'
+import { FView, FIcon, FBlockquote } from '@/components'
 const { 
     Backtop,
 
@@ -169,6 +127,7 @@ const {
     Sun,
     Moon,
     Mobile,
+    Sort,
 
     CustomIcon
     } = FIcon

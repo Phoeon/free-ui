@@ -1,11 +1,12 @@
 <template>
     <f-view>
+        <f-blockquote type="warning">该组件为web端组件</f-blockquote>
         <f-table>
             <f-tr>
                 <f-th>姓名</f-th>
                 <f-th>性别</f-th>
-                <f-th>职业</f-th>
-                <f-th>生日</f-th>
+                <f-th tip="我爱你中国">职业</f-th>
+                <f-th :sort="true" @sort="onSort">生日</f-th>
                 <f-th>操作</f-th>
             </f-tr>
             <f-tr>
@@ -45,6 +46,8 @@
     </f-view>
 </template>
 <script lang="ts" setup>
-import { FView, FTable, FTr, FTh, FTd, FAction } from '@/components'
-
+import { FView, FTable, FTr, FTh, FTd, FAction,FBlockquote,FToast } from '@/components'
+const onSort = (sort:number)=>{
+    FToast.show(sort===1?'升序':'降序')
+}
 </script>

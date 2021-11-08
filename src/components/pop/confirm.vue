@@ -3,7 +3,7 @@
 <transition :name="state.animation">
     <div v-if="state.visible" @click.stop :class="['ph-pop-confirm','ph-pop','ph-pop-'+position,'ph-pop-'+theme]" ref="edom" :sample="sample" :style="style">
         <div class="ph-pop-confirm-content">
-            <circle-warning class="ph-ppc-icon"/>
+            <circle-warning class="ph-ppc-icon" type="warning"/>
             <p class="ph-pop-content">{{title}}</p>
         </div>
         <div class="ph-pop-confirm-action">

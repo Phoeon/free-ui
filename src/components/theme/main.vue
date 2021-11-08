@@ -1,6 +1,6 @@
 <template>
     <div class="ph-theme-shifter" @mouseenter.capture="onEnter" @mouseleave="onLeave">
-        <f-button shape="square" fillMode="none" :type="theme"><sun v-if="mode===Fr.dark"/><moon v-else/></f-button>
+        <f-button shape="square" fillMode="none"><moon v-if="mode===Fr.dark"/><sun v-else/></f-button>
         <teleport to="body">
             <f-pop-container 
                 class="ph-theme-card" 
@@ -25,7 +25,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, PropType, reactive, defineEmits } from 'vue'
-import { Sun,Moon,CircleTick } from '../icon'
+import { Theme, Sun,Moon,CircleTick } from '../icon'
 import { Fr } from '../../shared/config'
 import { IPopPosition } from '../pop/types'
 import FButton from '../button/main.vue'
