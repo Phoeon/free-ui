@@ -7,10 +7,14 @@
                 <f-button type="primary" @click="openOption">多选项框</f-button>
             </f-button-group>
         </f-card>
+        <ph-pretty title="alert">{{raw.c1}}</ph-pretty>
+        <ph-pretty title="confirm">{{raw.c2}}</ph-pretty>
+        <ph-pretty title="option">{{raw.c3}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
 import { FView, FCard, FButton, FButtonGroup, FModal, FToast } from '@/components'
+import * as raw from '../data/modal'
 const openConfirm = ()=>{
     FModal.confirm({
         title:"操作失败",

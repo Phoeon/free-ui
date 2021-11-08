@@ -7,11 +7,8 @@
                 <f-button size="small" type="primary" @click="state1.visible1=true">禁止关闭</f-button>
             </f-button-group>
         </f-card>
-        <!-- <f-card title="js调用">
-            <f-button-group :container="true">
-                <f-button type="primary" @click="openList1">打开option</f-button>
-            </f-button-group>
-        </f-card> -->
+        <ph-pretty title="template" lang="html">{{raw.c1}}</ph-pretty>
+        <ph-pretty title="script">{{raw.c2}}</ph-pretty>
         <f-actionsheet v-model="state.value" v-model:visible="state.visible" :title="state.title" :desc="state.desc" :options="state.options" @action="onAction"></f-actionsheet>
         <f-actionsheet type="grid" v-model="state1.value" v-model:visible="state1.visible" :title="state1.title" :desc="state1.desc" :options="state1.options" @action="onAction"></f-actionsheet>
         <f-actionsheet :autoClose="false" type="grid" v-model="state1.value" v-model:visible="state1.visible1" :title="state1.title" :desc="state1.desc" :options="state1.options" @action="onAction1"></f-actionsheet>
@@ -19,7 +16,7 @@
 </template>
 <script lang="ts" setup>
 import { FView, FCard, FButton, FButtonGroup, FActionsheet, FToast } from '@/components'
-// import FGActionsheet from '@/components/actionsheet'
+import * as raw from '../data/actionsheet'
 import { reactive } from 'vue'
 const state  = reactive({
     visible:false,
@@ -44,8 +41,6 @@ const state  = reactive({
 const state1  = reactive({
     visible:false,
     visible1:false,
-    // title:"可以配置",
-    // desc:"请选择您的支付方式",
     value:1,
     options:[{
         text:"发送好友",

@@ -19,11 +19,15 @@
         <f-alert v-model="state.v14" type="info" title="帮助信息">你好，由于你的良好信用，我们决定赠送你三个月产品会员，欲了解会员特权与活动请进首页会员专区查看。</f-alert>
         <f-alert v-model="state.v15" title="请注意">你所提交的信息已经审核失败，可以进入个人信箱查看原因，如有疑问，请联系客服人员。</f-alert>
         <f-alert v-model="state.v16" type="success" title="操作成功">你所提交的信息已经审核通过，请及时跟进申请状况。如有问题，请联系审核人员或在线客服。</f-alert>
+        <ph-pretty lang="html">{{raw.c1}}</ph-pretty>
+        <ph-pretty>{{raw.c2}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
 import { FView, FAlert, FToast } from '@/components'
 import { reactive } from 'vue'
+
+import * as raw from '../data/alert'
 const state = reactive({
     v1:true,
     v2:true,

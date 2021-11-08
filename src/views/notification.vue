@@ -7,7 +7,6 @@
             <f-button type="danger" @click="open('error')">打开通知</f-button>
             <f-button @click="open()">打开通知</f-button>
         </f-card>
-        <ph-pretty>{{raw.c1}}</ph-pretty>
         <f-card class="btn-container" title="确认通知">
             <f-button @click="openConfirm()">打开通知</f-button>
         </f-card>
@@ -21,6 +20,7 @@
             <f-button type="danger" @click="open1('error','bank4','中国银行')">中国银行</f-button>
             <f-button @click="open1()">默认分组</f-button>
         </f-card>
+        <ph-pretty>{{raw.c1}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>

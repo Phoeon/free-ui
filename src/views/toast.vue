@@ -21,11 +21,12 @@
         <f-card class="btn-container" title="多行内容">
             <f-button @click="open1()" type="primary">多行内容</f-button>
         </f-card>
+        <ph-pretty>{{raw.c1}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
 import { FView, FButton, FToast, FCard } from '@/components'
-
+import * as raw from '../data/toast'
 const open = (type:string,position:string,modal?:boolean,icon?:string)=>{
     const title = "你好中国啊";
     (FToast as any)[type](title,{position,modal,icon}).close(()=>{

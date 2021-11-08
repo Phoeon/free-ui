@@ -25,6 +25,7 @@
                 <f-pop-confirm theme="reverse" :sample="true" title="确定要关闭么？" position="rb"></f-pop-confirm>
             </div>
         </f-card>
+        <f-blockquote type="primary">该组件以vue指令的形式对外提供</f-blockquote>
         <f-card title="动态展示">
             <f-button-group :container="true">
                 <f-button type="success" v-confirm:click="{...data,position:'tl'}">上左</f-button>
@@ -50,12 +51,16 @@
                 <f-button type="warning" v-confirm:click="{...data,position:'rb'}">右下</f-button>
             </f-button-group>
         </f-card>
+        <ph-pretty title="template" lang="html">{{raw.c1}}</ph-pretty>
+        <ph-pretty title="script">{{raw.c2}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
-import { FView, FCard, FButtonGroup, FButton, FPop ,FToast } from '@/components'
+import { FView, FCard, FBlockquote, FButtonGroup, FButton, FPop ,FToast } from '@/components'
 import FPopConfirm from '@/components/pop/confirm.vue'
 import vConfirm from '@/directives/popconfirm'
+import * as raw from '../data/popconfirm'
+
 const data = {
     title:"确定要关闭么？？",
     done(){

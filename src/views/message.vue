@@ -18,10 +18,13 @@
         <f-card title="点击和关闭事件">
             <f-button size="small" type="primary" @click="openMsg3()">打开msg</f-button>
         </f-card>
+        <ph-pretty title="接口介绍">{{raw.c1}}</ph-pretty>
+        <ph-pretty title="案例介绍">{{raw.c2}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
 import { FView, FCard, FButtonGroup, FButton, FMessage, FToast } from '@/components'
+import * as raw from '../data/message'
 const openMsg = (type:string)=>{
     FMessage.show("我爱你中国",{type: type as 'success'})
 }
