@@ -20,7 +20,7 @@ defineProps({
         height: var(--ph-icon-6);
         border-width: 1px;
         border-style: solid;
-        border-color: var(--ph-icon-c);
+        border-color: currentColor;
         border-right: none;
         border-bottom: none;
         transform-origin: center;

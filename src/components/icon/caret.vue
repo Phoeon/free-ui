@@ -22,19 +22,19 @@ defineProps({
     }
     &[direction=up]:before{
         border-top: none;
-        border-bottom-color: var(--ph-icon-c);
+        border-bottom-color: currentColor;
     }
     &[direction=down]:before{
         border-bottom: none;
-        border-top-color: var(--ph-icon-c);
+        border-top-color: currentColor;
     }
     &[direction=left]:before{
         border-left: none;
-        border-right-color: var(--ph-icon-c);
+        border-right-color: currentColor;
     }
     &[direction=right]:before{
         border-right: none;
-        border-left-color: var(--ph-icon-c);
+        border-left-color: currentColor;
     }
 }
 </style>

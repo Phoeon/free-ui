@@ -23,12 +23,12 @@ defineProps({
     }
     &:before{
         border-top: none;
-        border-bottom-color: var(--ph-icon-c);
+        border-bottom-color: currentColor;
         transform: translateY(-5px);
     }
     &:after{
         border-bottom: none;
-        border-top-color: var(--ph-icon-c);
+        border-top-color: currentColor;
         transform: translateY(5px);
     }
     &[direction=up]:after{

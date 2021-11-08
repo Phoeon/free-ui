@@ -12,7 +12,6 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, nextTick, reactive, ref } from 'vue'
-import { CustomIcon, Triangle } from '../icon'
 import BaseModal from './base.vue'
 import FButton from '../button/main.vue'
 import MediaQuery from '../../shared/media-query'

@@ -17,6 +17,8 @@
             <f-tag type="light" :outline="true">标签</f-tag>
             <f-tag type="dark" :outline="true">标签</f-tag>
             <f-tag role="close">标签</f-tag>
+            <br/>
+            <br/>
             <f-tag type="light" :outline="true" role="add">标签</f-tag>
         </f-card>
     </f-view>

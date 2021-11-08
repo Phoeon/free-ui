@@ -10,7 +10,7 @@ import Icon from '../base.vue'
         content: "";
         width: var(--ph-icon-8);
         height: var(--ph-icon-8);
-        background-color: var(--ph-icon-c);
+        background-color: currentColor;
         border-radius: 50%;
     }
 }

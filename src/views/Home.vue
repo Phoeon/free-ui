@@ -19,7 +19,7 @@ import { FView,FBlockquote } from '@/components'
 }
 @media screen and (max-width:768px){
   .img-wrap{
-    --ph-home-img-w:280px;
+    --ph-home-img-w:240px;
   }
 }
 </style>

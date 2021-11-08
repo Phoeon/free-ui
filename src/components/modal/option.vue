@@ -21,7 +21,6 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, PropType, reactive } from 'vue'
-import { CustomIcon, Triangle } from '../icon'
 import { IModalOption } from './types'
 import BaseModal from './base.vue'
 import FButton from '../button/main.vue'

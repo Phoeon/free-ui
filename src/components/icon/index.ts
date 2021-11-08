@@ -6,7 +6,6 @@ import Time from './time.vue'
 import Date from './date.vue'
 import Datetime from './datetime.vue'
 import Exclam from './exclam.vue'
-import Triangle from './triangle.vue'
 import Caret from './caret.vue'
 import Arrow from './arrow.vue'
 import Navicon from './navicon.vue'
@@ -31,7 +30,6 @@ export {
     Date,
     Datetime,
     Exclam,
-    Triangle,
     Caret,
     Navicon,
     Search,

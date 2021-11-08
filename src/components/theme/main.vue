@@ -1,5 +1,5 @@
 <template>
-    <div class="ph-theme-shifter" @mouseenter.capture="onEnter" @mouseleave="onLeave">
+    <div class="ph-theme-shifter" ref="etheme" @mouseenter="onEnter" @mouseleave="onLeave">
         <f-button shape="square" fillMode="none"><moon v-if="mode===Fr.dark"/><sun v-else/></f-button>
         <teleport to="body">
             <f-pop-container 
@@ -8,7 +8,9 @@
                 :rect="state.rect"
                 :position="popposition"
                 @enter="onPickerEnter" 
-                @leave="onPickerLeave">
+                @leave="onPickerLeave"
+                @click.stop
+                >
                 <div class="ph-mode-zone">
                     <sun :active="mode===Fr.light" @click="emits('update:mode',Fr.light)"/>
                     <moon :active="mode===Fr.dark" @click="emits('update:mode',Fr.dark)"/>
@@ -24,13 +26,16 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { defineProps, PropType, reactive, defineEmits } from 'vue'
+import { defineProps, PropType, reactive, defineEmits, Ref, ref } from 'vue'
 import { Theme, Sun,Moon,CircleTick } from '../icon'
 import { Fr } from '../../shared/config'
 import { IPopPosition } from '../pop/types'
 import FButton from '../button/main.vue'
 import FPopContainer from '../pop/base.vue'
+
+
 const emits = defineEmits(["update:mode","update:theme"])
+const etheme = ref() as Ref<HTMLElement>
 const props = defineProps({
     popposition:{type:String as PropType<IPopPosition>,default:"bc"},
     mode:{type:String as PropType<'dark'|'light'>,default:"dark"},
@@ -42,22 +47,28 @@ const state = reactive({
     rect:{left:0,top:0,width:0,height:0},
     themes:['success','danger','warning','info','noble']
 })
-const onEnter = (e:Event)=>{
+const clear = ()=>{
+    document.removeEventListener('click',clear)
+    state.enter = false
+    state.visible = false
+}
+const onEnter = ()=>{
     state.visible = true
-    state.rect = (e.target as HTMLElement).getBoundingClientRect()
+    state.rect = etheme.value.getBoundingClientRect()
+    setTimeout(()=>{
+        document.addEventListener("click",clear)
+    },300)
 }
 const onLeave = ()=>{
     setTimeout(()=>{
         if(state.enter)return
-        state.visible = false
     },300)
 }
 const onPickerEnter = ()=>{
     state.enter = true
 }
 const onPickerLeave = ()=>{
-    state.enter = false
-    state.visible = false
+    clear()
 }
 </script>
 <style lang="scss">

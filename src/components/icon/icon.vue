@@ -6,7 +6,6 @@
     :hover="hover&&state.hover&&!disabled"><slot></slot></i>
 </template>
 <script lang="ts" setup>
-import './icon.scss'
 import { reactive, defineProps , PropType, computed } from "vue";
 import { IThemeType } from '../../shared/types'
 const props = defineProps({
@@ -36,7 +35,7 @@ const style = computed(()=>{
     flex: 0 0 auto;
     font-style: normal;
     text-align: center;
-    line-height: inherit;
+    line-height: 1;
 
     color: var(--ph-i-color,inherit);
     font-size: var(--ph-i-size,16px);
