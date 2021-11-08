@@ -1,5 +1,5 @@
 <template>
-    <div class="ph-theme-shifter" ref="etheme" @mouseenter="onEnter" @mouseleave="onLeave">
+    <div class="ph-theme-shifter" ref="etheme" @mouseenter="onEnter" @mouseleave="onLeave" @click.stop="onClick">
         <f-button shape="square" fillMode="none"><moon v-if="mode===Fr.dark"/><sun v-else/></f-button>
         <teleport to="body">
             <f-pop-container 
@@ -26,7 +26,7 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { defineProps, PropType, reactive, defineEmits, Ref, ref } from 'vue'
+import { defineProps, PropType, reactive, defineEmits, Ref, ref, onMounted, onBeforeUnmount } from 'vue'
 import { Theme, Sun,Moon,CircleTick } from '../icon'
 import { Fr } from '../../shared/config'
 import { IPopPosition } from '../pop/types'
@@ -42,34 +42,55 @@ const props = defineProps({
     theme:{type:String as PropType<'success'|'danger'|'warning'|'info'|'noble'>,default:"danger"}
 })
 const state = reactive({
+    touch:('ontouchstart' in window),
     visible:false,
     enter:false,
     rect:{left:0,top:0,width:0,height:0},
     themes:['success','danger','warning','info','noble']
 })
-const clear = ()=>{
-    document.removeEventListener('click',clear)
-    state.enter = false
-    state.visible = false
+const destroy = (e?:Event)=>{
+    if(state.visible){
+        state.enter = false
+        state.visible = false
+    }
 }
-const onEnter = ()=>{
+const open = ()=>{
     state.visible = true
     state.rect = etheme.value.getBoundingClientRect()
-    setTimeout(()=>{
-        document.addEventListener("click",clear)
-    },300)
+}
+/*** mobile event start */
+const onClick = ()=>{
+    if(!state.touch)return
+    open()
+}
+/*** mobile event end */
+/*** web event start */
+const onEnter = ()=>{
+    if(state.touch)return
+    open()
 }
 const onLeave = ()=>{
+    if(state.touch)return
     setTimeout(()=>{
         if(state.enter)return
+        destroy()
     },300)
 }
 const onPickerEnter = ()=>{
+    if(state.touch)return
     state.enter = true
 }
 const onPickerLeave = ()=>{
-    clear()
+    if(state.touch)return
+    destroy()
 }
+/*** web event end */
+onMounted(()=>{
+    document.addEventListener("click",destroy)
+})
+onBeforeUnmount(()=>{
+    document.removeEventListener("click",destroy)
+})
 </script>
 <style lang="scss">
 .ph-theme-shifter{

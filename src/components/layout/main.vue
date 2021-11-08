@@ -16,6 +16,8 @@ const flex = !!(slots.header||slots.bottombar)
     min-height: 100%;
     max-width: 100%;
     flex: 1;
+    position: relative;
+    overflow: hidden;
     &[flex=true]{
         display: flex;
         flex-direction: column;

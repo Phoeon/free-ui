@@ -45,6 +45,8 @@ onMounted(()=>{
 <style lang="scss">
 .ph-view{
     flex: 1;
+    max-height: 100%;
+    width: 100%;
     padding: var(--ph-pd-lg);
     background-color: var(--ph-bg-view);
     overflow: auto;
