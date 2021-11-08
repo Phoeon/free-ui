@@ -98,6 +98,8 @@ defineExpose({
     z-index:var(--ph-zdx-modal);
     background-color: var(--ph-msg-bg);
     border: 1px solid var(--ph-bd-1);
+    color: var(--ph-c-d1);
+    font-weight: var(--ph-fw-m);
     
     &-icon-wrap{
         height: var(--ph-gmsg-lh);

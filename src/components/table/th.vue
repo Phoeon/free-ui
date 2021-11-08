@@ -3,7 +3,7 @@
         <div class="ph-th-wrap">
             <span><slot></slot></span>
             <sort v-if="sort" @click="onSort" :direction="direction" class="ph-pointer"/>
-            <circle-danger type="info" v-tooltip="{content:tip,position:'tc'}" color="var(--ph-c-l1)" v-if="tip"/>
+            <circle-info type="info" v-tooltip="{content:tip,position:'tc'}" color="var(--ph-c-l1)" v-if="tip"/>
         </div>
     </th>
 </template>

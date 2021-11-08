@@ -103,6 +103,9 @@ const drawerVisible = computed({
                 justify-content: center;
                 align-items: center;
                 font-size: var(--ph-gas-gitem-ih);
+                .ph-icon{
+                    --ph-i-size:var(--ph-gas-gitem-ih);
+                }
             }
             .ph-as-gtext{
                 font-size: var(--ph-gas-gitem-fs);
