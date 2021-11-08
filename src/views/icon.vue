@@ -72,6 +72,7 @@
         <div class="ph-title">loading图标</div>
         <div class="ph-block">
             <loading-spin/>
+            <loading-bounce/>
         </div>
         <f-blockquote type="primary">自定义icon</f-blockquote>
         <div class="ph-title">自定义图标库(可以引入三方字体库)</div>
@@ -109,6 +110,7 @@ const {
     SquareTick,
 
     LoadingSpin,
+    LoadingBounce,
 
     Minus,
     Plus,

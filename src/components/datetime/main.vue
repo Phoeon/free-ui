@@ -24,7 +24,6 @@
             :value="value" 
             :simple="state.sm"
             @done="onDone"></dt-single>
-        
     </div>
 </transition>
 </f-mask>
@@ -32,9 +31,8 @@
 <script lang="ts" setup>
 import { computed, defineProps, nextTick, onMounted, PropType, reactive, ref } from 'vue'
 import { IDtImportant, IDtType } from './types'
-
-import Lang from './lang'
 import FMask from '../mask/main.vue'
+import Lang from './lang'
 import DtSingle from './single.vue'
 import DtCascade from './cascade.vue'
 import getPosition from 'ph-position'

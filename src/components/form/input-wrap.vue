@@ -36,7 +36,8 @@ const cns = computed(()=>{
         'ph-ip-disabled':props.disabled,
         'ph-ip-small':state.pc&&props.size==='small',
         'ph-ip-large':state.pc&&props.size==='large',
-        'ph-ip-hasradd':slots.right
+        'ph-ip-hasradd':slots.right,
+        'ph-ip-hasladd':slots.left,
     }
 })
 </script>
@@ -51,6 +52,8 @@ const cns = computed(()=>{
     --ph-ip-fs: var(--ph-ginput-fs);
     --ph-ip-h: var(--ph-ginput-h);
     --ph-ip-bbc: var(--ph-input-bc);
+    --ph-ip-bdr-w:1px;
+    --ph-ip-bdl-w:1px;
     --ph-ip-bc: var(--ph-input-bc);
     --ph-ip-bg: var(--ph-input-bg);
     --ph-ip-br: var(--ph-gip-br);
@@ -72,14 +75,25 @@ const cns = computed(()=>{
         --ph-ip-h: var(--ph-ginput-h-lg);
         --ph-ip-fs: var(--ph-ginput-fs-lg);
     }
+    &.ph-ip-hasladd{
+        --ph-ip-br: 0 var(--ph-gip-br) var(--ph-gip-br) 0;
+        --ph-ip-bdl-w:0;
+    }
     &.ph-ip-hasradd{
         --ph-ip-br: var(--ph-gip-br) 0 0 var(--ph-gip-br);
+        --ph-ip-bdr-w:0;
+    }
+    &.ph-ip-hasladd.ph-ip-hasradd{
+        --ph-ip-br:0;
+        --ph-ip-bdl-w:0;
+        --ph-ip-bdr-w:0;
     }
     .ph-ipw-addonl,
     .ph-ipw-addonr{
         flex: 0 0 auto;
         position: relative;
         border-color: var(--ph-ip-bc);
+        border-bottom: var(--ph-ip-bbc);
         font-size: var(--ph-ip-fs);
         height: var(--ph-ip-h);
         min-width: var(--ph-ip-h);

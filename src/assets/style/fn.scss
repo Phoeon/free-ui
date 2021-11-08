@@ -60,6 +60,8 @@
     border-radius: var(--ph-ip-br);
     border-color: var(--ph-ip-bc);
     border-bottom-color: var(--ph-ip-bbc);
+    border-left-width: var(--ph-ip-bdl-w);
+    border-right-width: var(--ph-ip-bdr-w);
     font-size: var(--ph-ip-fs);
     height: var(--ph-ip-h);
     color: var(--ph-ip-c);
@@ -67,6 +69,7 @@
     background-clip: padding-box;
     padding: 0 12px;
     width: 0;
+    
     &::-webkit-input-placeholder{
         color: var(--ph-c-l2);
     }

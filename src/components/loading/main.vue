@@ -1,15 +1,15 @@
 <template>
     <f-mask class="ph-loading-mask" :position="position" :fill="fill" ref="loading">
         <div class="ph-loading" :showbox="showBox">
-            <custom-icon class="ph-loading-icon" :name="icon" v-if="icon"/>
-            <loading-spin class="ph-loading-icon" v-else stroke="currentColor"/>
+            <custom-icon class="ph-ld-icon" :name="icon" v-if="icon"/>
+            <loading-bounce class="ph-ld-icon1" v-else/>
             <span class="ph-loading-text">{{computedTitle}}</span>
         </div>
     </f-mask>
 </template>
 <script lang="ts" setup>
 import { defineProps, defineExpose, ref, PropType, onMounted } from 'vue'
-import { LoadingSpin, CustomIcon } from '../icon'
+import { LoadingBounce, CustomIcon } from '../icon'
 
 import FMask from '../mask/main.vue'
 
@@ -72,11 +72,14 @@ onMounted(()=>{
     flex-direction: column;
     min-width: var(--ph-gloading-h);
     min-height: var(--ph-gloading-h);
-    .ph-loading-icon{
+    .ph-ld-icon{
         --ph-i-size: 32px;
         font-size: var(--ph-gloading-ih);
         border: none;
         margin-bottom: var(--ph-gloading-imb);
+    }
+    .ph-ld-icon1{
+        margin-bottom: var(--ph-pd-sm);
     }
     .ph-loading-text{
         font-size: var(--ph-gloading-fs);
