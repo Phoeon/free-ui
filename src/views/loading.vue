@@ -27,22 +27,14 @@ const state = reactive({
     loading:false
 })
 const openLoading = (showBox?:"always")=>{
-    FGLoading.show({showBox}).then(hide=>{
-        setTimeout(()=>{
-            hide?.()
-        },2000)
-    })
+    const close = FGLoading.show({showBox})
+    setTimeout(()=>close(),2000)
 }
 const openLoading1 = (alpha:boolean,fill?:string)=>{
-    FGLoading.show({alpha:true,fill}).then(hide=>{
-        setTimeout(()=>{
-            hide?.()
-        },2000)
-    })
+    const close = FGLoading.show({alpha:true,fill})
+    setTimeout(()=>close(),2000)
 }
 const openCount = (countdown:number)=>{
-    FGLoading.show({showBox:"always",countdown,title:"倒计时：{#}s"}).then(hide=>{
-        hide?.()
-    })
+    const close = FGLoading.show({showBox:"always",countdown,title:"倒计时：{#}s"})
 }
 </script>

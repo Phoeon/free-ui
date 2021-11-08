@@ -94,9 +94,8 @@ const onNavigate = (paths:Array<{id:string,action:string}>)=>{
 onMounted(()=>{
   state.paths = searchPath(menuData,hash)||[]
   state.cpath = (state.paths[state.paths.length-1]?.action)||"/"
-  FGLoading.show().then(a=>{
-    setTimeout(()=>a(),500)
-  })
+  const close = FGLoading.show()
+  setTimeout(()=>close(),500)
 })
 </script>
 <style lang="scss">

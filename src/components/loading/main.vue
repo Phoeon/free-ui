@@ -21,7 +21,7 @@ const props = defineProps({
     fill:String,
     icon:String,
     countdown:{type:Number,default:-1},
-    resolve:Function as PropType<(a:any)=>void>
+    destroy:Function as PropType<()=>void>
 })
 const computedTitle = ref(props.countdown>0?"":props.title)
 const countDown = (timer:number)=>{
@@ -29,9 +29,12 @@ const countDown = (timer:number)=>{
     computedTitle.value = title.replace(/{#}/g,timer+"")
 }
 
-const hide = ()=>loading.value.hide()
+const close = ()=>{
+    loading.value.hide()
+    props.destroy?.()
+}
 defineExpose({
-    hide
+    close
 })
 onMounted(()=>{
     let cd = props.countdown
@@ -42,9 +45,9 @@ onMounted(()=>{
                return countDown(cd--)
             }
             clearInterval(internval)
-            props.resolve?.(hide)
+            close()
         },1000)
-    }else props.resolve?.(hide)
+    }
 })
 </script>
 <style lang="scss">

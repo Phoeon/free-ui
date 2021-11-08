@@ -42,6 +42,7 @@ const props = defineProps({
     width:{type:Number,default:0},
     multi:Boolean,
     notify:Function as PropType<(item:Array<IDropdownItem>)=>void>,
+    destroy:Function as PropType<()=>void>,
     animation:{type:String,default:'ph-upbit'}
 })
 
@@ -67,6 +68,7 @@ const cns = computed(()=>{
 })
 const close = ()=>{
     state.visible = false
+    props.destroy?.()
 }
 const onClick = (item:IDropdownItem)=>{
     if(!props.multi){

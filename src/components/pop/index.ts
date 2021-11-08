@@ -29,28 +29,24 @@ const showTip = (opt:ITooltip)=>{
 }
 const showConfirm = (opt:IPopConfirm)=>{
     const evt = new Evt()
+    const destroy = ()=>evt.emit("close")
     const notify = (status:number)=>{
         if(status)
         evt.emit("done")
         else 
         evt.emit("cancel")
     }
-    const app = createApp(FPopConfirm,{...opt,notify}),
+    const app = createApp(FPopConfirm,{...opt,notify,destroy}),
         ins = app.mount(document.createElement("div"));
+        evt.on("close",()=>unmount(app))
     document.body.appendChild(ins.$el)
     return {
         done(fn:()=>void){
-            evt.on("done",()=>{
-                unmount(app)
-                fn()
-            })
+            evt.on("done",fn)
             return this
         },
         cancel(fn:()=>void){
-            evt.on("cancel",()=>{
-                unmount(app)
-                fn()
-            })
+            evt.on("cancel",fn)
             return this
         }
     }
@@ -92,18 +88,18 @@ const showDropdown = (opt:IDropdown)=>{
 }
 const showPopSelect = (opt:ISelect)=>{
     const evt = new Evt()
+    const destroy = ()=>evt.emit("close")
     const notify = (item:Array<IDropdownItem>)=>{
         evt.emit("done",item)
     }
-    const app = createApp(FPopSelect,{...opt,notify}),
+    const 
+        app = createApp(FPopSelect,{...opt,notify,destroy}),
         ins = app.mount(document.createElement("div")) as InstanceType<typeof FPopSelect>;
+    evt.on("close",()=>unmount(app))
     document.body.appendChild(ins.$el)
     return {
         done(fn:(item:Array<IDropdownItem>)=>void){
-            evt.on("done",(item:Array<IDropdownItem>)=>{
-                unmount(app)
-                fn(item)
-            })
+            evt.on("done",fn)
             return this
         }
     }

@@ -1,5 +1,5 @@
 <template>
-<f-mask :class="sample?'ph-sample':''" v-model="state.visible" :alpha="true" @click="state.visible = false">
+<f-mask :class="sample?'ph-sample':''" v-model="state.visible" :alpha="true" @click="close">
 <transition :name="state.animation">
     <div v-if="state.visible" @click.stop :class="['ph-pop-confirm','ph-pop','ph-pop-'+position,'ph-pop-'+theme]" ref="edom" :sample="sample" :style="style">
         <div class="ph-pop-confirm-content">
@@ -33,6 +33,7 @@ const props = defineProps({
     y:{type:Number,default:0},
     sample:Boolean, //仅用于文档展示，不用关注
     notify:Function as PropType<(status:number)=>void>,
+    destroy:Function as PropType<()=>void>,
     animation:String
 })
 const state = reactive({
@@ -43,10 +44,15 @@ const style = reactive({
     left:'auto',
     top:'auto'
 })
-const onClose = (status:number)=>{
+const close = ()=>{
     if(props.sample)return
     state.visible = false
+    props.destroy?.()
+}
+const onClose = (status:number)=>{
+    if(props.sample)return
     props.notify?.(status)
+    close()
 }
 
 onMounted(()=>{

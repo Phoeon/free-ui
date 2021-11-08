@@ -1,6 +1,6 @@
 <template>
 <transition :name="animation" :position="position" :style="{backgroundColor:fill}">
-    <div v-show="visible" :class="cn" @click="clickClose&&hide()"><slot :hide="hide" :visible="modelValue"></slot></div>
+    <div v-if="visible" :class="cn" @click="clickClose&&hide()"><slot :hide="hide" :visible="modelValue"></slot></div>
 </transition>
 </template>
 <script lang="ts" setup>
