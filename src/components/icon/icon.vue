@@ -40,8 +40,8 @@ const style = computed(()=>{
 
     color: var(--ph-i-color,inherit);
     font-size: var(--ph-i-size,16px);
-    min-width: var(--ph-i-size,16px);
-    min-height: var(--ph-i-size,16px);
+    width: var(--ph-i-size,16px);
+    height: var(--ph-i-size,16px);
     &[disabled=true]{
         cursor:not-allowed!important;
         opacity: .4!important;
