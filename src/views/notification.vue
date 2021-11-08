@@ -7,6 +7,7 @@
             <f-button type="danger" @click="open('error')">打开通知</f-button>
             <f-button @click="open()">打开通知</f-button>
         </f-card>
+        <ph-pretty>{{raw.c1}}</ph-pretty>
         <f-card class="btn-container" title="确认通知">
             <f-button @click="openConfirm()">打开通知</f-button>
         </f-card>
@@ -24,6 +25,7 @@
 </template>
 <script lang="ts" setup>
 import { FView, FButton ,FNotification, FCard } from '@/components'
+import * as raw from '../data/notification'
 const open = (type:string)=>{
     (FNotification as any)[type||"notify"]("一系列的信息描述。。。",{title:"通知信息标题"})
     .click((data:any)=>{

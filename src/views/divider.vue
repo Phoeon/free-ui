@@ -16,8 +16,10 @@
         <f-divider type="warning">分割线</f-divider>
         <f-divider type="noble">分割线</f-divider>
         <f-divider>分割线</f-divider>
+        <ph-pretty lang="html">{{raw.c1}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
 import { FView, FCard, FDivider } from '@/components'
+import * as raw from '../data/divider'
 </script>

@@ -21,8 +21,10 @@
             <br/>
             <f-tag type="light" :outline="true" role="add">标签</f-tag>
         </f-card>
+        <ph-pretty lang="html">{{raw.c1}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
 import { FView, FCard, FTag } from '@/components'
+import * as raw from '../data/tag'
 </script>

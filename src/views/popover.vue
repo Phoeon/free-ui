@@ -25,6 +25,7 @@
                 <f-popover theme="reverse" :sample="true" content="描述文字描述文字描述文字描述" title="确定要关" position="rb"></f-popover>
             </div>
         </f-card>
+        <f-blockquote type="primary">该组件以vue指令的形式对外提供</f-blockquote>
         <f-card title="动态展示">
             <f-button-group :container="true">
                 <f-button type="success" v-popover="{...data,position:'tl'}">上左</f-button>
@@ -33,9 +34,9 @@
             </f-button-group>
             <br/>
             <f-button-group :container="true">
-                <f-button type="success" v-popover="{...data,theme:'reverse',position:'bl'}">下左</f-button>
-                <f-button type="danger" v-popover="{...data,theme:'reverse',position:'bc'}">下中</f-button>
-                <f-button type="warning" v-popover="{...data,theme:'reverse',position:'br'}">下右</f-button>
+                <f-button type="success" v-popover="{...data,position:'bl'}">下左</f-button>
+                <f-button type="danger" v-popover="{...data,position:'bc'}">下中</f-button>
+                <f-button type="warning" v-popover="{...data,position:'br'}">下右</f-button>
             </f-button-group>
             <br/>
             <f-button-group :container="true">
@@ -45,19 +46,21 @@
             </f-button-group>
             <br/>
             <f-button-group :container="true">
-                <f-button type="success" v-popover="{...data,theme:'reverse',position:'rt'}">右上</f-button>
-                <f-button type="danger" v-popover="{...data,theme:'reverse',position:'rc'}">右中</f-button>
-                <f-button type="warning" v-popover="{...data,theme:'reverse',position:'rb'}">右下</f-button>
+                <f-button type="success" v-popover="{...data,position:'rt'}">右上</f-button>
+                <f-button type="danger" v-popover="{...data,position:'rc'}">右中</f-button>
+                <f-button type="warning" v-popover="{...data,position:'rb'}">右下</f-button>
             </f-button-group>
         </f-card>
+        <ph-pretty lang="html">{{raw.c1}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
-import { FView, FCard, FButtonGroup, FButton, FPop ,FToast } from '@/components'
+import { FView, FCard, FButtonGroup, FBlockquote, FButton, FPop ,FToast } from '@/components'
 import vPopover from '@/directives/popover'
 import FPopover from '@/components/pop/over.vue'
+import * as raw from '../data/popover'
 const data = {
     title:"问题提示",
-    content:"描述文字描述文字描述文字描述"
+    content:"描述文字描述文字描述文字描述",
 }
 </script>

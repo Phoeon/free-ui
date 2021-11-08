@@ -8,6 +8,7 @@
                 v-model:pagesize="data.pagesize"
             />
         </f-card>
+        <ph-pretty lang="html">{{raw.c1}}</ph-pretty>
         <f-card title="showTotal">
             <f-pager 
                 @page="onPage"
@@ -17,6 +18,7 @@
                 v-model:pagesize="data.pagesize"
             />
         </f-card>
+        <ph-pretty lang="html">{{raw.c2}}</ph-pretty>
         <f-card title="showPagesize">
             <f-pager 
                 @page="onPage"
@@ -27,6 +29,7 @@
                 v-model:pagesize="data.pagesize"
             />
         </f-card>
+        <ph-pretty lang="html">{{raw.c3}}</ph-pretty>
         <f-card title="showJump">
             <f-pager 
                 @page="onPage"
@@ -38,6 +41,7 @@
                 v-model:pagesize="data.pagesize"
             />
         </f-card>
+        <ph-pretty lang="html">{{raw.c4}}</ph-pretty>
         <f-card title="pagerCount">
             <f-pager 
                 @page="onPage"
@@ -50,6 +54,7 @@
                 v-model:pagesize="data.pagesize"
             />
         </f-card>
+        <ph-pretty lang="html">{{raw.c5}}</ph-pretty>
         <f-card title="水平分布">
             <f-pager 
                 @page="onPage"
@@ -74,6 +79,7 @@
                 v-model:pagesize="data.pagesize"
             />
         </f-card>
+        <ph-pretty lang="html">{{raw.c6}}</ph-pretty>
         <f-card title="背景填充">
             <f-pager 
                 @page="onPage"
@@ -107,6 +113,7 @@
                 v-model:pagesize="data.pagesize"
             />
         </f-card>
+        <ph-pretty lang="html">{{raw.c7}}</ph-pretty>
         <f-card title="简单模式">
             <f-pager 
                 @page="onPage"
@@ -137,6 +144,7 @@
                 v-model:pagesize="data.pagesize"
             />
         </f-card>
+        <ph-pretty lang="html">{{raw.c8}}</ph-pretty>
         <f-card title="不同主题色">
             <f-pager 
                 @page="onPage"
@@ -179,11 +187,13 @@
             />
             <br/>
         </f-card>
+        <ph-pretty lang="html">{{raw.c9}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
 import { FView, FCard, FPager } from '@/components'
 import { reactive } from 'vue'
+import * as raw from '../data/pager'
 // const data = {
     // "show-total":{type:Boolean,default:false},
     // "show-pagesize":{type:Boolean,default:false},

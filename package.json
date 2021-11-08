@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "ph-copy": "^1.0.0",
     "ph-evt": "^1.0.0",
     "ph-gesture": "*",
     "ph-position": "*",

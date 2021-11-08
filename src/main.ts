@@ -1,9 +1,11 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import PhPretty from './pretty.vue'
 import router from './router'
 import FreeUi from '@/components'
 const app = createApp(App);
 app
+.component("PhPretty",PhPretty)
 .use(FreeUi,{
     icon:{
         cname:"fa",

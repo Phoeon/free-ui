@@ -27,6 +27,11 @@
       </transition>
     </router-view>
   </f-main>
+  <teleport to="body">
+  <f-drawer v-model="state.preview" position="right" :alpha="true" class="ph-preview-drawer">
+    <iframe class="ph-preview-frame" :src="iurl" frameborder="0"></iframe>
+  </f-drawer>
+  </teleport>
 </f-page>
 </template>
 <script lang="ts" setup>

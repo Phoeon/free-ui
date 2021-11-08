@@ -22,8 +22,8 @@
                 <f-button type="primary" @click="onSubmit">提交表单</f-button>
             </template>
         </f-form>
-        <!-- <f-card title="临时案例">
-        </f-card> -->
+        <ph-pretty lang="html" title="template">{{raw.c1}}</ph-pretty>
+        <ph-pretty title="script">{{raw.c2}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
@@ -45,7 +45,7 @@ import {
 
         FMessage } from '@/components'
 import { reactive, ref } from 'vue'
-
+import * as raw from '../../data/form'
 const evalidator = ref<InstanceType<typeof FValidator>>()
 const formData = reactive({
     account:"",

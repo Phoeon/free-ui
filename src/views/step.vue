@@ -11,10 +11,12 @@
                 <f-steps :steps="steps" direction="vt" size="small"></f-steps>
             </div>
         </f-card>
+        <ph-pretty lang="html">{{raw.c1}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
 import { FView, FCard, FSteps } from '@/components'
+import * as raw from '../data/step'
 const steps = [{
     title:"处理完成",
     desc:"描述内容文字",

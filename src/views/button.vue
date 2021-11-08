@@ -3,12 +3,14 @@
         <f-card title="不同颜色">
             <f-button-group>
                 <f-button>Default</f-button>
-                <f-button type="primary">Primary</f-button>
+                <f-button type="info">info</f-button>
                 <f-button type="success">Success</f-button>
                 <f-button type="danger">Danger</f-button>
                 <f-button type="warning">Warning</f-button>
+                <f-button type="noble">noble</f-button>
             </f-button-group>
         </f-card>
+        <ph-pretty lang="html">{{data.c1}}</ph-pretty>
         <f-card title="不同填充">
             <f-button-group>
                 <f-button fillMode="outline">Default</f-button>
@@ -17,8 +19,7 @@
                 <f-button fillMode="outline" type="danger">Danger</f-button>
                 <f-button fillMode="outline" type="warning">Warning</f-button>
             </f-button-group>
-        </f-card>
-        <f-card title="不同填充">
+            <br/>
             <f-button-group>
                 <f-button fillMode="none">Default</f-button>
                 <f-button fillMode="none" type="primary">Primary</f-button>
@@ -27,14 +28,16 @@
                 <f-button fillMode="none" type="warning">Warning</f-button>
             </f-button-group>
         </f-card>
+        <ph-pretty lang="html">{{data.c2}}</ph-pretty>
         <f-card title="块级">
             <f-button-group>
-                <f-button type="primary" :block="true">Block</f-button>
-                <f-button disabled type="primary" :block="true">Block</f-button>
+                <f-button type="info" :block="true">Block</f-button>
+                <f-button type="success" :block="true">Block</f-button>
+                <f-button type="danger" :block="true">Default</f-button>
                 <f-button type="normal" :block="true">Default</f-button>
-                <f-button disabled type="normal" :block="true">Default</f-button>
             </f-button-group>
         </f-card>
+        <ph-pretty lang="html">{{data.c3}}</ph-pretty>
         <f-card title="不同尺寸">
             <f-button-group>
                 <f-button type="primary" size="mini">Mini</f-button>
@@ -43,6 +46,7 @@
                 <f-button type="primary" size="large">Large</f-button>
             </f-button-group>
         </f-card>
+        <ph-pretty lang="html">{{data.c4}}</ph-pretty>
         <f-card title="不同状态">
             <f-button-group>
                 <f-button type="normal"><template v-slot:leftIcon><custom-icon name="filter"></custom-icon></template>Icon</f-button>
@@ -62,6 +66,7 @@
                 <f-button type="primary" :disabled="true">Default</f-button>
             </f-button-group>
         </f-card>
+        <ph-pretty lang="html">{{data.c5}}</ph-pretty>
         <f-card title="禁止状态">
             <f-button-group>
                 <f-button disabled type="normal"><template v-slot:leftIcon><custom-icon name="filter"></custom-icon></template>Icon</f-button>
@@ -79,6 +84,7 @@
                 <f-button disabled type="primary" fillMode="none">transparent</f-button>
             </f-button-group>
         </f-card>
+        <ph-pretty lang="html">{{data.c6}}</ph-pretty>
         <f-card title="loading状态">
             <f-button-group>
                 <f-button :loading="true" disabled type="primary">Loading</f-button>
@@ -87,6 +93,7 @@
                 <f-button :loading="true" disabled>Loading</f-button>
             </f-button-group>
         </f-card>
+        <ph-pretty lang="html">{{data.c7}}</ph-pretty>
         <f-card title="下拉导航按钮">
             <f-button-group>
                 <f-button dropdown="up">浏览器</f-button>
@@ -95,6 +102,7 @@
                 <f-button type="primary" dropdown="down">浏览器</f-button>
             </f-button-group>
         </f-card>
+        <ph-pretty lang="html">{{data.c8}}</ph-pretty>
         <f-card title="方形按钮">
             <f-button-group justify="center">
                 <f-button shape="square" type="primary"><custom-icon name="firefox"/></f-button>
@@ -112,9 +120,12 @@
                 <f-button shape="square" type="warning">5</f-button>
             </f-button-group>
         </f-card>
+        <ph-pretty lang="html">{{data.c9}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
 import { FView, FButton, FButtonGroup, FCard, FIcon } from '@/components'
+import * as data from '../data/button'
 const { CustomIcon } = FIcon
+
 </script>

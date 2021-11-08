@@ -54,10 +54,13 @@
                 </f-card>
             </f-grid-item>
         </f-grid>
+        <br/>
+        <ph-pretty lang="html">{{raw.c1}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
 import { FView, FCard, FGrid, FGridItem } from '@/components'
+import * as raw from '../data/divider'
 </script>
 <style lang="scss">
 .ph-card-view{

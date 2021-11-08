@@ -9,9 +9,9 @@
             </f-button-group>
             <br/>
             <f-button-group :container="true">
-                <f-dropdown theme="reverse" type="primary" position="tl" :dataSource="data.dataSource" @action="onAction">上左</f-dropdown>
-                <f-dropdown theme="reverse" type="success" position="tc" :dataSource="data.dataSource" @action="onAction">上中</f-dropdown>
-                <f-dropdown theme="reverse" type="danger" position="tr" :dataSource="data.dataSource" @action="onAction">上右</f-dropdown>
+                <f-dropdown type="primary" position="tl" :dataSource="data.dataSource" @action="onAction">上左</f-dropdown>
+                <f-dropdown type="success" position="tc" :dataSource="data.dataSource" @action="onAction">上中</f-dropdown>
+                <f-dropdown type="danger" position="tr" :dataSource="data.dataSource" @action="onAction">上右</f-dropdown>
             </f-button-group>
             <p>click触发</p>
             <f-button-group :container="true">
@@ -20,6 +20,7 @@
                 <f-dropdown type="danger" trigger="click" position="tr" :dataSource="data.dataSource" @action="onAction">上右</f-dropdown>
             </f-button-group>
         </f-card>
+        <ph-pretty lang="html">{{raw.c1}}</ph-pretty>
         <f-card title="静态展示">
             <div class="flex-box-col" style="margin-bottom:16px;">
                 <f-dropdownlist :sample="true" position="tl" :dataSource="data.dataSource"></f-dropdownlist>
@@ -37,6 +38,7 @@
 <script lang="ts" setup>
 import { FView, FCard, FButtonGroup, FDropdown, FToast } from '@/components'
 import FDropdownlist from '@/components/pop/dropdown.vue'
+import * as raw from '../data/dropdown'
 const onAction = (e:any)=>{
     FToast.show(e.text)
 }
