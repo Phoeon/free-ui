@@ -1,21 +1,25 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <f-button size="mini">mini</f-button>
-    <f-button size="small">small</f-button>
-    <f-button>normal</f-button>
-    <f-button size="large">large</f-button>
-    <f-button radius="false">radius</f-button>
-    <f-button hover="true">hover</f-button>
-  </div>
+<f-view>
+    <f-blockquote type="primary">一款个人轻量ui组件库，基于 vue3+typescript,（业余时间的练手项目，目前还在完善中，欢迎提意见或建议哈）</f-blockquote>
+    <div class="img-wrap"><img alt="个人微信，加我技术交流" src="../assets/wx.jpeg"></div>
+</f-view>
 </template>
 
 <script lang="ts" setup>
-import { FButton } from '@/components'
+import { FView,FBlockquote } from '@/components'
 </script>
 <style lang="scss">
-.home{
+.img-wrap{
+  padding-top: var(--ph-pd-lg);
   display: flex;
-  
+  justify-content: center;
+  img{
+    width: var(--ph-home-img-w,50%);
+  }
+}
+@media screen and (max-width:768px){
+  .img-wrap{
+    --ph-home-img-w:280px;
+  }
 }
 </style>

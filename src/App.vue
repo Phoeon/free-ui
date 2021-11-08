@@ -29,7 +29,7 @@
   </f-main>
   <teleport to="body">
   <f-drawer v-model="state.preview" position="right" :alpha="true" class="ph-preview-drawer">
-    <iframe class="ph-preview-frame" :src="state.cpath" frameborder="0"></iframe>
+    <iframe class="ph-preview-frame" :src="iurl" frameborder="0"></iframe>
   </f-drawer>
   </teleport>
 </f-page>
@@ -48,11 +48,12 @@ import {
   FButton } from '@/components'
 
 import { Sun,Moon,Mobile } from '@/components/icon'
-import { onMounted, reactive, ref, toRefs } from 'vue'
+import { computed, onMounted, reactive, ref, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 import { searchPath } from '@/shared/tree'
 import vTooltip from '@/directives/tooltip'
 import menuData from './data/nav'
+const hash = location.hash.replace(/#/g,"").replace("//","/")
 
 const state = reactive<{
   isTop?:boolean,
@@ -67,17 +68,20 @@ const state = reactive<{
   aside:{
     showLogo:true,
     avatar:"https://v3.cn.vuejs.org/logo.png",
-    appName:"ui组件库"
+    appName:"FreeUi"
   },
-  paths:searchPath(menuData,location.pathname)||[],
+  paths:searchPath(menuData,hash)||[],
   theme:"danger",
   mode:"dark",
-  cpath:location.pathname
+  cpath:hash||"/"
 })
 
 const { aside } = toRefs(state)
 const router = useRouter()
-
+const iurl = computed(()=>{
+  const url = location.pathname+"#"+state.cpath
+  return url
+})
 const onLogoClick = ()=>{
   router.push("/")
 }
@@ -88,8 +92,8 @@ const onNavigate = (paths:Array<{id:string,action:string}>)=>{
   router.push(cpath)
 }
 onMounted(()=>{
-  state.paths = searchPath(menuData,location.pathname)||[]
-  state.cpath = state.paths[state.paths.length-1].action
+  state.paths = searchPath(menuData,hash)||[]
+  state.cpath = (state.paths[state.paths.length-1]?.action)||"/"
   FGLoading.show().then(a=>{
     setTimeout(()=>a(),500)
   })

@@ -1,10 +1,10 @@
 export default [
-    {
-        name:"临时",
-        id:"/tmp",
-        action:"/tmp",
-        icon:"clock"
-    },
+    // {
+    //     name:"临时",
+    //     id:"/tmp",
+    //     action:"/tmp",
+    //     icon:"clock"
+    // },
     {
         name:"按钮",
         id:"/button",

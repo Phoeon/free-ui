@@ -2,7 +2,7 @@
     <div :class="['ph-aside',showAction?'ph-aside-pd':'']" :simple="toggleStatus">
         <div class="ph-logo" v-if="showLogo" @click="emits('logo-click')">
             <slot name="logo">
-                <div class="ph-logo-avatar" :style="{backgroundImage:avatar}"></div>
+                <div class="ph-logo-avatar" :style="{backgroundImage:'url('+avatar+')'}"></div>
                 <span class="ph-logo-appname">{{appName}}</span>
             </slot>
         </div>
@@ -68,6 +68,9 @@ defineExpose({
             height: 32px;
             border-radius: 50%;
             background-color: var(--ph-c-reverse);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
             flex: 0 0 auto;
         }
         &-appname{
