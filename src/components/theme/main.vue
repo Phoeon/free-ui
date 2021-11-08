@@ -1,5 +1,5 @@
 <template>
-    <div class="ph-theme-shifter" ref="etheme" @mouseenter="onEnter" @mouseleave="onLeave" @click.stop="onClick">
+    <div class="ph-theme-shifter" ref="etheme" @mouseenter="onEnter" @mouseleave="onLeave">
         <f-button shape="square" fillMode="none"><moon v-if="mode===Fr.dark"/><sun v-else/></f-button>
         <teleport to="body">
             <f-pop-container 
@@ -9,7 +9,6 @@
                 :position="popposition"
                 @enter="onPickerEnter" 
                 @leave="onPickerLeave"
-                @click.stop
                 >
                 <div class="ph-mode-zone">
                     <sun :active="mode===Fr.light" @click="emits('update:mode',Fr.light)"/>
@@ -48,7 +47,7 @@ const state = reactive({
     rect:{left:0,top:0,width:0,height:0},
     themes:['success','danger','warning','info','noble']
 })
-const destroy = (e?:Event)=>{
+const destroy = ()=>{
     if(state.visible){
         state.enter = false
         state.visible = false
@@ -58,38 +57,26 @@ const open = ()=>{
     state.visible = true
     state.rect = etheme.value.getBoundingClientRect()
 }
-/*** mobile event start */
-const onClick = ()=>{
-    if(!state.touch)return
-    open()
-}
+
 /*** mobile event end */
 /*** web event start */
 const onEnter = ()=>{
-    if(state.touch)return
-    open()
+    setTimeout(()=>open())
 }
 const onLeave = ()=>{
-    if(state.touch)return
     setTimeout(()=>{
         if(state.enter)return
         destroy()
-    },300)
+    },50)
 }
 const onPickerEnter = ()=>{
-    if(state.touch)return
     state.enter = true
 }
 const onPickerLeave = ()=>{
-    if(state.touch)return
     destroy()
 }
-/*** web event end */
 onMounted(()=>{
     document.addEventListener("click",destroy)
-})
-onBeforeUnmount(()=>{
-    document.removeEventListener("click",destroy)
 })
 </script>
 <style lang="scss">
