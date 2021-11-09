@@ -1,5 +1,5 @@
 <template>
-    <f-scroll class="ph-view" @f-scroll="onViewScroll" ref="eview">
+    <f-scroll class="ph-view" @scroll="onViewScroll" ref="eview">
         <slot></slot>
         <transition name="ph-fade">
             <backtop v-if="backtop&&state.showBacktop" @backtop="onBacktop"/>
@@ -7,11 +7,12 @@
     </f-scroll>
 </template>
 <script lang="ts" setup>
-import { defineProps, nextTick, onMounted, reactive, Ref, ref } from 'vue'
+import { defineProps, nextTick, onMounted, reactive, Ref, ref, defineEmits } from 'vue'
 import Backtop from '../back-top/main.vue'
 import Animation,{EndPoint} from '../../shared/animation'
 import FScroll from '../scroll/main.vue'
 
+const emits = defineEmits(['scroll'])
 const eview = ref() as Ref<InstanceType<typeof FScroll>>
 const props = defineProps({
     backtop:{type:Boolean,default:true}
@@ -20,7 +21,9 @@ const state = reactive({
     timer:-1,
     showBacktop:false
 })
-const onViewScroll = ()=>{
+const onViewScroll = (e?:Event)=>{
+    if(e)
+        emits('scroll',e)
     if(!props.backtop)return
     const t = eview.value.scrollElement as HTMLElement
     clearTimeout(state.timer)

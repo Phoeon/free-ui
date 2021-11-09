@@ -71,7 +71,6 @@ const onScroll = (e:Event)=>{
                 value:item.value
             }
         })
-        console.log(tops)
         const filter1 = tops.filter(t=>t.top<vh&&t.top>0)
         const target = filter1[filter1.length-1]
         if(target){

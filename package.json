@@ -1,23 +1,46 @@
 {
   "name": "free-ui",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.0beta.0",
+  "main": "./src/free-ui.ts",
   "scripts": {
-    "serve": "vue-cli-service serve --mode doc",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
     "build:doc": "vue-cli-service build --mode doc",
     "build:demo": "vue-cli-service build --mode demo",
     "lint": "vue-cli-service lint"
   },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/phoeon/free-ui.git"
+  },
+  "keywords": [
+    "vue3",
+    "free",
+    "vue",
+    "components",
+    "ui",
+    "typescript"
+  ],
+  "files": [
+    "src/assets/style",
+    "src/components",
+    "src/directives",
+    "src/shared",
+    "src/free-ui.ts"
+  ],
   "dependencies": {
-    "core-js": "^3.6.5",
-    "ph-copy": "^1.0.0",
     "ph-evt": "^1.0.0",
     "ph-gesture": "*",
-    "ph-position": "*",
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0"
+    "ph-position": "*"
   },
   "devDependencies": {
+    "ph-copy": "^1.0.0",
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-0",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.0",

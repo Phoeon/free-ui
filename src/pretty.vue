@@ -1,5 +1,5 @@
 <template>
-  <div class="ph-pretty-container" v-if="isDoc">
+  <div class="ph-pretty-container" v-if="showDoc">
     <div class="ph-pretty-header">
       <h1 class="ph-pretty-title">{{title}}</h1>
       <f-button fillMode="none" @click="onCopyCode">复制代码</f-button>
@@ -16,7 +16,7 @@ import { computed, defineProps, nextTick, onMounted, Ref, ref } from "vue";
 import { FButton, FToast } from '@/components'
 import copy from 'ph-copy'
 
-const isDoc = process.env.VUE_APP_PRO_TYPE==="doc"
+const showDoc = process.env.VUE_APP_PRO_TYPE!="demo"
 const ecode = ref() as Ref<HTMLElement>
 const props = defineProps({
     title: { type:String, default:"案例代码"},

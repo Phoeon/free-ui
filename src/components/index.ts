@@ -1,4 +1,3 @@
-import Env from '../shared/env'
 import FNotification from './notification'
 import FMessage from './message'
 import FPop,{FPopContainer} from './pop'
@@ -50,12 +49,4 @@ export {
     FPopContainer,
     FDtPicker,
     FCPicker
-}
-export default {
-    install(app:any,options:Record<string,any>){
-        if(options){
-            for(const k in options)
-                Env.set(k,options[k])
-        }
-    }
 }

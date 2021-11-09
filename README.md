@@ -1,24 +1,11 @@
 # free-ui
 
+## 基于vue3+typescript的轻量ui组件库，工作之余的速成品，欢迎感兴趣的大佬提意见或者建议，或者PR哈
 ## Project setup
 ```
-npm install
+npm install free-ui
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 在线链接
+See [在线案例](https://phoeon.gitee.io/free-ui/demo/#/).
+See [在线doc](https://phoeon.gitee.io/free-ui/demo/#/).

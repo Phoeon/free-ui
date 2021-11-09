@@ -18,7 +18,7 @@
 import { defineProps, defineEmits, defineExpose, ref, reactive } from 'vue'
 import ScrollBar from './scroll-bar.vue'
 
-const emits = defineEmits(['f-scroll'])
+const emits = defineEmits(['scroll'])
 const props = defineProps({
     disabled:Boolean
 })
@@ -74,7 +74,7 @@ const onScroll = (e:Event)=>{
     if(props.disabled)return
     e.preventDefault()
     bounceTask()
-    emits("f-scroll",e)
+    emits("scroll",e)
 }
 const onEnter = ()=>{
     if(props.disabled)return

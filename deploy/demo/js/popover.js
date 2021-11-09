@@ -36,18 +36,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
-/***/ "./src/directives/popover.ts":
-/*!***********************************!*\
-  !*** ./src/directives/popover.ts ***!
-  \***********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_pop__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/pop */ \"./src/components/pop/index.ts\");\n/* harmony import */ var _shared_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/utils */ \"./src/shared/utils.ts\");\n/* harmony import */ var _shared_popover__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/popover */ \"./src/shared/popover.ts\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  beforeMount: function beforeMount(el, binding) {\n    var value = binding.value;\n    var lock = false;\n    var close;\n    el.addEventListener(\"mouseenter\", function () {\n      if (lock) return;\n      lock = true;\n\n      var _el$getBoundingClient = el.getBoundingClientRect(),\n          left = _el$getBoundingClient.left,\n          top = _el$getBoundingClient.top,\n          width = _el$getBoundingClient.width,\n          height = _el$getBoundingClient.height;\n\n      var title = value.title,\n          content = value.content,\n          position = value.position,\n          theme = value.theme;\n      var pos = position || \"tc\";\n      var x = Object(_shared_utils__WEBPACK_IMPORTED_MODULE_1__[\"sumArray\"])(_shared_popover__WEBPACK_IMPORTED_MODULE_2__[\"xmatrix\"][pos], [left, top, width, height]),\n          y = Object(_shared_utils__WEBPACK_IMPORTED_MODULE_1__[\"sumArray\"])(_shared_popover__WEBPACK_IMPORTED_MODULE_2__[\"ymatrix\"][pos], [left, top, width, height]);\n      close = _components_pop__WEBPACK_IMPORTED_MODULE_0__[\"default\"].showPopover({\n        title: title,\n        content: content,\n        x: x,\n        y: y,\n        theme: theme,\n        position: pos\n      });\n      setTimeout(function () {\n        lock = false;\n      }, 300);\n    });\n    el.addEventListener(\"mouseleave\", function () {\n      var _close;\n\n      (_close = close) === null || _close === void 0 ? void 0 : _close();\n    });\n  }\n});\n\n//# sourceURL=webpack:///./src/directives/popover.ts?");
-
-/***/ }),
-
 /***/ "./src/views/popover.vue":
 /*!*******************************!*\
   !*** ./src/views/popover.vue ***!
