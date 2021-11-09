@@ -1,5 +1,5 @@
 <template>
-    <div :class="cns" v-show="visible" @click="onClick">
+    <div :class="cns" v-show="visible" @click.stop="onClick">
         <div class="ph-scrollbar-indicator" :style="style" @click.stop v-drag="onDrag"></div>
     </div>
 </template>
@@ -33,10 +33,10 @@ export default defineComponent({
         const style = computed(()=>{
             return props.dir==="hr"?{
                 width:props.w+"px",
-                transform:`translateX(${props.x}px)`
+                transform:`translate3d(${props.x}px,0,0)`
             }:{
                 height:props.h+"px",
-                transform:`translateY(${props.y}px)`
+                transform:`translate3d(0,${props.y}px,0)`
             }
         })
         const onDrag = (xratio:number,yratio:number)=>{
@@ -68,7 +68,7 @@ export default defineComponent({
         backdrop-filter: blur(10px);
         transition: background-color .3s;
         &:hover{
-            opacity: .5;
+            background-color: var(--ph-bg-a5-reverse);
         }
     }
     &-hr{
