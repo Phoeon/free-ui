@@ -34,6 +34,7 @@ export * from './tag'
 export * from './theme'
 export * from './breadcrumb'
 export * from './action'
+export * from './scroll'
 export {
     FIcon,
     FNotification,

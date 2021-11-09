@@ -6,7 +6,9 @@
                 <span class="ph-logo-appname">{{appName}}</span>
             </slot>
         </div>
-        <slot :toggle="toggleStatus&&dw>768"></slot>
+        <f-scroll :disabled="toggleStatus&&dw>768">
+            <slot :toggle="toggleStatus&&dw>768"></slot>
+        </f-scroll>
         <div class="ph-aside-action" v-if="showAction">
             <slot name="action">
                 <f-button shape="square" fillMode="none" @click="toggle">
@@ -21,6 +23,7 @@ import { defineExpose, defineProps, defineEmits, inject, Ref, ref } from 'vue'
 import FButton from '../button/main.vue'
 import Navicon from '../icon/navicon.vue'
 import Mediaquery from '../../shared/media-query'
+import FScroll from '../scroll/main.vue'
 const props = defineProps({
     showLogo:{type:Boolean,default:true},
     showAction:{type:Boolean,default:true},

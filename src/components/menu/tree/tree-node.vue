@@ -231,6 +231,8 @@ onMounted(()=>{
     &-root[simple=true]{
         & > .ph-group,
         & > .ph-leaf{
+            position: relative;
+            z-index: 1;
             &[active=true]{
                 background-color: var(--ph-primary-a1);
             }
@@ -267,7 +269,6 @@ onMounted(()=>{
         top: 0;
         right: 0;
         transform: translate3d(100%,0,0);
-        z-index: var(--ph-zdx-popover);
 
         &:after{
             content: "";
