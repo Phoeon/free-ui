@@ -27,3 +27,4 @@ app
     }
 })
 .use(router).mount('#app')
+console.log(process.env,process)
