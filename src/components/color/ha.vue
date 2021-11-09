@@ -11,7 +11,7 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { n2hex } from '@/shared/color'
+import { n2hex } from '../../shared/color'
 import { toRefs, defineProps, defineEmits, computed } from 'vue'
 import Slider from '../form/slider.vue'
 

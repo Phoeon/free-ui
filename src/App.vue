@@ -99,7 +99,6 @@ onMounted(()=>{
 })
 </script>
 <style lang="scss">
-@import '@/assets/style/rebot.scss';
 .btn-container{
     .ph-card-body{
         display: flex;

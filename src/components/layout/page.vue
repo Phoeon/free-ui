@@ -6,6 +6,7 @@
     </flex>
 </template>
 <script lang="ts" setup>
+import '../../assets/style/rebot.scss';
 import { defineProps, watch , computed, onBeforeMount, provide, reactive, toRef, useSlots, PropType, onMounted } from 'vue'
 import Evt from 'ph-evt'
 import MediaQuery from '../../shared/media-query'
