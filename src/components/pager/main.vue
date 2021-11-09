@@ -84,8 +84,9 @@ const mediaQuery = (placeholder:boolean,dw:number)=>{
     let pagerCount = props.pagerCount
     let size = "normal"
     if(dw<MediaBreak.xs){
-        pagerCount = 3
-        size = "mini"
+        pagerCount = 5
+        // size = "mini"
+        size = "small"
     }
     else if(dw<MediaBreak.sm){
         pagerCount = 5
@@ -125,50 +126,40 @@ const prevDisabled = computed(()=>cpage.value<=1);
 const nextDisabled = computed(()=>cpage.value>=pages.value);
 
 const cps = computed(()=>{
-    const ps = state.pagerCount
-    let cps:number[]=[],
-        lp:number;
-    if(pages.value<=ps){
-        for(let i=1;i<=pages.value;i++)
-            cps.push(i)
-    }else{
-        if(cpage.value>=ps){
-            lp = pages.value-cpage.value
-            cps.push(1)
-            state.small||cps.push(-1)
-            if(lp<=3){
-                for(let i=ps-lp;i>0;i--){
-                    if(cpage.value-i>1)
-                        cps.push(cpage.value-i)
-                }
-                cps.push(cpage.value)
-                for(let i=1;i<=lp;i++){
-                    cps.push(cpage.value+i)
-                }
-            }else{
-                const span = Math.floor(ps/2)
-                for(let i=span;i>0;i--)
-                    cps.push(cpage.value-i)
-                // cps.push(cpage.value-2)
-                // cps.push(cpage.value-1)
-                cps.push(cpage.value)
-                // cps.push(cpage.value+1)
-                // cps.push(cpage.value+2)
-                for(let i=1;i<=span;i++)
-                    cps.push(cpage.value+i)
+    const 
+        pc = state.pagerCount,
+        ps= pages.value,
+        p = cpage.value,
+        cps:number[] = [],
+        offset = Math.floor(pc/2)
+        ; 
+    let s = 1,e=pc;
 
-                state.small||cps.push(-1)
-                cps.push(pages.value)
-            }
-        }else{
-            for(let i=1;i<=ps;i++){
-                cps.push(i)
-            }
-            cps.push(-1)
-            cps.push(pages.value)
-        }
+    if(ps<pc){
+        e = ps
+    }else if(p>=pc-1){
+        e = Math.min(p+offset,ps)
+        s = e-pc+1
     }
+    for(let i=s;i<=e;i++)
+        cps.push(i)
+        
+    if(cps.length==pc){
+        cps.shift()
+        cps.pop()
+    }
+    const pf = cps[0],pl=cps[cps.length-1];
     
+    if(pf!=1){
+        if(pf>2&&!state.small)
+            cps.unshift(-1)
+        cps.unshift(1)
+    }
+    if(pl!==ps){
+        if(pl<ps-1&&!state.small)
+            cps.push(-1)
+        cps.push(ps)
+    }
     return cps
 })
 
@@ -199,6 +190,7 @@ const go = (p:number)=>{
     goPage(p)
 }
 watch(()=>props.page,(v)=>{
+    console.log(v,111)
     cpage.value = v
 })
 onBeforeMount(()=>{
