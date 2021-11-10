@@ -4,7 +4,7 @@
   "main": "./src/free-ui.ts",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "npm run build:doc && npm run build:demo",
     "build:doc": "vue-cli-service build --mode doc",
     "build:demo": "vue-cli-service build --mode demo",
     "lint": "vue-cli-service lint"

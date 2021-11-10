@@ -3,10 +3,8 @@ import App from './App.vue'
 import PhPretty from './pretty.vue'
 import router from './router'
 import FreeUi from './free-ui'
-const app = createApp(App);
-app
-.component("PhPretty",PhPretty)
-.use(FreeUi,{
+
+FreeUi.config({
     icon:{
         cname:"fa",
         prefix:"fa-"
@@ -26,4 +24,7 @@ app
         // colors:['#00ff00']
     }
 })
+const app = createApp(App);
+app
+.component("PhPretty",PhPretty)
 .use(router).mount('#app')

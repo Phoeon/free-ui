@@ -46,13 +46,13 @@ import {
   FMenuTree,
   FMain,
   FButton } from '@/components'
-
 import { Sun,Moon,Mobile } from '@/components/icon'
 import { computed, onMounted, reactive, ref, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 import { searchPath } from '@/shared/tree'
 import vTooltip from '@/directives/tooltip'
 import menuData from './data/nav'
+
 const hash = location.hash.replace(/#/g,"").replace("//","/")
 
 const state = reactive<{

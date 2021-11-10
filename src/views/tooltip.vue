@@ -24,7 +24,7 @@
     </f-view>
 </template>
 <script lang="ts" setup>
-import { FView, FCard, FButtonGroup, FBlockquote, FButton, FPop ,FToast } from '@/components'
+import { FView, FCard, FButtonGroup, FBlockquote, FButton } from '@/components'
 import FTooltip from '@/components/pop/tooltip.vue'
 import vTooltip from '@/directives/tooltip'
 import * as raw from '../data/tooltip'
