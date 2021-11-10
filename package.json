@@ -1,6 +1,6 @@
 {
-  "name": "free-ui",
-  "version": "0.1.0beta.0",
+  "name": "@phoeon/free-ui",
+  "version": "0.1.0beta.1",
   "main": "./src/free-ui.ts",
   "scripts": {
     "serve": "vue-cli-service serve",

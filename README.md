@@ -1,10 +1,12 @@
-# free-ui
+# @phoeon/free-ui
 
 ## 基于vue3+typescript的轻量ui组件库，工作之余的速成品，欢迎感兴趣的大佬提意见或者建议，或者PR哈
 ## Project setup
 ```
-npm install free-ui
+npm install @phoeon/free-ui
 ```
+## update
++ > package renaming for the reason package naming conflict 
 ## Usage
 ```
 import {
@@ -82,7 +84,7 @@ import {
     vPopconfirm,
     vPopover,
     vTooltip
-} from 'free-ui'
+} from '@phoeon/free-ui'
 ```
 ### note [ 本项目属于源码发包<vue + typescript>。。。]
 ### 在线链接
