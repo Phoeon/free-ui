@@ -74,4 +74,4 @@ export const c2 = `import {
     vPopconfirm,
     vPopover,
     vTooltip
-} from 'free-ui'`
+} from '@phoeon/free-ui'`
