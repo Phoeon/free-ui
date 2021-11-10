@@ -6,7 +6,7 @@
       如需导出其他形式，需自行处理
       <br/>
       <div><a href="https://gitee.com/phoeon/free-ui" target="_blank" style="color:var(--ph-c-d2)">源码地址</a></div>
-      <div v-if="showDoclink"><a href="https://phoeon.gitee.io/free-ui/doc/#/">在线文档</a></div>
+      <div v-if="showDoclink"><a target="_blank"  href="https://phoeon.gitee.io/free-ui/doc/#/" style="color:var(--ph-c-d2)">在线文档</a></div>
     </f-blockquote>
     <ph-pretty>{{raw.c1}}</ph-pretty>
     <ph-pretty>{{raw.c2}}</ph-pretty>
