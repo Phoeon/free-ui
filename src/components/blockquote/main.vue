@@ -13,8 +13,6 @@ defineProps({
     padding: var(--ph-pd);
     border-radius: 3px 0 0 3px;
     border-left: 5px solid var(--ph-bd);
-    display: flex;
-    align-items: center;
     margin-bottom: var(--ph-pd);
     background-color: var(--ph-bg-a1-reverse);
     color:var(--ph-normal-c);

@@ -1,13 +1,5 @@
-# free-ui
-
-## 基于vue3+typescript的轻量ui组件库，工作之余的速成品，欢迎感兴趣的大佬提意见或者建议，或者PR哈
-## Project setup
-```
-npm install free-ui
-```
-## Usage
-```
-import {
+export const c1 = `npm i free-ui`
+export const c2 = `import {
     FAccordion,
     FAccordionItem,
     FAction,
@@ -82,9 +74,4 @@ import {
     vPopconfirm,
     vPopover,
     vTooltip
-} from 'free-ui'
-```
-### note [ 本项目属于源码发包<vue + typescript>。。。]
-### 在线链接
-See [在线案例](https://phoeon.gitee.io/free-ui/demo/#/).
-See [在线doc](https://phoeon.gitee.io/free-ui/doc/#/).
+} from 'free-ui'`

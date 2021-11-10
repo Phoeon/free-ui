@@ -12,3 +12,21 @@ export interface INavNode {
     icon?:string,
     action?:string
 }
+
+export type IFreeuiConfigOption = {
+    icon?:{
+        cname:string,//"fa",
+        prefix:string//"fa-"
+    },
+    notify?:{
+        position:string//"right-top"
+    },
+    datetime?:{
+        lang:string//'cn',
+        importants:Array<{text:string,desc?:string,md:string}>
+    },
+    colorpicker?:{
+        colors?:Array<string>//['#00ff00']
+    },
+    [k:string]:any
+}
