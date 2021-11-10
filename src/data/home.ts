@@ -1,4 +1,4 @@
-export const c1 = `npm i free-ui`
+export const c1 = `npm i @phoeon/free-ui`
 export const c2 = `import {
     FAccordion,
     FAccordionItem,
