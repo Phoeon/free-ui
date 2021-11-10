@@ -16,7 +16,7 @@ import { computed, defineProps, nextTick, onMounted, Ref, ref } from "vue";
 import { FButton, FToast } from '@/components'
 import copy from 'ph-copy'
 
-const showDoc = process.env.VUE_APP_PRO_TYPE!="demo"
+const showDoc = process.env.VUE_APP_PRO_TYPE!="demo"&&window===top
 const ecode = ref() as Ref<HTMLElement>
 const props = defineProps({
     title: { type:String, default:"案例代码"},
