@@ -1,6 +1,6 @@
 export interface ITreeNode {
     id:string,
-    name:string,
+    text:string,
     icon?:string,
     action?:string,
     children?:Array<TreeNode>

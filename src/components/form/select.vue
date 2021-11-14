@@ -48,7 +48,6 @@ const textValue = computed(()=>{
 })
 
 const done = (items:Array<IDropdownItem>)=>{
-    console.log(items,'checked')
     const vs = items.map(item=>item.value)
     const res = props.multi?vs:vs[0]
     emits('update:modelValue',res);

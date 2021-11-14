@@ -31,9 +31,12 @@ export const unmount = (app:App<Element>)=>{
         app.unmount()
     },400)
 }
-export const between = (now:number,from:number,to:number)=>{
+export const isBetween = (now:number,from:number,to:number)=>{
 	const min = Math.min(from,to)
 	const max = Math.max(from,to)
 	return now>=min&&now<=max
+}
+export function between(v:number,min=0,max=100){
+    return Math.min(max,Math.max(min,v))
 }
 export const preZNumber = (n:number)=>n<10&&n>=0?'0'+n:n+""

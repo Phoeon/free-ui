@@ -44,16 +44,13 @@ const onHide = ()=>{
     state.enter = false
 }
 const done = (a:IDropdownItem)=>{
-    console.log(a)
     onHide()
     emits('action',a)
 }
 const enter = ()=>{
-    console.log("enter")
     state.enter = true
 }
 const leave = ()=>{
-    console.log("leave")
     state.open = false
     state.enter = false
 }

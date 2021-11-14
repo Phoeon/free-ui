@@ -4,9 +4,12 @@ import FTooltip from './tooltip.vue'
 import FDropdownList from './dropdown.vue'
 import FPopSelect from './select.vue'
 import FPopContainer from './base.vue'
+import FTreeSelect from './tree-select.vue'
+import FCascadeSelect from './cascade-select.vue'
 import Evt from 'ph-evt'
 import { createApp } from 'vue'
-import { IPopConfirm, IPopover, ITooltip, IDropdown, IDropdownItem, ISelect } from './types'
+import { IPopConfirm, IPopover, ITooltip, IDropdown, IDropdownItem, ISelect, IPopTreeSelect } from './types'
+import { ITreeNode, IValue } from '../../shared/types'
 import { unmount } from '../../shared/utils'
 
 const showPopover = (opt:IPopover)=>{
@@ -104,12 +107,50 @@ const showPopSelect = (opt:ISelect)=>{
         }
     }
 }
+const showTreeSelect = (opt:IPopTreeSelect)=>{
+    const evt = new Evt()
+    const destroy = ()=>evt.emit("close")
+    const notify = (item:IValue)=>{
+        evt.emit("done",item)
+    }
+    const 
+        app = createApp(FTreeSelect,{...opt,notify,destroy}),
+        ins = app.mount(document.createElement("div")) as InstanceType<typeof FTreeSelect>;
+    evt.on("close",()=>unmount(app))
+    document.body.appendChild(ins.$el)
+    return {
+        done(fn:(item:IValue)=>void){
+            evt.on("done",fn)
+            return this
+        }
+    }
+}
+const showCascadeSelect = (opt:IPopTreeSelect)=>{
+    const evt = new Evt()
+    const destroy = ()=>evt.emit("close")
+    const notify = (item:IValue)=>{
+        evt.emit("done",item)
+    }
+    const 
+        app = createApp(FCascadeSelect,{...opt,notify,destroy}),
+        ins = app.mount(document.createElement("div")) as InstanceType<typeof FCascadeSelect>;
+    evt.on("close",()=>unmount(app))
+    document.body.appendChild(ins.$el)
+    return {
+        done(fn:(item:IValue)=>void){
+            evt.on("done",fn)
+            return this
+        }
+    }
+}
 export default {
     showConfirm,
     showTip,
     showPopover,
     showDropdown,
-    showPopSelect
+    showPopSelect,
+    showTreeSelect,
+    showCascadeSelect
 }
 export {
     // FPopConfirm,

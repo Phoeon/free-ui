@@ -1,3 +1,5 @@
+import { ITree } from '../../shared/types' 
+import { ITreeValue } from '../tree/types'
 export type IPopPosition = 'tl'|'tc'|'tr'|'bl'|'bc'|'br'|'lt'|'lc'|'lr'|'rt'|'rc'|'rb'
 export type IToolPosition = 'tl'|'tc'|'tr'|'bl'|'bc'|'br'|'l'|'r'
 export type IDropdownPosition = 'tl'|'tc'|'tr'|'bl'|'bc'|'br'
@@ -40,4 +42,13 @@ export type ISelect = IPop & {
     multi?:Boolean,
     title?:String,
     value:Array<string|number>
+}
+export type IPopTreeSelect = {
+    dataSource:ITree,
+    position?:ISelectPosition,
+    rect?:{left:number,right:number,top:number,bottom:number},
+    width?:Number,
+    multi?:Boolean,
+    title?:String,
+    value:ITreeValue
 }

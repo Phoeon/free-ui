@@ -66,7 +66,6 @@ const validSelf = (value:unknown,validMeta:Array<IValidOption>)=>{
     })
 }
 const onInput = (v:unknown)=>{
-    console.log(v)
     emits('update:modelValue',v)
     emits('input',v)
     //validator to go

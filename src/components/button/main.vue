@@ -1,5 +1,5 @@
 <template>
-    <button :class="cns" :disabled="disabled" :hover="state.hover&&!props.disabled">
+    <button :class="cns" :disabled="disabled" :hover="state.hover&&!props.disabled" @click.stop="onClick">
         <slot name="leftIcon"></slot>
         <spin v-if="loading" stroke="currentColor"/>
         <span v-if="$slots.default" class="ph-btn-slot"><slot></slot></span>
@@ -10,6 +10,7 @@
 <script lang="ts" setup>
 import { PropType, reactive, defineProps, defineEmits, defineAsyncComponent, computed } from "vue";
 import { IThemeType } from '../../shared/types'
+
 const Caret = defineAsyncComponent(()=>import("../icon/caret.vue"))
 const Spin = defineAsyncComponent(()=>import("../icon/loading/spin.vue"))
 const props = defineProps({
@@ -18,6 +19,8 @@ const props = defineProps({
     loading:Boolean,
     dropdown:String as PropType<'up'|'down'>,
     shape:String as PropType<'circle'|'square'>,
+    throttle:{type:Boolean,default:true},
+    threshhold:{type:Number,default:300},
     radius:{type:Boolean,default:true},
     hover:{type:Boolean,default:true},
     type:{type:String as PropType<IThemeType|'mode'>,default:'normal'},
@@ -28,7 +31,7 @@ const cst = {
     lock:false
 }
 const state = reactive({
-    hover:!("ontouchstart" in window)
+    hover:!("ontouchstart" in window),
 })
 const cns = computed(()=>{
     return {
@@ -63,19 +66,18 @@ const cns = computed(()=>{
         'ph-btn-flex':!!props.dropdown
     }
 })
-const emits = defineEmits(['tap'])
-const trigger = (e:unknown)=>{
+const emits = defineEmits(['click'])
+
+const onClick = (e:unknown)=>{
+    if(!props.throttle)return emits('click',e)
     if(cst.lock)return
     cst.lock = true
-    emits("tap",e)
+    emits("click",e)
     setTimeout(()=>{
         cst.lock = false
-    },300)
+    },props.threshhold)
 }
 
-const onTap = (e:Event)=>{
-    trigger(e)
-}
 </script>
 <style lang="scss">
 .ph-btn{

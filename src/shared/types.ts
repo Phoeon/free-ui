@@ -30,3 +30,11 @@ export type IFreeuiConfigOption = {
     },
     [k:string]:any
 }
+export type IKey = string|number
+export type IValue = IKey|Array<IKey>
+export type ITreeNode = {
+    id:string|number,
+    text:string,
+    children?:Array<ITreeNode>
+}
+export type ITree = Array<ITreeNode>

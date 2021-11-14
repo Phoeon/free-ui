@@ -59,10 +59,12 @@ const onClick = ()=>{
     --ph-color-btn-mg:4px;
     --ph-color-btn-bg:transparent;
     position: absolute;
-    top: var(--ph-color-btn-mg);
-    bottom: var(--ph-color-btn-mg);
-    left:var(--ph-color-btn-mg);
-    right:var(--ph-color-btn-mg);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: var(--ph-gicon-sm);
+    height: var(--ph-gicon-sm);
     margin: auto;
     background-size: 50%;
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJub25lIj48cGF0aCBmaWxsPSIjRkZGIiBkPSJNMCAwaDE1djE1SDB6Ii8+PHBhdGggZmlsbD0iI0U2RTZFNiIgZD0iTTAgMGg3LjV2Ny41SDB6TTcuNSA3LjVIMTVWMTVINy41eiIvPjwvZz48L3N2Zz4=");

@@ -1,5 +1,20 @@
 <template>
     <f-view>
+        <f-card title="cascade select">
+            {{state.tv}}
+            <br/>
+            <f-c-select :dataSource="state.tree" v-model="state.tv"/>
+            <br/>
+            <Fabc :options="state.tree" v-model="state.tv"/>
+        </f-card>
+        <f-card title="tree select">
+            <f-button @click="openTreeSelect">打开树选择</f-button>
+            <f-tree-select :options="state.tree" v-model="state.tvs"></f-tree-select>
+        </f-card>
+        <f-card title="树">
+            <div>{{state.tvs}}</div>
+            <f-tree :tree="state.tree" v-model="state.tvs"></f-tree>
+        </f-card>
         <f-card title="滑块">
             <f-slider v-model="slider.v" :max="slider.max"></f-slider>
             <f-button @click="onClick" :style="{backgroundColor:color.value}">打开取色器</f-button>
@@ -61,17 +76,56 @@ import {
         FBlockquote,
         FDivider,
         FAction,
+        FGLoading,
+        FTreeSelect,
+        FPop,
         FPopContainer} from '@/components'
 import FSlider from '@/components/form/slider.vue'
 import DtColor from '@/components/color/main.vue'
 import FTag from '@/components/tag/main.vue'
 import FThemePicker from '@/components/theme/main.vue'
-import { reactive, ref } from 'vue'
+import FTree from '@/components/tree/root.vue'
+import FCSelect from '@/components/cascade-select/main.vue'
+import Fabc from '@/components/form/cascade-select.vue'
+import { onMounted, reactive, ref, toRef } from 'vue'
+import { ITreeValue } from '@/components/tree'
 
 const epop = ref<InstanceType<typeof FPopContainer>>()
 const state = reactive({
     pop:false,
-    rect:{left:0,top:0,width:0,height:0}
+    rect:{left:0,top:0,width:0,height:0},
+    tvs:[1,7] as ITreeValue,
+    tv:7,
+    tree:[{
+        id:0,
+        text:"一级0"
+    },{
+        id:1,
+        text:"一级1"
+    },{
+        id:2,
+        text:"一级2",
+        children:[{
+            id:3,
+            text:"二级0"
+        },{
+            id:4,
+            text:"二级1"
+        },{
+            id:5,
+            text:"二级2",
+            children:[{
+                id:6,
+                text:"三级0"
+            },{
+                id:7,
+                text:"三级1"
+            },{
+                id:8,
+                text:"三级2"
+            }]
+        }]
+    }]
 })
 const slider = reactive({
     max:100,
@@ -96,5 +150,17 @@ const onPop = (e:Event)=>{
     const t = e.target as HTMLElement
     state.pop = true
     state.rect = t.getBoundingClientRect()
+}
+const openTreeSelect = (e:Event)=>{
+    const t = e.target as HTMLElement
+    
+    FPop.showCascadeSelect({
+        dataSource:state.tree,
+        value:state.tvs,
+        rect:t.getBoundingClientRect()
+    }).done((res)=>{
+        console.log(res,'res')
+        state.tvs = res as any
+    })
 }
 </script>

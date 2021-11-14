@@ -18,6 +18,8 @@ import Sun from './sun.vue'
 import Moon from './moon.vue'
 import Mobile from './mobile.vue'
 import Sort from './sort.vue'
+import Tselect from './tselect.vue'
+import Cselect from './cselect.vue'
 export * from './square'
 export * from './circle'
 export * from './loading'
@@ -41,5 +43,7 @@ export {
     Sun,
     Moon,
     Mobile,
-    Sort
+    Sort,
+    Tselect,
+    Cselect
 }

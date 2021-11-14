@@ -53,7 +53,6 @@ const props = defineProps({
 const edtpicker = ref<HTMLElement>()
 const isCascade = computed(()=>props.value instanceof Array)
 const state = reactive({
-    loading:true,
     visible:false,
     sm:false
 })

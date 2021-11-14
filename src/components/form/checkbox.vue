@@ -30,7 +30,6 @@ const emits = defineEmits(['update:modelValue','input'])
 const update = (v:Array<string|number>)=>{
     emits('update:modelValue',v);
     emits('input',v);
-    console.log(v)
 }
 const onClick= (item:IOption,disabled:boolean)=>{
     if(disabled)return

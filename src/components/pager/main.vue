@@ -190,7 +190,6 @@ const go = (p:number)=>{
     goPage(p)
 }
 watch(()=>props.page,(v)=>{
-    console.log(v,111)
     cpage.value = v
 })
 onBeforeMount(()=>{
