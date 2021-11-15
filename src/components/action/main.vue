@@ -1,12 +1,15 @@
 <template>
-    <a href="javascript:void(0)" :class="['ph-action','ph-action-'+type]" :disabled="disabled"><slot></slot></a>
+    <a href="javascript:void(0)" :class="['ph-action','ph-action-'+type,state.hover&&!disabled?'ph-action-hover':'']" :disabled="disabled"><slot></slot></a>
 </template>
 <script lang="ts" setup>
-import { defineProps, PropType } from 'vue'
+import { defineProps, PropType, reactive } from 'vue'
 import { IThemeType } from '../../shared/types'
 const props = defineProps({
     type:{type:String as PropType<IThemeType>,default:"normal"},
     disabled:Boolean
+})
+const state = reactive({
+    hover:!('ontouchmove' in window)
 })
 </script>
 <style lang="scss">
@@ -19,8 +22,11 @@ const props = defineProps({
     white-space: nowrap;
     text-decoration: none;
     cursor: pointer;
-    &:hover{
-        font-weight: bold;
+    opacity: 1;
+    transition: opacity .15s ease;
+    &-hover:hover{
+        // font-weight: bold;
+        opacity: .8;
     }
     &-normal{
         color: var(--ph-c);
