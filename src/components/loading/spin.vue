@@ -1,6 +1,6 @@
 <template>
-    <f-mask class="ph-loading-mask" :position="position" :fill="fill" ref="loading">
-        <div class="ph-loading" :showbox="showBox">
+    <f-mask v-model="visible" class="ph-loading-mask" :position="isGlobal?'fixed':'absolute'" :fill="bg" ref="loading">
+        <div class="ph-loading ph-loading-box" :showbox="showBox">
             <custom-icon class="ph-ld-icon" :name="icon" v-if="icon"/>
             <loading-bounce class="ph-ld-icon1" v-else/>
             <span class="ph-loading-text">{{computedTitle}}</span>
@@ -8,18 +8,20 @@
     </f-mask>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineExpose, ref, PropType, onMounted } from 'vue'
+import { defineProps, defineEmits, defineExpose, ref, PropType, onMounted, computed, watch, Ref } from 'vue'
 import { LoadingBounce, CustomIcon } from '../icon'
 
 import FMask from '../mask/main.vue'
 
 const loading = ref<InstanceType<typeof FMask>>()
+const emits = defineEmits(['update:modelValue'])
 const props = defineProps({
-    position:{tpye:String,default:"absolute"},
+    modelValue:[Boolean,Object] as PropType<boolean|Ref<boolean>>,
     title:{type:String,default:"加载中"},
     showBox:{type:String as PropType<"fit"|"always"|"none">,default:"none"},
-    fill:String,
+    bg:String,
     icon:String,
+    isGlobal:Boolean,
     countdown:{type:Number,default:-1},
     destroy:Function as PropType<()=>void>
 })
@@ -28,33 +30,47 @@ const countDown = (timer:number)=>{
     const title = props.title==="加载中"?"倒计时：{#}s":props.title
     computedTitle.value = title.replace(/{#}/g,timer+"")
 }
-
-const close = ()=>{
-    loading.value.hide()
+const visible = computed({
+    set(v){
+        emits('update:modelValue',v)
+    },
+    get(){
+        return props.modelValue
+    }
+})
+const end = ()=>{
+    visible.value = false
     props.destroy?.()
 }
-defineExpose({
-    close
-})
-onMounted(()=>{
+const countTask = ()=>{
     let cd = props.countdown
-    if(props.countdown>0){
+    if(cd>0){
         countDown(cd--)
         let internval = setInterval(()=>{
             if(cd>=0){
                return countDown(cd--)
             }
             clearInterval(internval)
-            close()
+            end()
         },1000)
     }
+}
+watch(()=>props.modelValue,(v)=>{
+    if(props.isGlobal||!v)return
+    countTask()
+})
+defineExpose({
+    end
+})
+onMounted(()=>{
+    if(props.isGlobal)countTask()
 })
 </script>
 <style lang="scss">
 .ph-loading-mask{
     z-index: var(--ph-zdx-modal);
 }
-.ph-loading{
+.ph-loading-box{
     position: absolute;
     left: 50%;
     top: 50%;
@@ -87,18 +103,14 @@ onMounted(()=>{
     }
 }
 .ph-loading-mask{
-    &[position=fixed]{
-        .ph-loading[showbox=always]{
-            background-color: var(--ph-modal-bg);
-        }
+    .ph-loading[showbox=always]{
+        background-color: var(--ph-modal-bg);
     }
 }
 @media screen and (max-width:768px){
     .ph-loading-mask{
-        &[position=fixed]{
-            .ph-loading[showbox=fit]{
-                background-color: var(--ph-modal-bg);
-            }
+        .ph-loading[showbox=fit]{
+            background-color: var(--ph-modal-bg);
         }
     }
 }

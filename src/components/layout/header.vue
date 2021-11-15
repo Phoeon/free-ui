@@ -14,6 +14,7 @@
 import { inject, useSlots, defineProps } from 'vue'
 import FButton from '../button/main.vue'
 import Navicon from '../icon/navicon.vue'
+
 const phevt = inject("phevt") as {emit:(a:string,...b:any[])=>void}
 const toggleAside = ()=>phevt?.emit("aside:toggle")
 const slots = useSlots()

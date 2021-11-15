@@ -18,7 +18,7 @@
 import './popover.scss';
 import { defineProps, defineExpose, nextTick, onMounted, PropType, reactive, ref, computed } from 'vue'
 import { CustomIcon } from '../icon'
-import { IDropdownPosition, IDropdownItem } from './types'
+import { IDropdownPosition, IDropdownItem } from '../../shared/types'
 import { getAnimation, sumArray } from '../../shared/utils'
 import { xmatrix,ymatrix } from './shared'
 

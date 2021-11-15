@@ -104,7 +104,7 @@ import DtPreview from './date-preview.vue'
 import { defineProps, defineEmits, nextTick } from 'vue'
 import { compare } from '../../../shared/datetime'
 import { SharedCascadeProps, DtType } from '../shared'
-import { IDateObject } from '../types'
+import { IDateObject } from '../../../shared/types'
 
 const emits = defineEmits(['update:start','update:end','done','clear','now'])
 const props = defineProps({

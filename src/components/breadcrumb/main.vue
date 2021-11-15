@@ -1,6 +1,6 @@
 <template>
     <div class="ph-breadcrumb">
-        <div class="ph-breadcrumb-item" v-for="(item,idx) in paths" :key="idx">{{item.name}}</div>
+        <div class="ph-breadcrumb-item" v-for="(item,idx) in paths" :key="idx">{{item.text}}</div>
     </div>
 </template>
 <script lang="ts" setup>

@@ -25,11 +25,11 @@
 </template>
 <script lang="ts" setup>
 import { computed, defineProps, defineEmits, PropType, reactive } from 'vue'
+import {touchmove as vTouchmove} from '../../../directives/gesture'
 import DtBtn from '../cmp/btn.vue'
 import PhGesture,{ GestureType } from 'ph-gesture'
 
 const emit = defineEmits(['update'])
-import {touchmove as vTouchmove} from '../../../directives/gesture'
 const props = defineProps({
     title:String,
     dtype:String,

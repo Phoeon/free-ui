@@ -27,7 +27,7 @@
 import { compare, dt2obj, formatDate, parseDate, dt2arr, arr2dtobj } from '../../shared/datetime'
 import { computed, defineAsyncComponent, defineProps, defineEmits, PropType, reactive, watch } from 'vue'
 import { DtFormat, getInitCType, DtType, getState, getNow} from './shared'
-import { IDateObject, IDtType } from './types'
+import { IDateObject, IDtType } from '../../shared/types'
 
 import DtDateCascade from './cmp/date-cascade.vue'
 
@@ -172,17 +172,14 @@ const onShiftMonth = (span:number)=>{
     endState.MM = (endState.MM+span+12)%12
 }
 const onUpdate = (v:Array<number>,type:IDtType)=>{
-    console.log(v,type)
     if(type===DtType.time)return
     if(props.type===type)return
     router.back()
 }
 const onNavigate = (type:IDtType)=>{
-    console.log('onNavigate',type)
     router.go(type)
 }
 const onDone = (type:IDtType)=>{
-    console.log('done',type)
     const utype = getInitCType(props.type);
     if(utype===type){
         //close done
@@ -193,7 +190,6 @@ const onDone = (type:IDtType)=>{
     }
 }
 const onClear = (type:IDtType)=>{
-    console.log('clear',type)
     const utype = getInitCType(props.type);
     if(utype===type){
         //close done
@@ -204,7 +200,6 @@ const onClear = (type:IDtType)=>{
     }
 }
 const onNow = (type:IDtType)=>{
-    console.log('now',type)
     const utype = getInitCType(props.type);
     const { yyyy,MM,dd,hh,mm,ss } = dt2obj(new Date())
     state.start = [yyyy,MM,dd,hh,mm,ss]

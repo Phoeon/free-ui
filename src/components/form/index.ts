@@ -2,6 +2,7 @@ import FValidator from './validator/main.vue'
 import FForm from './form.vue'
 import FFormInput from './form-input.vue'
 import FInput from './input.vue'
+import FFormNumber from './form-number.vue'
 import FNumber from './number.vue'
 import FFormSelect from './form-select.vue'
 import FSelect from './select.vue'
@@ -19,11 +20,16 @@ import FSlider from './slider.vue'
 import FFormSlider from './form-slider.vue'
 import FTextarea from './textarea.vue'
 import FFormTextarea from './form-textarea.vue'
+import FTreeSelect from './tree-select.vue'
+import FFormTreeSelect from './form-tree-select.vue'
+import FCascadeSelect from './cascade-select.vue'
+import FFormCascadeSelect from './form-cascade-select.vue'
 export {
     FValidator,
     FForm,
     FFormInput,
     FInput,
+    FFormNumber,
     FNumber,
     FFormSelect,
     FSelect,
@@ -40,5 +46,9 @@ export {
     FSlider,
     FFormSlider,
     FTextarea,
-    FFormTextarea
+    FFormTextarea,
+    FTreeSelect,
+    FFormTreeSelect,
+    FCascadeSelect,
+    FFormCascadeSelect
 }

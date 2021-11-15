@@ -23,7 +23,7 @@
 import './popover.scss';
 import { defineProps, nextTick, onMounted, PropType, reactive, ref, computed } from 'vue'
 import { CustomIcon, Tick } from '../icon'
-import { ISelectPosition, IDropdownItem } from './types'
+import { ISelectPosition, IDropdownItem } from '../../shared/types'
 import { getAnimation, sumArray } from '../../shared/utils'
 import FButton from '../button/main.vue'
 import MediqQuery from '../../shared/media-query'

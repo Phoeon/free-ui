@@ -34,7 +34,7 @@ import Arrow from '../../icon/arrow.vue'
 import DtGrid from './grid.vue'
 import { defineProps, defineEmits, computed } from 'vue'
 import { SharedSingleProps, DtType } from '../shared'
-import { IDateObject, IGridItem } from '../types'
+import { IDateObject, IGridItem } from '../../../shared/types'
 
 const emits = defineEmits(['update:modelValue','done','clear','now','shiftYear'])
 const props = defineProps({

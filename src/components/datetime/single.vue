@@ -18,10 +18,10 @@
     :is="dcmp"/>
 </template>
 <script lang="ts" setup>
-import { dt2obj, formatDate, parseDate, dt2arr, arr2dtobj, compare } from '../../shared/datetime'
+import { dt2obj, formatDate, parseDate, dt2arr, arr2dtobj } from '../../shared/datetime'
 import { computed, defineAsyncComponent, defineProps, defineEmits, PropType, reactive } from 'vue'
 import { DtFormat, getInitCType, DtType, getNow, getState} from './shared'
-import { IDtType, IDateObject} from './types'
+import { IDtType, IDateObject} from '../../shared/types'
 
 import DtDate from './cmp/date.vue'
 
@@ -66,7 +66,7 @@ const innerState = reactive<IDateObject>({
 const initState = ()=>{
     state.min = props.min?dt2arr(parseDate(props.min,state.format)):[-1,0,0,0,0,0]
     state.max = props.max?dt2arr(parseDate(props.max,state.format)):[Number.MAX_SAFE_INTEGER,0,0,0,0,0]
-    console.log(props.min,state.min,state.format)
+    
     if(props.value){
         state.value = dt2arr(parseDate(props.value,state.format))
     }else{
@@ -117,7 +117,7 @@ const updateState = (v:Array<number>)=>{
     Object.assign(innerState,arr2dtobj(v))
 }
 const onUpdate = (v:Array<number>,type:IDtType)=>{
-    console.log(v,type)
+    
     if(type===DtType.time)return
     if(props.simple)return
     updateState(v)
@@ -130,11 +130,11 @@ const onUpdate = (v:Array<number>,type:IDtType)=>{
     }
 }
 const onNavigate = (type:IDtType)=>{
-    console.log('onNavigate',type)
+    
     router.go(type)
 }
 const onDone = (type:IDtType)=>{
-    console.log('done',type)
+    
     const utype = getInitCType(props.type);
     if(utype===type){
         //close done
@@ -146,7 +146,7 @@ const onDone = (type:IDtType)=>{
     }
 }
 const onClear = (type:IDtType)=>{
-    console.log('clear',type)
+    
     const utype = getInitCType(props.type);
     if(utype===type){
         //close done
@@ -157,7 +157,7 @@ const onClear = (type:IDtType)=>{
     }
 }
 const onNow = (type:IDtType)=>{
-    console.log('now',type)
+    
     const utype = getInitCType(props.type);
     const { yyyy,MM,dd,hh,mm,ss } = dt2obj(new Date())
     state.value = [yyyy,MM,dd,hh,mm,ss]

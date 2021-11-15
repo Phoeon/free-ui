@@ -11,7 +11,7 @@
 </base-modal>
 </template>
 <script lang="ts" setup>
-import { defineProps, nextTick, reactive, ref } from 'vue'
+import { defineProps, reactive } from 'vue'
 import BaseModal from './base.vue'
 import FButton from '../button/main.vue'
 import MediaQuery from '../../shared/media-query'

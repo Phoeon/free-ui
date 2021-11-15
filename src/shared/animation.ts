@@ -1,4 +1,4 @@
-import { between } from './utils'
+import { isBetween } from './utils'
 import { easeIn, linear } from './timing-fns'
 
 export type EndPoint = {
@@ -29,7 +29,7 @@ export default class PhAnimation{
 					now[k] = timingFn(t,from[k],to[k]-from[k],duration)
 					if(stop)
 						continue;
-                    stop = !between(now[k],from[k],to[k])
+                    stop = !isBetween(now[k],from[k],to[k])
 					if(stop)
 						now[k] = to[k];
 				}

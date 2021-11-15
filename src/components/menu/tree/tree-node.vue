@@ -1,24 +1,24 @@
 <template>
     <div :class="['ph-menu-item',isRoot?'ph-menu-item-root':'']" :simple="simple" @mouseenter="onEnter" @mouseleave="onLeave" :style="{'--ph-menu-depth':depth}">
-        <button class="ph-menu-btn ph-group" :data-title="node.name" v-if="isGroup" :flex="true" ref="emenu" :active="state.open||active" :hover="state.hover&&!state.open&&!active" @click="toggle">
+        <button class="ph-menu-btn ph-group" :data-title="node.text" v-if="isGroup" :flex="true" ref="emenu" :active="state.open||active" :hover="state.hover&&!state.open&&!active" @click="toggle">
             <custom-icon v-if="node.icon" :name="node.icon"/>
             <template v-if="showDetail">
-                <span class="ph-btn-text">{{node.name}}</span>
+                <span class="ph-btn-text">{{node.text}}</span>
                 <arrow :direction="state.open?'up':'down'"/>
             </template>
         </button>
-        <button v-stv="active" :data-title="node.name" class="ph-menu-btn ph-leaf" v-else :active="active" :hover="state.hover&&!active" @click="navigate">
+        <button v-stv="active" :data-title="node.text" class="ph-menu-btn ph-leaf" v-else :active="active" :hover="state.hover&&!active" @click="navigate">
             <custom-icon v-if="node.icon" :name="node.icon"/>
             <template v-if="showDetail">
-                <span class="ph-btn-text">{{node.name}}</span>
+                <span class="ph-btn-text">{{node.text}}</span>
             </template>
             <transition name="ph-menuitem" mode="out-in" v-if="isRoot&&simple">
-                <div class="ph-menu-btn-mirror" v-if="state.hoverDetail">{{node.name}}</div>
+                <div class="ph-menu-btn-mirror" v-if="state.hoverDetail">{{node.text}}</div>
             </transition>
         </button>
         <template v-if="isGroup">
             <transition name="ph-menuitem" mode="out-in" v-if="simple">
-                <nav class="ph-menu-tree ph-menu-tree-abs" v-if="state.open" ref="esubstree" :show-title="state.hoverDetail" :data-title="node.name">
+                <nav class="ph-menu-tree ph-menu-tree-abs" v-if="state.open" ref="esubstree" :show-title="state.hoverDetail" :data-title="node.text">
                     <menu-tree :paths="paths?paths.slice(1):[]" :node="item" v-for="(item,idx) in node.children" :key="idx"/>
                 </nav>
             </transition>
@@ -36,7 +36,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { computed, defineProps, inject, nextTick, onMounted, PropType, provide, reactive, ref, Ref, watch } from 'vue'
-import { INavNode, ITreeNode } from '../struct'
+import { INavNode } from '../../../shared/types'
 import { Arrow, CustomIcon } from '../../icon'
 import getPosition from 'ph-position'
 import vStv from '../../../directives/scroll-to-view'
@@ -48,7 +48,7 @@ const props = defineProps({
         type:Array as PropType<Array<INavNode>>,
         default:()=>[]
     },
-    node:Object as PropType<ITreeNode>,
+    node:Object as PropType<INavNode>,
     isRoot:Boolean,
     depth:Number
 })
@@ -82,8 +82,8 @@ const onLeave = ()=>{
     restoreState()
 }
 const navigate = ()=>{
-    const {name,icon,action,id} = props.node as ITreeNode
-    notify&&notify([{name,icon,action,id}])
+    const {text,icon,action,id} = props.node as INavNode
+    notify&&notify([{text,icon,action,id}])
     restoreState()
 }
 const toggle = ()=>{
@@ -115,9 +115,9 @@ if(isGroup.value)
 provide("notify",(paths:INavNode[])=>{
     restoreState()
         
-    const {name,icon,action,id} = props.node as ITreeNode
+    const {text,icon,action,id} = props.node as INavNode
     notify&&notify([{
-        name,icon,action,id
+        text,icon,action,id
     },...paths])
     
 })

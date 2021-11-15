@@ -37,7 +37,7 @@
 <script lang="ts" setup>
 import { 
   FDrawer,
-  FGLoading,
+FGLoading,
   FThemePicker,
   FBreadcrumb,
   FPage,
@@ -91,11 +91,19 @@ const onNavigate = (paths:Array<{id:string,action:string}>)=>{
   state.cpath = cpath
   router.push(cpath)
 }
+router.beforeEach((to,from)=>{
+  // console.log("before",from,to)
+  FGLoading.showBar()
+})
+
+router.afterEach((to,from)=>{
+  // console.log("after",from,to)
+  FGLoading.endBar()
+})
+
 onMounted(()=>{
   state.paths = searchPath(menuData,hash)||[]
   state.cpath = (state.paths[state.paths.length-1]?.action)||"/"
-  const close = FGLoading.show()
-  setTimeout(()=>close(),500)
 })
 </script>
 <style lang="scss">

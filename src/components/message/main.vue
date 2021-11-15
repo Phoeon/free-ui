@@ -15,7 +15,7 @@
 <script lang="ts" setup>
 import { computed, defineProps, defineExpose, PropType, reactive, toRef } from 'vue'
 import { CircleSuccess, CircleDanger, CircleInfo, CircleWarning, CustomIcon } from '../icon'
-import { IMsgType } from './types'
+import { IMsgType } from '../../shared/types'
 const props = defineProps({
     type:{
         type:String as PropType<IMsgType>,default:"default"

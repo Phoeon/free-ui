@@ -24,9 +24,10 @@
 import './item.scss';
 import { defineEmits, defineProps, PropType, defineAsyncComponent, onMounted } from 'vue'
 import { CircleSuccess, CircleDanger, CircleInfo, CircleWarning, Times, CustomIcon } from '../icon'
-import { INotifyPosition, CloseStatus } from './types'
-
+import { INotifyPosition } from '../../shared/types'
+import { CloseStatus } from './types'
 import type IEvt from 'ph-evt'
+
 const FButton = defineAsyncComponent(()=>import("../button/main.vue"))
 const emits = defineEmits(["close"])
 const props = defineProps({

@@ -40,8 +40,8 @@
     </f-drawer>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, PropType, computed, nextTick } from 'vue'
-import { IActionOption } from './types'
+import { defineProps, defineEmits, PropType, computed } from 'vue'
+import { IActionSheetOption } from '../../shared/types'
 import { CustomIcon } from '../icon'
 import FDrawer from '../drawer/main.vue'
 import FButton from '../button/main.vue'
@@ -54,13 +54,13 @@ const props = defineProps({
     desc:String,
     cancelText:String,
     type:{type: String as PropType<"list"|"grid">, default:"list"},
-    options:{type:Array as PropType<Array<IActionOption>>,default:()=>[]},
+    options:{type:Array as PropType<Array<IActionSheetOption>>,default:()=>[]},
     notify:Function as PropType<(...a:any[])=>void>
 })
 const hide = ()=>{
     emits("update:visible",false)
 }
-const notify =(v:unknown,b?:IActionOption)=>{
+const notify =(v:unknown,b?:IActionSheetOption)=>{
     emits("update:modelValue",v,b)
     emits("action",b,hide)
     props.notify?.(b,hide)

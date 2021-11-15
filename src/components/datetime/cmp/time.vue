@@ -66,7 +66,7 @@ import DtNow from './now.vue'
 import { defineProps, defineEmits, nextTick } from 'vue'
 import { compare } from '../../../shared/datetime'
 import { SharedSingleProps, DtType } from '../shared'
-import { IDateObject } from '../types'
+import { IDateObject } from '../../../shared/types'
 
 const emits = defineEmits(['update:modelValue','done','clear','now'])
 const props = defineProps({

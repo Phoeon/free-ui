@@ -15,12 +15,12 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, defineEmits, PropType } from 'vue'
-import { IOption } from './types'
+import { IOption } from '../../shared/types'
 import { Circle, CircleRadio } from '../icon'
 import InputWrap from './input-wrap.vue'
+
 const props = defineProps({
     modelValue:{type:[String,Number],required:true},
-    type:String as PropType<'text'|'number'>,
     options:{
         type:Array as PropType<Array<IOption>>,
         default:()=>[]
@@ -30,7 +30,6 @@ const emits = defineEmits(['update:modelValue','input'])
 const update = (v:string|number)=>{
     emits('update:modelValue',v);
     emits('input',v);
-    console.log(v)
 }
 const onClick= (item:IOption,disabled:boolean)=>{
     if(disabled)return

@@ -1,5 +1,5 @@
 import { createApp, App } from 'vue'
-import { IDtOption } from './types'
+import { IDtOption } from '../../shared/types'
 import { unmount } from '../../shared/utils'
 import Env from '../../shared/env'
 import FDtPicker from './main.vue'

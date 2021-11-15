@@ -48,9 +48,10 @@
 <script lang="ts" setup>
 import { defineProps, defineEmits, computed, ref, PropType, reactive, watch, onBeforeMount } from 'vue'
 import { Ellipsis, Caret } from '../icon'
-import FButton from '../button/main.vue'
-import MediaQuery, { MediaBreak } from '../../shared/media-query'
 import { FSelect,FNumber } from '../form'
+import MediaQuery, { MediaBreak } from '../../shared/media-query'
+import FButton from '../button/main.vue'
+
 const emits = defineEmits(["page","update:page","update:pagesize"])
 const props = defineProps({
     showTotal:Boolean,
@@ -190,7 +191,6 @@ const go = (p:number)=>{
     goPage(p)
 }
 watch(()=>props.page,(v)=>{
-    console.log(v,111)
     cpage.value = v
 })
 onBeforeMount(()=>{

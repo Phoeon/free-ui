@@ -11,7 +11,7 @@
             :placeholder="placeholder"
         ></slot>
         <div class="ph-ipw-addonr" v-if="slots.right">
-            <slot name="right"></slot>
+            <slot :hover="state.pc" :disabled="disabled" name="right"></slot>
         </div>
     </div>
 </template>

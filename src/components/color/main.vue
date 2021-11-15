@@ -27,17 +27,17 @@ import Mediaquery from '../../shared/media-query'
 
 import { computed, defineProps, PropType, reactive, defineEmits, onMounted, ref, nextTick } from 'vue'
 import { parseColor, ColorMode, rgb2hsb, rgb2hexstr, hsb2rgb, rgb2rgbstr, n2hex } from '../../shared/color'
-import { ColorType } from './types'
+import { IColorType,IRect } from '../../shared/types'
 
 
 const emits = defineEmits(['update'])
 const props = defineProps({
     value:String,
     title:String,
-    type:String as PropType<ColorType>,
+    type:String as PropType<IColorType>,
     showPredef:{type:Boolean,default:true},
     colors:Array as PropType<Array<string>>,
-    rect: {type:Object as PropType<{x:number,y:number,height:number,width:number}>,required:true},
+    rect: {type:Object as PropType<IRect>,required:true},
     close: Function as PropType<()=>void>,
     done: Function as PropType<(v:string,close:()=>void)=>void>,
     sample:Boolean //只做文档静态展示用，不用关注

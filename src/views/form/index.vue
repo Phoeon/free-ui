@@ -4,8 +4,13 @@
             <f-validator ref="evalidator">
                 <f-form-input v-model="formData.account" label="输入框" :validators="['required']"></f-form-input>
                 <f-form-input v-model="formData.email" label="禁用输入" placeholder="测试禁用" :disabled="true"></f-form-input>
+                <f-form-number v-model="formData.salary" label="数字输入" placeholder="测试数字"/>
                 <f-form-select v-model="formData.uni" :options="dataSource.options" label="单选下拉" placeholder="单选下拉" :validators="['required']"></f-form-select>
                 <f-form-select v-model="formData.funi" :options="dataSource.options" label="多选下拉" placeholder="测试多选" :multi="true" :validators="['required']"></f-form-select>
+                <f-form-tree-select v-model="formData.tvs" :options="TreeData" label="树多选" placeholder="测试树多选" :validators="['required']"/>
+                <f-form-tree-select v-model="formData.tv" :options="TreeData" label="树单选" placeholder="测试树单选" :validators="['required']"/>
+                <f-form-cascade-select v-model="formData.cvs" :options="TreeData" label="级联多选" placeholder="测试级联多选" :validators="['required']"/>
+                <f-form-cascade-select v-model="formData.cv" :options="TreeData" label="级联单选" placeholder="测试级联单选" :validators="['required']"/>
                 <f-form-datetime-picker v-model="formData.datetime" label="日期时间" placeholder="日期时间" type="datetime"/>
                 <f-form-datetime-picker v-model="formData.birth" label="出生日期" placeholder="请选择日期"/>
                 <f-form-datetime-picker v-model="formData.alarm" label="闹钟时间" placeholder="请选择时间" type="time"/>
@@ -24,6 +29,7 @@
         </f-form>
         <ph-pretty lang="html" title="template">{{raw.c1}}</ph-pretty>
         <ph-pretty title="script">{{raw.c2}}</ph-pretty>
+        <ph-pretty title="script">TreeData = {/** 请打开控制台查看 **/}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
@@ -42,10 +48,15 @@ import {
         FFormColorPicker,
         FFormSlider,
         FFormTextarea,
-
+        FFormTreeSelect,
+        FFormCascadeSelect,
+        FFormNumber,
         FMessage } from '@/components'
 import { reactive, ref } from 'vue'
 import * as raw from '../../data/form'
+import { TreeData } from '../../data/treedata'
+
+console.log('TreeData:',TreeData)
 const evalidator = ref<InstanceType<typeof FValidator>>()
 const formData = reactive({
     account:"",
@@ -63,7 +74,12 @@ const formData = reactive({
     alarm:"12:30:35",
     color:"#FF00FF",
     slider:30,
-    intro:""
+    intro:"",
+    tvs:[],
+    tv:'',
+    cvs:[],
+    cv:'',
+    salary:0
 })
 const dataSource = {
     options:[{

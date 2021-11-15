@@ -24,6 +24,7 @@
 import { defineProps, nextTick, PropType, ref , useSlots} from 'vue'
 import FMask from '../mask/main.vue'
 import type IEvt from 'ph-evt'
+
 const slots = useSlots()
 const props = defineProps({
     cancelText:String,

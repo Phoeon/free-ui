@@ -8,7 +8,7 @@
 <script lang="ts" setup>
 import './popover.scss';
 import { defineExpose, defineProps, nextTick, onMounted, PropType, reactive, ref } from 'vue'
-import { ITooltip } from './types'
+import { ITooltip } from '../../shared/types'
 import { sumArray, getAnimation } from '../../shared/utils'
 import { xmatrix,ymatrix } from './shared'
 

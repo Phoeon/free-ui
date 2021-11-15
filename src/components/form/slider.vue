@@ -11,6 +11,7 @@ import InputWrap from './input-wrap.vue'
 import MediaQuery from '../../shared/media-query'
 import { touchmove as vTouchmove } from '../../directives/gesture'
 import vTooltip from '../../directives/tooltip'
+
 const props = defineProps({
     // showTip:{type:Boolean,default:true},
     showProgress:{type:Boolean,default:true},

@@ -16,7 +16,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, defineEmits, PropType, reactive, computed, ref } from 'vue'
-import { IDropdownItem } from '../pop/types'
+import { IDropdownItem } from '../../shared/types'
 import { Caret } from '../icon'
 
 import FPop from '../pop'
@@ -48,7 +48,6 @@ const textValue = computed(()=>{
 })
 
 const done = (items:Array<IDropdownItem>)=>{
-    console.log(items,'checked')
     const vs = items.map(item=>item.value)
     const res = props.multi?vs:vs[0]
     emits('update:modelValue',res);

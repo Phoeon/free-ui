@@ -15,6 +15,8 @@
             <sun/>
             <moon/>
             <mobile/>
+            <tselect/>
+            <cselect/>
             <sort/>
             <sort direction="up"/>
             <sort direction="down"/>
@@ -130,6 +132,8 @@ const {
     Moon,
     Mobile,
     Sort,
+    Tselect,
+    Cselect,
 
     CustomIcon
     } = FIcon

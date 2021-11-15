@@ -140,7 +140,7 @@
     --ph-gacd-fs:16px;
 
     --ph-gdd-h:34px;
-    --ph-gdd-fs:14px;
+    --ph-gdd-fs:15px;
 
     --ph-gstep-is:32px;
     --ph-gstep-is-sm:24px;
@@ -153,6 +153,7 @@
     --ph-ginput-fs-lg:16px;
     --ph-ginput-desc:12px;
 
+    --ph-gcselect-w:180px;
 }
 :root[f-pf=mb]{
     --ph-rvw:0.13333333333333333vw;
@@ -216,7 +217,7 @@
     --ph-gtabs-pd:0 var(--ph-8);
 
     --ph-gdd-h:var(--ph-39);
-    --ph-gdd-fs:var(--ph-15);
+    --ph-gdd-fs:var(--ph-fs);
 
     --ph-gdrawer-w:var(--ph-300);
 
@@ -305,6 +306,8 @@
     --ph-ginput-lb-fs:var(--ph-17);
     --ph-ginput-fs:var(--ph-17);
     --ph-ginput-desc:var(--ph-16);
+
+    --ph-gcselect-w:50vw;
 
     // --ph-btn-h:94 /36
     // --ph-btn-small: 60 26 icon 36

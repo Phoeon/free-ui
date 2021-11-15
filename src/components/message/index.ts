@@ -1,7 +1,7 @@
 import Message from './main.vue'
 import Evt from 'ph-evt'
 import { createApp , nextTick} from 'vue'
-import { IMsgOption } from './types'
+import { IMsgOption } from '../../shared/types'
 let msgs:Array<InstanceType<typeof Message>> = []
 const show = (msg:string,opt:IMsgOption={})=>{
     const evt = new Evt(),

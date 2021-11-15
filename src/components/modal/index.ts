@@ -1,5 +1,5 @@
 import { createApp,ref } from 'vue'
-import { IModalOption } from './types'
+import { IModalOption } from '../../shared/types'
 import Evt from 'ph-evt'
 import ModalConfirm from './confirm.vue'
 import ModalAlert from './alert.vue'
