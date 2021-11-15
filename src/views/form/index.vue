@@ -4,6 +4,7 @@
             <f-validator ref="evalidator">
                 <f-form-input v-model="formData.account" label="输入框" :validators="['required']"></f-form-input>
                 <f-form-input v-model="formData.email" label="禁用输入" placeholder="测试禁用" :disabled="true"></f-form-input>
+                <f-form-number v-model="formData.salary" label="数字输入" placeholder="测试数字"/>
                 <f-form-select v-model="formData.uni" :options="dataSource.options" label="单选下拉" placeholder="单选下拉" :validators="['required']"></f-form-select>
                 <f-form-select v-model="formData.funi" :options="dataSource.options" label="多选下拉" placeholder="测试多选" :multi="true" :validators="['required']"></f-form-select>
                 <f-form-tree-select v-model="formData.tvs" :options="TreeData" label="树多选" placeholder="测试树多选" :validators="['required']"/>
@@ -49,6 +50,7 @@ import {
         FFormTextarea,
         FFormTreeSelect,
         FFormCascadeSelect,
+        FFormNumber,
         FMessage } from '@/components'
 import { reactive, ref } from 'vue'
 import * as raw from '../../data/form'
@@ -76,7 +78,8 @@ const formData = reactive({
     tvs:[],
     tv:'',
     cvs:[],
-    cv:''
+    cv:'',
+    salary:0
 })
 const dataSource = {
     options:[{

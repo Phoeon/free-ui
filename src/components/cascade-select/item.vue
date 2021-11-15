@@ -5,7 +5,7 @@
     </li>
 </template>
 <script lang="ts" setup>
-import { ITreeNode } from '@/shared/types'
+import { ITreeNode } from '../../shared/types'
 import { computed, defineProps, defineEmits, PropType, reactive } from 'vue'
 import { Arrow } from '../icon'
 

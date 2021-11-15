@@ -2,7 +2,7 @@ import FLoadingSpin from './spin.vue'
 import FGLoadingSpin from './loading-spin'
 import FGLoadingBar from './loading-bar'
 
-import { IFLoadingBarOption,IFLoadingSpinOption } from './types'
+import { IFLoadingBarOption,IFLoadingSpinOption } from '../../shared/types'
 const FGLoading = {
     showSpin:(opt?:IFLoadingSpinOption)=>FGLoadingSpin.start(opt),
     showBar:(opt?:IFLoadingBarOption)=>FGLoadingBar.start(opt),
@@ -16,4 +16,3 @@ export {
     FGLoadingBar,
     FGLoading
 }
-export * from './types'

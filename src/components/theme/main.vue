@@ -25,7 +25,7 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { defineProps, PropType, reactive, defineEmits, Ref, ref, onMounted, onBeforeUnmount } from 'vue'
+import { defineProps, PropType, reactive, defineEmits, Ref, ref, onMounted } from 'vue'
 import { Theme, Sun,Moon,CircleTick } from '../icon'
 import { Fr } from '../../shared/config'
 import { IPopPosition } from '../pop/types'

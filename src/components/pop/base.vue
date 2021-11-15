@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import './popover.scss';
 import { defineProps, defineEmits, nextTick, PropType, reactive, ref, watch } from 'vue'
-import { IPopPosition } from './types'
+import { IPopPosition } from '../../shared/types'
 import { IRect } from '../../shared/types'
 import { getAnimation, sumArray } from '../../shared/utils'
 import { xmatrix as txmatrix,ymatrix as tymatrix } from './shared'

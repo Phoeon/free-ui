@@ -18,6 +18,7 @@
 import { defineProps, defineEmits, PropType } from 'vue'
 import { Tick, Times } from '../icon'
 import InputWrap from './input-wrap.vue'
+
 const props = defineProps({
     modelValue:Boolean,
     type:String as PropType<'text'|'icon'|'normal'>

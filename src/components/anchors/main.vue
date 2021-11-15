@@ -8,7 +8,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, defineEmits, PropType, reactive } from 'vue'
-import { IAnchor } from './types'
+import { IAnchor } from '../../shared/types'
 
 const emits = defineEmits(['update:modelValue','navigate'])
 const props = defineProps({

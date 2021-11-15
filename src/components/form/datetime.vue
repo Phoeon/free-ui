@@ -36,7 +36,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, defineEmits, PropType, ref, computed } from 'vue'
-import { IDtType } from '../datetime/types';
+import { IDtType } from '../../shared/types';
 import { DtType } from '../datetime/shared'
 import { Time, Date, Datetime } from '../icon'
 import DtPicker from '../datetime'

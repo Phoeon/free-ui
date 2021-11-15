@@ -2,6 +2,7 @@ import FValidator from './validator/main.vue'
 import FForm from './form.vue'
 import FFormInput from './form-input.vue'
 import FInput from './input.vue'
+import FFormNumber from './form-number.vue'
 import FNumber from './number.vue'
 import FFormSelect from './form-select.vue'
 import FSelect from './select.vue'
@@ -28,6 +29,7 @@ export {
     FForm,
     FFormInput,
     FInput,
+    FFormNumber,
     FNumber,
     FFormSelect,
     FSelect,

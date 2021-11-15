@@ -21,8 +21,9 @@
 <script lang="ts" setup>
 import { defineProps, defineEmits, PropType, reactive } from 'vue'
 import { CircleSuccess, CircleDanger, CircleInfo, CircleWarning, Times, CustomIcon } from '../icon'
-import { IAlertType } from './types'
+import { IAlertType } from '../../shared/types'
 import FAction from '../action/main.vue'
+
 const emits = defineEmits(['update:modelValue','action'])
 const props = defineProps({
     type:{

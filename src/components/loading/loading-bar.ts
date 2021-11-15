@@ -1,7 +1,7 @@
 import Evt from 'ph-evt'
 import LoadingBar from './bar.vue'
 import { createApp,App } from 'vue'
-import { IFLoadingBarOption } from './types'
+import { IFLoadingBarOption } from '../../shared/types'
 import { unmount } from '../../shared/utils'
 let ins:undefined|InstanceType<typeof LoadingBar>;
 const start = (opt:IFLoadingBarOption={})=>{

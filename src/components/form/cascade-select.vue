@@ -21,7 +21,7 @@ import { Cselect } from '../icon'
 
 import FPop from '../pop'
 import InputWrap from './input-wrap.vue'
-import { getNodesNameByIds } from '@/shared/tree'
+import { getNodesNameByIds } from '../../shared/tree'
 
 let hide:()=>void;
 const ewrap = ref<InstanceType<typeof InputWrap>>()

@@ -13,7 +13,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, defineExpose, defineProps, PropType, reactive } from 'vue'
-import { IPhNotifyOpt, Igroup} from './types'
+import { INotifyOption, INotifyGroup} from '../../shared/types'
 import type IEvt from 'ph-evt'
 import Env from '../../shared/env'
 import NotificationGroup from './group.vue'
@@ -26,8 +26,8 @@ const props = defineProps({
     evt: Object as PropType<IEvt>
 })
 const state = reactive<{
-    groups:Array<Igroup>,
-    notifications:Record<string,Array<IPhNotifyOpt>>,
+    groups:Array<INotifyGroup>,
+    notifications:Record<string,Array<INotifyOption>>,
 }>({
     groups:[],
     notifications:{
@@ -40,7 +40,7 @@ const visible = computed(()=>{
         i+= state.notifications[key].length
     return i
 })
-const show = (n:IPhNotifyOpt)=>{
+const show = (n:INotifyOption)=>{
     const group = n.group||"default"
     const idx = state.groups.findIndex(t=>t.k===group)
     if(idx<0){

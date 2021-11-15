@@ -30,7 +30,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, defineProps, nextTick, onMounted, PropType, reactive, ref } from 'vue'
-import { IDtImportant, IDtType } from './types'
+import { IDtImportant, IDtType } from '../../shared/types'
 import FMask from '../mask/main.vue'
 import Lang from './lang'
 import DtSingle from './single.vue'

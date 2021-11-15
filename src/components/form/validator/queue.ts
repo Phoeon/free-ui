@@ -1,4 +1,4 @@
-import { IValidationQueue, IValidatorTask } from './types'
+import { IValidationQueue, IValidatorTask } from '../../../shared/types'
 type VTO={
     task:IValidatorTask,
     args?:Array<unknown>

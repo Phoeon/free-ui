@@ -10,13 +10,13 @@
 </template>
 <script lang="ts" setup>
 import { computed, defineProps, PropType, defineEmits } from 'vue'
-import { ColorType } from './types'
+import { IColorType } from '../../shared/types'
 import { ColorMode, ColorReg, between, isColorHex } from '../../shared/color'
 
 
 const emits = defineEmits(['color-input'])
 const props = defineProps({
-    mode: String as PropType<ColorType>,
+    mode: String as PropType<IColorType>,
     hsb:{type:Array as PropType<Array<number>>,default:()=>[]},
     rgb:{type:Array as PropType<Array<number>>,default:()=>[]},
     hex:String

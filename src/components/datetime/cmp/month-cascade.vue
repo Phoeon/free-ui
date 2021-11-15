@@ -41,7 +41,7 @@ import DtGrid from './grid.vue'
 import { defineProps, defineEmits, computed } from 'vue'
 import { compare } from '../../../shared/datetime'
 import { SharedCascadeProps, DtType } from '../shared'
-import { IDateObject, IGridItem } from '../types'
+import { IDateObject, IGridItem } from '../../../shared/types'
 
 const emits = defineEmits(['update:start','update:end','done','clear','now','shiftYear'])
 

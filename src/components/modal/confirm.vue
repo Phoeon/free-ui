@@ -20,6 +20,7 @@ import { CustomIcon, CircleWarning } from '../icon'
 import BaseModal from './base.vue'
 import FButton from '../button/main.vue'
 import MediaQuery from '../../shared/media-query'
+
 const props = defineProps({
     cancelText:String,
     doneText:String,

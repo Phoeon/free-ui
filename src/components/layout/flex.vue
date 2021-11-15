@@ -2,7 +2,7 @@
     <div class="ph-flex" :dir="dir" :wrap="wrap"><slot></slot></div>
 </template>
 <script lang="ts" setup>
-import { computed, defineProps, PropType } from 'vue'
+import { defineProps, PropType } from 'vue'
 const props = defineProps({
     dir:String as PropType<'row'|'col'>,
     wrap:Boolean

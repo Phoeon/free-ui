@@ -2,9 +2,9 @@
     <div :class="cns" :style="style"></div>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineExpose, ref, PropType, onMounted, computed, reactive, nextTick } from 'vue'
+import { defineProps, defineExpose, PropType, onMounted, computed, reactive } from 'vue'
 import { between } from '../../shared/utils'
-// const loading = ref<InstanceType<typeof FMask>>()
+
 const props = defineProps({
     auto:{type:Boolean,default:true},
     shine:{type:Boolean,default:true},

@@ -16,7 +16,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, defineEmits, PropType, reactive, computed, ref } from 'vue'
-import { IDropdownItem } from '../pop/types'
+import { IDropdownItem } from '../../shared/types'
 import { Caret } from '../icon'
 
 import FPop from '../pop'

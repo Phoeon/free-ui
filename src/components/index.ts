@@ -2,13 +2,13 @@ import FNotification from './notification'
 import FMessage from './message'
 import FPop,{FPopContainer} from './pop'
 import FToast from './toast'
-import FPanel from './panel'
-import FCard from './card'
 import FMask from './mask/main.vue'
 import FDtPicker from './datetime'
 import FCPicker from './color'
 import * as FIcon from './icon'
 import FModal from './modal'
+export * from './panel'
+export * from './card'
 export * from './layout'
 export * from './button'
 export * from './menu'
@@ -39,8 +39,6 @@ export {
     FNotification,
     FToast,
     FMask,
-    FPanel,
-    FCard,
     FModal,
     FMessage,
     FPop,

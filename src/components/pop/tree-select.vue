@@ -13,23 +13,23 @@
 <script lang="ts" setup>
 import './popover.scss';
 import { defineProps, nextTick, onMounted, PropType, reactive, ref } from 'vue'
-import { ISelectPosition } from './types'
-import { IRect, ITree } from '../../shared/types'
-import { FTree, ITreeValue } from '../tree'
+import { ISelectPosition } from '../../shared/types'
+import { IRect, ITree, IValue } from '../../shared/types'
+import { FTree } from '../tree'
 import getPosition from 'ph-position'
 import MediqQuery from '../../shared/media-query'
 import FMask from '../mask/main.vue'
 const edom = ref<HTMLElement>()
 const props = defineProps({
     dataSource:{type:Array as PropType<ITree>,default:()=>[]},
-    value:{type:[String,Number,Array] as PropType<ITreeValue>,required:true},
+    value:{type:[String,Number,Array] as PropType<IValue>,required:true},
     position:{type:String as PropType<ISelectPosition>,default:"bl"},
     rect:{type:Object as PropType<IRect>,default:()=>{
         return {left:0,top:0,width:0,height:0}
     }},
     title:String,
     multi:Boolean,
-    notify:Function as PropType<(item:ITreeValue)=>void>,
+    notify:Function as PropType<(item:IValue)=>void>,
     destroy:Function as PropType<()=>void>,
     animation:{type:String,default:'ph-upbit'}
 })
@@ -49,7 +49,7 @@ const close = ()=>{
     state.visible = false
     props.destroy?.()
 }
-const onSelect = (v:ITreeValue)=>{
+const onSelect = (v:IValue)=>{
     state.value = v
     props.notify?.(v)
 }

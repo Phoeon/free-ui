@@ -36,7 +36,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { computed, defineProps, inject, nextTick, onMounted, PropType, provide, reactive, ref, Ref, watch } from 'vue'
-import { INavNode, ITreeNode } from '../struct'
+import { INavNode } from '../../../shared/types'
 import { Arrow, CustomIcon } from '../../icon'
 import getPosition from 'ph-position'
 import vStv from '../../../directives/scroll-to-view'
@@ -48,7 +48,7 @@ const props = defineProps({
         type:Array as PropType<Array<INavNode>>,
         default:()=>[]
     },
-    node:Object as PropType<ITreeNode>,
+    node:Object as PropType<INavNode>,
     isRoot:Boolean,
     depth:Number
 })
@@ -82,7 +82,7 @@ const onLeave = ()=>{
     restoreState()
 }
 const navigate = ()=>{
-    const {text,icon,action,id} = props.node as ITreeNode
+    const {text,icon,action,id} = props.node as INavNode
     notify&&notify([{text,icon,action,id}])
     restoreState()
 }
@@ -115,7 +115,7 @@ if(isGroup.value)
 provide("notify",(paths:INavNode[])=>{
     restoreState()
         
-    const {text,icon,action,id} = props.node as ITreeNode
+    const {text,icon,action,id} = props.node as INavNode
     notify&&notify([{
         text,icon,action,id
     },...paths])

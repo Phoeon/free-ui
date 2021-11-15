@@ -27,7 +27,7 @@
 import { compare, dt2obj, formatDate, parseDate, dt2arr, arr2dtobj } from '../../shared/datetime'
 import { computed, defineAsyncComponent, defineProps, defineEmits, PropType, reactive, watch } from 'vue'
 import { DtFormat, getInitCType, DtType, getState, getNow} from './shared'
-import { IDateObject, IDtType } from './types'
+import { IDateObject, IDtType } from '../../shared/types'
 
 import DtDateCascade from './cmp/date-cascade.vue'
 

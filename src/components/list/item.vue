@@ -25,6 +25,7 @@
 <script lang="ts" setup>
 import { defineProps, defineEmits, reactive } from 'vue'
 import { Arrow, CustomIcon} from '../icon'
+
 const emits = defineEmits(['detail','item-click','left-click'])
 const props = defineProps({
     title:String,

@@ -18,7 +18,7 @@
 <script lang="ts" setup>
 import './popover.scss';
 import { defineProps, nextTick, onMounted, PropType, reactive, ref } from 'vue'
-import { ISelectPosition } from './types'
+import { ISelectPosition } from '../../shared/types'
 import { IRect, ITree, IValue } from '../../shared/types'
 import CascadeSelect from '../cascade-select/main.vue'
 import getPosition from 'ph-position'

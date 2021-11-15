@@ -23,7 +23,7 @@
 import { defineProps, PropType } from 'vue'
 import FormField from './field.vue'
 import FieldDatetime from './datetime.vue'
-import { IDtType } from '../datetime/types'
+import { IDtType } from '../../shared/types'
 defineProps({
     startPlaceholder:String,
     endPlaceholder:String,

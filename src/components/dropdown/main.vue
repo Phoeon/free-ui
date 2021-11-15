@@ -7,7 +7,7 @@
 <script lang="ts" setup>
 import { defineProps, defineEmits, onBeforeUnmount, onMounted, PropType, reactive, Ref, ref } from 'vue'
 import { CustomIcon } from '../icon'
-import { IDropdownItem, IDropdownPosition } from '../pop/types'
+import { IDropdownItem, IDropdownPosition } from '../../shared/types'
 import FPop from '../pop'
 import FButton from '../button/main.vue'
 import { sumArray } from '../../shared/utils'
@@ -77,19 +77,19 @@ const showDropdown = (el:HTMLElement,opt:{
         state.lock = false
     },300)
 }
-const onClick = (e:Event)=>{
+const onClick = ()=>{
     if(props.trigger!=='click')return
     if(state.open)return
-    showDropdown(e.target as HTMLElement,{
+    showDropdown(edom.value.$el as HTMLElement,{
         dataSource:props.dataSource,
         position:props.position,
         theme:props.theme
     })
 }
-const onEnter = (e:Event)=>{
+const onEnter = ()=>{
     if(props.trigger!=='hover')return
     if(state.open)return
-    showDropdown(e.target as HTMLElement,{
+    showDropdown(edom.value.$el as HTMLElement,{
         dataSource:props.dataSource,
         position:props.position,
         theme:props.theme

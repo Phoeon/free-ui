@@ -3,7 +3,8 @@ export const Reg={
     email:/^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\.)+[a-z]{2,}$/,
     url:/https?:\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/,
     mobile:/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/,
-    chinese:/^[\u0391-\uFFE5]+$/
+    chinese:/^[\u0391-\uFFE5]+$/,
+    number:/^[+-]?\d*(\.\d+)?/
 }
 export function isEmpty(v:unknown){
     return v===undefined||v===""||v===null||(v instanceof Array&&v.join("")==="")

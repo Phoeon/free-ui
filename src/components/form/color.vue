@@ -17,7 +17,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, defineEmits, PropType, ref } from 'vue'
-import { ColorType } from '../color/types'
+import { IColorType } from '../../shared/types'
 import ColorPicker from '../color'
 import InputWrap from './input-wrap.vue'
 
@@ -29,7 +29,7 @@ const props = defineProps({
     disabled:Boolean,
     placeholder:String,
     colors:Array as PropType<Array<string>>,
-    type:String as PropType<ColorType>
+    type:String as PropType<IColorType>
 })
 const done = (v:string)=>{
     emits('update:modelValue',v);

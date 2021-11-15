@@ -21,7 +21,7 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { getLeafNodesById, searchPath } from '@/shared/tree'
+import { getLeafNodesById, searchPath } from '../../shared/tree'
 import { defineEmits, computed, defineProps, PropType, reactive } from 'vue'
 import { IKey, ITree, ITreeNode, IValue } from '../../shared/types'
 import SelectPanel from './select-panel.vue'

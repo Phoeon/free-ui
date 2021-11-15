@@ -1,10 +1,11 @@
 import Evt from 'ph-evt'
 import NotificationMnger from './main.vue'
 import Env from '../../shared/env'
-import { IPhNotifyOpt, CloseStatus } from './types'
+import { INotifyOption } from '../../shared/types'
+import { CloseStatus } from './types'
 import { createApp, nextTick } from 'vue'
 let mnger:InstanceType<typeof NotificationMnger>;
-const notify =(content:string,opt?:IPhNotifyOpt)=>{
+const notify =(content:string,opt?:INotifyOption)=>{
     const 
         evt = new Evt,
         nid = (Math.random()+"").replace(".",""),
@@ -36,20 +37,20 @@ export default {
         Env.set("notify",option)
         app.config.globalProperties.$phNotify = notify
     },
-    notify(content:string,opt:IPhNotifyOpt={}){
+    notify(content:string,opt:INotifyOption={}){
         return notify(content,opt)
     },
-    success(content:string,opt:IPhNotifyOpt={}){
-        return notify(content,Object.assign(opt,{type:"success"}) as IPhNotifyOpt)
+    success(content:string,opt:INotifyOption={}){
+        return notify(content,Object.assign(opt,{type:"success"}) as INotifyOption)
     },
-    error(content:string,opt:IPhNotifyOpt={}){
-        return notify(content,Object.assign(opt,{type:"error"}) as IPhNotifyOpt)
+    error(content:string,opt:INotifyOption={}){
+        return notify(content,Object.assign(opt,{type:"error"}) as INotifyOption)
     },
-    warning(content:string,opt:IPhNotifyOpt={}){
-        return notify(content,Object.assign(opt,{type:"warning"}) as IPhNotifyOpt)
+    warning(content:string,opt:INotifyOption={}){
+        return notify(content,Object.assign(opt,{type:"warning"}) as INotifyOption)
     },
-    info(content:string,opt:IPhNotifyOpt={}){
-        return notify(content,Object.assign(opt,{type:"info"}) as IPhNotifyOpt)
+    info(content:string,opt:INotifyOption={}){
+        return notify(content,Object.assign(opt,{type:"info"}) as INotifyOption)
     }
 }
 export * from './types'

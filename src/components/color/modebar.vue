@@ -7,14 +7,14 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, PropType, defineEmits } from 'vue'
-import { ColorType } from './types'
+import { IColorType } from '../../shared/types'
 import { ColorMode } from '../../shared/color'
 
 const emits = defineEmits(['update:modelValue'])
 const props = defineProps({
-    modelValue: String as PropType<ColorType>
+    modelValue: String as PropType<IColorType>
 })
-const update = (v:ColorType)=>{
+const update = (v:IColorType)=>{
     emits('update:modelValue',v)
 }
 </script>

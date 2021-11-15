@@ -1,6 +1,6 @@
 import FActionsheet from './main.vue'
 import Evt from 'ph-evt'
-import { IActionOption } from './types'
+import { IActionSheetOption } from '../../shared/types'
 import { createApp, ref } from 'vue'
 type IASOption = {
     modelValue?:string|number,
@@ -10,11 +10,11 @@ type IASOption = {
     desc?:string,
     cancelText?:string,
     // type?:'list'|'grid',
-    options:Array<IActionOption>
+    options:Array<IActionSheetOption>
 }
 const show = (opt:Record<string,any>)=>{
     const evt = new Evt()
-    const notify = (item:IActionOption,hide:()=>void)=>{
+    const notify = (item:IActionSheetOption,hide:()=>void)=>{
         evt.emit("action",item,hide)
     }
     const app = createApp(FActionsheet,{
@@ -24,7 +24,7 @@ const show = (opt:Record<string,any>)=>{
     const ins = app.mount(document.createElement("div"))
     document.body.appendChild(ins.$el)
     return {
-        done(fn:(item:IActionOption,hide:()=>void)=>void){
+        done(fn:(item:IActionSheetOption,hide:()=>void)=>void){
             evt.on("action",fn)
             return this
         }
