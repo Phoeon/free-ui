@@ -101,6 +101,9 @@ const calc = (dir:number)=>{
             color: inherit;
             width: 100%;
             height: 50%;
+            outline: none;
+            appearance: none;
+            user-select: none;
             &:active,
             &[hover=true]:hover{
                 color: var(--ph-primary);
