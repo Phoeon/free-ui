@@ -14,7 +14,7 @@ export type IRecord = {
 export type INavNode = IRecord & {
     icon?:string,
     action?:string,
-    children?:Array<TreeNode>
+    children?:Array<INavNode>
 }
 export type IFreeuiConfigOption = {
     icon?:{
@@ -152,19 +152,19 @@ export type IDropdown = IPop & {
 export type ISelect = IPop & {
     dataSource:Array<IDropdownItem>,
     position?:ISelectPosition,
-    width?:Number,
-    multi?:Boolean,
-    title?:String,
+    width?:number,
+    multi?:boolean,
+    title?:string,
     value:Array<string|number>
 }
 export type IPopTreeSelect = {
     dataSource:ITree,
     position?:ISelectPosition,
     rect?:{left:number,right:number,top:number,bottom:number},
-    width?:Number,
-    multi?:Boolean,
-    title?:String,
-    value:ITreeValue
+    width?:number,
+    multi?:boolean,
+    title?:string,
+    value:IValue
 }
 
 export type IOption = {
@@ -185,7 +185,7 @@ export interface IValidator {
     registerField:(id:string,field:IFieldValidFn)=>void,
     ungisterField:(id:string)=>void
 }
-export type IValidatorTask = (v:unknown,args?:Array<unknown>,next:()=>void,reject:(d?:any)=>void)=>void
+export type IValidatorTask = (v:unknown,args:Array<unknown>|undefined,next:()=>void,reject:(d?:any)=>void)=>void
 
 export interface IValidationQueue{
     use(task:IValidatorTask,args?:Array<unknown>):void
