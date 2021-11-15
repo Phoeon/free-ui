@@ -8,7 +8,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.runtime.esm-bundler.js\");\n/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components */ \"./src/components/index.ts\");\n/* harmony import */ var _data_divider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/divider */ \"./src/data/divider.ts\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (/*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__[\"defineComponent\"])({\n  setup: function setup(__props, _ref) {\n    var expose = _ref.expose;\n    expose();\n    var __returned__ = {\n      FView: _components__WEBPACK_IMPORTED_MODULE_1__[\"FView\"],\n      FCard: _components__WEBPACK_IMPORTED_MODULE_1__[\"FCard\"],\n      FGrid: _components__WEBPACK_IMPORTED_MODULE_1__[\"FGrid\"],\n      FGridItem: _components__WEBPACK_IMPORTED_MODULE_1__[\"FGridItem\"],\n      raw: _data_divider__WEBPACK_IMPORTED_MODULE_2__\n    };\n    Object.defineProperty(__returned__, '__isScriptSetup', {\n      enumerable: false,\n      value: true\n    });\n    return __returned__;\n  }\n}));\n\n//# sourceURL=webpack:///./src/views/card.vue?./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-2!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.runtime.esm-bundler.js\");\n/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components */ \"./src/components/index.ts\");\n/* harmony import */ var _data_card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/card */ \"./src/data/card.ts\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (/*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__[\"defineComponent\"])({\n  setup: function setup(__props, _ref) {\n    var expose = _ref.expose;\n    expose();\n    var __returned__ = {\n      FView: _components__WEBPACK_IMPORTED_MODULE_1__[\"FView\"],\n      FCard: _components__WEBPACK_IMPORTED_MODULE_1__[\"FCard\"],\n      FGrid: _components__WEBPACK_IMPORTED_MODULE_1__[\"FGrid\"],\n      FGridItem: _components__WEBPACK_IMPORTED_MODULE_1__[\"FGridItem\"],\n      raw: _data_card__WEBPACK_IMPORTED_MODULE_2__\n    };\n    Object.defineProperty(__returned__, '__isScriptSetup', {\n      enumerable: false,\n      value: true\n    });\n    return __returned__;\n  }\n}));\n\n//# sourceURL=webpack:///./src/views/card.vue?./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-2!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1");
 
 /***/ }),
 
@@ -46,15 +46,15 @@ eval("// style-loader: Adds some css to the DOM by adding a <style> tag\n\n// lo
 
 /***/ }),
 
-/***/ "./src/data/divider.ts":
-/*!*****************************!*\
-  !*** ./src/data/divider.ts ***!
-  \*****************************/
+/***/ "./src/data/card.ts":
+/*!**************************!*\
+  !*** ./src/data/card.ts ***!
+  \**************************/
 /*! exports provided: c1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"c1\", function() { return c1; });\nvar c1 = \"<f-divider align=\\\"left\\\" type=\\\"primary\\\">\\u5206\\u5272\\u7EBF</f-divider>\\n<f-divider type=\\\"info\\\">\\u5206\\u5272\\u7EBF</f-divider>\\n<f-divider align=\\\"right\\\" type=\\\"success\\\">\\u5206\\u5272\\u7EBF</f-divider>\\n<f-divider type=\\\"danger\\\">\\u5206\\u5272\\u7EBF</f-divider>\\n<f-divider align=\\\"left\\\" :offset=\\\"150\\\" type=\\\"warning\\\">\\u5206\\u5272\\u7EBF</f-divider>\\n<f-divider type=\\\"noble\\\">\\u5206\\u5272\\u7EBF</f-divider>\\n<f-divider>\\u5206\\u5272\\u7EBF</f-divider>\";\n\n//# sourceURL=webpack:///./src/data/divider.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"c1\", function() { return c1; });\nvar c1 = \"<f-card title=\\\"\\u6D4B\\u8BD5\\u9762\\u677F\\\" subTitle=\\\"\\u5907\\u6CE8\\u5185\\u5BB9\\\" icon=\\\"bar-chart\\\">\\n\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\n\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\n\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\u6211\\u662F\\u5185\\u5BB9\\n<template v-slot:footer>\\n    \\u63CF\\u8FF0\\u8BF4\\u660E\\u5185\\u5BB9\\u6587\\u672C \\u81EA\\u5B9A\\u4E49\\u5E95\\u90E8\\n</template>\\n</f-card>\";\n\n//# sourceURL=webpack:///./src/data/card.ts?");
 
 /***/ }),
 
