@@ -1,4 +1,4 @@
-import '../node_modules/_font-awesome@4.7.0@font-awesome/css/font-awesome.min.css'
+import '../node_modules/font-awesome/css/font-awesome.min.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import PhPretty from './pretty.vue'
