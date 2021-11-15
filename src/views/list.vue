@@ -138,11 +138,15 @@
                 :detail="item.detail"
                 ></f-list-item>
         </f-list>
+        <br/>
+        <ph-pretty lang="html" title="template">{{raw.c1}}</ph-pretty>
+        <ph-pretty title="script">{{raw.c2}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
 import { FView, FList, FListItem, FToast } from '@/components'
 import { reactive } from 'vue'
+import * as raw from '../data/list'
 const data = reactive({
     list:[{
         title:"列表1",

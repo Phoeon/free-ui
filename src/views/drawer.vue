@@ -15,11 +15,14 @@
             <p>阿莱克斯就发牢骚计分卡索科洛夫大家</p>
         </f-drawer>
         </teleport>
+        <ph-pretty lang="html" title="template">{{raw.c1}}</ph-pretty>
+        <ph-pretty title="script">{{raw.c2}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
 import { FView, FCard, FButton, FDrawer } from '@/components'
 import { reactive } from 'vue'
+import * as raw from '../data/drawer'
 const state = reactive({
     visible:false,
     position:""

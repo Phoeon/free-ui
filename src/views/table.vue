@@ -43,10 +43,14 @@
                 </f-td>
             </f-tr>
         </f-table>
+        <br/>
+        <ph-pretty lang="html" title="template">{{raw.c1}}</ph-pretty>
+        <ph-pretty title="script">{{raw.c2}}</ph-pretty>
     </f-view>
 </template>
 <script lang="ts" setup>
 import { FView, FTable, FTr, FTh, FTd, FAction,FBlockquote,FToast } from '@/components'
+import * as raw from '../data/table'
 const onSort = (sort:number)=>{
     FToast.show(sort===1?'升序':'降序')
 }

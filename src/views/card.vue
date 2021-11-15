@@ -60,7 +60,7 @@
 </template>
 <script lang="ts" setup>
 import { FView, FCard, FGrid, FGridItem } from '@/components'
-import * as raw from '../data/divider'
+import * as raw from '../data/card'
 </script>
 <style lang="scss">
 .ph-card-view{
