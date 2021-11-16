@@ -32,6 +32,7 @@
     <iframe class="ph-preview-frame" :src="iurl" frameborder="0"></iframe>
   </f-drawer>
   </teleport>
+  <Toolbox/>
 </f-page>
 </template>
 <script lang="ts" setup>
@@ -46,6 +47,7 @@ FGLoading,
   FMenuTree,
   FMain,
   FButton } from '@/components'
+import Toolbox from '@/bizcomponents/toolbox.vue'
 import { Sun,Moon,Mobile } from '@/components/icon'
 import { computed, onMounted, reactive, ref, toRefs } from 'vue'
 import { useRouter } from 'vue-router'

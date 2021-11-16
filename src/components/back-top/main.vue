@@ -18,7 +18,7 @@ const props = defineProps({
     z-index: var(--ph-zdx-popover);
     position: fixed;
     bottom: 150px;
-    right: 100px;
+    right: 30px;
     border-radius: 50%;
     overflow: hidden;
     display: flex;
