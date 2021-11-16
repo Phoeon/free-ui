@@ -108,9 +108,13 @@ export default [
         id:"/data",
         icon:"internet-explorer",
         children:[{
-            text:"carousel",
+            text:"轮播carousel",
             id:"/carousel",
             action:"/carousel"
+        },{
+            text:"树tree",
+            id:"/tree",
+            action:"/tree"
         },{
             text:"标签",
             id:"/tag",
