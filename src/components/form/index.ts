@@ -1,5 +1,6 @@
 import FValidator from './validator/main.vue'
 import FForm from './form.vue'
+import FFormDivider from './form-divider.vue'
 import FFormInput from './form-input.vue'
 import FInput from './input.vue'
 import FFormNumber from './form-number.vue'
@@ -27,6 +28,7 @@ import FFormCascadeSelect from './form-cascade-select.vue'
 export {
     FValidator,
     FForm,
+    FFormDivider,
     FFormInput,
     FInput,
     FFormNumber,

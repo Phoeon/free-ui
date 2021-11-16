@@ -18,7 +18,6 @@
 <script lang="ts" setup>
 import './popover.scss';
 import { defineProps, nextTick, onMounted, PropType, reactive, ref } from 'vue'
-import { ISelectPosition } from '../../shared/types'
 import { IRect, ITree, IValue } from '../../shared/types'
 import CascadeSelect from '../cascade-select/main.vue'
 import getPosition from 'ph-position'
@@ -28,12 +27,10 @@ const edom = ref<HTMLElement>()
 const props = defineProps({
     dataSource:{type:Array as PropType<ITree>,default:()=>[]},
     value:{type:[String,Number,Array] as PropType<IValue>,required:true},
-    position:{type:String as PropType<ISelectPosition>,default:"bl"},
     rect:{type:Object as PropType<IRect>,default:()=>{
         return {left:0,top:0,width:0,height:0}
     }},
     title:String,
-    multi:Boolean,
     notify:Function as PropType<(item:IValue)=>void>,
     destroy:Function as PropType<()=>void>,
     animation:{type:String,default:'ph-upbit'}

@@ -149,20 +149,15 @@ export type IDropdown = IPop & {
     dataSource:Array<IDropdownItem>,
     position?:IDropdownPosition
 }
-export type ISelect = IPop & {
+export type ISelect = {
     dataSource:Array<IDropdownItem>,
-    position?:ISelectPosition,
-    width?:number,
-    multi?:boolean,
+    rect?:{left:number,right:number,top:number,bottom:number},
     title?:string,
-    value:Array<string|number>
+    value:IValue
 }
 export type IPopTreeSelect = {
     dataSource:ITree,
-    position?:ISelectPosition,
     rect?:{left:number,right:number,top:number,bottom:number},
-    width?:number,
-    multi?:boolean,
     title?:string,
     value:IValue
 }
@@ -177,7 +172,7 @@ export type IValidResult = {
     valid:boolean,
     tip?:string
 }
-export type IValidOption = string|{name:string,args:Array<unknown>}
+export type IValidOption = string|{name:string,args?:any}
 export type IFieldValidFn = ()=>Promise<unknown>
 export interface IValidator {
     validField:(value:unknown,validMeta:Array<IValidOption>)=>Promise<unknown>
@@ -185,10 +180,10 @@ export interface IValidator {
     registerField:(id:string,field:IFieldValidFn)=>void,
     ungisterField:(id:string)=>void
 }
-export type IValidatorTask = (v:unknown,args:Array<unknown>|undefined,next:()=>void,reject:(d?:any)=>void)=>void
+export type IValidatorTask = (v:unknown,args:any,next:()=>void,reject:(d?:any)=>void)=>void
 
 export interface IValidationQueue{
-    use(task:IValidatorTask,args?:Array<unknown>):void
+    use(task:IValidatorTask,args?:any):void
     run(ctx:unknown):Promise<unknown>
 }
 

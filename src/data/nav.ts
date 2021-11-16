@@ -50,14 +50,18 @@ export default [
         }]
     },{
         text:"表单",
-        id:"/form",
+        id:"/formnav",
         icon:"firefox",
-        action:"/form"
-        // children:[{
-        //     text:"表单汇总",
-        //     id:"/form",
-        //     action:"/form"
-        // },{
+        children:[{
+            text:"表单汇总",
+            id:"/form",
+            action:"/form"
+        },{
+            text:"验证器",
+            id:"validator",
+            action:"/validator"
+        }
+        // ,{
         //     text:"输入框",
         //     id:"/input",
         //     action:"/input"
@@ -97,12 +101,17 @@ export default [
         //     text:"上传",
         //     id:"/upload",
         //     action:"/upload"
-        // },]
+        // },
+        ]
     },{
         text:"数据展示",
         id:"/data",
         icon:"internet-explorer",
         children:[{
+            text:"carousel",
+            id:"/carousel",
+            action:"/carousel"
+        },{
             text:"标签",
             id:"/tag",
             action:"/tag"

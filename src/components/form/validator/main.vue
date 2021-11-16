@@ -2,25 +2,28 @@
     <slot></slot>
 </template>
 <script lang="ts" setup>
-import { defineProps, provide, defineExpose } from 'vue'
+import { defineProps, provide, defineExpose, PropType } from 'vue'
 import { IValidOption , IFieldValidFn, IValidatorTask } from '../../../shared/types'
 import * as BVs from './built-in-validators' //内置验证器
 import ValidtorQueue from './queue'
 
 const props = defineProps({
-    validators:[]
+    validators:Object as PropType<Record<string,IValidatorTask>>
 })
 const fieldMap = {} as Record<string,IFieldValidFn>
 
 const validField = (value:unknown,validMeta:Array<IValidOption>)=>{
-    const bvs = BVs as Record<string,IValidatorTask>
+    const Vs = {
+        ...(BVs as Record<string,IValidatorTask>),
+        ...(props.validators||{})
+    }
     const quque = ValidtorQueue.create()
     validMeta.forEach(meta=>{
-        if(typeof meta==="string"&&bvs[meta]){
-            quque.use(bvs[meta])
+        if(typeof meta==="string"&&Vs[meta]){
+            quque.use(Vs[meta])
         }else {
-            const meta1 = meta as {name:string,args:Array<unknown>}
-            const task = bvs[meta1.name]
+            const meta1 = meta as {name:string,args?:any}
+            const task = Vs[meta1.name]
             if(task)
             quque.use(task,meta1.args)
         }

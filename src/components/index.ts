@@ -34,6 +34,8 @@ export * from './breadcrumb'
 export * from './action'
 export * from './scroll'
 export * from './loading'
+export * from './carousel'
+export * from './tree'
 export {
     FIcon,
     FNotification,

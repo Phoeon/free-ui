@@ -1,5 +1,13 @@
 <template>
     <f-view>
+        <f-card title="carousel">
+            <f-carousel v-model="state.carsouel">
+                <div class="ph-carousel-item">卡片一</div>
+                <div class="ph-carousel-item">卡片二</div>
+                <div class="ph-carousel-item">卡片三</div>
+                <div class="ph-carousel-item">卡片四</div>
+            </f-carousel>
+        </f-card>
         <f-card title="cascade select">
             {{state.tv}}
             <br/>
@@ -87,11 +95,13 @@ import FThemePicker from '@/components/theme/main.vue'
 import FTree from '@/components/tree/root.vue'
 import FCSelect from '@/components/cascade-select/main.vue'
 import Fabc from '@/components/form/cascade-select.vue'
+import FCarousel from '@/components/carousel/main.vue'
 import { onMounted, reactive, ref, toRef } from 'vue'
 import { ITreeValue } from '@/components/tree'
 
 const epop = ref<InstanceType<typeof FPopContainer>>()
 const state = reactive({
+    carsouel:0,
     pop:false,
     rect:{left:0,top:0,width:0,height:0},
     tvs:[1,7] as ITreeValue,

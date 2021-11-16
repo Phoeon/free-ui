@@ -61,7 +61,8 @@ const validSelf = (value:unknown,validMeta:Array<IValidOption>)=>{
         state.tip = ""
         return Promise.resolve(true)
     }).catch(res=>{
-        Object.assign(state,res)
+        state.valid = false
+        state.tip = res?.tip
         return Promise.reject(res)
     })
 }

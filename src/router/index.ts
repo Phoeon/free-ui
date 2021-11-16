@@ -153,6 +153,16 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "anchor" */ '../views/anchor.vue')
   },
   {
+    path: '/carousel',
+    name: 'carousel',
+    component: () => import(/* webpackChunkName: "carousel" */ '../views/carousel.vue')
+  },
+  {
+    path: '/tree',
+    name: 'tree',
+    component: () => import(/* webpackChunkName: "tree" */ '../views/tree.vue')
+  },
+  {
     path: '/tmp',
     name: 'tmp',
     component: () => import(/* webpackChunkName: "tmp" */ '../views/tmp.vue')
@@ -161,6 +171,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/form',
     name: 'form/form',
     component: () => import(/* webpackChunkName: "form" */ '../views/form/index.vue')
+  },
+  {
+    path: '/validator',
+    name: 'form/validator',
+    component: () => import(/* webpackChunkName: "validator" */ '../views/form/validator.vue')
   },
   {
     path: '/input',

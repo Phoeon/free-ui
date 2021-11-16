@@ -55,8 +55,8 @@ import {
 import { reactive, ref } from 'vue'
 import * as raw from '../../data/form'
 import { TreeData } from '../../data/treedata'
-
-console.log('TreeData:',TreeData)
+import Console from '@/shared/console'
+Console.noble('TreeData:',TreeData)
 const evalidator = ref<InstanceType<typeof FValidator>>()
 const formData = reactive({
     account:"",
@@ -101,11 +101,11 @@ const dataSource = {
     }]
 }
 const onSubmit = ()=>{
-    console.log(formData)
+    Console.success('表单数据',formData)
     evalidator.value?.validForm().then((a:any)=>{
         FMessage.success('表单验证成功')
     }).catch((e:any)=>{
-        console.log(e)
+        Console.error('错误信息',e)
         FMessage.error("请完善表单信息")
     })
 }

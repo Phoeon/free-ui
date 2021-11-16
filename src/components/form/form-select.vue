@@ -7,7 +7,6 @@
                 :placeholder="scope.placeholder"
                 :valid="scope.valid"
                 :options="options"
-                :multi="multi"
                 @input="scope.onInput"
             />
         </template>
@@ -22,7 +21,6 @@ defineProps({
     options:{
         type:Array as PropType<Array<IDropdownItem>>,
         default:()=>[]
-    },
-    multi:Boolean
+    }
 })
 </script>

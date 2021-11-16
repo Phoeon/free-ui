@@ -17,9 +17,9 @@ const props = defineProps({
     color: var(--ph-c);
     z-index: var(--ph-zdx-popover);
     position: fixed;
-    bottom: 80px;
-    right: 40px;
-    border-radius: 4px;
+    bottom: 150px;
+    right: 100px;
+    border-radius: 50%;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -27,6 +27,5 @@ const props = defineProps({
     box-shadow: var(--ph-shadow-popover);
     width: 40px;
     height: 40px;
-    --ph-i-size:24px;
 }
 </style>

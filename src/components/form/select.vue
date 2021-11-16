@@ -16,7 +16,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, defineEmits, PropType, reactive, computed, ref } from 'vue'
-import { IDropdownItem } from '../../shared/types'
+import { IDropdownItem, IKey, IValue } from '../../shared/types'
 import { Caret } from '../icon'
 
 import FPop from '../pop'
@@ -29,9 +29,8 @@ const state = reactive({
     lock:false,
 })
 const props = defineProps({
-    modelValue:{type:[Array,String,Number],required:true},
+    modelValue:{type:[Array,String,Number] as PropType<IValue>,required:true},
     disabled:Boolean,
-    multi:Boolean,
     placeholder:String,
     theme:String as PropType<'reverse'|'normal'>,
     options:{
@@ -39,57 +38,31 @@ const props = defineProps({
         default:()=>[]
     }
 })
-const values = computed(()=>{
-    return [].concat(props.modelValue as any) as Array<string|number>;
-})
 const textValue = computed(()=>{
-    const res = props.options.filter(opt=>values.value.includes(opt.value))
+    const vs = props.modelValue instanceof Array ? (props.modelValue as Array<IKey>) : [props.modelValue as IKey] 
+    const res = props.options.filter(opt=>vs.includes(opt.value))
     return res.map(r=>r.text).join(",")
 })
 
-const done = (items:Array<IDropdownItem>)=>{
-    const vs = items.map(item=>item.value)
-    const res = props.multi?vs:vs[0]
-    emits('update:modelValue',res);
-    emits('input',res);
+const done = (vs:IValue)=>{
+    emits('update:modelValue',vs);
+    emits('input',vs);
 }
-
-const showDropdown = (el:HTMLElement,opt:{
-    dataSource:Array<IDropdownItem>,
-    theme?:'reverse'|'normal',
-    multi?:boolean,
-    title?:string
-})=>{
+const onClick = ()=>{
+    if(props.disabled)return
     if(state.lock)return
     state.lock = true
-    const {left,top,width,height} = el.getBoundingClientRect()
-    const position = 'b'
-    const 
-        x = left,
-        y = top+height;
-    
+    const rect = (ewrap.value.$el as HTMLElement).getBoundingClientRect()
     FPop.showPopSelect({
-        ...opt,
-        value:values.value,
-        x,
-        y,
-        height,
-        width,
-        position})
+        dataSource:props.options,
+        title:props.placeholder,
+        value:props.modelValue,
+        rect
+    })
     .done(done)
     setTimeout(()=>{
         state.lock = false
     },300)
-}
-const onClick = ()=>{
-    if(props.disabled)return
-    // if(state.open)return
-    showDropdown(ewrap.value.$el as HTMLElement,{
-        dataSource:props.options,
-        theme:props.theme,
-        multi:props.multi,
-        title:props.placeholder
-    })
 }
 
 </script>

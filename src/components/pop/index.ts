@@ -91,7 +91,7 @@ const showDropdown = (opt:IDropdown)=>{
 const showPopSelect = (opt:ISelect)=>{
     const evt = new Evt()
     const destroy = ()=>evt.emit("close")
-    const notify = (item:Array<IDropdownItem>)=>{
+    const notify = (item:IValue)=>{
         evt.emit("done",item)
     }
     const 
@@ -100,7 +100,7 @@ const showPopSelect = (opt:ISelect)=>{
     evt.on("close",()=>unmount(app))
     document.body.appendChild(ins.$el)
     return {
-        done(fn:(item:Array<IDropdownItem>)=>void){
+        done(fn:(item:IValue)=>void){
             evt.on("done",fn)
             return this
         }
