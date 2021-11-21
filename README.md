@@ -90,3 +90,6 @@ import {
 ### 在线链接
 See [在线案例](https://phoeon.gitee.io/free-ui/demo/#/).
 See [在线doc](https://phoeon.gitee.io/free-ui/doc/#/).
+
+### 🤝 友情接链
+[【Bean Searcher】比 MyBatis 效率快 100 倍的条件检索引擎，天生支持联表，使一行代码实现复杂列表检索成为可能！](https://gitee.com/ejlchina-zhxu/bean-searcher)
