@@ -1,32 +1,19 @@
 <template>
-    <header class="ph-header">
-        <div class="ph-header-left" v-if="slots.left||showToggle">
-            <f-button md-visible="false" v-if="showToggle" class="ph-aside-toggle" shape="square" fillMode="none" @click="toggleAside">
-                <template v-slot:leftIcon><navicon/></template>
-            </f-button>
-            <slot name="left"></slot>
-        </div>
+    <footer class="ph-footer">
+        <div class="ph-footer-left" v-if="slots.left"><slot name="left"></slot></div>
         <slot></slot>
-        <div class="ph-header-right" v-if="slots.right"><slot name="right"></slot></div>
-    </header>
+        <div class="ph-footer-right" v-if="slots.right"><slot name="right"></slot></div>
+    </footer>
 </template>
 <script lang="ts">
 export default {
-    name:"FHeader"
+    name:"FFooter"
 }
 </script>
 <script lang="ts" setup>
-import { inject, useSlots, defineProps, onMounted, nextTick } from 'vue'
-import FButton from '../button/main.vue'
-import Navicon from '../icon/navicon.vue'
-
-const phevt = inject("phevt") as {emit:(a:string,...b:any[])=>void}
-const registerBar = inject("registerBar") as ()=>void
-const toggleAside = ()=>phevt?.emit("aside:toggle")
+import { inject, nextTick, onMounted, useSlots } from 'vue'
 const slots = useSlots()
-defineProps({
-    showToggle:{type:Boolean,default:true}
-})
+const registerBar = inject("registerBar") as ()=>void
 onMounted(()=>{
     nextTick(()=>{
         registerBar?.()
@@ -35,7 +22,7 @@ onMounted(()=>{
 </script>
 <style lang="scss">
 @import '../../assets/style/fn.scss';
-.ph-header{
+.ph-footer{
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -44,7 +31,7 @@ onMounted(()=>{
     box-sizing: border-box;
     z-index: 1;
     padding: 0 var(--ph-pd);
-    height: var(--ph-gtopbar-h);
+    min-height: var(--ph-gtopbar-h);
     font-size: var(--ph-gtopbar-fs);
     background-color: var(--ph-topbar-bg);
     color: var(--ph-c-d1);

@@ -103,6 +103,7 @@ onBeforeUnmount(()=>{
         margin-right: 8px;
         position: relative;
         width: 120px;
+        user-select:none;
         &:after{
             content: ":";
         }

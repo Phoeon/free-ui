@@ -3,6 +3,7 @@
         <f-form title="表单标题" :xl="2">
             <f-validator ref="evalidator">
                 <f-form-input v-model="formData.account" label="输入框" :validators="['required']"></f-form-input>
+                <f-form-input v-model="formData.psd" label="密码域" placeholder="测试密码域" :validators="['required']" type="password"></f-form-input>
                 <f-form-input v-model="formData.email" label="禁用输入" placeholder="测试禁用" :disabled="true"></f-form-input>
                 <f-form-number v-model="formData.salary" label="数字输入" placeholder="测试数字"/>
                 <f-form-select v-model="formData.uni" :options="dataSource.options" label="单选下拉" placeholder="单选下拉" :validators="['required']"></f-form-select>
@@ -60,6 +61,7 @@ Console.noble('TreeData:',TreeData)
 const evalidator = ref<InstanceType<typeof FValidator>>()
 const formData = reactive({
     account:"",
+    psd:"",
     email:"",
     uni:"",
     runi:"",

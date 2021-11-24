@@ -1,7 +1,7 @@
 <template>
     <div :class="cns">
-        <div class="ph-ipw-addonl" v-if="slots.left">
-            <slot name="left"></slot>
+        <div class="ph-ipw-addonl" :hover="state.pc" v-if="slots.left">
+            <slot name="left" :type="type"></slot>
         </div>
         <slot 
             :valid="valid"
@@ -10,7 +10,7 @@
             :disabled="disabled"
             :placeholder="placeholder"
         ></slot>
-        <div class="ph-ipw-addonr" v-if="slots.right">
+        <div class="ph-ipw-addonr" v-if="slots.right" :hover="state.pc" :type="type">
             <slot :hover="state.pc" :disabled="disabled" name="right"></slot>
         </div>
     </div>
@@ -122,6 +122,9 @@ const cns = computed(()=>{
             @include llMx(var(--ph-bd));
             top: 3px;
             bottom: 3px;
+        }
+        &[hover=true]:hover .ph-icon{
+            --ph-i-color:var(--ph-primary);
         }
     }
     .ph-ip-divider{

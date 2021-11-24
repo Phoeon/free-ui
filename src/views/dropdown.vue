@@ -5,7 +5,7 @@
             <f-button-group :container="true">
                 <f-dropdown type="primary" position="bl" :dataSource="data.dataSource" @action="onAction">下左</f-dropdown>
                 <f-dropdown type="success" position="bc" :dataSource="data.dataSource" @action="onAction">下中</f-dropdown>
-                <f-dropdown type="danger" position="br" :dataSource="data.dataSource" @action="onAction">下右</f-dropdown>
+                <f-dropdown type="danger" position="br" :dataSource="data.dataSource" :offset="12" @action="onAction">下右</f-dropdown>
             </f-button-group>
             <br/>
             <f-button-group :container="true">

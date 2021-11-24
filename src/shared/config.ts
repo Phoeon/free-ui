@@ -7,3 +7,21 @@ export const Fr = {
     warning:"warning",
     info:"info",
 }
+export enum Position {
+    t='t',
+    b='b',
+    l='l',
+    r='r',
+    tl='tl',
+    tc='tc',
+    tr='tr',
+    bl='bl',
+    bc='bc',
+    br='br',
+    lt='lt',
+    lc='lc',
+    lb='lb',
+    rt='rt',
+    rc='rc',
+    rb='rb',
+}

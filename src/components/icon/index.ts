@@ -20,6 +20,7 @@ import Mobile from './mobile.vue'
 import Sort from './sort.vue'
 import Tselect from './tselect.vue'
 import Cselect from './cselect.vue'
+import Eye from './eye.vue'
 export * from './square'
 export * from './circle'
 export * from './loading'
@@ -45,5 +46,6 @@ export {
     Mobile,
     Sort,
     Tselect,
-    Cselect
+    Cselect,
+    Eye
 }

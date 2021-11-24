@@ -3,32 +3,90 @@
     100% {transform: rotate(360deg);}
 }
 
+
+.ph-scaleright-leave-active,
+.ph-scaleright-enter-active,
+.ph-scaleright-t-leave-active,
+.ph-scaleright-t-enter-active,
+.ph-scaleright-b-leave-active,
+.ph-scaleright-b-enter-active,
+
+.ph-scaleleft-leave-active,
+.ph-scaleleft-enter-active,
+.ph-scaleleft-t-leave-active,
+.ph-scaleleft-t-enter-active,
+.ph-scaleleft-b-leave-active,
+.ph-scaleleft-b-enter-active,
+
+.ph-scaledown-leave-active,
+.ph-scaledown-enter-active,
+.ph-scaledown-l-leave-active,
+.ph-scaledown-l-enter-active,
+.ph-scaledown-r-leave-active,
+.ph-scaledown-r-enter-active,
+
+.ph-scaleup-leave-active,
+.ph-scaleup-enter-active,
+.ph-scaleup-l-leave-active,
+.ph-scaleup-l-enter-active,
+.ph-scaleup-r-leave-active,
+.ph-scaleup-r-enter-active
+{
+	transition: opacity .15s ease,transform .15s ease;
+}
+
 .ph-scaleup-leave-to,
-.ph-scaleup-enter-from
+.ph-scaleup-enter-from,
+.ph-scaleup-l-leave-to,
+.ph-scaleup-l-enter-from,
+.ph-scaleup-r-leave-to,
+.ph-scaleup-r-enter-from
  {
 	opacity: 0;
     transform: scale(.5);
 }
 .ph-scaleup-leave-from,
-.ph-scaleup-enter-to {
+.ph-scaleup-enter-to,
+.ph-scaleup-l-leave-from,
+.ph-scaleup-l-enter-to,
+.ph-scaleup-r-leave-from,
+.ph-scaleup-r-enter-to {
 	opacity: 1;
     transform: scale(1);
 }
 .ph-scaleup-leave-active,
 .ph-scaleup-enter-active
 {
-    transform-origin: top;
-	transition: opacity .15s ease,transform .15s ease;
+	transform-origin: top;
+}
+.ph-scaleup-l-leave-active,
+.ph-scaleup-l-enter-active
+{
+	transform-origin: top left;
+}
+.ph-scaleup-r-leave-active,
+.ph-scaleup-r-enter-active
+{
+	transform-origin: top right;
 }
 
+
 .ph-scaledown-leave-to,
-.ph-scaledown-enter-from
+.ph-scaledown-enter-from,
+.ph-scaledown-l-leave-to,
+.ph-scaledown-l-enter-from,
+.ph-scaledown-r-leave-to,
+.ph-scaledown-r-enter-from
  {
 	opacity: 0;
     transform: scale(.5);
 }
 .ph-scaledown-leave-from,
-.ph-scaledown-enter-to {
+.ph-scaledown-enter-to,
+.ph-scaledown-l-leave-from,
+.ph-scaledown-l-enter-to,
+.ph-scaledown-r-leave-from,
+.ph-scaledown-r-enter-to {
 	opacity: 1;
     transform: scale(1);
 }
@@ -36,18 +94,35 @@
 .ph-scaledown-enter-active
 {
     transform-origin: bottom;
-	transition: opacity .15s ease,transform .15s ease;
+}
+.ph-scaledown-l-leave-active,
+.ph-scaledown-l-enter-active
+{
+    transform-origin: bottom left;
+}
+.ph-scaledown-r-leave-active,
+.ph-scaledown-r-enter-active
+{
+    transform-origin: bottom right;
 }
 
 
 .ph-scaleleft-leave-to,
-.ph-scaleleft-enter-from
+.ph-scaleleft-enter-from,
+.ph-scaleleft-t-leave-to,
+.ph-scaleleft-t-enter-from,
+.ph-scaleleft-b-leave-to,
+.ph-scaleleft-b-enter-from
  {
 	opacity: 0;
     transform: scale(.5);
 }
 .ph-scaleleft-leave-from,
-.ph-scaleleft-enter-to {
+.ph-scaleleft-enter-to,
+.ph-scaleleft-t-leave-from,
+.ph-scaleleft-t-enter-to,
+.ph-scaleleft-b-leave-from,
+.ph-scaleleft-b-enter-to {
 	opacity: 1;
     transform: scale(1);
 }
@@ -55,18 +130,35 @@
 .ph-scaleleft-enter-active
 {
     transform-origin: left;
-	transition: opacity .15s ease,transform .15s ease;
+}
+.ph-scaleleft-t-leave-active,
+.ph-scaleleft-t-enter-active
+{
+    transform-origin: top left;
+}
+.ph-scaleleft-b-leave-active,
+.ph-scaleleft-b-enter-active
+{
+    transform-origin: bottom left;
 }
 
 
 .ph-scaleright-leave-to,
-.ph-scaleright-enter-from
+.ph-scaleright-enter-from,
+.ph-scaleright-t-leave-to,
+.ph-scaleright-t-enter-from,
+.ph-scaleright-b-leave-to,
+.ph-scaleright-b-enter-from
  {
 	opacity: 0;
     transform: scale(.5);
 }
 .ph-scaleright-leave-from,
-.ph-scaleright-enter-to {
+.ph-scaleright-enter-to,
+.ph-scaleright-t-leave-from,
+.ph-scaleright-t-enter-to,
+.ph-scaleright-b-leave-from,
+.ph-scaleright-b-enter-to {
 	opacity: 1;
     transform: scale(1);
 }
@@ -74,7 +166,17 @@
 .ph-scaleright-enter-active
 {
     transform-origin: right;
-	transition: opacity .15s ease,transform .15s ease;
+}
+.ph-scaleright-t-leave-active,
+.ph-scaleright-t-enter-active
+{
+    transform-origin: top right;
+}
+
+.ph-scaleright-b-leave-active,
+.ph-scaleright-b-enter-active
+{
+    transform-origin: bottom right;
 }
 
 

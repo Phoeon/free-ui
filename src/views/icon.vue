@@ -18,6 +18,8 @@
                 <tselect/>
                 <cselect/>
                 <sort/>
+                <eye :open="true"/>
+                <eye :open="false"/>
                 <sort direction="up"/>
                 <sort direction="down"/>
 
@@ -147,6 +149,7 @@ const {
     Sort,
     Tselect,
     Cselect,
+    Eye,
 
     CustomIcon
     } = FIcon

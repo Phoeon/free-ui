@@ -1,14 +1,11 @@
 <template>
 <f-page :mode="state.mode" :theme="state.theme">
-  <template #aside>
     <f-aside :showLogo="aside.showLogo" :avatar="aside.avatar" :appName="aside.appName" @logo-click="onLogoClick">
-      <template v-slot:default="props">
+        <template v-slot:default="props">
         <f-menu-tree :simple="props.toggle" :tree="menuData" :paths="state.paths" @navigate="onNavigate"/>
-      </template>
+        </template>
     </f-aside>
-  </template>
   <f-main>
-    <template #header>
       <f-header>
         <template #left>
           <f-breadcrumb :paths="state.paths"></f-breadcrumb>
@@ -18,7 +15,6 @@
           <f-theme-picker v-model:mode="state.mode" v-model:theme="state.theme" popposition="br"/>
         </template>
       </f-header>
-    </template>
     <router-view v-slot="{ Component, route }">
       <transition name="ph-fs" mode="out-in">
         <keep-alive>
