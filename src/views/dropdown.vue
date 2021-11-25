@@ -2,6 +2,7 @@
     <f-view>
         <f-card title="动态展示">
             <p>hover触发</p>
+            <br/>
             <f-button-group :container="true">
                 <f-dropdown type="primary" position="bl" :dataSource="data.dataSource" @action="onAction">下左</f-dropdown>
                 <f-dropdown type="success" position="bc" :dataSource="data.dataSource" @action="onAction">下中</f-dropdown>
@@ -13,11 +14,15 @@
                 <f-dropdown type="success" position="tc" :dataSource="data.dataSource" @action="onAction">上中</f-dropdown>
                 <f-dropdown type="danger" position="tr" :dataSource="data.dataSource" @action="onAction">上右</f-dropdown>
             </f-button-group>
+            <br/>
             <p>click触发</p>
+            <br/>
             <f-button-group :container="true">
-                <f-dropdown type="primary" trigger="click" position="tl" :dataSource="data.dataSource" @action="onAction">上左</f-dropdown>
-                <f-dropdown type="success" trigger="click" position="tc" :dataSource="data.dataSource" @action="onAction">上中</f-dropdown>
-                <f-dropdown type="danger" trigger="click" position="tr" :dataSource="data.dataSource" @action="onAction">上右</f-dropdown>
+                <f-dropdown type="primary" trigger="click" position="tl" :dataSource="data.dataSource" @action="onAction"  shape="square"></f-dropdown>
+                <f-dropdown type="success" trigger="click" position="tc" :dataSource="data.dataSource" @action="onAction" dropdown="" shape="square" icon="user-plus"></f-dropdown>
+                <f-dropdown type="danger" trigger="click" position="tr" :dataSource="data.dataSource" @action="onAction" dropdown="" shape="square">
+                    <custom-icon name="filter"/>
+                </f-dropdown>
             </f-button-group>
         </f-card>
         <ph-pretty lang="html">{{raw.c1}}</ph-pretty>
@@ -36,9 +41,10 @@
     </f-view>
 </template>
 <script lang="ts" setup>
-import { FView, FCard, FButtonGroup, FDropdown, FToast } from '@/components'
+import { FView, FCard, FButtonGroup, FDropdown, FToast, FIcon } from '@/components'
 import FDropdownlist from '@/components/pop/dropdown.vue'
 import * as raw from '../data/dropdown'
+const { CustomIcon } = FIcon
 const onAction = (e:any)=>{
     FToast.show(e.text)
 }
