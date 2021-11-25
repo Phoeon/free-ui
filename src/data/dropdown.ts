@@ -8,9 +8,11 @@ export const c1=`
 <f-dropdown type="danger" position="tr" :dataSource="data.dataSource" @action="onAction">上右</f-dropdown>
 
 <p>click触发</p>
-<f-dropdown type="primary" trigger="click" position="tl" :dataSource="data.dataSource" @action="onAction">上左</f-dropdown>
-<f-dropdown type="success" trigger="click" position="tc" :dataSource="data.dataSource" @action="onAction">上中</f-dropdown>
-<f-dropdown type="danger" trigger="click" position="tr" :dataSource="data.dataSource" @action="onAction">上右</f-dropdown>
+<f-dropdown type="primary" trigger="click" position="tl" :dataSource="data.dataSource" @action="onAction"  shape="square"></f-dropdown>
+<f-dropdown type="success" trigger="click" position="tc" :dataSource="data.dataSource" @action="onAction" dropdown="" shape="square" icon="user-plus"></f-dropdown>
+<f-dropdown type="danger" trigger="click" position="tr" :dataSource="data.dataSource" @action="onAction" dropdown="" shape="square">
+    <custom-icon name="filter"/>
+</f-dropdown>
 
 <script setup>
 const onAction = (e:{text:string,value:string|number,icon?:string})=>{

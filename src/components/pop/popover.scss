@@ -1,6 +1,6 @@
 @import '../../assets/style/fn.scss';
 .ph-pop{
-    --ph-ppc-24:24px;
+    --ph-ppo-offset:12px;
     --ph-pop-bdc: var(--ph-popover-bg);
     --ph-pop-bg-hover: var(--ph-popover-bg-hover);
     --ph-pop-c: var(--ph-c-d1);
@@ -87,28 +87,28 @@
     &.ph-pop-bl,
     &.ph-pop-tl{
         &:after{
-            left: var(--ph-ppc-24);
+            left: var(--ph-ppo-offset);
             right: auto;
         }
     }
     &.ph-pop-br,
     &.ph-pop-tr{
         &:after{
-            right: var(--ph-ppc-24);
+            right: var(--ph-ppo-offset);
             left: auto;
         }
     }
     &.ph-pop-lt,
     &.ph-pop-rt{
         &:after{
-            top: var(--ph-ppc-24);
+            top: var(--ph-ppo-offset);
             bottom: auto;
         }
     }
     &.ph-pop-lb,
     &.ph-pop-rb{
         &:after{
-            bottom: var(--ph-ppc-24);
+            bottom: var(--ph-ppo-offset);
             top: auto;
         }
     }

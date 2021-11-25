@@ -1,5 +1,5 @@
 <template>
-    <input-wrap>
+    <input-wrap :type="type">
         <template v-slot:left v-if="slots.left">
             <slot name="left"></slot>
         </template>
@@ -8,22 +8,30 @@
             class="ph-input"
             :placeholder="scope.placeholder" 
             :disabled="scope.disabled"
-            :type="scope.type"
+            :type="inputType"
             :value="modelValue"
             @input.stop="onInput"
             />
         </template>
-        <template v-slot:right v-if="slots.right">
-            <slot name="right"></slot>
+        <template v-slot:right v-if="slots.right||isPsd">
+            <slot name="right">
+                <template v-if="isPsd">
+                    <eye :open="!showPsd" @click="showPsd=!showPsd"/>
+                </template>
+            </slot>
         </template>
     </input-wrap>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, useSlots } from 'vue'
+import { defineProps, defineEmits, useSlots, computed, ref } from 'vue'
+import Eye from '../icon/eye.vue'
 import InputWrap from './input-wrap.vue'
 const props = defineProps({
-    modelValue:[String,Number]
+    modelValue:[String,Number],
+    type:String
 })
+const isPsd = computed(()=>props.type==="password")
+const showPsd = ref(false)
 const slots = useSlots()
 const cst = {
     lock:false
@@ -40,6 +48,11 @@ const onInput = (e:Event)=>{
         cst.lock = false
     },300)
 }
+const inputType = computed(()=>{
+    if(isPsd.value)return showPsd.value?'text':'password'
+    return props.type
+})
+
 </script>
 <style lang="scss">
 @import '../../assets/style/fn.scss';

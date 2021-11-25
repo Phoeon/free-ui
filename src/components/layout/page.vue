@@ -1,7 +1,6 @@
 <template>
-    <flex :class="['ph-page',slots.aside?'ph-page-hasaside':'']" :dir="slots.aside?'row':'col'" :toggle="state.asideToggle">
+    <flex :class="['ph-page',state.hasAside?'ph-page-hasaside':'']" :dir="state.hasAside?'row':'col'" :toggle="state.asideToggle">
         <f-mask v-model="showMask" class="ph-page-mask" @click="onMask"></f-mask>
-        <slot name="aside"></slot>
         <slot></slot>
     </flex>
 </template>
@@ -16,6 +15,7 @@ import Flex from './flex.vue'
 
 const evt = new Evt()
 const slots = useSlots()
+
 const cst = {
     timer:-1,
     dw:375,
@@ -25,10 +25,7 @@ const props = defineProps({
     mode:{type:String as PropType<'dark'|'light'>,default:"dark"},
     theme:{type:String , default: "danger"}
 })
-const state = reactive({
-    asideToggle:false,
-    sm:false
-})
+
 const showMask = computed(()=>state.sm&&!state.asideToggle)
 const onMask = ()=>{
     state.asideToggle=true
@@ -38,12 +35,23 @@ const mediaQuery = (matches:boolean,dw:number)=>{
     state.sm = dw<769
     Autofit(cst)
 }
+const hasAside = ()=>{
+    return slots.default&&slots.default().some(v=>{
+        return (v as any).type.name==='FAside'
+    })
+}
 const setAppMode = (mode:string)=>{
     document.documentElement.setAttribute("f-mode",mode)
 }
 const setAppTheme = (theme:string)=>{
     document.documentElement.setAttribute("f-theme",theme)
 }
+const state = reactive({
+    asideToggle:false,
+    sm:false,
+    hasAside:hasAside()
+})
+
 MediaQuery.all(mediaQuery)
 evt.on("aside:toggle",(from)=>{
     if(from!="menu"||showMask.value)
@@ -51,6 +59,7 @@ evt.on("aside:toggle",(from)=>{
 })
 provide("phevt",evt)
 provide("ph-aside-toggle",toRef(state,'asideToggle'))
+provide("registerAside",()=>state.hasAside=true)
 watch(()=>props.mode,setAppMode)
 watch(()=>props.theme,setAppTheme)
 onBeforeMount(()=>{

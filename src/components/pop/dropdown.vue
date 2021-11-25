@@ -32,7 +32,8 @@ const props = defineProps({
     height:{type:Number,default:0},
     sample:Boolean, //仅用于文档展示，不用关注
     notify:Function as PropType<(item:IDropdownItem|number)=>void>,
-    animation:String
+    animation:String,
+    offset:{type:Number,default:12}
 })
 const state = reactive({
     visible:false,
@@ -42,7 +43,8 @@ const state = reactive({
 })
 const style = reactive({
     left:'auto',
-    top:'auto'
+    top:'auto',
+    '--ph-ppo-offset':props.offset+"px"
 })
 const cns = computed(()=>{
     const cns = ['ph-pop-dropdown','ph-pop','ph-pop-'+state.position]
@@ -73,7 +75,7 @@ onMounted(()=>{
     if(props.sample)return
     nextTick(()=>{
         if(!edom.value)return
-        const of = 24
+        const of = props.offset
         const { offsetWidth, offsetHeight } = edom.value
         const vs = [of,offsetWidth,offsetHeight,10]
         let position = props.position,

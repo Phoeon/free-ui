@@ -18,12 +18,19 @@
         </div>
     </div>
 </template>
+<script lang="ts">
+export default {
+    name:"FAside"
+}
+</script>
 <script lang="ts" setup>
-import { defineExpose, defineProps, defineEmits, inject, Ref, ref } from 'vue'
+import { defineExpose, onMounted, defineProps, defineEmits, inject, Ref, ref, nextTick } from 'vue'
 import FButton from '../button/main.vue'
 import Navicon from '../icon/navicon.vue'
 import Mediaquery from '../../shared/media-query'
 import FScroll from '../scroll/main.vue'
+
+const registerAside = inject("registerAside") as ()=>void
 const props = defineProps({
     showLogo:{type:Boolean,default:true},
     showAction:{type:Boolean,default:true},
@@ -43,6 +50,11 @@ Mediaquery.all((a,w:number)=>{
 })
 defineExpose({
     toggle
+})
+onMounted(()=>{
+    nextTick(()=>{
+        registerAside?.()
+    })
 })
 </script>
 <style lang="scss">

@@ -6,6 +6,7 @@
                 :disabled="scope.disabled"
                 :placeholder="scope.placeholder"
                 :valid="scope.valid"
+                :type="scope.type"
                 @input="scope.onInput"
             />
         </template>

@@ -122,7 +122,8 @@ export type IPop = {
     x:number,
     y:number,
     height?:number,
-    theme?:'normal'|'reverse'
+    theme?:'normal'|'reverse',
+    offset?:number
 }
 export type IPopConfirm = IPop & {
     title:string,

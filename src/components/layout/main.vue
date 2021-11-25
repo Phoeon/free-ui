@@ -1,14 +1,12 @@
 <template>
     <div class="ph-main" :flex="flex">
-        <slot name="header"></slot>
         <slot></slot>
-        <div class="ph-main-bottombar" v-if="slots.bottombar"><slot name="bottombar"></slot></div>
     </div>
 </template>
 <script lang="ts" setup>
-import { useSlots } from 'vue'
-const slots = useSlots()
-const flex = !!(slots.header||slots.bottombar)
+import { provide, ref } from 'vue'
+const flex = ref(false)
+provide("registerBar",()=>flex.value=true)
 </script>
 <style lang="scss">
 @import '../../assets/style/fn.scss';
@@ -21,19 +19,7 @@ const flex = !!(slots.header||slots.bottombar)
     &[flex=true]{
         display: flex;
         flex-direction: column;
-    }
-    &-bottombar{
-        position: relative;
-        flex: 0 0 auto;
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        z-index: 1;
-        padding: 0 var(--ph-pd-lg);
-        height: var(--ph-gtopbar-h);
-        font-size: var(--ph-gtopbar-fs);
-        background-color: var(--ph-topbar-bg);
+        justify-content: space-between;
     }
 }
 </style>

@@ -1,6 +1,8 @@
 <template>
     <f-button :dropdown="state.open?'up':'down'" @mouseenter="onEnter" @mouseleave="onLeave" @click.stop="onClick" ref="edom">
-        <template v-if="icon" v-slot:leftIcon><custom-icon :name="icon"/></template>
+        <template v-slot:leftIcon>
+            <slot name="leftIcon"><custom-icon v-if="icon" :name="icon"/></slot>
+        </template>
         <slot></slot>
     </f-button>
 </template>
@@ -30,6 +32,7 @@ const props = defineProps({
         default:'hover'
     },
     theme:String as PropType<'normal'|'reverse'>,
+    offset:{type:Number,default:12},
     icon:String
 })
 const state = reactive({
@@ -68,7 +71,7 @@ const showDropdown = (el:HTMLElement,opt:{
     const 
         x = sumArray(xmatrix[pos],[left,top,width,height]),
         y = sumArray(ymatrix[pos],[left,top,width,height]);
-    hide = FPop.showDropdown({dataSource,x,y,height,theme,position:pos})
+    hide = FPop.showDropdown({dataSource,x,y,height,theme,position:pos,offset:props.offset})
     .done(done)
     .enter(enter)
     .leave(leave)

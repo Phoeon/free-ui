@@ -1,4 +1,5 @@
 import { App } from 'vue' 
+import { Position } from './config'
 export const Reg={
     email:/^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\.)+[a-z]{2,}$/,
     url:/https?:\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/,
@@ -23,10 +24,18 @@ export const sumArray = (m1:Array<number>,m2:Array<number>)=>{
 export const rand = ()=>(Math.random()+"").replace(".","");
 
 export const getAnimation = (position:string)=>{
-    if(position.startsWith("t"))return 'ph-scaledown'
-    if(position.startsWith("b"))return 'ph-scaleup'
-    if(position.startsWith("l"))return 'ph-scaleright'
-    if(position.startsWith("r"))return 'ph-scaleleft'
+    let an = ""
+    if(position.startsWith("t"))an = 'ph-scaledown'
+    if(position.startsWith("b"))an = 'ph-scaleup'
+    if(position.startsWith("l"))an = 'ph-scaleright'
+    if(position.startsWith("r"))an = 'ph-scaleleft'
+    if(position.length===2){
+        if(position.endsWith("t"))an += '-t'
+        if(position.endsWith("b"))an += '-b'
+        if(position.endsWith("l"))an += '-l'
+        if(position.endsWith("r"))an += '-r'
+    }
+    return an
 }
 export const unmount = (app:App<Element>)=>{
     setTimeout(()=>{
