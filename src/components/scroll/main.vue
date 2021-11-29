@@ -1,5 +1,5 @@
 <template>
-    <div :class="['ph-scroll',disabled?'ph-scroll-disabled':'']" @scroll.stop.prevent @mouseenter="onEnter" @mouseleave="onLeave">
+    <div :class="cns" @scroll.stop.prevent @mouseenter="onEnter" @mouseleave="onLeave">
         <div class="ph-scroll-zone" ref="escroll" @scroll.stop="onScroll"><slot></slot></div>
         <scroll-bar 
             :visible="scrollHr.visible" 
@@ -15,12 +15,14 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, defineExpose, ref, reactive } from 'vue'
+import { defineProps, defineEmits, defineExpose, ref, reactive, computed } from 'vue'
 import ScrollBar from './scroll-bar.vue'
 
 const emits = defineEmits(['scroll'])
 const props = defineProps({
-    disabled:Boolean
+    disabled:Boolean,
+    disabledHr:Boolean,
+    disabledVt:Boolean
 })
 let timer = -1,timer1 = -1;
 const escroll = ref<HTMLElement>()
@@ -33,6 +35,14 @@ const scrollVt = reactive({
     visible:false,
     y:0,
     h:0
+})
+const cns = computed(()=>{
+    return {
+        'ph-scroll':true,
+        'ph-scroll-disabled':props.disabled,
+        'ph-scroll-disabled-hr':props.disabledHr,
+        'ph-scroll-disabled-vt':props.disabledVt,
+    }
 })
 const task = ()=>{
     const {offsetWidth,offsetHeight,scrollWidth,scrollHeight,scrollLeft,scrollTop} = escroll.value as HTMLElement
@@ -103,7 +113,8 @@ defineExpose({
     overflow: hidden;
     position: relative;
     flex: 1;
-    --ph-scroll-of:auto;
+    --ph-scroll-hr:auto;
+    --ph-scroll-vt:auto;
     &-zone{
         &::-webkit-scrollbar{
             width:0!important;
@@ -112,13 +123,20 @@ defineExpose({
         }
         height: 100%;
         width: 100%;
-        overflow: var(--ph-scroll-of);
+        overflow-x: var(--ph-scroll-hr);
+        overflow-y: var(--ph-scroll-vt);
         -webkit-overflow-scrolling:touch;
     }
     &-disabled{
-        --ph-scroll-of:visible;
+        --ph-scroll-hr:visible;
+        --ph-scroll-vt:visible;
         overflow: visible;
     }
-    
+    &-disabled-hr{
+        --ph-scroll-hr:hidden;
+    }
+    &-disabled-vt{
+        --ph-scroll-vt:hidden;
+    }
 }
 </style>
