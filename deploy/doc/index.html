@@ -25,8 +25,8 @@
         const demopath =  "https://hm.baidu.com/hm.js?a8300cc9b578e7c4f981303d7ea2a83a";
         const docpath = "https://hm.baidu.com/hm.js?525c61b0c4dd85b1454476417dd9a7dc";
         const ptype = 'doc';
-        if(!/(demo|doc)/.test(ptype))return
-        hm.src = ptype ==="demo"?demopath:docpath;
+        // if(!/(demo|doc)/.test(ptype))return
+        hm.src = ptype==="doc"?docpath:demopath;
         var s = document.getElementsByTagName("script")[0]; 
         s.parentNode.insertBefore(hm, s);
       })();
