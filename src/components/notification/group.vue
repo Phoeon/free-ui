@@ -99,6 +99,7 @@ const toggle = ()=>{
     align-items: center;
     width: 100%;
     flex: 0 0 auto;
+    overflow: hidden;
     &[collapsed=true]{
         min-height: 160px;
         transform-style: preserve-3d;

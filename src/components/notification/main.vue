@@ -1,5 +1,5 @@
 <template>
-<div :class="['ph-notify-container', 'ph-notify-'+position]" v-if="visible">
+<f-scroll :class="['ph-notify-container', 'ph-notify-'+position]" v-if="visible" :disabledHr="true">
     <NotificationGroup
         v-for="item in state.groups"
         :key="item.k"
@@ -9,7 +9,7 @@
         :vtp="dirs[1]"
         @closeAll="onCloseGroup"
         @close="onClose"/>
-</div>
+</f-scroll>
 </template>
 <script lang="ts" setup>
 import { computed, defineExpose, defineProps, PropType, reactive } from 'vue'
@@ -17,7 +17,7 @@ import { INotifyOption, INotifyGroup} from '../../shared/types'
 import type IEvt from 'ph-evt'
 import Env from '../../shared/env'
 import NotificationGroup from './group.vue'
-
+import FScroll from '../scroll/main.vue'
 const notifyConfig = Env.get("notify")
 const position = (notifyConfig?.position)||"right-top"
 
@@ -69,7 +69,6 @@ defineExpose({
 <style lang="scss">
 .ph-notify-container{
     position: fixed;
-    overflow: auto;
     width: var(--ph-notify-width);
     padding: var(--ph-notify-pd);
     z-index:var(--ph-zdx-notify);
