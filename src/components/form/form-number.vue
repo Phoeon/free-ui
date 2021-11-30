@@ -5,7 +5,7 @@
                 :disabled="scope.disabled"
                 :placeholder="scope.placeholder"
                 :valid="scope.valid"
-                :modelValue="modelValue"
+                :modelValue="scope.value"
                 :step="step"
                 :min="min"
                 :max="max"
@@ -19,7 +19,6 @@ import { defineProps } from 'vue'
 import FormField from './field.vue'
 import FieldInput from './number.vue'
 const props = defineProps({
-    modelValue:Number,
     step:{type:Number,default:1},
     min:{type:Number,default:-Number.MAX_SAFE_INTEGER},
     max:{type:Number,default:Number.MAX_SAFE_INTEGER},
