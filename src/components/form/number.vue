@@ -5,12 +5,13 @@
         </template>
         <template v-slot:default="scope">
             <input 
-            class="ph-number-ip"
+            :class="['ph-number-ip',state.valid?'':'ph-input-warning']"
             :placeholder="scope.placeholder" 
             :disabled="scope.disabled"
             :value="modelValue"
             ref="eip"
-            @change.stop="onInput"
+            @change.stop="onChange"
+            @input.stop="onInput"
             @keydown.up.prevent="onUp"
             @keydown.down.prevent="onDown"
             />
@@ -26,7 +27,7 @@
     </input-wrap>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, useSlots, ref, Ref } from 'vue'
+import { defineProps, defineEmits, useSlots, ref, Ref, reactive } from 'vue'
 import { Reg } from '../../shared/utils'
 import InputWrap from './input-wrap.vue'
 
@@ -39,11 +40,15 @@ const props = defineProps({
 })
 const cst = {
     lock:false,
-    timer:-1
+    timer:-1,
+    timer1:-1
 }
+const state = reactive({
+    valid:true
+})
 const slots = useSlots()
 const emits = defineEmits(['update:modelValue','input'])
-const onNotify = (v:number)=>{
+const onNotify = (v:unknown)=>{
     emits('update:modelValue',v);
     emits('input',v);
 }
@@ -55,21 +60,31 @@ const getValue = (t:HTMLInputElement,offset=0)=>{
 const onKey = (t:HTMLInputElement,offset:number)=>{
     const v = getValue(t,offset)
     t.value = v+""
+    state.valid = true
     clearTimeout(cst.timer)
     cst.timer = setTimeout(()=>{
         onNotify(v)
     },300)
 }
-const onInput = (e:Event)=>{
+const onChange = (e:Event)=>{
     const t = e.target as HTMLInputElement
     if(cst.lock)return
     cst.lock = true
     setTimeout(()=>{
         const v = getValue(t,0)
         t.value = v+""
+        state.valid = true
         onNotify(v)
         cst.lock = false
     },300)
+}
+const onInput = (e:Event)=>{
+    const t = e.target as HTMLInputElement
+    clearTimeout(cst.timer1)
+    cst.timer1 = setTimeout(()=>{
+        onNotify(t.value)
+        state.valid = Reg.Number.test(t.value)
+    })
 }
 const onUp = (e:Event)=>{
     onKey(e.target as HTMLInputElement,1)
@@ -86,6 +101,10 @@ const calc = (dir:number)=>{
 .ph-number-wrap{
     .ph-number-ip{
         @include input();
+    }
+    .ph-input-warning{
+        color: var(--ph-danger);
+        text-decoration: line-through;
     }
     .ph-number-addon{
         position: relative;
