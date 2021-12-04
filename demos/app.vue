@@ -10,9 +10,11 @@
             <f-header class="www-header">
                 <template #left>
                     <template v-if="!state.sm">
+                    <div class="www-logo" @click="goHome"></div>
+                    <div class="www-app-name" @click="goHome">Free Ui</div>
                     <f-action :type="state.cpath==='/'?'primary':'normal'" @click="router.push('/')">首页</f-action>
                     <f-action :type="state.cpath.startsWith('/cmp')?'primary':'normal'" @click="router.push('/cmp/button')">组件</f-action>
-                    <f-action :type="state.cpath.startsWith('/doc')?'primary':'normal'" >文档</f-action>
+                    <!-- <f-action :type="state.cpath.startsWith('/doc')?'primary':'normal'" >文档</f-action> -->
                     </template>
                 </template>
                 <template #right>
@@ -45,9 +47,11 @@ import { FPage,
         FMenuTree,
         FGLoading,
         FThemePicker,
+        FMessage,
         MediaQuery,
         MediaBreak,
-        searchPath
+        searchPath,
+
         } from '@phoeon/free-ui'
 import SiteFooter from './components/footer.vue'
 import AppInfo from './app-meta'
@@ -102,14 +106,24 @@ const onNavigate = (paths:Array<{id:string,action:string}>)=>{
 const onThemeShift = ()=>{
     state.mode = state.mode==="dark"?'light':"dark"
 }
-
+const onTutorial = ()=>{
+    router.push("/cmp/button")
+}
+const goHome = ()=>{
+    if(state.cpath==="/")
+        FMessage.warning('已经在首页了，再点，扁你哟！')
+    else 
+        router.push("/")
+}
 const mediaQuery = (match:boolean,dw:number)=>{
     state.sm = dw<=MediaBreak.sm
 }
+
 MediaQuery.all(mediaQuery)
 
 onMounted(()=>{
     $evt.on("theme-shift",onThemeShift)
+    $evt.on("start-tutorial",onTutorial)
 })
 
 </script>
@@ -120,6 +134,25 @@ onMounted(()=>{
     }
 }
 .www-header{
+    .www-app-name,
+    .www-logo{
+        cursor: pointer;
+    }
+    .www-app-name{
+        font-size: 18px;
+        color: var(--ph-c-d2);
+        margin-right: 150px;
+    }
+    .www-logo{
+        width: 32px;
+        height: 32px;
+        background-color: var(--ph-c-d2);
+        border-radius: 50%;
+        margin-right: var(--ph-pd);
+        margin-left:var(--ph-pd-lg);
+        background-image: url(https://v3.cn.vuejs.org/logo.png);
+        background-size: cover;
+    }
     .ph-action{
         margin-right: var(--ph-pd-lg);
     }
@@ -155,6 +188,12 @@ onMounted(()=>{
             top: var(--ph-pd-lg);
             position: sticky;
         }
+    }
+}
+@media screen and (max-width:768px){
+    .www-container{
+        min-height: calc(100vh - 60px);
+        flex: 1 0 auto;
     }
 }
 </style>

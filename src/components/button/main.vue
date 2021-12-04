@@ -45,7 +45,7 @@ const cns = computed(()=>{
     if(props.block)cns.push(prefix+'block')
     if(state.hover)cns.push(prefix+'pc')
     if(props.hover&&state.hover&&!props.disabled)cns.push(prefix+"hover")
-    if(props.type)cns.push(prefix+props.type)
+    cns.push(prefix+(props.type||'normal'))
     if(!!props.dropdown)cns.push(prefix+"flex")
 
     return cns

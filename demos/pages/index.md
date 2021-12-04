@@ -6,7 +6,7 @@
     <p>一款个人轻量ui组件库，基于 vue3+typescript,（业余时间的练手项目，目前还在完善中，欢迎提意见或建议哈）</p>
     <f-button-group class="www-action-group">
         <f-button fillMode="outline" size="large" @click="onThemeShift">换个主题</f-button>
-        <f-button fillMode="outline" type="primary" size="large">开始使用</f-button>
+        <f-button fillMode="outline" type="primary" size="large" @click="onTutorial">开始使用</f-button>
     </f-button-group>
 </div>
 ```
@@ -16,6 +16,7 @@ import { FButton,FButtonGroup } from '@phoeon/free-ui'
 import { onMounted } from 'vue'
 import $evt from '../shared/evt'
 const onThemeShift = ()=>$evt.emit('theme-shift')
+const onTutorial = ()=>$evt.emit('start-tutorial')
 ```
 
 ```scss

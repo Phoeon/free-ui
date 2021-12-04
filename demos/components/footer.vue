@@ -31,7 +31,7 @@ const { version } = AppInfo
 </script>
 <style lang="scss">
 .www-footer{
-    background-color: var(--ph-bg-a1);
+    background-color: var(--ph-block-bg);
     padding: 0 var(--ph-pd-lg);
     border-top: 1px solid var(--ph-bg-a1-reverse);
     .www-links{
