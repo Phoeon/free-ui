@@ -1,0 +1,5 @@
+const { version,name } = require('../package.json')
+const fs = require('fs')
+const path = require("path")
+const meta = JSON.stringify({version,name},null,4)
+fs.writeFileSync(path.resolve(__dirname,'../demos/app-meta.ts'),`export default ${meta}`)

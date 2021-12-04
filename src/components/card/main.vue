@@ -1,7 +1,7 @@
 <template>
     <section class="ph-card">
         <div class="ph-card-header" v-if="title">
-            <slot name="header">
+            <slot name="header" :title="title" :subTitle="subTitle">
                 <h1 class="ph-card-title">
                     <custom-icon class="ph-card-icon" v-if="icon" :name="icon"/>
                     <span>{{title}}</span>

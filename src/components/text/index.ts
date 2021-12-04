@@ -1,0 +1,1 @@
+export { default as FText } from './main.vue'

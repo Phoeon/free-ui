@@ -37,7 +37,7 @@
         <f-loading-spin v-model="state.ld2" @click="state.ld2 = false" showBox="always" />
         <f-loading-spin v-model="state.ld3" @click="state.ld3 = false" :alpha="true" />
         <f-loading-spin v-model="state.ld4" @click="state.ld4 = false" bg="#ff000033" />
-        <f-loading-spin v-model="state.ld5" @click="state.ld5 = false" :countdown="3" />
+        <f-loading-spin v-model="state.ld5" :countdown="3" />
 
         <ph-pretty title="全局FGLoading(用法同上)">{{raw.c4}}</ph-pretty>
     </f-view>

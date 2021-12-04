@@ -2,21 +2,21 @@
   <div class="ph-pretty-container" v-if="showDoc">
     <div class="ph-pretty-header">
       <h1 class="ph-pretty-title">{{title}}</h1>
-      <f-button fillMode="none" @click="onCopyCode">复制代码</f-button>
+      <f-button fillMode="none" shape="square" v-tooltip="{content:'复制代码'}" @click="onCopyCode"><custom-icon name="copy"/></f-button>
     </div>
     <div class="ph-pretty-body" ref="ecode">
       <pre :class="cns"><slot></slot></pre>
     </div>
-    <pre class="ph-pretty-hidden">{{}}</pre>
   </div>
 </template>
 <script lang="ts" setup>
 declare var PR: { prettyPrint: () => void };
-import { computed, defineProps, nextTick, onMounted, Ref, ref } from "vue";
-import { FButton, FToast } from '@/components'
+import { computed,defineExpose, defineProps, nextTick, onMounted, Ref, ref } from "vue";
+import { FButton, FToast, FIcon, vTooltip } from '@phoeon/free-ui'
 import copy from 'ph-copy'
 
-const showDoc = process.env.VUE_APP_PRO_TYPE!="demo"&&window===top
+const { CustomIcon } = FIcon
+const showDoc = true//process.env.VUE_APP_PRO_TYPE!="demo"&&window===top
 const ecode = ref() as Ref<HTMLElement>
 const props = defineProps({
     title: { type:String, default:"案例代码"},
@@ -29,8 +29,11 @@ const cns = computed(() => {
 });
 const onCopyCode = ()=>{
   copy(ecode.value)
-  FToast.show("复制成功")
+  FToast.show("复制成功",{position:'top'})
 }
+defineExpose({
+    copyCode:onCopyCode
+})
 onMounted(() => {
     nextTick(()=>PR.prettyPrint())
 });

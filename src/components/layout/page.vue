@@ -7,13 +7,11 @@
 <script lang="ts" setup>
 import '../../assets/style/rebot.scss';
 import { defineProps, watch , computed, onBeforeMount, provide, reactive, toRef, useSlots, PropType, onMounted } from 'vue'
-import Evt from 'ph-evt'
 import MediaQuery from '../../shared/media-query'
 import Autofit from '../../shared/autofit'
 import FMask from '../mask/main.vue'
 import Flex from './flex.vue'
-
-const evt = new Evt()
+import evt from '../../shared/evt'
 const slots = useSlots()
 
 const cst = {

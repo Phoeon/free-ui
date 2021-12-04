@@ -36,6 +36,7 @@ export * from './scroll'
 export * from './loading'
 export * from './carousel'
 export * from './tree'
+export * from './text'
 export {
     FIcon,
     FNotification,

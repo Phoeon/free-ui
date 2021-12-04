@@ -29,6 +29,7 @@ import FButton from '../button/main.vue'
 import Navicon from '../icon/navicon.vue'
 import Mediaquery from '../../shared/media-query'
 import FScroll from '../scroll/main.vue'
+import phevt from '../../shared/evt'
 
 const registerAside = inject("registerAside") as ()=>void
 const props = defineProps({
@@ -37,7 +38,7 @@ const props = defineProps({
     avatar:String,
     appName:String
 })
-const phevt = inject("phevt") as {emit:(a:string,...b:any[])=>void}
+
 const toggleStatus = inject("ph-aside-toggle") as Ref<boolean>
 const dw = ref(document.documentElement.clientWidth)
 const emits = defineEmits(['logo-click','update:toggle','toggle'])

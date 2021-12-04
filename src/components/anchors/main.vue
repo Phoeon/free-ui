@@ -7,9 +7,9 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, PropType, reactive } from 'vue'
+import { defineProps, defineEmits, PropType, reactive, onMounted, onBeforeUnmount } from 'vue'
 import { IAnchor } from '../../shared/types'
-
+import evt from '../../shared/evt'
 const emits = defineEmits(['update:modelValue','navigate'])
 const props = defineProps({
     dataSource:{
@@ -21,11 +21,55 @@ const props = defineProps({
 const state = reactive({
     hover:!('ontouchstart' in window)
 })
+const cst = {
+    st:0,
+    lock:false
+}
 const notify = (item:IAnchor)=>{
     if(item.value===props.modelValue)return
     emits('update:modelValue',item.value)
     emits('navigate',item)
+    cst.lock = true
+    const target = document.querySelector("#"+item.value) as any
+    target?.scrollIntoViewIfNeeded?.()
+    setTimeout(()=>{
+        cst.lock = false
+    },50)
 }
+const onViewScroll = (t:HTMLElement)=>{
+    const up = t.scrollTop-cst.st>=0
+    const vh = document.documentElement.clientHeight
+    cst.st = t.scrollTop
+    if(cst.lock)return
+    const rank1 = props.dataSource.filter(({value})=>{
+        const el = document.querySelector("#"+value) as HTMLElement
+        const rect = el.getBoundingClientRect()
+        return ((rect.top<vh&&rect.top>=0)
+        ||(rect.top+rect.height<vh&&rect.top+rect.height>=0)
+        ||(rect.top<=0&&rect.top+rect.height>=vh))
+    })
+    const rank2 = rank1.filter(({value})=>{
+        const el = document.querySelector("#"+value) as HTMLElement
+        const rect = el.getBoundingClientRect()
+        return ((rect.top>0&&rect.top+rect.height<vh)||(rect.top<=0&&rect.top+rect.height>=vh))
+    })
+    const res = rank2.length?rank2:rank1
+    let value = ''
+    if(up){
+        value = res[res.length-1]?.value||props.dataSource[props.dataSource.length-1]?.value
+    }else{
+        value = res[0]?.value||props.dataSource[0]?.value
+    }
+    emits('update:modelValue',value)
+}
+onMounted(()=>{
+    setTimeout(()=>{
+        evt.on('view-scroll',onViewScroll)
+    },50)
+})
+onBeforeUnmount(()=>{
+    evt.off('view-scroll',onViewScroll)
+})
 </script>
 <style lang="scss">
 .ph-anchors{

@@ -7,12 +7,12 @@
     </f-scroll>
 </template>
 <script lang="ts" setup>
-import { defineProps, nextTick, onMounted, reactive, Ref, ref, defineEmits } from 'vue'
+import { defineProps, defineExpose, nextTick, onMounted, reactive, Ref, ref, defineEmits } from 'vue'
 import Backtop from '../back-top/main.vue'
 import Animation,{EndPoint} from '../../shared/animation'
 import FScroll from '../scroll/main.vue'
-
-const emits = defineEmits(['scroll'])
+import evt from '../../shared/evt'
+const emits = defineEmits(['view-scroll'])
 const eview = ref() as Ref<InstanceType<typeof FScroll>>
 const props = defineProps({
     backtop:{type:Boolean,default:true}
@@ -22,8 +22,8 @@ const state = reactive({
     showBacktop:false
 })
 const onViewScroll = (e?:Event)=>{
-    if(e)
-        emits('scroll',e)
+    emits('view-scroll',eview.value.scrollElement)
+    evt.emit('view-scroll',eview.value.scrollElement)
     if(!props.backtop)return
     const t = eview.value.scrollElement as HTMLElement
     clearTimeout(state.timer)
@@ -39,7 +39,9 @@ const onBacktop = ()=>{
     const st = eview.value.scrollElement.scrollTop
     Animation.easeIn(task,{y:st},{y:0},300)
 }
-
+defineExpose({
+    scrollTo:(y:number)=>eview.value.scrollTo(0,y)
+})
 onMounted(()=>{
     nextTick(()=>{
         onViewScroll()

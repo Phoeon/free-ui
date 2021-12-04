@@ -23,11 +23,8 @@ const state = reactive({
     text-decoration: none;
     cursor: pointer;
     opacity: 1;
-    transition: opacity .15s ease;
-    &-hover:hover{
-        // font-weight: bold;
-        opacity: .8;
-    }
+    transition: opacity .15s ease,color .15s ease;
+
     &-normal{
         color: var(--ph-c);
     }
@@ -48,6 +45,13 @@ const state = reactive({
     }
     &-noble{
         color:var(--ph-noble)
+    }
+    &-hover:hover{
+        opacity: .8;
+    }
+    &-hover.ph-action-normal:hover{
+        opacity: 1;
+        color: var(--ph-primary);
     }
     &[disabled=true]{
         opacity: .5;

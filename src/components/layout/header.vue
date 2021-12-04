@@ -19,8 +19,8 @@ export default {
 import { inject, useSlots, defineProps, onMounted, nextTick } from 'vue'
 import FButton from '../button/main.vue'
 import Navicon from '../icon/navicon.vue'
+import phevt from '../../shared/evt'
 
-const phevt = inject("phevt") as {emit:(a:string,...b:any[])=>void}
 const registerBar = inject("registerBar") as ()=>void
 const toggleAside = ()=>phevt?.emit("aside:toggle")
 const slots = useSlots()

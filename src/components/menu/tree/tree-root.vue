@@ -7,8 +7,8 @@
 import { defineProps, PropType, provide, defineEmits, inject, toRef } from 'vue'
 import { INavNode  } from '../../../shared/types'
 import TreeNode from './tree-node.vue'
+import phevt from '../../../shared/evt'
 
-const phevt = inject("phevt") as {emit:(a:string,...b:any[])=>void}
 
 const emits = defineEmits(["navigate"])
 const props = defineProps({

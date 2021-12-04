@@ -46,7 +46,8 @@ const {
 
     CustomIcon //自定义icon 
 } = FIcon`
-export const c2 = `//step1 项目中以任何方式引入font-awesome.css
+export const c2 = `
+//step1 项目中以任何方式引入font-awesome.css
 
 //step2 在main.js配置如下代码
 import FreeUi from '@phoeon/free-ui'
