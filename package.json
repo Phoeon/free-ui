@@ -14,7 +14,7 @@
     "build:site": "vue-tsc --noEmit && vite build --mode site",
     "package": "yarn clean && vue-tsc --noEmit && vite build -c vite.package.config.ts && rm dist/*.ico",
     "clean": "rimraf dist",
-    "serve1": "vite preview",
+    "preview": "vite preview",
     "gen-version": "node build/gen-version.js",
     "appmeta": "node build/gen-app-meta.js",
     "router": "node build/inspect.js"
