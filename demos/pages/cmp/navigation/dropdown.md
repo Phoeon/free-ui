@@ -26,12 +26,12 @@
 ```
 ### 静态展示
 ```html
-    <div style="margin:16px;display:flex;gap:16px;">
+    <div style="margin:16px;display:flex;gap:16px;flex-wrap: wrap;">
         <f-dropdownlist :sample="true" position="tl" :dataSource="data.dataSource"></f-dropdownlist>
         <f-dropdownlist :sample="true" position="tc" :dataSource="data.dataSource"></f-dropdownlist>
         <f-dropdownlist :sample="true" position="tr" :dataSource="data.dataSource"></f-dropdownlist>
     </div>
-    <div style="margin:16px;display:flex;gap:16px;">
+    <div style="margin:16px;display:flex;gap:16px;flex-wrap: wrap;">
         <f-dropdownlist :sample="true" position="bl" :dataSource="data.dataSource"></f-dropdownlist>
         <f-dropdownlist :sample="true" position="bc" :dataSource="data.dataSource"></f-dropdownlist>
         <f-dropdownlist :sample="true" position="br" :dataSource="data.dataSource"></f-dropdownlist>

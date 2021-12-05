@@ -9,9 +9,11 @@
 
             <f-header class="www-header">
                 <template #left>
-                    <template v-if="!state.sm">
+                    <template  v-if="!state.sm&&state.cpath==='/'">
                     <div class="www-logo" @click="goHome"></div>
                     <div class="www-app-name" @click="goHome">Free Ui</div>
+                    </template>
+                    <template v-if="!state.sm">
                     <f-action :type="state.cpath==='/'?'primary':'normal'" @click="router.push('/')">首页</f-action>
                     <f-action :type="state.cpath.startsWith('/cmp')?'primary':'normal'" @click="router.push('/cmp/button')">组件</f-action>
                     <!-- <f-action :type="state.cpath.startsWith('/doc')?'primary':'normal'" >文档</f-action> -->
@@ -137,11 +139,13 @@ onMounted(()=>{
     .www-app-name,
     .www-logo{
         cursor: pointer;
+        flex: 0 0 auto;
     }
     .www-app-name{
         font-size: 18px;
         color: var(--ph-c-d2);
         margin-right: 150px;
+        white-space: nowrap;
     }
     .www-logo{
         width: 32px;

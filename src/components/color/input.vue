@@ -1,6 +1,6 @@
 <template>
     <div class="ph-color-minput">
-        <div :class="['ph-color-mipwrap',item.cn?item.cn:'']" v-for="(item,idx) in ds" :key="idx">
+        <div :class="['ph-color-mipwrap',item.cn?item.cn:'']" v-for="(item ,idx) in ds" :key="idx">
             <span class="ph-color-mipaddon" v-if="item.prefix">{{item.prefix}}</span>
             <input v-if="item.hex" :value="item.v" @change="onHexInput" :data-idx="idx">
             <input v-else :value="item.v" :data-min="item.min" :data-max="item.max" @change="onInput" @keyup.up.prevent="onPlus" @keyup.down.prevent="onMinus" :data-idx="idx">
@@ -40,7 +40,7 @@ const ds = computed(()=>{
         min:0,
         max:100,
         suffix:'%'
-    }]
+    }] as any
     if(props.mode === ColorMode.rgb)
     return [{
         v:props.rgb[0],
@@ -59,7 +59,7 @@ const ds = computed(()=>{
         min:0,
         max:100,
         suffix:'%'
-    }]
+    }] as any
     return [{
         v:props.hex?.replace("#",""),
         hex:true,
@@ -70,7 +70,7 @@ const ds = computed(()=>{
         min:0,
         max:100,
         suffix:'%'
-    }]
+    }] as any
 })
 const onHexInput = (e:Event)=>{
     const 

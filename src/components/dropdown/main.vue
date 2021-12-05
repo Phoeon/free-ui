@@ -17,7 +17,7 @@ import { xmatrix,ymatrix} from '../../shared/popover'
 
 let hide:()=>void;
 const emits = defineEmits(['action'])
-const edom = ref() as Ref<FButton>
+const edom = ref() as Ref<InstanceType<typeof FButton>>
 const props = defineProps({
     dataSource:{
         type:Array as PropType<Array<IDropdownItem>>,
@@ -76,7 +76,7 @@ const showDropdown = (el:HTMLElement,opt:{
     .enter(enter)
     .leave(leave)
     .hide
-    setTimeout(()=>{
+    window.setTimeout(()=>{
         state.lock = false
     },300)
 }
@@ -101,7 +101,7 @@ const onEnter = ()=>{
 const onLeave = ()=>{
     if(props.trigger!=='hover')return
     if(!state.open)return
-    setTimeout(()=>{
+    window.setTimeout(()=>{
         if(state.enter)return
         onHide()
     },50)

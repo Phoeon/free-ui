@@ -36,7 +36,7 @@ const props = defineProps({
 })
 
 const visible = ref(false)
-const close = (action:string|number)=>{
+const close = (action?:string|number)=>{
     visible.value = false
     props.evt?.emit("close",action)
 }

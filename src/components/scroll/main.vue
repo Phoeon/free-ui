@@ -74,10 +74,10 @@ const task = ()=>{
 }
 const bounceTask = ()=>{
     clearTimeout(timer)
-    timer = setTimeout(()=>{
+    timer = window.setTimeout(()=>{
         task()
         clearTimeout(timer1);
-        timer1 = setTimeout(()=>onLeave(),3000)
+        timer1 = window.setTimeout(()=>onLeave(),3000)
     })
 }
 const onScroll = (e:Event)=>{

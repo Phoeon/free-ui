@@ -1,0 +1,171 @@
+import{d as I,r as O,c as P,k as q,D as H,O as K,o as f,a as U,e as C,w as g,l,u as e,A as v,p as w,f as m,F as T,B as R,m as M,n as X,I as Q}from"./vendor.6c48bfff.js";import{g as h}from"./gen-code.94dbf386.js";import{M as Y,a6 as j,_ as B,a8 as Z,a9 as E}from"./index.898e7603.js";import{a as ee,_ as ae}from"./select.62be0430.js";import{_ as te}from"./main.9982799e.js";import"./input-wrap.c34eff16.js";const pe={key:2},ne={class:"ph-text ph-text-primary"},le=v("/"),oe={class:"ph-text"},se={key:0,class:"ph-pager-group"},ge=v("\u53BB"),ie=v("\u9875"),ue={key:2,class:"ph-pager-total"},r=I({props:{showTotal:Boolean,showPagesize:Boolean,showJump:Boolean,pagesizeOptions:{type:Array,default:()=>[10,20,30,50,100]},justify:{type:String,default:"flex-start"},pagesize:{type:Number,default:10},page:{type:Number,default:1},total:{type:Number,default:0},simple:Boolean,autoSize:{type:Boolean,default:!0},prev:String,next:String,fillMode:{type:String},size:{type:String},theme:String,pagerCount:Number},emits:["page","update:page","update:pagesize"],setup(i,{emit:a}){const n=i,o=O({pagesize:n.pagesize,pagerCount:n.pagerCount||5,small:!1,size:void 0}),x=(s,d)=>{let u=n.pagerCount,z;d<E.xs||d<E.sm?(u=5,z="small"):d<E.md?u=7:d<E.lg?u=9:u=11,o.small=d<E.sm&&n.autoSize,o.pagerCount=n.pagerCount||u,o.size=n.size||z};Y.all(x);const k=P(()=>{const s={};return n.justify&&(s["--ph-pager-justify"]=o.small&&!n.simple?"center":n.justify),n.theme&&(s["--ph-primary"]=`var(--ph-${n.theme})`),s}),t=P(()=>n.pagesizeOptions.map(s=>({value:s,text:s+"\u6761/\u9875"}))),y=P(()=>Math.ceil(n.total/o.pagesize)),b=q(Math.min(n.page,y.value)),p=P(()=>b.value<=1),A=P(()=>b.value>=y.value),L=P(()=>{const s=o.pagerCount,d=y.value,u=b.value,z=[],G=Math.floor(s/2);let S=1,c=s;d<s?c=d:u>=s-1&&(c=Math.min(u+G,d),S=c-s+1);for(let $=S;$<=c;$++)z.push($);z.length==s&&(z.shift(),z.pop());const J=z[0],N=z[z.length-1];return J!=1&&(J>2&&!o.small&&z.unshift(-1),z.unshift(1)),N!==d&&(N<d-1&&!o.small&&z.push(-1),z.push(d)),z}),F=(s,d)=>{const u=d||o.pagesize;a("update:page",s),a("update:pagesize",u),a("page",{page:s,pagesize:u})},W=s=>{!s||window.setTimeout(()=>{const d=Math.min(n.page,Math.ceil(n.total/s));F(d,s),o.pagesize=s},200)},D=()=>{F(n.page+1)},V=()=>{F(n.page-1)},_=s=>{n.page!==s&&F(s)};return H(()=>n.page,s=>{b.value=s}),K(()=>{x(!0,document.documentElement.clientWidth)}),(s,d)=>(f(),U("div",{class:"ph-pager",style:X(e(k))},[i.prev?(f(),C(B,{key:0,size:e(o).size,fillMode:i.fillMode,disabled:e(p),onClick:V,class:"ph-pager-action"},{leftIcon:g(()=>[l(e(j),{direction:"left"})]),default:g(()=>[v(w(i.prev),1)]),_:1},8,["size","fillMode","disabled"])):(f(),C(B,{key:1,size:e(o).size,fillMode:i.fillMode,disabled:e(p),onClick:V,shape:"square",class:"ph-pager-action"},{leftIcon:g(()=>[l(e(j),{direction:"left"})]),_:1},8,["size","fillMode","disabled"])),i.simple?(f(),U("div",pe,[m("span",ne,w(i.page),1),le,m("span",oe,w(e(y)),1)])):(f(!0),U(T,{key:3},R(e(L),u=>(f(),U(T,null,[u>0?(f(),C(B,{shape:"square",class:"ph-pager-action",type:b.value===u?"primary":"normal",fillMode:i.fillMode,size:e(o).size,key:u,onClick:z=>_(u)},{default:g(()=>[v(w(u),1)]),_:2},1032,["type","fillMode","size","onClick"])):(f(),C(e(Z),{key:"empty"+u}))],64))),256)),i.next?(f(),C(B,{key:4,size:e(o).size,fillMode:i.fillMode,disabled:e(A),onClick:D,class:"ph-pager-action",title:i.next},{rightIcon:g(()=>[l(e(j),{direction:"right"})]),default:g(()=>[v(w(i.next),1)]),_:1},8,["size","fillMode","disabled","title"])):(f(),C(B,{key:5,size:e(o).size,fillMode:i.fillMode,disabled:e(A),onClick:D,shape:"square",class:"ph-pager-action",title:i.next},{rightIcon:g(()=>[l(e(j),{direction:"right"})]),_:1},8,["size","fillMode","disabled","title"])),!e(o).small&&!i.simple?(f(),U(T,{key:6},[i.showPagesize||i.showJump||i.showTotal?(f(),U("div",se,[i.showPagesize?(f(),C(e(ee),{key:0,class:"ph-pager-select",modelValue:e(o).pagesize,"onUpdate:modelValue":d[0]||(d[0]=u=>e(o).pagesize=u),options:e(t),onInput:W},null,8,["modelValue","options"])):M("v-if",!0),i.showJump?(f(),C(e(ae),{key:1,class:"ph-pager-jump",min:1,max:e(y),modelValue:b.value,"onUpdate:modelValue":d[1]||(d[1]=u=>b.value=u)},{left:g(()=>[ge]),right:g(()=>[ie]),_:1},8,["max","modelValue"])):M("v-if",!0),i.showTotal?(f(),U("div",ue," \u5171"+w(i.total)+"\u6761 ",1)):M("v-if",!0)])):M("v-if",!0)],2112)):M("v-if",!0)],4))}}),de={class:"www-doc"},re={class:"www-doc-left"},ze=m("h2",{id:"nav_0",class:"www-title"},"\u5206\u9875",-1),me=m("br",null,null,-1),fe=m("br",null,null,-1),ve=m("br",null,null,-1),we=m("br",null,null,-1),ye=m("br",null,null,-1),be=m("br",null,null,-1),he=m("br",null,null,-1),Ue=m("br",null,null,-1),Ce=m("br",null,null,-1),Pe=m("br",null,null,-1),xe=m("br",null,null,-1),Me=m("br",null,null,-1),Be={class:"www-doc-right","sm-visible":"false"},Te=I({setup(i){const a=O({page:1,pagesize:10,total:250}),n=k=>{console.log(k)},o={parts:[{title:"\u5206\u9875",template:"\u5206\u9875",type:"h2",nowrap:!0,id:"nav_0"},{title:"\u9ED8\u8BA4\u6848\u4F8B",nowrap:!1,type:"card",id:"nav_1",template:`    <f-pager 
+        @page="onPage"
+        :total="data.total"
+        v-model:page="data.page"
+        v-model:pagesize="data.pagesize"
+    />`},{title:"showTotal",nowrap:!1,type:"card",id:"nav_2",template:`    <f-pager 
+        @page="onPage"
+        :showTotal="true"
+        :total="data.total"
+        v-model:page="data.page"
+        v-model:pagesize="data.pagesize"
+    />`},{title:"showPagesize",nowrap:!1,type:"card",id:"nav_3",template:`<f-pager 
+    @page="onPage"
+    :showTotal="true"
+    :showPagesize="true"
+    :total="data.total"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>`},{title:"showJump",nowrap:!1,type:"card",id:"nav_4",template:`<f-pager 
+    @page="onPage"
+    :showTotal="true"
+    :showPagesize="true"
+    :showJump="true"
+    :total="data.total"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>`},{title:"pagerCount",nowrap:!1,type:"card",id:"nav_5",template:`<f-pager 
+    @page="onPage"
+    :showTotal="true"
+    :showPagesize="true"
+    :showJump="true"
+    :pagerCount="5"
+    :total="data.total"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>`},{title:"\u6C34\u5E73\u5206\u5E03",nowrap:!1,type:"card",id:"nav_6",template:`<f-pager 
+    @page="onPage"
+    :total="data.total"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>
+<br/>
+<f-pager 
+    @page="onPage"
+    :total="data.total"
+    justify="center"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>
+<br/>
+<f-pager 
+    @page="onPage"
+    :total="data.total"
+    justify="flex-end"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>`},{title:"\u80CC\u666F\u586B\u5145",nowrap:!1,type:"card",id:"nav_7",template:`<f-pager 
+    @page="onPage"
+    :total="data.total"
+    fillMode="normal"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>
+<br/>
+<f-pager 
+    @page="onPage"
+    :total="data.total"
+    fillMode="none"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>
+<br/>
+<f-pager 
+    @page="onPage"
+    :total="data.total"
+    fillMode="outline"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>
+<br/>
+<f-pager 
+    @page="onPage"
+    :total="data.total"
+    fillMode="reverse"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>`},{title:"\u7B80\u5355\u6A21\u5F0F",nowrap:!1,type:"card",id:"nav_8",template:`<f-pager 
+    @page="onPage"
+    :total="data.total"
+    :simple="true"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>
+<br/>
+<f-pager 
+    @page="onPage"
+    :total="data.total"
+    :simple="true"
+    prev="\u4E0A\u4E00\u9875"
+    next="\u4E0B\u4E00\u9875"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>
+<br/>
+<f-pager 
+    @page="onPage"
+    :total="data.total"
+    :simple="true"
+    justify="space-between"
+    prev="\u4E0A\u4E00\u9875"
+    next="\u4E0B\u4E00\u9875"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>`},{title:"\u4E0D\u540C\u4E3B\u9898\u8272",nowrap:!1,type:"card",id:"nav_9",template:`<f-pager 
+    @page="onPage"
+    :total="data.total"
+    theme="success"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>
+<br/>
+<f-pager 
+    @page="onPage"
+    :total="data.total"
+    theme="danger"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>
+<br/>
+<f-pager 
+    @page="onPage"
+    :total="data.total"
+    theme="warning"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>
+<br/>
+<f-pager 
+    @page="onPage"
+    :total="data.total"
+    theme="noble"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>
+<br/>
+<f-pager 
+    @page="onPage"
+    :total="data.total"
+    theme="info"
+    v-model:page="data.page"
+    v-model:pagesize="data.pagesize"
+/>
+<br/>`},{title:"\u57FA\u672C\u7528\u6CD5",type:"code",lang:"typescript",code:`import { FPager } from '@phoeon/free-ui'
+import { reactive } from 'vue'
+const data = reactive({
+    page:1,
+    pagesize:10,
+    total:250
+})
+const onPage = (meta:{page:number,pagesize:number})=>{
+    console.log(meta)
+}`,id:"nav_10"}],title:"\u5206\u9875",root:!1,script:`import { FPager } from '@phoeon/free-ui'
+import { reactive } from 'vue'
+const data = reactive({
+    page:1,
+    pagesize:10,
+    total:250
+})
+const onPage = (meta:{page:number,pagesize:number})=>{
+    console.log(meta)
+}`,anchors:[{text:"\u5206\u9875",value:"nav_0"},{text:"\u9ED8\u8BA4\u6848\u4F8B",value:"nav_1"},{text:"showTotal",value:"nav_2"},{text:"showPagesize",value:"nav_3"},{text:"showJump",value:"nav_4"},{text:"pagerCount",value:"nav_5"},{text:"\u6C34\u5E73\u5206\u5E03",value:"nav_6"},{text:"\u80CC\u666F\u586B\u5145",value:"nav_7"},{text:"\u7B80\u5355\u6A21\u5F0F",value:"nav_8"},{text:"\u4E0D\u540C\u4E3B\u9898\u8272",value:"nav_9"},{text:"\u57FA\u672C\u7528\u6CD5",value:"nav_10"}],anchor:"nav_0"},x=q(o.anchor);return(k,t)=>{const y=Q("demo-card"),b=Q("ph-pretty");return f(),U("div",de,[m("div",re,[ze,l(y,{id:"nav_1",title:"\u9ED8\u8BA4\u6848\u4F8B"},{code:g(()=>[v(w(e(h)(o.parts[1])),1)]),default:g(()=>[l(e(r),{onPage:n,total:e(a).total,page:e(a).page,"onUpdate:page":t[0]||(t[0]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[1]||(t[1]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"])]),_:1}),l(y,{id:"nav_2",title:"showTotal"},{code:g(()=>[v(w(e(h)(o.parts[2])),1)]),default:g(()=>[l(e(r),{onPage:n,showTotal:!0,total:e(a).total,page:e(a).page,"onUpdate:page":t[2]||(t[2]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[3]||(t[3]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"])]),_:1}),l(y,{id:"nav_3",title:"showPagesize"},{code:g(()=>[v(w(e(h)(o.parts[3])),1)]),default:g(()=>[l(e(r),{onPage:n,showTotal:!0,showPagesize:!0,total:e(a).total,page:e(a).page,"onUpdate:page":t[4]||(t[4]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[5]||(t[5]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"])]),_:1}),l(y,{id:"nav_4",title:"showJump"},{code:g(()=>[v(w(e(h)(o.parts[4])),1)]),default:g(()=>[l(e(r),{onPage:n,showTotal:!0,showPagesize:!0,showJump:!0,total:e(a).total,page:e(a).page,"onUpdate:page":t[6]||(t[6]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[7]||(t[7]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"])]),_:1}),l(y,{id:"nav_5",title:"pagerCount"},{code:g(()=>[v(w(e(h)(o.parts[5])),1)]),default:g(()=>[l(e(r),{onPage:n,showTotal:!0,showPagesize:!0,showJump:!0,pagerCount:5,total:e(a).total,page:e(a).page,"onUpdate:page":t[8]||(t[8]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[9]||(t[9]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"])]),_:1}),l(y,{id:"nav_6",title:"\u6C34\u5E73\u5206\u5E03"},{code:g(()=>[v(w(e(h)(o.parts[6])),1)]),default:g(()=>[l(e(r),{onPage:n,total:e(a).total,page:e(a).page,"onUpdate:page":t[10]||(t[10]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[11]||(t[11]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"]),me,l(e(r),{onPage:n,total:e(a).total,justify:"center",page:e(a).page,"onUpdate:page":t[12]||(t[12]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[13]||(t[13]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"]),fe,l(e(r),{onPage:n,total:e(a).total,justify:"flex-end",page:e(a).page,"onUpdate:page":t[14]||(t[14]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[15]||(t[15]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"])]),_:1}),l(y,{id:"nav_7",title:"\u80CC\u666F\u586B\u5145"},{code:g(()=>[v(w(e(h)(o.parts[7])),1)]),default:g(()=>[l(e(r),{onPage:n,total:e(a).total,fillMode:"normal",page:e(a).page,"onUpdate:page":t[16]||(t[16]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[17]||(t[17]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"]),ve,l(e(r),{onPage:n,total:e(a).total,fillMode:"none",page:e(a).page,"onUpdate:page":t[18]||(t[18]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[19]||(t[19]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"]),we,l(e(r),{onPage:n,total:e(a).total,fillMode:"outline",page:e(a).page,"onUpdate:page":t[20]||(t[20]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[21]||(t[21]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"]),ye,l(e(r),{onPage:n,total:e(a).total,fillMode:"reverse",page:e(a).page,"onUpdate:page":t[22]||(t[22]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[23]||(t[23]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"])]),_:1}),l(y,{id:"nav_8",title:"\u7B80\u5355\u6A21\u5F0F"},{code:g(()=>[v(w(e(h)(o.parts[8])),1)]),default:g(()=>[l(e(r),{onPage:n,total:e(a).total,simple:!0,page:e(a).page,"onUpdate:page":t[24]||(t[24]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[25]||(t[25]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"]),be,l(e(r),{onPage:n,total:e(a).total,simple:!0,prev:"\u4E0A\u4E00\u9875",next:"\u4E0B\u4E00\u9875",page:e(a).page,"onUpdate:page":t[26]||(t[26]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[27]||(t[27]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"]),he,l(e(r),{onPage:n,total:e(a).total,simple:!0,justify:"space-between",prev:"\u4E0A\u4E00\u9875",next:"\u4E0B\u4E00\u9875",page:e(a).page,"onUpdate:page":t[28]||(t[28]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[29]||(t[29]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"])]),_:1}),l(y,{id:"nav_9",title:"\u4E0D\u540C\u4E3B\u9898\u8272"},{code:g(()=>[v(w(e(h)(o.parts[9])),1)]),default:g(()=>[l(e(r),{onPage:n,total:e(a).total,theme:"success",page:e(a).page,"onUpdate:page":t[30]||(t[30]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[31]||(t[31]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"]),Ue,l(e(r),{onPage:n,total:e(a).total,theme:"danger",page:e(a).page,"onUpdate:page":t[32]||(t[32]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[33]||(t[33]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"]),Ce,l(e(r),{onPage:n,total:e(a).total,theme:"warning",page:e(a).page,"onUpdate:page":t[34]||(t[34]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[35]||(t[35]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"]),Pe,l(e(r),{onPage:n,total:e(a).total,theme:"noble",page:e(a).page,"onUpdate:page":t[36]||(t[36]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[37]||(t[37]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"]),xe,l(e(r),{onPage:n,total:e(a).total,theme:"info",page:e(a).page,"onUpdate:page":t[38]||(t[38]=p=>e(a).page=p),pagesize:e(a).pagesize,"onUpdate:pagesize":t[39]||(t[39]=p=>e(a).pagesize=p)},null,8,["total","page","pagesize"]),Me]),_:1}),l(b,{id:"nav_10",title:"\u57FA\u672C\u7528\u6CD5",lang:"typescript"},{default:g(()=>[v(w(o.parts[10].code),1)]),_:1})]),m("div",Be,[l(e(te),{class:"www-anchors",modelValue:x.value,"onUpdate:modelValue":t[40]||(t[40]=p=>x.value=p),dataSource:o.anchors},null,8,["modelValue","dataSource"])])])}}});export{Te as default};

@@ -10,7 +10,7 @@
                         {{state.status?'结束时间':'开始时间'}}
                     </div>
                     <div class="ph-dt-header-right">
-                        <arrow class="ph-dt-iaction" :hover="scope.hover" v-if="!state.status" direction="right" @click="notify(-eswiper.offsetWidth/2,1)"/>
+                        <arrow class="ph-dt-iaction" :hover="scope.hover" v-if="!state.status" direction="right" @click="eswiper&&notify(-eswiper.offsetWidth/2,1)"/>
                     </div>
                 </template>
             </dt-header>
@@ -18,7 +18,7 @@
         <dt-body style="padding: var(--ph-pd-sm);">
             <div class="ph-dt-swiper" ref="eswiper" v-touchmove="onTouchmove" :style="{transform:'translate3d('+state.tx+'px,0,0)'}">
                 <DtSimplepicker 
-                    :modelValue="start"
+                    :modelValue="start as IDtee"
                     :ctype="ctype"
                     :utype="utype"
                     :lang="lang"
@@ -27,7 +27,7 @@
                     @update="updateStart"
                 />
                 <DtSimplepicker 
-                    :modelValue="end"
+                    :modelValue="end as IDtee"
                     :ctype="ctype"
                     :utype="utype"
                     :lang="lang"
@@ -41,17 +41,17 @@
             <dt-footer>
                 <div class="ph-dt-footer-left">{{state.status?endString:startString}}</div>
                 <div class="ph-dt-footer-right">
-                    <dt-btn @click="emits('clear')" v-if="clear">{{lang.clear}}</dt-btn>
-                    <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang.now}}</dt-now>
-                    <dt-btn @click="emits('done')">{{lang.done}}</dt-btn>
+                    <dt-btn @click="emits('clear')" v-if="clear">{{lang?.clear}}</dt-btn>
+                    <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang?.now}}</dt-now>
+                    <dt-btn @click="emits('done')">{{lang?.done}}</dt-btn>
                 </div>
             </dt-footer>
         </template>
     </dt-layout>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, reactive, ref } from 'vue'
-import { SharedCascadeProps, DtType } from '../shared'
+import { defineProps, defineEmits, reactive, ref , withDefaults} from 'vue'
+import { DtSharedCascadeProps, DtType } from '../shared'
 import { touchmove as vTouchmove } from '../../../directives/gesture'
 import { Arrow}  from '../../icon'
 import DtLayout from '../layout/layout.vue'
@@ -61,14 +61,38 @@ import DtBody from '../layout/layout-body.vue'
 import DtBtn from '../cmp/btn.vue'
 import DtNow from '../cmp/now.vue'
 import DtSimplepicker from './simple-picker.vue'
+import {ISharedCascadeProps , IDtee, IDateObject, IDtImportant} from '../../../shared/types'
 
 const emits = defineEmits(['update:start','update:end','done','clear','now'])
 const eswiper = ref<HTMLElement>()
-const props = defineProps({
-    ...SharedCascadeProps,
-    utype:String,
-    ctype:String
+const props = withDefaults(defineProps<{
+    min?:number[],
+    max?:number[],
+    clear?:boolean,
+    now?:boolean,
+    importants?:IDtImportant[],
+    lang?:Record<string,string>,
+    format?:string,
+    utype:string,
+    ctype:string,
+    start:number[],
+    end:number[],
+    startState?:IDateObject,
+    endState?:IDateObject,
+    emin?:number[],
+    smax?:number[],
+    startString:string,
+    endString:string,
+}>(),{
+    min:()=>[-1,0,0,0,0,0],
+    max:()=>[Number.MAX_SAFE_INTEGER,0,0,0,0,0],
+    clear:true,
+    now:true,
+    lang:()=>Object.create({}),
+    emin:()=>[-1,0,0,0,0,0],
+    smax:()=>[Number.MAX_SAFE_INTEGER,0,0,0,0,0]
 })
+
 const state = reactive({
     status:0,
     tx:0

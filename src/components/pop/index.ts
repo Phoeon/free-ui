@@ -13,7 +13,7 @@ import { unmount } from '../../shared/utils'
 
 const showPopover = (opt:IPopover)=>{
     const app = createApp(FPopover,{...opt}),
-        ins = app.mount(document.createElement("div")) as InstanceType<typeof FPopover>;
+        ins = app.mount(document.createElement("div")) as any//InstanceType<typeof FPopover>;
     document.body.appendChild(ins.$el)
     return ()=>{
         unmount(app)
@@ -22,7 +22,7 @@ const showPopover = (opt:IPopover)=>{
 }
 const showTip = (opt:ITooltip)=>{
     const app = createApp(FTooltip,{...opt}),
-        ins = app.mount(document.createElement("div")) as InstanceType<typeof FTooltip>;
+        ins = app.mount(document.createElement("div")) as any//InstanceType<typeof FTooltip>;
     document.body.appendChild(ins.$el)
     return ()=>{
         unmount(app)
@@ -64,7 +64,7 @@ const showDropdown = (opt:IDropdown)=>{
         evt.emit("done",item)
     }
     const app = createApp(FDropdownList,{...opt,notify}),
-        ins = app.mount(document.createElement("div")) as InstanceType<typeof FDropdownList>;
+        ins = app.mount(document.createElement("div")) as any//InstanceType<typeof FDropdownList>;
     document.body.appendChild(ins.$el)
     return {
         done(fn:(item:IDropdownItem)=>void){
@@ -96,7 +96,7 @@ const showPopSelect = (opt:ISelect)=>{
     }
     const 
         app = createApp(FPopSelect,{...opt,notify,destroy}),
-        ins = app.mount(document.createElement("div")) as InstanceType<typeof FPopSelect>;
+        ins = app.mount(document.createElement("div")) as any //InstanceType<typeof FPopSelect>;
     evt.on("close",()=>unmount(app))
     document.body.appendChild(ins.$el)
     return {
@@ -114,7 +114,7 @@ const showTreeSelect = (opt:IPopTreeSelect)=>{
     }
     const 
         app = createApp(FTreeSelect,{...opt,notify,destroy}),
-        ins = app.mount(document.createElement("div")) as InstanceType<typeof FTreeSelect>;
+        ins = app.mount(document.createElement("div")) as any //InstanceType<typeof FTreeSelect>;
     evt.on("close",()=>unmount(app))
     document.body.appendChild(ins.$el)
     return {
@@ -132,7 +132,7 @@ const showCascadeSelect = (opt:IPopTreeSelect)=>{
     }
     const 
         app = createApp(FCascadeSelect,{...opt,notify,destroy}),
-        ins = app.mount(document.createElement("div")) as InstanceType<typeof FCascadeSelect>;
+        ins = app.mount(document.createElement("div")) as any //InstanceType<typeof FCascadeSelect>;
     evt.on("close",()=>unmount(app))
     document.body.appendChild(ins.$el)
     return {

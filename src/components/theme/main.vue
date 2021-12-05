@@ -28,7 +28,7 @@
 import { defineProps, PropType, reactive, defineEmits, Ref, ref, onMounted } from 'vue'
 import { Theme, Sun,Moon,CircleTick } from '../icon'
 import { Fr } from '../../shared/config'
-import { IPopPosition } from '../pop/types'
+import { IPopPosition } from '../../shared/types'
 import FButton from '../button/main.vue'
 import FPopContainer from '../pop/base.vue'
 
@@ -61,10 +61,10 @@ const open = ()=>{
 /*** mobile event end */
 /*** web event start */
 const onEnter = ()=>{
-    setTimeout(()=>open())
+    window.setTimeout(()=>open())
 }
 const onLeave = ()=>{
-    setTimeout(()=>{
+    window.setTimeout(()=>{
         if(state.enter)return
         destroy()
     },50)

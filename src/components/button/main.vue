@@ -10,7 +10,7 @@
 <script lang="ts" setup>
 import './button.scss'
 import { PropType, reactive, defineProps, defineEmits, defineAsyncComponent, computed } from "vue";
-import { IThemeType } from '../../shared/types'
+import { IThemeType,IBtnFillmode,IBtnShape,IBtnSize } from '../../shared/types'
 
 const Caret = defineAsyncComponent(()=>import("../icon/caret.vue"))
 const Spin = defineAsyncComponent(()=>import("../icon/loading/spin.vue"))
@@ -19,14 +19,14 @@ const props = defineProps({
     block:Boolean,
     loading:Boolean,
     dropdown:String as PropType<'up'|'down'>,
-    shape:String as PropType<'circle'|'square'>,
+    shape:String as PropType<IBtnShape>,
     throttle:{type:Boolean,default:true},
     threshhold:{type:Number,default:300},
     radius:{type:Boolean,default:true},
     hover:{type:Boolean,default:true},
     type:{type:String as PropType<IThemeType|'mode'>,default:'normal'},
-    fillMode:{type:String as PropType<'outline'|'reverse'|'none'|'dashed'>},
-    size:{type:String as PropType<'mini'|'small'|'large'>}
+    fillMode:{type:String as PropType<IBtnFillmode>},
+    size:{type:String as PropType<IBtnSize>}
 })
 const cst = {
     lock:false
@@ -57,7 +57,7 @@ const onClick = (e:unknown)=>{
     if(cst.lock)return
     cst.lock = true
     emits("click",e)
-    setTimeout(()=>{
+    window.setTimeout(()=>{
         cst.lock = false
     },props.threshhold)
 }

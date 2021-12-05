@@ -4,9 +4,9 @@
             <dt-header class="ph-dt-yearmonth-header" justify="space-between">
                 <arrow class="ph-dt-iaction" direction="left" @click="emits('shiftYear',-1)"/>
                 <span>
-                {{startState.yyyy}}{{lang.year}}
+                {{startState.yyyy}}{{lang?.year}}
                 &ensp;~&ensp;
-                {{endState.yyyy}}{{lang.year}}</span>
+                {{endState.yyyy}}{{lang?.year}}</span>
                 <arrow class="ph-dt-iaction" direction="right" @click="emits('shiftYear',1)"/>
             </dt-header>
         </template>
@@ -19,10 +19,10 @@
                 <div class="ph-dt-footer-left"><dt-preview :startString="startString" :endString="endString"/></div>
                 <div class="ph-dt-footer-right">
                     <template v-if="utype===DtType.month">
-                        <dt-btn @click="emits('clear')" v-if="clear">{{lang.clear}}</dt-btn>
-                        <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang.now}}</dt-now>
+                        <dt-btn @click="emits('clear')" v-if="clear">{{lang?.clear}}</dt-btn>
+                        <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang?.now}}</dt-now>
                     </template>
-                    <dt-btn @click="emits('done')">{{lang.done}}</dt-btn>
+                    <dt-btn @click="emits('done')">{{lang?.done}}</dt-btn>
                 </div>
             </dt-footer>
         </template>

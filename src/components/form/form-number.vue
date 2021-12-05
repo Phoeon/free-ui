@@ -5,7 +5,7 @@
                 :disabled="scope.disabled"
                 :placeholder="scope.placeholder"
                 :valid="scope.valid"
-                :modelValue="scope.value"
+                :modelValue="scope.value as number"
                 :step="step"
                 :min="min"
                 :max="max"

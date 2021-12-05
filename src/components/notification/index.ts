@@ -4,14 +4,15 @@ import Env from '../../shared/env'
 import { INotifyOption } from '../../shared/types'
 import { CloseStatus } from './types'
 import { createApp, nextTick } from 'vue'
-let mnger:InstanceType<typeof NotificationMnger>;
+// let mnger:InstanceType<typeof NotificationMnger>;
+let mnger:any;
 const notify =(content:string,opt?:INotifyOption)=>{
     const 
         evt = new Evt,
         nid = (Math.random()+"").replace(".",""),
         option = Object.assign({type:""},opt,{content,nid,evt});
     if(!mnger){
-        mnger = createApp(NotificationMnger,{}).mount(document.createElement("div")) as InstanceType<typeof NotificationMnger>
+        mnger = createApp(NotificationMnger,{}).mount(document.createElement("div")) as any//InstanceType<typeof NotificationMnger>
         document.body.appendChild(mnger.$el as HTMLElement)
     }
     nextTick(()=>{

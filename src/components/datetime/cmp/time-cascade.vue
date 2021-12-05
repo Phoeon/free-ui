@@ -2,15 +2,15 @@
     <dt-layout>
         <template #header>
             <dt-header class="ph-dt-time-header" justify="center">
-                <span>{{lang.timeSetting}}</span>
+                <span>{{lang?.timeSetting}}</span>
             </dt-header>
         </template>
         <dt-body class="ph-dt-timecascade-body">
             <div class="ph-dt-content-wrapper">
                 <div class="ph-dt-date-th">
-                    <div class="ph-dt-date-thcell">{{lang.hour}}</div>
-                    <div class="ph-dt-date-thcell">{{lang.min}}</div>
-                    <div class="ph-dt-date-thcell">{{lang.sec}}</div>
+                    <div class="ph-dt-date-thcell">{{lang?.hour}}</div>
+                    <div class="ph-dt-date-thcell">{{lang?.min}}</div>
+                    <div class="ph-dt-date-thcell">{{lang?.sec}}</div>
                 </div>
                 <div class="ph-dt-time-columns">
                     <div class="ph-dt-time-column" v-siv="start[3]">
@@ -44,9 +44,9 @@
             </div>
             <div class="ph-dt-content-wrapper">
                 <div class="ph-dt-date-th">
-                    <div class="ph-dt-date-thcell">{{lang.hour}}</div>
-                    <div class="ph-dt-date-thcell">{{lang.min}}</div>
-                    <div class="ph-dt-date-thcell">{{lang.sec}}</div>
+                    <div class="ph-dt-date-thcell">{{lang?.hour}}</div>
+                    <div class="ph-dt-date-thcell">{{lang?.min}}</div>
+                    <div class="ph-dt-date-thcell">{{lang?.sec}}</div>
                 </div>
                 <div class="ph-dt-time-columns">
                     <div class="ph-dt-time-column" v-siv="end[3]">
@@ -84,10 +84,10 @@
                 <div class="ph-dt-footer-left"><dt-preview :startString="startString" :endString="endString"/></div>
                 <div class="ph-dt-footer-right">
                     <template v-if="utype===DtType.time">
-                        <dt-btn @click="emits('clear')" v-if="clear">{{lang.clear}}</dt-btn>
-                        <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang.now}}</dt-now>
+                        <dt-btn @click="emits('clear')" v-if="clear">{{lang?.clear}}</dt-btn>
+                        <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang?.now}}</dt-now>
                     </template>
-                    <dt-btn @click="emits('done')">{{lang.done}}</dt-btn>
+                    <dt-btn @click="emits('done')">{{lang?.done}}</dt-btn>
                 </div>
             </dt-footer>
         </template>
@@ -101,16 +101,45 @@ import DtBody from '../layout/layout-body.vue'
 import DtBtn from './btn.vue'
 import DtNow from './now.vue'
 import DtPreview from './date-preview.vue'
-import { defineProps, defineEmits, nextTick } from 'vue'
+import { defineProps, defineEmits, nextTick, withDefaults } from 'vue'
 import { compare } from '../../../shared/datetime'
-import { SharedCascadeProps, DtType } from '../shared'
-import { IDateObject } from '../../../shared/types'
+import { DtSharedCascadeProps, DtType } from '../shared'
+import { IDateObject, ISharedCascadeProps, IDtImportant } from '../../../shared/types'
 
 const emits = defineEmits(['update:start','update:end','done','clear','now'])
-const props = defineProps({
-    ...SharedCascadeProps,
-    format:{type:String,default:"hh:mm:ss"},
-    utype:{type:String,default:"time"}
+// const props = withDefaults(defineProps({
+//     ...SharedCascadeProps,
+//     format:{type:String,default:"hh:mm:ss"},
+//     utype:{type:String,default:"time"}
+// }),{})
+const props = withDefaults(defineProps<{
+    min?:number[],
+    max?:number[],
+    clear?:boolean,
+    now?:boolean,
+    importants?:IDtImportant[],
+    lang?:Record<string,string>,
+    format?:string,
+    utype:string,
+    ctype:string,
+    start:number[],
+    end:number[],
+    startState?:IDateObject,
+    endState?:IDateObject,
+    emin?:number[],
+    smax?:number[],
+    startString:string,
+    endString:string,
+}>(),{
+    min:()=>[-1,0,0,0,0,0],
+    max:()=>[Number.MAX_SAFE_INTEGER,0,0,0,0,0],
+    clear:true,
+    now:true,
+    lang:()=>Object.create({}),
+    emin:()=>[-1,0,0,0,0,0],
+    smax:()=>[Number.MAX_SAFE_INTEGER,0,0,0,0,0],
+    format:"hh:mm:ss",
+    utype:"time"
 })
 const startState = props.startState as IDateObject
 const endState = props.endState as IDateObject

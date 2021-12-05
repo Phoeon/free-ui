@@ -5,7 +5,7 @@
 </template>
 <script lang="ts" setup>
 import { hsb2rgb, rgb2hexstr } from '../../shared/color'
-import { computed, defineProps, defineEmits, nextTick, onMounted, reactive, ref, PropType } from 'vue'
+import { computed, defineProps, defineEmits, nextTick, onMounted, reactive, ref, PropType, StyleValue } from 'vue'
 import { touchmove as vTouchmove } from '../../directives/gesture'
 
 const emits = defineEmits(['update-sb'])
@@ -21,7 +21,7 @@ const state = reactive({
 const svStyle = computed(()=>{
     return {
         '--ph-c-sv-bg':rgb2hexstr(hsb2rgb([props.hsb[0],100,100]))
-    }
+    } as StyleValue
 })
 const style = computed(()=>{
     const tx = props.hsb[1]*state.svw/100,
@@ -42,7 +42,7 @@ const onTouchmove = (e:Event,meta:{tx:number,ty:number,end:boolean})=>{
         y = Math.min(state.svh,Math.max(0,meta.ty));
         update(x,y)
 }
-const onClick = (e:PointerEvent)=>{
+const onClick = (e:MouseEvent)=>{
     if(!esv.value)return
     const {clientX,clientY} = e
     const {left,top} = esv.value.getBoundingClientRect()

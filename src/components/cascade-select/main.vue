@@ -14,7 +14,7 @@
             :depth="idx+1"
             :paths="paths"
             :cpath="state.paths"
-            :dataSource="path.children" 
+            :dataSource="path.children||[]" 
             @toggle="onToggle"
             @change="onChange"
         />

@@ -52,7 +52,7 @@ const onClick = ()=>{
     if(props.disabled)return
     if(state.lock)return
     state.lock = true
-    const rect = (ewrap.value.$el as HTMLElement).getBoundingClientRect()
+    const rect = (ewrap.value?.$el as HTMLElement).getBoundingClientRect()
     FPop.showPopSelect({
         dataSource:props.options,
         title:props.placeholder,
@@ -60,7 +60,7 @@ const onClick = ()=>{
         rect
     })
     .done(done)
-    setTimeout(()=>{
+    window.setTimeout(()=>{
         state.lock = false
     },300)
 }

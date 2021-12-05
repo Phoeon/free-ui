@@ -2,7 +2,7 @@
     <form-field>
         <template v-slot:default="scope">
             <field-cascade-select
-                :modelValue="scope.value"
+                :modelValue="scope.value as IValue"
                 :disabled="scope.disabled"
                 :placeholder="scope.placeholder"
                 :valid="scope.valid"
@@ -16,7 +16,7 @@
 import { defineProps, PropType } from 'vue'
 import FormField from './field.vue'
 import FieldCascadeSelect from './cascade-select.vue'
-import { ITree } from '../../shared/types'
+import { ITree , IValue} from '../../shared/types'
 defineProps({
     options:{type : Array as PropType<ITree>,required:true}
 })

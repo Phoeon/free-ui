@@ -10,7 +10,7 @@
             @input.stop="onInput"
             @change.stop="onInput"
             />
-            <span class="ph-textarea-limit" :overlimit="state.overlimit" v-if="limit&&limit>0">{{modelValue.length}}/{{limit}}</span>
+            <span class="ph-textarea-limit" :overlimit="state.overlimit" v-if="limit&&limit>0">{{modelValue?.length}}/{{limit}}</span>
         </template>
     </input-wrap>
 </template>

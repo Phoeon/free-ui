@@ -49,14 +49,14 @@ const onClick = ()=>{
     if(props.disabled)return
     if(state.lock)return
     state.lock = true
-    const rect = (ewrap.value.$el as HTMLElement).getBoundingClientRect()
+    const rect = (ewrap.value?.$el as HTMLElement).getBoundingClientRect()
     FPop.showCascadeSelect({
         dataSource:props.options,
         rect,
         value:props.modelValue,
         title:props.placeholder
     }).done(done)
-    setTimeout(()=>{
+    window.setTimeout(()=>{
         state.lock = false
     },300)
 }

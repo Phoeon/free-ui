@@ -30,12 +30,12 @@ const countDown = (timer:number)=>{
     const title = props.title==="加载中"?"倒计时：{#}s":props.title
     computedTitle.value = title.replace(/{#}/g,timer+"")
 }
-const visible = computed({
+const visible = computed<boolean>({
     set(v){
         emits('update:modelValue',v)
     },
     get(){
-        return props.modelValue
+        return props.modelValue as boolean
     }
 })
 const end = ()=>{

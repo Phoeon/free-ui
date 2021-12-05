@@ -6,40 +6,50 @@
         <template v-else>
             <iscroll 
                 v-if="ctype==DtType.date||ctype==DtType.year||ctype==DtType.month"
-                :title="lang.year" :value="modelValue[0]" :list="years" tz="270px" @update="update([$event,...modelValue.slice(1)])"/>
+                :title="lang?.year" :value="modelValue?.[0]" :list="years" tz="270px" @update="update([$event,...modelValue.slice(1)])"/>
             <iscroll
                 v-if="ctype==DtType.date||ctype==DtType.month" 
                 dtype="month"
-                :title="lang.mon" :value="modelValue[1]" :list="months" tz="120px" @update="update([modelValue[0],$event,...modelValue.slice(2)])"/>
+                :title="lang?.mon" :value="modelValue?.[1]" :list="months" tz="120px" @update="update([modelValue?.[0],$event,...modelValue.slice(2)])"/>
             <iscroll 
                 v-if="ctype==DtType.date"
-                :title="lang.date" :value="modelValue[2]" :list="days" tz="145px" @update="update([...modelValue.slice(0,2),$event,...modelValue.slice(3)])"/>
+                :title="lang?.date" :value="modelValue?.[2]" :list="days" tz="145px" @update="update([...modelValue.slice(0,2),$event,...modelValue.slice(3)])"/>
             <iscroll 
                 v-if="utype==DtType.datetime||utype==DtType.time"
-                :title="lang.hour" :value="modelValue[3]" :list="hours" tz="120px" @update="update([...modelValue.slice(0,3),$event,...modelValue.slice(4)])"/>
+                :title="lang?.hour" :value="modelValue?.[3]" :list="hours" tz="120px" @update="update([...modelValue.slice(0,3),$event,...modelValue.slice(4)])"/>
             <iscroll 
                 v-if="utype==DtType.datetime||utype==DtType.time"
-                :title="lang.min" :value="modelValue[4]" :list="minutes" tz="270px" @update="update([...modelValue.slice(0,4),$event,...modelValue.slice(5)])"/>
+                :title="lang?.min" :value="modelValue?.[4]" :list="minutes" tz="270px" @update="update([...modelValue.slice(0,4),$event,...modelValue.slice(5)])"/>
             <iscroll 
                 v-if="utype==DtType.datetime||utype==DtType.time"
-                :title="lang.sec" :value="modelValue[5]" :list="seconds" tz="270px" @update="update([...modelValue.slice(0,5),$event])"/>
+                :title="lang?.sec" :value="modelValue?.[5]" :list="seconds" tz="270px" @update="update([...modelValue.slice(0,5),$event])"/>
         </template>
     </div>
 </template>
 <script lang="ts" setup>
 import { compare, getMonthDays } from '../../../shared/datetime'
-import { computed, defineProps, ref, defineEmits, PropType, onMounted } from 'vue'
-import { IDateObject } from '../../../shared/types'
-import { SharedSingleProps, DtType } from '../shared'
+import { computed, defineProps, ref, defineEmits, onMounted, withDefaults } from 'vue'
+import { IDateObject, ISharedSingleProps} from '../../../shared/types'
+import { DtSharedSingleProps, DtType } from '../shared'
 import { LoadingBounce } from '../../icon'
 import Iscroll from './iscroll.vue'
 
 const emits = defineEmits(['update'])
-const props = defineProps({
-    ...SharedSingleProps,
-    utype:String,
-    ctype:String,
-    innerState:Object as PropType<IDateObject>
+// const props = withDefaults(defineProps<ISharedSingleProps & {
+//     utype:string,
+//     ctype:string
+// }>(),DtSharedSingleProps)
+const props = withDefaults(defineProps<{
+    min:number[],
+    max:number[],
+    modelValue:[number,number,number,number,number,number],
+    utype:string,
+    ctype:string,
+    lang:Record<string,any>
+}>(),{
+    min:()=>[-1,0,0,0,0,0],
+    max:()=>[Number.MAX_SAFE_INTEGER,0,0,0,0,0],
+    lang:()=>Object.create({})
 })
 const loading = ref(true)
 const isDisabled = (t:number[],s:number[],e:number[])=>{
@@ -103,7 +113,7 @@ const update = (v:Array<number>)=>{
     emits('update',v)
 }
 onMounted(()=>{
-    setTimeout(()=>{
+    window.setTimeout(()=>{
         loading.value = false
     },300)
 })

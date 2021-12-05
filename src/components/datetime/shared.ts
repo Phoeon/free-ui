@@ -7,7 +7,23 @@ export const SharedProps = {
     clear:{type:Boolean,default:true},
     now:{type:Boolean,default:true},
     importants:Array as PropType<Array<IDtImportant>>,
-    lang:Object as PropType<Record<string,unknown>>
+    lang:Object as PropType<Record<string,string|any>>
+}
+
+export const DtSharedProps = {
+    min:()=>[-1,0,0,0,0,0],
+    max:()=>[Number.MAX_SAFE_INTEGER,0,0,0,0,0],
+    clear:true,
+    now:true,
+    lang:()=>Object.create({})
+}
+export const DtSharedSingleProps = {
+    ...DtSharedProps
+}
+export const DtSharedCascadeProps = {
+    ...DtSharedProps,
+    emin:()=>[-1,0,0,0,0,0],
+    smax:()=>[Number.MAX_SAFE_INTEGER,0,0,0,0,0]
 }
 export const SharedSingleProps = {
     ...SharedProps,

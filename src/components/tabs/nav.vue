@@ -1,7 +1,7 @@
 <template>
     <div class="ph-tabs-nav" :underline="showIndicator">
-        <f-button class="ph-tabs-nav-btn" :fillMode="fillMode" v-indicator="currentIndex===item.index" :disabled="item.disabled" :type="currentIndex===item.index?'primary':''" v-for="(item,index) in navs" :key="index" @click="$emit('shift',item.index)">
-            <template v-if="item.icon" v-slot:leftIcon><custom-icon :name="item.icon"/></template>
+        <f-button class="ph-tabs-nav-btn" :fillMode="fillMode" v-indicator="currentIndex===item.index" :disabled="item.disabled" :type="currentIndex===item.index?'primary':undefined" v-for="(item,index) in navs" :key="index" @click="$emit('shift',item.index)">
+            <template v-if="item.icon" v-slot:leftIcon><custom-icon :name="item.icon as string"/></template>
             {{item.title}}
         </f-button>
         <div class="ph-tabs-indicator" v-if="showIndicator" :style="istyle"></div>
@@ -9,16 +9,16 @@
 </template>
 <script lang="ts" setup>
 import { computed, defineProps, nextTick, PropType, reactive } from 'vue'
-import { ITab } from '../../shared/types'
+import { IBtnFillmode, ITab } from '../../shared/types'
 import { CustomIcon } from '../icon'
 import FButton from '../button/main.vue'
 
-const props = defineProps({
-    navs: Array as PropType<Array<ITab>>,
-    fillMode:String,
-    showIndicator:Boolean,
-    currentIndex: {type:Number,required:true}
-})
+const props = defineProps<{
+    navs?:ITab[],
+    fillMode?:IBtnFillmode,
+    showIndicator?:boolean,
+    currentIndex:number
+}>()
 const state = reactive({
     ileft:0,
     iw:0

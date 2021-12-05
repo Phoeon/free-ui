@@ -3,8 +3,11 @@ import DemoRoute from './build/plugin/demo-route'
 import path from 'path'
 import VuePlugin from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
-
 export default defineConfig({
+    base:"/free-ui",
+    build:{
+        outDir:"site",
+    },
   plugins: [DemoRoute(),MarkdownPlugin(),VuePlugin({
     include:[/\.vue$/, /\.md$/]
   })],

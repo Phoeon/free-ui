@@ -1,5 +1,5 @@
 <template>
-    <div class="ph-cselect-panel" v-stv>
+    <div class="ph-cselect-panel" v-stv="1">
         <ul class="ph-cselect-list">
             <CsItem 
                 v-for="node in dataSource" 

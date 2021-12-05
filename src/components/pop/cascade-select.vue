@@ -5,12 +5,12 @@
     @click.stop class="ph-pop-cselect ph-pop" 
     ref="edom" :style="style">
         <div class="ph-ppcs-header" v-if="title&&state.sm">{{title}}</div>
-        <cascade-select 
+        <CascadeSelect 
             class="ph-ppcs-list" 
             :dataSource="dataSource" 
             v-model="state.value" 
             @resize="onResize"
-            @update:modelValue="onSelect"></cascade-select>
+            @update:modelValue="onSelect"></CascadeSelect>
     </div>
 </transition>
 </f-mask>

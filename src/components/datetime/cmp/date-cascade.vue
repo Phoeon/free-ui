@@ -8,18 +8,18 @@
                         <arrow class="ph-dt-iaction" direction="left" @click="emits('shiftMonth',-1)"/>
                     </div>
                     <div class="ph-dt-header-center">
-                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang.yearSetting" @click="emits('navigate',DtType.year)">{{startState.yyyy}}{{lang.year}}&ensp;</span>
-                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang.monSetting" @click="emits('navigate',DtType.month)">{{startState.MM+1}}{{lang.mon}}</span>
+                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang?.yearSetting" @click="emits('navigate',DtType.year)">{{startState.yyyy}}{{lang?.year}}&ensp;</span>
+                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang?.monSetting" @click="emits('navigate',DtType.month)">{{startState.MM+1}}{{lang?.mon}}</span>
                         &ensp;
                         <template v-if="utype===DtType.datetime">
                             &ensp;
-                            <Time class="ph-dt-iaction" :title="lang.timeSetting" @click="emits('navigate',DtType.time)"/>
+                            <Time class="ph-dt-iaction" :title="lang?.timeSetting" @click="emits('navigate',DtType.time)"/>
                             &ensp;
                         </template>
                         <template v-else>~</template>
                         &ensp;
-                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang.yearSetting" @click="emits('navigate',DtType.year)">{{endState.yyyy}}{{lang.year}}&ensp;</span>
-                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang.monSetting" @click="emits('navigate',DtType.month)">{{endState.MM+1}}{{lang.mon}}</span>
+                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang?.yearSetting" @click="emits('navigate',DtType.year)">{{endState.yyyy}}{{lang?.year}}&ensp;</span>
+                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang?.monSetting" @click="emits('navigate',DtType.month)">{{endState.MM+1}}{{lang?.mon}}</span>
                     </div>
                     <div class="ph-dt-header-right">
                         <arrow class="ph-dt-iaction" direction="right" @click="emits('shiftMonth',1)"/>
@@ -46,9 +46,9 @@
             <dt-footer justify="space-between">
                 <div class="ph-dt-footer-left"><dt-preview :startString="startString" :endString="endString"/></div>
                 <div class="ph-dt-footer-right">
-                    <dt-btn @click="emits('clear')" v-if="clear">{{lang.clear}}</dt-btn>
-                    <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang.now}}</dt-now>
-                    <dt-btn @click="emits('done')">{{lang.done}}</dt-btn>
+                    <dt-btn @click="emits('clear')" v-if="clear">{{lang?.clear}}</dt-btn>
+                    <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang?.now}}</dt-now>
+                    <dt-btn @click="emits('done')">{{lang?.done}}</dt-btn>
                 </div>
             </dt-footer>
         </template>

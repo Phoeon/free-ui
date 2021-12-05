@@ -43,7 +43,7 @@ const show = (y:number)=>{
     state.visible = true
     state.y = y
     if(props.autoClose){
-        setTimeout(()=>{
+        window.setTimeout(()=>{
             onClose()
         },5000)
     }

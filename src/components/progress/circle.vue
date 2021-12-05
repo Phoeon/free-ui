@@ -3,7 +3,7 @@
         <div class="ph-indicator-wrap">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
                 <circle cx="50%" cy="50%" :r="r" class="ph-pb-icircle" />
-                <circle cx="50%" cy="50%" :r="r" class="ph-pb-ocircle" :stroke-dasharray="dasharray"/>
+                <circle cx="50%" cy="50%" :r="r" class="ph-pb-ocircle" :stroke-dasharray="dasharray as any"/>
             </svg>
         </div>
         <tick class="ph-indicator-icon" v-if="status===1" color="var(--ph-success)"/>
@@ -14,6 +14,7 @@
 <script lang="ts" setup>
 import { defineProps,computed,PropType } from 'vue'
 import { Exclam,Tick } from '../icon'
+
 const props = defineProps({
     type:{type:String as PropType<'primary'|'success'|'info'|'warning'|'danger'>,default:"primary"},
     value:{type:Number,default:0},

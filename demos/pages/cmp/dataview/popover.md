@@ -77,6 +77,7 @@ const data = {
 ```scss
 .flex-box{
     display:flex;
+    flex-wrap: wrap;
     gap:var(--ph-pd);
 }
 ```

@@ -1,9 +1,9 @@
 <template>
     <div class="ph-notify-group" v-if="list.length" :collapsed="canCollapse&&state.collapsed">
         <div class="ph-notify-group-actionbar" v-if="canCollapse">
-            <span class="ph-notify-group-title">{{group.v||'通知中心'}}</span>
+            <span class="ph-notify-group-title">{{group?.v||'通知中心'}}</span>
             <div class="ph-notify-group-actions">
-                <circle-times @click="$emit('closeAll',group.k)" title="移除全部"/>
+                <circle-times @click="$emit('closeAll',group?.k)" title="移除全部"/>
                 <arrow :double="true" :direction="state.collapsed?'down':'up'" @click="toggle" :title="state.collapsed?'展开':'收起'"/>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 :confirm="item.confirm"
                 :simple="canCollapse&&state.collapsed"
                 :style="styleFn(list.length,i)"
-                @close="$emit('close',{nid:item.nid,groupId:group.k})"
+                @close="$emit('close',{nid:item.nid,groupId:group?.k})"
             ></notification>
         </transition-group>
     </div>

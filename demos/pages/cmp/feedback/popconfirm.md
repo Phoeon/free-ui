@@ -4,25 +4,25 @@
 
 ### 静态展示
 ```html
-    <div style="display:flex;gap:16px;">
+    <div style="display:flex;gap:16px;flex-wrap: wrap;">
         <f-pop-confirm :sample="true" title="确定要关闭么？" position="tl"></f-pop-confirm>
         <f-pop-confirm :sample="true" title="确定要关闭么？" position="tc"></f-pop-confirm>
         <f-pop-confirm :sample="true" title="确定要关闭么？" position="tr"></f-pop-confirm>
     </div>
     <br/>
-    <div style="display:flex;gap:16px;">
+    <div style="display:flex;gap:16px;flex-wrap: wrap;">
         <f-pop-confirm :sample="true" title="确定要关闭么？" position="bl"></f-pop-confirm>
         <f-pop-confirm :sample="true" title="确定要关闭么？" position="bc"></f-pop-confirm>
         <f-pop-confirm :sample="true" title="确定要关闭么？" position="br"></f-pop-confirm>
     </div>
     <br/>
-    <div style="display:flex;gap:16px;">
+    <div style="display:flex;gap:16px;flex-wrap: wrap;">
         <f-pop-confirm theme="reverse" :sample="true" title="确定要关闭么？" position="lt"></f-pop-confirm>
         <f-pop-confirm theme="reverse" :sample="true" title="确定要关闭么？" position="lc"></f-pop-confirm>
         <f-pop-confirm theme="reverse" :sample="true" title="确定要关闭么？" position="lb"></f-pop-confirm>
     </div>
     <br/>
-    <div style="display:flex;gap:16px;">
+    <div style="display:flex;gap:16px;flex-wrap: wrap;">
         <f-pop-confirm theme="reverse" :sample="true" title="确定要关闭么？" position="rt"></f-pop-confirm>
         <f-pop-confirm theme="reverse" :sample="true" title="确定要关闭么？" position="rc"></f-pop-confirm>
         <f-pop-confirm theme="reverse" :sample="true" title="确定要关闭么？" position="rb"></f-pop-confirm>

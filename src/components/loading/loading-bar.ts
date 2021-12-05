@@ -3,7 +3,8 @@ import LoadingBar from './bar.vue'
 import { createApp,App } from 'vue'
 import { IFLoadingBarOption } from '../../shared/types'
 import { unmount } from '../../shared/utils'
-let ins:undefined|InstanceType<typeof LoadingBar>;
+// let ins:undefined|InstanceType<typeof LoadingBar>;
+let ins:any;
 const start = (opt:IFLoadingBarOption={})=>{
     ins?.destroy()
     const evt = new Evt()
@@ -14,7 +15,7 @@ const start = (opt:IFLoadingBarOption={})=>{
         destroy,
         destroyImmediate
     })
-    ins = app.mount(document.createElement("div")) as InstanceType<typeof LoadingBar>
+    ins = app.mount(document.createElement("div")) as any//InstanceType<typeof LoadingBar>
     document.body.appendChild(ins.$el as HTMLElement)
     evt.on('destroy',()=>{
         unmount(app)

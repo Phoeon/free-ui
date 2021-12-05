@@ -19,7 +19,7 @@ export default {
                 x = sumArray(xmatrix[pos],[left,top,width,height]),
                 y = sumArray(ymatrix[pos],[left,top,width,height]);
             close = FPop.showTip({content,x,y,position:pos as 'tc'})
-            setTimeout(()=>{
+            window.setTimeout(()=>{
                 lock = false
             },300)
         })

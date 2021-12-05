@@ -38,7 +38,7 @@ export const getAnimation = (position:string)=>{
     return an
 }
 export const unmount = (app:App<Element>)=>{
-    setTimeout(()=>{
+    window.setTimeout(()=>{
         app.unmount()
     },400)
 }

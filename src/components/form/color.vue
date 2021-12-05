@@ -11,12 +11,12 @@
             />
         </template>
         <template #right>
-            <div class="ph-colorpicker-addon" :style="{'--ph-color-btn-bg':modelValue}"></div>
+            <div class="ph-colorpicker-addon" :style="addonStyle"></div>
         </template>
     </input-wrap>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, PropType, ref } from 'vue'
+import { defineProps, defineEmits, PropType, ref, computed, StyleValue } from 'vue'
 import { IColorType } from '../../shared/types'
 import ColorPicker from '../color'
 import InputWrap from './input-wrap.vue'
@@ -31,6 +31,11 @@ const props = defineProps({
     colors:Array as PropType<Array<string>>,
     type:String as PropType<IColorType>
 })
+const addonStyle = computed(()=>{
+    return {
+        '--ph-color-btn-bg':props.modelValue
+    } as StyleValue
+})
 const done = (v:string)=>{
     emits('update:modelValue',v);
     emits('input',v);
@@ -40,7 +45,7 @@ const onInput = (e:Event)=>{
 }
 const onClick = ()=>{
     if(props.disabled)return
-    const rect = ewrap.value.$el.getBoundingClientRect()
+    const rect = ewrap.value?.$el.getBoundingClientRect()
     ColorPicker.show({
         value:props.modelValue,
         type:props.type,

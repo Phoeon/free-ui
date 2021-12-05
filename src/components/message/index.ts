@@ -2,7 +2,8 @@ import Message from './main.vue'
 import Evt from 'ph-evt'
 import { createApp , nextTick} from 'vue'
 import { IMsgOption } from '../../shared/types'
-let msgs:Array<InstanceType<typeof Message>> = []
+// let msgs:Array<InstanceType<typeof Message>> = []
+let msgs:any[] = []
 const show = (msg:string,opt:IMsgOption={})=>{
     const evt = new Evt(),
         nid = (Math.random()+"").replace(".",""),
@@ -17,7 +18,7 @@ const show = (msg:string,opt:IMsgOption={})=>{
         nid,
         close,
     })
-    const ins = app.mount(document.createElement("div")) as InstanceType<typeof Message>
+    const ins = app.mount(document.createElement("div")) as any//InstanceType<typeof Message>
     document.body.appendChild(ins.$el)
 
     evt.on("close",(status?:number)=>{
@@ -32,7 +33,7 @@ const show = (msg:string,opt:IMsgOption={})=>{
             msg.show(msg.y-h)
         })
         msgs = msgs.filter(msg=>msg.nid!=nid)
-        setTimeout(()=>{
+        window.setTimeout(()=>{
             app.unmount()
         },300)
         if(status)

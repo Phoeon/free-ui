@@ -22,7 +22,7 @@ const showConfirm = (opt:{
         done(fn:(status:number)=>void){
             evt.on("close",(status:number)=>{
                 fn(status)
-                setTimeout(()=>app.unmount(),300)
+                window.setTimeout(()=>app.unmount(),300)
             })
         }
     }
@@ -43,7 +43,7 @@ const showAlert = (opt:{
         done(fn:(status:number)=>void){
             evt.on("close",(status:number)=>{
                 fn(status)
-                setTimeout(()=>app.unmount(),300)
+                window.setTimeout(()=>app.unmount(),300)
             })
         }
     }
@@ -64,7 +64,7 @@ const showOptions = (opt:{
         done(fn:(status?:string|number)=>void){
             evt.on("close",(status?:string|number)=>{
                 fn(status)
-                setTimeout(()=>app.unmount(),300)
+                window.setTimeout(()=>app.unmount(),300)
             })
         }
     }

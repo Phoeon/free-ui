@@ -7,19 +7,23 @@
 </template>
 <script lang="ts" setup>
 import './popover.scss';
-import { defineExpose, defineProps, nextTick, onMounted, PropType, reactive, ref } from 'vue'
-import { ITooltip } from '../../shared/types'
+import { defineExpose, defineProps, nextTick, onMounted, PropType, reactive, ref, withDefaults } from 'vue'
+import { IToolPosition, ITooltip } from '../../shared/types'
 import { sumArray, getAnimation } from '../../shared/utils'
 import { xmatrix,ymatrix } from './shared'
 
 const edom = ref<HTMLElement>()
-const props = defineProps({
-    content:String,
-    position:{type:String as PropType<ITooltip>,default:"tc"},
-    x:{type:Number,default:0},
-    y:{type:Number,default:0},
-    sample:Boolean, //仅用于文档展示，不用关注
-    animation:String
+const props = withDefaults(defineProps<{
+    content:string,
+    position:IToolPosition,
+    x:number,
+    y:number,
+    sample?:boolean,
+    animation:string
+}>(),{
+    position:"tc",
+    x:0,
+    y:0
 })
 const state = reactive({
     visible:false,

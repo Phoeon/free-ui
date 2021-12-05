@@ -41,7 +41,7 @@ const onInput = (e:Event)=>{
     const t = e.target as HTMLInputElement
     if(cst.lock)return
     cst.lock = true
-    setTimeout(()=>{
+    window.setTimeout(()=>{
         const v = t.value
         emits('update:modelValue',v);
         emits('input',v);

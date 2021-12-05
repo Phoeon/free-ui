@@ -1,6 +1,6 @@
 <template>
 <teleport to="body">
-<transition name="ph-fade" mode="out-in" @after-leave="evt.emit('destroy')">
+<transition name="ph-fade" mode="out-in" @after-leave="evt?.emit('destroy')">
     <template v-if="state.visible">
         <div class="ph-toast-mask" v-if="modal">
             <toast :icon="icon" :title="title" :type="type" :position="position"/>
@@ -29,7 +29,7 @@ const state = reactive({
 })
 const show = ()=>{
     state.visible = true
-    setTimeout(()=>{
+    window.setTimeout(()=>{
         state.visible = false
         props.evt?.emit("close")
     },props.duration||3000)

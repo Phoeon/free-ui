@@ -2,7 +2,7 @@
     <form-field class="ph-form-textarea">
         <template v-slot:default="scope">
             <field-textarea
-                :modelValue="scope.value"
+                :modelValue="scope.value as string"
                 :disabled="scope.disabled"
                 :placeholder="scope.placeholder"
                 :valid="scope.valid"

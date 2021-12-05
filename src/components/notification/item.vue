@@ -70,7 +70,7 @@ const click = ()=>{
 }
 onMounted(()=>{
     if(props.autoClose&&!props.confirm){
-        setTimeout(()=>{
+        window.setTimeout(()=>{
             close(CloseStatus.close)
         },10000)
     }

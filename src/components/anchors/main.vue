@@ -32,7 +32,7 @@ const notify = (item:IAnchor)=>{
     cst.lock = true
     const target = document.querySelector("#"+item.value) as any
     target?.scrollIntoViewIfNeeded?.()
-    setTimeout(()=>{
+    window.setTimeout(()=>{
         cst.lock = false
     },50)
 }
@@ -63,7 +63,7 @@ const onViewScroll = (t:HTMLElement)=>{
     emits('update:modelValue',value)
 }
 onMounted(()=>{
-    setTimeout(()=>{
+    window.setTimeout(()=>{
         evt.on('view-scroll',onViewScroll)
     },50)
 })

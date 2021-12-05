@@ -65,7 +65,7 @@ const done = (v?:string|Array<string>)=>{
 const isCascade = computed(()=>props.modelValue instanceof Array)
 const onClick = ()=>{
     if(props.disabled)return
-    const rect = ewrap.value.$el.getBoundingClientRect()
+    const rect = ewrap.value?.$el.getBoundingClientRect()
     DtPicker.show({
         value:props.modelValue,
         type:props.type,

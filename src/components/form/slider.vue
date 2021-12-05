@@ -6,7 +6,7 @@
     </input-wrap>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, ref, reactive, computed, onMounted, nextTick, onBeforeUnmount } from 'vue'
+import { defineProps, defineEmits, ref, reactive, computed, onMounted, nextTick, onBeforeUnmount, StyleValue } from 'vue'
 import InputWrap from './input-wrap.vue'
 import MediaQuery from '../../shared/media-query'
 import { touchmove as vTouchmove } from '../../directives/gesture'
@@ -41,7 +41,7 @@ const sliderStyle = computed(()=>{
         '--ph-slider-hw':props.handlerWidth+"px",
         '--ph-slider-h':props.height+"px",
         '--ph-slider-tx':tx.value+"px"
-    }
+    } as StyleValue
 })
 const onTouchmove = (e:Event,meta:{tx:number,end:boolean})=>{
     if(props.disabled)return
@@ -50,7 +50,7 @@ const onTouchmove = (e:Event,meta:{tx:number,end:boolean})=>{
     state.moving = !end
     update(tx)
 }
-const onClick = (e:PointerEvent)=>{
+const onClick = (e:MouseEvent)=>{
     if(props.disabled)return
     const t = e.target as HTMLElement
     update(e.clientX-t.getBoundingClientRect().left)

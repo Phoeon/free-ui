@@ -1,4 +1,5 @@
 export type IThemeType = 'primary'|'info'|'success'|'danger'|'warning'|'noble'|'normal'
+export type IDtee = [number,number,number,number,number,number]
 export type IRect = {
     left:number,
     top:number,
@@ -11,6 +12,11 @@ export type IRecord = {
     id:IKey,
     text:string
 }
+
+export type IBtnFillmode = 'outline'|'reverse'|'none'|'dashed'|undefined
+export type IBtnShape = 'circle'|'square'|undefined
+export type IBtnSize = 'mini'|'small'|'large'|undefined
+
 export type INavNode = IRecord & {
     icon?:string,
     action?:string,
@@ -41,8 +47,9 @@ export type ITree = Array<ITreeNode>
 
 export type IActionSheetOption = {
     text:string,
-    value:string|number,
+    value:IKey,
     icon?:string,
+    iconColor?:string,
     iconType?:string,
     disabled?:boolean,
     type?:IThemeType
@@ -81,6 +88,7 @@ export type IDtImportant = {
     desc?:string,
     md:string
 }
+
 export type IDtOption = {
     value?:string|Array<string|undefined>,
     min?:string,
@@ -100,8 +108,54 @@ export type IDateObject = {
     mm:number,
     ss:number,
 }
+export type IDtSharedProps = {
+    min?:number[],
+    max?:number[],
+    clear?:boolean,
+    now?:boolean,
+    importants?:IDtImportant[],
+    lang?:Record<string,string>,
+    format?:string,
+    utype?:string,
+    ctype?:string
+}
+export type ISharedSingleProps = {
+    min?:number[],
+    max?:number[],
+    clear?:boolean,
+    now?:boolean,
+    importants?:IDtImportant[],
+    lang?:Record<string,string>,
+    format?:string,
+    utype?:string,
+    ctype?:string,
+    modelValue:[number,number,number,number,number,number],
+    innerState:IDateObject,
+    dtstring:string,
+}
+export type ISharedCascadeProps = {
+    min?:number[],
+    max?:number[],
+    clear?:boolean,
+    now?:boolean,
+    importants?:IDtImportant[],
+    lang?:Record<string,string>,
+    format?:string,
+    utype:string,
+    ctype:string,
+    start:number[],
+    end:number[],
+    startState?:IDateObject,
+    endState?:IDateObject,
+    emin?:number[],
+    smax?:number[],
+    startString:string,
+    endString:string,
+}
+
+
 export type IGridItem = {
-    text:string|number,
+    text:IKey,
     title?:string,
     disabled?:boolean,
     active?:boolean,
@@ -110,7 +164,7 @@ export type IGridItem = {
 }
 export type IScrollItem = {
     value:number,
-    text:string|number,
+    text:IKey,
     disabled?:boolean
 }
 
@@ -141,9 +195,9 @@ export type ITooltip = IPop & {
 }
 
 export type IDropdownItem = {
-    value:string|number,
+    value:IKey,
     text:string,
-    icon:string,
+    icon?:string,
     disabled?:boolean
 }
 export type IDropdown = IPop & {
@@ -164,7 +218,7 @@ export type IPopTreeSelect = {
 }
 
 export type IOption = {
-    value:string|number,
+    value:IKey,
     text:string,
     disabled:boolean
 }
@@ -220,8 +274,8 @@ export type IMsgOption = {
 
 export type IModalOption = {
     text:string,
-    value:string|number,
-    type?:string//"primary"|"success"|"danger"|"warning"
+    value:IKey,
+    type?:IThemeType
 }
 
 
@@ -234,9 +288,11 @@ export type INotifyOption={
     groupDesc?:string,
     type?:INotifyType,
     title?:string,
+    content?:string,
     showClose?:boolean,
     autoClose?:boolean,
     clickClose?:boolean,
+    evt?:any,
     confirm?:{doneText?:string,cancelText?:string}
 }
 export type INotifyGroup = {

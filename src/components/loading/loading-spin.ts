@@ -9,7 +9,7 @@ const start = (opt:IFLoadingSpinOption={})=>{
     const evt = new Evt()
     const destroy = ()=>evt.emit("destroy")
     const app = createApp(FLoading,{...opt,modelValue:ref(true),isGlobal:true,destroy});
-    const ins = app.mount(document.createElement("div")) as InstanceType<typeof FLoading>;
+    const ins = app.mount(document.createElement("div")) as any//InstanceType<typeof FLoading>;
     evt.on("destroy",()=>{
         unmount(app)
     })

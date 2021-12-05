@@ -8,11 +8,11 @@
                         <arrow class="ph-dt-iaction" direction="left" @click="emits('shiftMonth',-1)"/>
                     </div>
                     <div class="ph-dt-header-center">
-                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang.yearSetting" @click="emits('navigate',DtType.year)">{{state.yyyy}}{{lang.year}}</span>
+                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang?.yearSetting" @click="emits('navigate',DtType.year)">{{state.yyyy}}{{lang?.year}}</span>
                         &ensp;
-                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang.monSetting" @click="emits('navigate',DtType.month)">{{state.MM+1}}{{lang.mon}}</span>
+                        <span class="ph-dt-iaction" :hover="scope.hover" :title="lang?.monSetting" @click="emits('navigate',DtType.month)">{{state.MM+1}}{{lang?.mon}}</span>
                         <template v-if="utype===DtType.datetime">
-                            &ensp;<Time class="ph-dt-iaction" title="lang.timeSetting" @click="emits('navigate',DtType.time)"/>
+                            &ensp;<Time class="ph-dt-iaction" :title="lang?.timeSetting" @click="emits('navigate',DtType.time)"/>
                         </template>
                     </div>
                     <div class="ph-dt-header-right">
@@ -24,7 +24,7 @@
         </template>
         <dt-body class="ph-dt-date-body">
             <div class="ph-dt-date-th">
-                <div v-for="item in lang.week" :key="item" class="ph-dt-date-thcell">{{item}}</div>
+                <div v-for="item in (lang?.week as string[])" :key="item" class="ph-dt-date-thcell">{{item}}</div>
             </div>
             <dt-grid class="ph-dt-dategrid" :dataSource="items" @item-click="onItemClick"></dt-grid>
         </dt-body>
@@ -32,9 +32,9 @@
             <dt-footer justify="space-between">
                 <div class="ph-dt-footer-left">{{dtstring}}</div>
                 <div class="ph-dt-footer-right">
-                    <dt-btn @click="emits('clear')" v-if="clear">{{lang.clear}}</dt-btn>
-                    <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang.now}}</dt-now>
-                    <dt-btn @click="emits('done')" v-if="utype!==DtType.date">{{lang.done}}</dt-btn>
+                    <dt-btn @click="emits('clear')" v-if="clear">{{lang?.clear}}</dt-btn>
+                    <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang?.now}}</dt-now>
+                    <dt-btn @click="emits('done')" v-if="utype!==DtType.date">{{lang?.done}}</dt-btn>
                 </div>
             </dt-footer>
         </template>

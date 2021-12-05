@@ -40,7 +40,7 @@ const mediaQuery = ()=>{
 }
 window.addEventListener("resize",()=>{
     clearTimeout(timer)
-    timer = setTimeout(()=>{
+    timer = window.setTimeout(()=>{
         mediaQuery()
     },300)
 })

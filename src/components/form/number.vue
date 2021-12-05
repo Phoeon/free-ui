@@ -62,7 +62,7 @@ const onKey = (t:HTMLInputElement,offset:number)=>{
     t.value = v+""
     state.valid = true
     clearTimeout(cst.timer)
-    cst.timer = setTimeout(()=>{
+    cst.timer = window.setTimeout(()=>{
         onNotify(v)
     },300)
 }
@@ -70,7 +70,7 @@ const onChange = (e:Event)=>{
     const t = e.target as HTMLInputElement
     if(cst.lock)return
     cst.lock = true
-    setTimeout(()=>{
+    window.setTimeout(()=>{
         const v = getValue(t,0)
         t.value = v+""
         state.valid = true
@@ -81,7 +81,7 @@ const onChange = (e:Event)=>{
 const onInput = (e:Event)=>{
     const t = e.target as HTMLInputElement
     clearTimeout(cst.timer1)
-    cst.timer1 = setTimeout(()=>{
+    cst.timer1 = window.setTimeout(()=>{
         onNotify(t.value)
         state.valid = Reg.Number.test(t.value)
     })

@@ -1,0 +1,1 @@
+import{d as t,o as s,a,b as r,g as n}from"./vendor.6c48bfff.js";import"./index.898e7603.js";const d=t({props:{type:{type:String,default:"normal"}},setup(e){return(o,l)=>(s(),a("div",{class:n(["ph-blockquote","ph-blockquote-"+e.type])},[r(o.$slots,"default")],2))}});export{d as _};

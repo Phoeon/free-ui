@@ -10,7 +10,7 @@
             :max="max"
             :format="format"
             :type="type"
-            :value="value" 
+            :value="value as string[]" 
             :simple="state.sm"
             @done="onDone"></dt-cascade>
         <dt-single 
@@ -21,7 +21,7 @@
             :max="max"
             :format="format"
             :type="type"
-            :value="value" 
+            :value="value as string" 
             :simple="state.sm"
             @done="onDone"></dt-single>
     </div>

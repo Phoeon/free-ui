@@ -41,7 +41,7 @@ export default {
 		}
 	},
 	animate(el:HTMLElement,h:string):void{
-		setTimeout(()=>{
+		window.setTimeout(()=>{
 			el.style.height = h
 		})
 	}

@@ -1,10 +1,10 @@
 <template>
-    <ul class="ph-tree ph-tree-root" :style="{'--ph-tree-depth':'0'}">
+    <ul class="ph-tree ph-tree-root" :style="{'--ph-tree-depth':'0'} as StyleValue">
         <tree-node v-for="(node,idx) in tree" :key="idx" :node="node" :depth="0" :paths="getPath(node.id)"></tree-node>
     </ul>
 </template>
 <script lang="ts" setup>
-import { computed, defineProps, defineEmits, PropType, provide, toRef } from 'vue'
+import { computed, defineProps, defineEmits, PropType, provide, toRef, StyleValue } from 'vue'
 import { getLeafNodesById, searchPath } from '../../shared/tree'
 import { IValue, ITree,IKey } from '../../shared/types'
 import TreeNode from './node.vue'

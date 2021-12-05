@@ -2,7 +2,7 @@
     <div :class="['ph-divider','ph-divider-'+type,'ph-divider-'+align]" :style="style"><slot></slot></div>
 </template>
 <script lang="ts" setup>
-import { computed, defineProps, PropType } from 'vue'
+import { computed, defineProps, PropType, StyleValue } from 'vue'
 import { IThemeType } from '../../shared/types'
 const props = defineProps({
     type:{type:String as PropType<IThemeType>,default:'normal'},
@@ -12,7 +12,7 @@ const props = defineProps({
 const style = computed(()=>{
     return {
         '--ph-divider-offset':props.offset+'px'
-    }
+    } as StyleValue
 })
 </script>
 <style lang="scss">

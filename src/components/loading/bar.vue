@@ -54,7 +54,7 @@ const update = (v:number)=>{
 const end = ()=>{
     update(1)
     state.opacity = 0
-    setTimeout(()=>{
+    window.setTimeout(()=>{
         props.destroy?.()
     },800)
 }

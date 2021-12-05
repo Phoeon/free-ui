@@ -3,7 +3,7 @@
         <template #header>
             <dt-header class="ph-dt-year-header" justify="space-between">
                 <arrow class="ph-dt-iaction" :double="true" direction="left" @click="emits('shiftYear',-15)"/>
-                <span>{{state.yyyy-7}}{{lang.year}}&ensp;~&ensp;{{state.yyyy+7}}{{lang.year}}</span>
+                <span>{{state.yyyy-7}}{{lang?.year}}&ensp;~&ensp;{{state.yyyy+7}}{{lang?.year}}</span>
                 <arrow class="ph-dt-iaction" :double="true" direction="right" @click="emits('shiftYear',15)"/>
             </dt-header>
         </template>
@@ -15,8 +15,8 @@
                 <div class="ph-dt-footer-left">{{dtstring}}</div>
                 <div class="ph-dt-footer-right">
                     <template v-if="utype===DtType.year">
-                        <dt-btn @click="emits('clear')" v-if="clear">{{lang.clear}}</dt-btn>
-                        <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang.now}}</dt-now>
+                        <dt-btn @click="emits('clear')" v-if="clear">{{lang?.clear}}</dt-btn>
+                        <dt-now @click="emits('now')" :min="min" :max="max" v-if="now">{{lang?.now}}</dt-now>
                     </template>
                 </div>
             </dt-footer>

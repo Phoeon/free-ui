@@ -14,7 +14,7 @@
                             :disabled="item.disabled" 
                             @click="notify(item.value,item)">
                             <template v-slot:leftIcon v-if="item.icon">
-                                <custom-icon :color="item.iconColor" :name="item.icon"/>    
+                                <custom-icon :color="item.iconColor" :name="item.icon as string"/>    
                             </template> 
                         </f-button>
                         <span class="ph-as-gtext">{{item.text}}</span>
@@ -28,7 +28,7 @@
                         :type="item.type" 
                         @click="notify(item.value,item)">
                         <template v-slot:leftIcon v-if="item.icon">
-                            <custom-icon :color="item.iconColor" :name="item.icon"/>    
+                            <custom-icon :color="item.iconColor" :name="item.icon as string"/>    
                         </template>
                         {{item.text}}</f-button>
                 </li>

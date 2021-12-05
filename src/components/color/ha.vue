@@ -11,7 +11,7 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, computed } from 'vue'
+import { defineProps, defineEmits, computed, StyleValue } from 'vue'
 import Slider from '../form/slider.vue'
 
 const emits = defineEmits(['update:h','update:a','reset'])
@@ -43,7 +43,7 @@ const style = computed(()=>{
         '--ph-c-oc':props.oc,
         '--ph-c-c':props.color,
         '--ph-c-ac':props.acolor
-    }
+    } as StyleValue
 })
 </script>
 <style lang="scss">

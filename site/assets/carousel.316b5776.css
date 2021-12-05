@@ -1,0 +1,1 @@
+.custom-cs-indicator{width:8px;height:8px;border-radius:4px;transition:all .3s ease;background-color:#0003;margin:4px}.custom-cs-indicator:hover{background-color:#00000080;cursor:pointer}.custom-cs-indicator[active=true]{width:16px;background-color:#00000080}

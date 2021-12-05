@@ -11,6 +11,6 @@ export default {
         }
     },
     scrollToView(el:any){
-        setTimeout(()=>el.scrollIntoViewIfNeeded())
+        window.setTimeout(()=>el.scrollIntoViewIfNeeded())
     }
 }

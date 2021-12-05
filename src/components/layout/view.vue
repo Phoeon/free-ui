@@ -22,25 +22,26 @@ const state = reactive({
     showBacktop:false
 })
 const onViewScroll = (e?:Event)=>{
-    emits('view-scroll',eview.value.scrollElement)
-    evt.emit('view-scroll',eview.value.scrollElement)
+    const ev = eview.value as any
+    emits('view-scroll',ev.scrollElement)
+    evt.emit('view-scroll',ev.scrollElement)
     if(!props.backtop)return
-    const t = eview.value.scrollElement as HTMLElement
+    const t = ev.scrollElement as HTMLElement
     clearTimeout(state.timer)
-    state.timer = setTimeout(()=>{
+    state.timer = window.setTimeout(()=>{
         const oh = t.offsetHeight
         state.showBacktop = t.scrollTop>oh/2
     },100)
 }
 const task = ({y}:EndPoint)=>{
-    eview.value.scrollTo(0,y)
+    (eview.value as any).scrollTo(0,y)
 }
 const onBacktop = ()=>{
-    const st = eview.value.scrollElement.scrollTop
+    const st = (eview.value as any).scrollElement.scrollTop
     Animation.easeIn(task,{y:st},{y:0},300)
 }
 defineExpose({
-    scrollTo:(y:number)=>eview.value.scrollTo(0,y)
+    scrollTo:(y:number)=>(eview.value as any).scrollTo(0,y)
 })
 onMounted(()=>{
     nextTick(()=>{

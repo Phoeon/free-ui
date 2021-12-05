@@ -12,7 +12,7 @@
             </template>
         </div>
         <template v-if="!isLeaf">
-            <ul class="ph-tree ph-sub-tree" v-th="state.open" :style="{'--ph-tree-depth':depth+1}">
+            <ul class="ph-tree ph-sub-tree" v-th="state.open" :style="{'--ph-tree-depth':depth+1} as StyleValue">
                 <tree-node v-for="(item,idx) in node.children" :key="idx" :node="item" :depth="depth+1" :paths="getPath(item.id)"></tree-node>
             </ul>
         </template>
@@ -24,7 +24,7 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import { computed, defineProps, inject, PropType, reactive, Ref } from 'vue'
+import { computed, defineProps, inject, PropType, reactive, Ref , StyleValue} from 'vue'
 import { IKey, ITreeNode, IValue } from '../../shared/types'
 import { SquareHalfCheck,SquarePlus,SquareCheck,Square } from '../icon'
 import vTh from '../../directives/toggle-height'

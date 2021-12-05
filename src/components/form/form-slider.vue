@@ -2,7 +2,7 @@
     <form-field>
         <template v-slot:default="scope">
             <field-slider
-                :modelValue="scope.value"
+                :modelValue="scope.value as number"
                 :disabled="scope.disabled"
                 :placeholder="scope.placeholder"
                 :valid="scope.valid"

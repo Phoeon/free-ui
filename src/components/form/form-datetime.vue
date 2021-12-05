@@ -2,7 +2,7 @@
     <form-field class="ph-form-datetime">
         <template v-slot:default="scope">
             <field-datetime
-                :modelValue="scope.value"
+                :modelValue="scope.value as string"
                 :disabled="scope.disabled"
                 :placeholder="scope.placeholder"
                 :valid="scope.valid"

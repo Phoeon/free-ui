@@ -14,7 +14,7 @@ export default function renderInstance(CmpClass:Component,props:Record<string,an
         vdom = h(CmpClass as DefineComponent,_props,children);
     render(vdom,dom);
     evt.on("destroy",()=>{
-        setTimeout(()=>destroy(),300)
+        window.setTimeout(()=>destroy(),300)
     })
     if(dom.firstElementChild)
     document.body.appendChild(dom.firstElementChild as HTMLElement)

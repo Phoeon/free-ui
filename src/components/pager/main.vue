@@ -13,7 +13,7 @@
             <template v-for="p in cps">
                 <f-button shape="square" v-if="p>0"
                     class="ph-pager-action"
-                    :type="cpage===p?'primary':''"
+                    :type="cpage===p?'primary':'normal'"
                     :fillMode="fillMode" 
                     :size="state.size"
                     :key="p"
@@ -46,12 +46,12 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, computed, ref, PropType, reactive, watch, onBeforeMount } from 'vue'
+import { defineProps, defineEmits, computed, ref, PropType, reactive, watch, onBeforeMount, StyleValue } from 'vue'
 import { Ellipsis, Caret } from '../icon'
 import { FSelect,FNumber } from '../form'
 import MediaQuery, { MediaBreak } from '../../shared/media-query'
 import FButton from '../button/main.vue'
-
+import { IBtnFillmode,IBtnSize } from '../../shared/types'
 const emits = defineEmits(["page","update:page","update:pagesize"])
 const props = defineProps({
     showTotal:Boolean,
@@ -69,9 +69,9 @@ const props = defineProps({
     autoSize:{type:Boolean,default:true},
     prev:String,
     next:String,
-    fillMode:String,
+    fillMode:{type:String as PropType<IBtnFillmode>},
+    size:{type:String as PropType<IBtnSize>},
     theme:String,
-    size:String,
     pagerCount:Number // 奇数 >= 3
 })
 
@@ -79,11 +79,11 @@ const state = reactive({
     pagesize:props.pagesize,
     pagerCount:props.pagerCount||5,
     small:false,
-    size:"normal"
+    size:undefined as IBtnSize
 })
 const mediaQuery = (placeholder:boolean,dw:number)=>{
     let pagerCount = props.pagerCount
-    let size = "normal"
+    let size:IBtnSize = undefined
     if(dw<MediaBreak.xs){
         pagerCount = 5
         // size = "mini"
@@ -111,7 +111,7 @@ const style = computed(()=>{
         style['--ph-pager-justify'] = state.small&&!props.simple?'center': props.justify
     }
     if(props.theme)style['--ph-primary'] = `var(--ph-${props.theme})`
-    return style
+    return style as StyleValue
 })
 const psOptions = computed(()=>{
     return ((props as Record<string,unknown>).pagesizeOptions as number[]).map((o:number)=>{
@@ -173,7 +173,7 @@ const goPage = (page:number,ps?:number)=>{
 const onPagesize = (value:number)=>{
     if(!value)return
     //避免抖动
-    setTimeout(()=>{
+    window.setTimeout(()=>{
         //判断当前page是否溢出
         const pages = Math.min(props.page,Math.ceil(props.total / value))
         goPage(pages,value)

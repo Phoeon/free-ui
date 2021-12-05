@@ -22,7 +22,7 @@ export default {
                 y = sumArray(ymatrix[pos],[left,top,width,height]);
             const noop = ()=>void(0)
             FPop.showConfirm({title,x,y,theme,position:pos as 'tc'}).done(done||noop).cancel(cancel||noop);
-            setTimeout(()=>{
+            window.setTimeout(()=>{
                 lock = false
             },300)
         })

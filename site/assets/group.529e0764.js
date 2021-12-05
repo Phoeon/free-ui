@@ -1,0 +1,1 @@
+import{d as n,o as t,a as r,b as a}from"./vendor.6c48bfff.js";import"./index.898e7603.js";const s=["container"],d=n({props:{container:{type:Boolean,default:!0}},setup(e){return(o,c)=>(t(),r("div",{class:"ph-btn-group",container:e.container},[a(o.$slots,"default")],8,s))}});export{d as _};
