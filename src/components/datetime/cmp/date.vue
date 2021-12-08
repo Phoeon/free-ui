@@ -52,7 +52,7 @@ import {Time,Arrow} from '../../icon'
 import { defineProps, defineEmits, computed } from 'vue'
 import { compare, printDate } from '../../../shared/datetime'
 import { SharedSingleProps, DtType } from '../shared'
-import { IDateObject, IGridItem } from '../../../shared/types'
+import type { IDateObject, IGridItem } from '../../../shared/types'
 
 const emits = defineEmits(['update:modelValue','navigate','done','clear','now','shiftYear','shiftMonth'])
 const props = defineProps({

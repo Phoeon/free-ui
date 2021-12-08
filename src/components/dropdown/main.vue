@@ -9,7 +9,7 @@
 <script lang="ts" setup>
 import { defineProps, defineEmits, onBeforeUnmount, onMounted, PropType, reactive, Ref, ref } from 'vue'
 import { CustomIcon } from '../icon'
-import { IDropdownItem, IDropdownPosition } from '../../shared/types'
+import type { IDropdownItem, IDropdownPosition } from '../../shared/types'
 import FPop from '../pop'
 import FButton from '../button/main.vue'
 import { sumArray } from '../../shared/utils'

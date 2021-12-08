@@ -29,7 +29,7 @@
 <script lang="ts" setup>
 import { compare, getMonthDays } from '../../../shared/datetime'
 import { computed, defineProps, ref, defineEmits, onMounted, withDefaults } from 'vue'
-import { IDateObject, ISharedSingleProps} from '../../../shared/types'
+import type { IDateObject, ISharedSingleProps} from '../../../shared/types'
 import { DtSharedSingleProps, DtType } from '../shared'
 import { LoadingBounce } from '../../icon'
 import Iscroll from './iscroll.vue'

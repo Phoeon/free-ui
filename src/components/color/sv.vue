@@ -5,7 +5,8 @@
 </template>
 <script lang="ts" setup>
 import { hsb2rgb, rgb2hexstr } from '../../shared/color'
-import { computed, defineProps, defineEmits, nextTick, onMounted, reactive, ref, PropType, StyleValue } from 'vue'
+import { computed, defineProps, defineEmits, nextTick, onMounted, reactive, ref, PropType } from 'vue'
+import type { StyleValue } from 'vue'
 import { touchmove as vTouchmove } from '../../directives/gesture'
 
 const emits = defineEmits(['update-sb'])

@@ -1,6 +1,6 @@
 import Colorpicker from './main.vue'
 import { createApp,App } from 'vue'
-import { IColorOption } from '../../shared/types'
+import type { IColorOption } from '../../shared/types'
 import { unmount } from '../../shared/utils'
 import { ColorPredefine } from './config'
 import Env from '../../shared/env'

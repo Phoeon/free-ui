@@ -24,7 +24,8 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { computed, defineProps, defineEmits, PropType, reactive, StyleValue } from 'vue'
+import { computed, defineProps, defineEmits, PropType, reactive } from 'vue'
+import type { StyleValue } from 'vue'
 import {touchmove as vTouchmove} from '../../../directives/gesture'
 import DtBtn from '../cmp/btn.vue'
 import PhGesture,{ GestureType } from 'ph-gesture'

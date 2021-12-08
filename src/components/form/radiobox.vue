@@ -15,7 +15,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, defineEmits, PropType } from 'vue'
-import { IOption } from '../../shared/types'
+import type { IOption } from '../../shared/types'
 import { Circle, CircleRadio } from '../icon'
 import InputWrap from './input-wrap.vue'
 

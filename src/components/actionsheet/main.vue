@@ -41,7 +41,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, defineEmits, PropType, computed } from 'vue'
-import { IActionSheetOption } from '../../shared/types'
+import type { IActionSheetOption } from '../../shared/types'
 import { CustomIcon } from '../icon'
 import FDrawer from '../drawer/main.vue'
 import FButton from '../button/main.vue'

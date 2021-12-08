@@ -35,7 +35,7 @@
 <script lang="ts" setup>
 import { defineProps, defineEmits, withDefaults } from 'vue'
 import { DtSharedSingleProps, DtType } from '../shared'
-import { IDateObject, ISharedSingleProps, IDtImportant } from '../../../shared/types'
+import type { IDateObject, ISharedSingleProps, IDtImportant } from '../../../shared/types'
 import DtLayout from '../layout/layout.vue'
 import DtHeader from '../layout/layout-header.vue'
 import DtFooter from '../layout/layout-footer.vue'

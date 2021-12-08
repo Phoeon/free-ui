@@ -10,7 +10,7 @@
 <script lang="ts" setup>
 import './button.scss'
 import { PropType, reactive, defineProps, defineEmits, defineAsyncComponent, computed } from "vue";
-import { IThemeType,IBtnFillmode,IBtnShape,IBtnSize } from '../../shared/types'
+import type { IThemeType,IBtnFillmode,IBtnShape,IBtnSize } from '../../shared/types'
 
 const Caret = defineAsyncComponent(()=>import("../icon/caret.vue"))
 const Spin = defineAsyncComponent(()=>import("../icon/loading/spin.vue"))

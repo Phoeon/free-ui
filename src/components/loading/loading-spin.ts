@@ -1,7 +1,7 @@
 import FLoading from './spin.vue'
 import { createApp,ref } from 'vue'
 import { unmount } from '../../shared/utils'
-import { IFLoadingSpinOption } from '../../shared/types'
+import type { IFLoadingSpinOption } from '../../shared/types'
 import Evt from 'ph-evt'
 
 let __end:()=>void;

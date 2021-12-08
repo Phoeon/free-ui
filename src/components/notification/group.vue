@@ -32,7 +32,7 @@
 import { defineProps, PropType, computed, reactive } from 'vue'
 import Notification from './item.vue'
 import { CircleTimes,Arrow } from '../icon'
-import { INotifyGroup, INotifyOption } from '../../shared/types'
+import type { INotifyGroup, INotifyOption } from '../../shared/types'
 
 const props = defineProps({
     group:Object as PropType<INotifyGroup>,

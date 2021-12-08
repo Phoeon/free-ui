@@ -1,6 +1,6 @@
 import FActionsheet from './main.vue'
 import Evt from 'ph-evt'
-import { IActionSheetOption } from '../../shared/types'
+import type { IActionSheetOption } from '../../shared/types'
 import { createApp, ref } from 'vue'
 type IASOption = {
     modelValue?:string|number,

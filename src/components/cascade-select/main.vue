@@ -23,7 +23,7 @@
 <script lang="ts" setup>
 import { getLeafNodesById, searchPath } from '../../shared/tree'
 import { defineEmits, computed, defineProps, PropType, reactive } from 'vue'
-import { IKey, ITree, ITreeNode, IValue } from '../../shared/types'
+import type { IKey, ITree, ITreeNode, IValue } from '../../shared/types'
 import SelectPanel from './select-panel.vue'
 
 const emits = defineEmits(['update:modelValue','resize'])

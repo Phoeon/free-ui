@@ -2,8 +2,9 @@
     <div :class="['ph-divider','ph-divider-'+type,'ph-divider-'+align]" :style="style"><slot></slot></div>
 </template>
 <script lang="ts" setup>
-import { computed, defineProps, PropType, StyleValue } from 'vue'
-import { IThemeType } from '../../shared/types'
+import { computed, defineProps, PropType } from 'vue'
+import type { StyleValue } from 'vue'
+import type { IThemeType } from '../../shared/types'
 const props = defineProps({
     type:{type:String as PropType<IThemeType>,default:'normal'},
     align:{type:String as PropType<'left'|'center'|'right'>,default:'center'},

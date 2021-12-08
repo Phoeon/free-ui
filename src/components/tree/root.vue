@@ -4,9 +4,10 @@
     </ul>
 </template>
 <script lang="ts" setup>
-import { computed, defineProps, defineEmits, PropType, provide, toRef, StyleValue } from 'vue'
+import { computed, defineProps, defineEmits, PropType, provide, toRef } from 'vue'
+import type { StyleValue } from 'vue'
 import { getLeafNodesById, searchPath } from '../../shared/tree'
-import { IValue, ITree,IKey } from '../../shared/types'
+import type { IValue, ITree,IKey } from '../../shared/types'
 import TreeNode from './node.vue'
 
 const emits = defineEmits(['update:modelValue'])

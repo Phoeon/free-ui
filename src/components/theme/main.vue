@@ -28,7 +28,7 @@
 import { defineProps, PropType, reactive, defineEmits, Ref, ref, onMounted } from 'vue'
 import { Theme, Sun,Moon,CircleTick } from '../icon'
 import { Fr } from '../../shared/config'
-import { IPopPosition } from '../../shared/types'
+import type { IPopPosition } from '../../shared/types'
 import FButton from '../button/main.vue'
 import FPopContainer from '../pop/base.vue'
 

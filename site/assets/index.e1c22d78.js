@@ -1,0 +1,1 @@
+import{d as o,k as t,I as r,e as a,o as n}from"./vendor.adc10202.js";const i=o({setup(s){return t({parts:[{nowrap:!0,type:"empty",template:"<router-view />"}],title:"\u53CD\u9988\u4EA4\u4E92",icon:"gg",root:!1,anchors:[]}.anchor),(p,u)=>{const e=r("router-view");return n(),a(e)}}});export{i as default};

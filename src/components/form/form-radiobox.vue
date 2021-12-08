@@ -13,7 +13,7 @@
     </form-field>
 </template>
 <script lang="ts" setup>
-import { IKey, IOption } from '../../shared/types'
+import type { IKey, IOption } from '../../shared/types'
 import { defineProps } from 'vue'
 import FormField from './field.vue'
 import FieldRadiobox from './radiobox.vue'

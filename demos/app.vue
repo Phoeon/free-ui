@@ -1,6 +1,9 @@
 <template>
     <f-page :class="['ph-app',showAside?'':'www-fullscreen']" :mode="state.mode" :theme="state.theme">
         <f-aside v-show="showAside" :showLogo="state.showLogo" :avatar="state.avatar" :appName="state.appName" @logo-click="onLogoClick">
+            <template #logo>
+                <FreeUiLogo @click="goHome"/>
+            </template>
             <template v-slot:default="props">
             <f-menu-tree :simple="props.toggle" :tree="cnavs" :paths="state.paths" @navigate="onNavigate"/>
             </template>
@@ -10,8 +13,7 @@
             <f-header class="www-header">
                 <template #left>
                     <template  v-if="!state.sm&&state.cpath==='/'">
-                    <div class="www-logo" @click="goHome"></div>
-                    <div class="www-app-name" @click="goHome">Free Ui</div>
+                    <FreeUiLogo class="www-logo" @click="goHome"/>
                     </template>
                     <template v-if="!state.sm">
                     <f-action :type="state.cpath==='/'?'primary':'normal'" @click="router.push('/')">首页</f-action>
@@ -56,6 +58,7 @@ import { FPage,
 
         } from '@phoeon/free-ui'
 import SiteFooter from './components/footer.vue'
+import FreeUiLogo from './components/logo.vue'
 import AppInfo from './app-meta'
 import $evt from './shared/evt'
 import { genNavs } from './shared/genNavs'
@@ -136,26 +139,13 @@ onMounted(()=>{
     }
 }
 .www-header{
-    .www-app-name,
     .www-logo{
         cursor: pointer;
         flex: 0 0 auto;
     }
-    .www-app-name{
-        font-size: 18px;
-        color: var(--ph-c-d2);
-        margin-right: 150px;
-        white-space: nowrap;
-    }
     .www-logo{
-        width: 32px;
-        height: 32px;
-        background-color: var(--ph-c-d2);
-        border-radius: 50%;
-        margin-right: var(--ph-pd);
-        margin-left:var(--ph-pd-lg);
-        background-image: url(https://v3.cn.vuejs.org/logo.png);
-        background-size: cover;
+        margin-right: 80px;
+        margin-left:var(--ph-pd);
     }
     .ph-action{
         margin-right: var(--ph-pd-lg);

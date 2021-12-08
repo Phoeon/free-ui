@@ -1,5 +1,5 @@
 import { PropType } from 'vue'
-import { IDtType, IDateObject, IDtImportant } from '../../shared/types'
+import type { IDtType, IDateObject, IDtImportant } from '../../shared/types'
 import { compare, dt2obj } from '../../shared/datetime'
 export const SharedProps = {
     min:{type:Array as PropType<Array<number>>,default:()=>[-1,0,0,0,0,0]},

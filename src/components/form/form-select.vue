@@ -13,7 +13,7 @@
     </form-field>
 </template>
 <script lang="ts" setup>
-import { IDropdownItem, IValue } from '../../shared/types'
+import type { IDropdownItem, IValue } from '../../shared/types'
 import { defineProps, PropType } from 'vue'
 import FormField from './field.vue'
 import FieldSelect from './select.vue'

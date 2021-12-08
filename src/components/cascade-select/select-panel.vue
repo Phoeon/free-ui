@@ -15,7 +15,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, PropType, defineEmits, nextTick } from 'vue'
-import { IKey, ITree, ITreeNode } from '../../shared/types'
+import type { IKey, ITree, ITreeNode } from '../../shared/types'
 import CsItem from './item.vue'
 
 const vStv = {

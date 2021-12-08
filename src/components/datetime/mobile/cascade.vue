@@ -61,7 +61,7 @@ import DtBody from '../layout/layout-body.vue'
 import DtBtn from '../cmp/btn.vue'
 import DtNow from '../cmp/now.vue'
 import DtSimplepicker from './simple-picker.vue'
-import {ISharedCascadeProps , IDtee, IDateObject, IDtImportant} from '../../../shared/types'
+import type {ISharedCascadeProps , IDtee, IDateObject, IDtImportant} from '../../../shared/types'
 
 const emits = defineEmits(['update:start','update:end','done','clear','now'])
 const eswiper = ref<HTMLElement>()

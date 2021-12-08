@@ -3,7 +3,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, provide, defineExpose, PropType } from 'vue'
-import { IValidOption , IFieldValidFn, IValidatorTask } from '../../../shared/types'
+import type { IValidOption , IFieldValidFn, IValidatorTask } from '../../../shared/types'
 import * as BVs from './built-in-validators' //内置验证器
 import ValidtorQueue from './queue'
 

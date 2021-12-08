@@ -1,6 +1,6 @@
 import './main.scss'
 import { h, ref, toRef, provide } from 'vue'
-import { ITab } from '../../shared/types'
+import type { ITab } from '../../shared/types'
 import TabsNav from './nav.vue'
 import TabsPanel from './panel.vue'
 export default {

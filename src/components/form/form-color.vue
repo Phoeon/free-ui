@@ -17,7 +17,7 @@
 import { defineProps, PropType } from 'vue'
 import FormField from './field.vue'
 import FieldColor from './color.vue'
-import { IColorType } from '../../shared/types'
+import type { IColorType } from '../../shared/types'
 defineProps({
     type:String as PropType<IColorType>,
     colors:Array as PropType<Array<string>>

@@ -21,7 +21,7 @@
 import { dt2obj, formatDate, parseDate, dt2arr, arr2dtobj } from '../../shared/datetime'
 import { computed, defineAsyncComponent, defineProps, defineEmits, PropType, reactive } from 'vue'
 import { DtFormat, getInitCType, DtType, getNow, getState} from './shared'
-import { IDtType, IDateObject} from '../../shared/types'
+import type { IDtType, IDateObject} from '../../shared/types'
 
 import DtDate from './cmp/date.vue'
 

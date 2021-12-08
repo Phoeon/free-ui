@@ -35,7 +35,7 @@ import DtGrid from './grid.vue'
 import { defineProps, defineEmits, computed } from 'vue'
 import { compare } from '../../../shared/datetime'
 import { SharedSingleProps, DtType } from '../shared'
-import { IDateObject, IGridItem } from '../../../shared/types'
+import type { IDateObject, IGridItem } from '../../../shared/types'
 
 const emits = defineEmits(['update:modelValue','done','clear','now','shiftYear'])
 

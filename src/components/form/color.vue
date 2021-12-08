@@ -16,8 +16,9 @@
     </input-wrap>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, PropType, ref, computed, StyleValue } from 'vue'
-import { IColorType } from '../../shared/types'
+import { defineProps, defineEmits, PropType, ref, computed } from 'vue'
+import type { StyleValue } from 'vue'
+import type { IColorType } from '../../shared/types'
 import ColorPicker from '../color'
 import InputWrap from './input-wrap.vue'
 

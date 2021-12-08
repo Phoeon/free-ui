@@ -35,8 +35,9 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import { computed, StyleValue, defineProps, inject, nextTick, onMounted, PropType, provide, reactive, ref, Ref, watch } from 'vue'
-import { INavNode } from '../../../shared/types'
+import { computed, defineProps, inject, nextTick, onMounted, PropType, provide, reactive, ref, Ref, watch } from 'vue'
+import type { StyleValue } from 'vue'
+import type { INavNode } from '../../../shared/types'
 import { Arrow, CustomIcon } from '../../icon'
 import getPosition from 'ph-position'
 import vStv from '../../../directives/scroll-to-view'

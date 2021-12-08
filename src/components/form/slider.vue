@@ -6,7 +6,8 @@
     </input-wrap>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, ref, reactive, computed, onMounted, nextTick, onBeforeUnmount, StyleValue } from 'vue'
+import { defineProps, defineEmits, ref, reactive, computed, onMounted, nextTick, onBeforeUnmount } from 'vue'
+import type { StyleValue } from 'vue'
 import InputWrap from './input-wrap.vue'
 import MediaQuery from '../../shared/media-query'
 import { touchmove as vTouchmove } from '../../directives/gesture'

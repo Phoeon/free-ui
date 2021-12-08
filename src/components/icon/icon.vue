@@ -7,7 +7,7 @@
 </template>
 <script lang="ts" setup>
 import { reactive, defineProps , PropType, computed } from "vue";
-import { IThemeType } from '../../shared/types'
+import type { IThemeType } from '../../shared/types'
 const props = defineProps({
     hover:{type:Boolean,default:true},
     type:String as PropType<IThemeType>,

@@ -17,7 +17,7 @@
 <script lang="ts" setup>
 import { computed, defineProps, PropType } from 'vue'
 import { CircleSuccess } from '../icon'
-import { IStep } from '../../shared/types'
+import type { IStep } from '../../shared/types'
 const props = defineProps({
     steps:{
         type:Array as PropType<Array<IStep>>,

@@ -16,7 +16,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, defineEmits, PropType, reactive, computed, ref } from 'vue'
-import { IKey, ITree, IValue } from '../../shared/types'
+import type { IKey, ITree, IValue } from '../../shared/types'
 import { Tselect } from '../icon'
 
 import FPop from '../pop'

@@ -14,7 +14,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, defineEmits, PropType, inject, onMounted, onBeforeUnmount, reactive, computed } from 'vue'
-import { IValidOption, IValidator } from '../../shared/types'
+import type { IValidOption, IValidator } from '../../shared/types'
 import { rand } from '../../shared/utils'
 import GridItem from '../grid/grid-item.vue'
 import FieldTip from './tip.vue'

@@ -10,7 +10,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, defineProps, PropType, defineEmits } from 'vue'
-import { IColorType } from '../../shared/types'
+import type { IColorType } from '../../shared/types'
 import { ColorMode, ColorReg, between, isColorHex } from '../../shared/color'
 
 

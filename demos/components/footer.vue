@@ -9,6 +9,8 @@
             <f-grid-item class="www-link-block">
                 <p>友情链接</p>
                 <p><f-action href="https://phoeon.gitee.io/phoeon-ui-doc" target="_blank">phoeon ui</f-action></p>
+                <p>
+                    <f-action href="http://vblogs.cc/" target="_blank"><Cnbloglogo/>博客之家</f-action></p>
             </f-grid-item>
             <f-grid-item class="www-link-block">
                 <p>联系我</p>
@@ -26,6 +28,7 @@
 <script lang="ts" setup>
 import { FGrid, FGridItem, FAction, FIcon  } from '@phoeon/free-ui'
 import AppInfo from '../app-meta'
+import Cnbloglogo from '../icons/cnblog.vue'
 const { CustomIcon } = FIcon
 const { version } = AppInfo
 </script>

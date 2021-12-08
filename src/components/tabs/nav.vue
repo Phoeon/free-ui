@@ -9,7 +9,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, defineProps, nextTick, PropType, reactive } from 'vue'
-import { IBtnFillmode, ITab } from '../../shared/types'
+import type { IBtnFillmode, ITab } from '../../shared/types'
 import { CustomIcon } from '../icon'
 import FButton from '../button/main.vue'
 

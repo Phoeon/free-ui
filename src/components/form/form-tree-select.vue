@@ -16,7 +16,7 @@
 import { defineProps, PropType } from 'vue'
 import FormField from './field.vue'
 import FieldTreeSelect from './tree-select.vue'
-import { ITree, IValue } from '../../shared/types'
+import type { ITree, IValue } from '../../shared/types'
 defineProps({
     options:{type : Array as PropType<ITree>,required:true}
 })

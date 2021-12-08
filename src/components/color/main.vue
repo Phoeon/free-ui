@@ -27,7 +27,7 @@ import Mediaquery from '../../shared/media-query'
 
 import { computed, defineProps, PropType, reactive, defineEmits, onMounted, ref, nextTick } from 'vue'
 import { parseColor, ColorMode, rgb2hsb, rgb2hexstr, hsb2rgb, rgb2rgbstr, n2hex } from '../../shared/color'
-import { IColorType,IRect } from '../../shared/types'
+import type { IColorType,IRect } from '../../shared/types'
 
 
 const emits = defineEmits(['update'])

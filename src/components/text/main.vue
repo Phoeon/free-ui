@@ -3,7 +3,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, PropType } from 'vue'
-import { IThemeType } from '../../shared/types'
+import type { IThemeType } from '../../shared/types'
 const props = defineProps({
     type:{type:String as PropType<IThemeType>,default:"normal"},
     role:String as PropType<'title'>,

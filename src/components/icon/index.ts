@@ -21,10 +21,12 @@ import Sort from './sort.vue'
 import Tselect from './tselect.vue'
 import Cselect from './cselect.vue'
 import Eye from './eye.vue'
+import BuiltinIcon from './built-in.vue'
 export * from './square'
 export * from './circle'
 export * from './loading'
 export {
+    BuiltinIcon,
     Minus,
     Plus,
     Tick,

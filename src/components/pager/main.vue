@@ -46,12 +46,13 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, computed, ref, PropType, reactive, watch, onBeforeMount, StyleValue } from 'vue'
+import { defineProps, defineEmits, computed, ref, PropType, reactive, watch, onBeforeMount } from 'vue'
+import type { StyleValue } from 'vue'
 import { Ellipsis, Caret } from '../icon'
 import { FSelect,FNumber } from '../form'
 import MediaQuery, { MediaBreak } from '../../shared/media-query'
 import FButton from '../button/main.vue'
-import { IBtnFillmode,IBtnSize } from '../../shared/types'
+import type { IBtnFillmode,IBtnSize } from '../../shared/types'
 const emits = defineEmits(["page","update:page","update:pagesize"])
 const props = defineProps({
     showTotal:Boolean,

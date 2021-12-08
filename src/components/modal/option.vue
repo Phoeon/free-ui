@@ -21,7 +21,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, PropType, reactive } from 'vue'
-import { IModalOption } from '../../shared/types'
+import type { IModalOption } from '../../shared/types'
 import BaseModal from './base.vue'
 import FButton from '../button/main.vue'
 import MediaQuery from '../../shared/media-query'

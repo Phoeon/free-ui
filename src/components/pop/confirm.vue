@@ -18,7 +18,7 @@
 import './popover.scss';
 import { defineProps, nextTick, onMounted, PropType, reactive, ref } from 'vue'
 import { CircleWarning } from '../icon'
-import { IPopPosition } from '../../shared/types'
+import type { IPopPosition } from '../../shared/types'
 import { getAnimation, sumArray } from '../../shared/utils'
 import { xmatrix,ymatrix } from './shared'
 import FButton from '../button/main.vue'

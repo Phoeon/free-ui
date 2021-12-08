@@ -8,7 +8,7 @@ import FTreeSelect from './tree-select.vue'
 import FCascadeSelect from './cascade-select.vue'
 import Evt from 'ph-evt'
 import { createApp } from 'vue'
-import { ITreeNode, IValue, IPopConfirm, IPopover, ITooltip, IDropdown, IDropdownItem, ISelect, IPopTreeSelect } from '../../shared/types'
+import type { ITreeNode, IValue, IPopConfirm, IPopover, ITooltip, IDropdown, IDropdownItem, ISelect, IPopTreeSelect } from '../../shared/types'
 import { unmount } from '../../shared/utils'
 
 const showPopover = (opt:IPopover)=>{

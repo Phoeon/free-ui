@@ -5,7 +5,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, PropType } from 'vue'
-import { INavNode  } from '../../shared/types'
+import type { INavNode  } from '../../shared/types'
 defineProps({
     paths:{type: Array as PropType<Array<INavNode>>,default:()=>[]}
 })

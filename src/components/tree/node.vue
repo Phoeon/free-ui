@@ -24,8 +24,9 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import { computed, defineProps, inject, PropType, reactive, Ref , StyleValue} from 'vue'
-import { IKey, ITreeNode, IValue } from '../../shared/types'
+import { computed, defineProps, inject, PropType, reactive, Ref } from 'vue'
+import type { StyleValue } from 'vue'
+import type { IKey, ITreeNode, IValue } from '../../shared/types'
 import { SquareHalfCheck,SquarePlus,SquareCheck,Square } from '../icon'
 import vTh from '../../directives/toggle-height'
 

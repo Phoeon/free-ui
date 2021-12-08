@@ -13,7 +13,7 @@
 <script lang="ts" setup>
 import './popover.scss';
 import { defineProps, nextTick, onMounted, PropType, reactive, ref } from 'vue'
-import { IRect, ITree, IValue } from '../../shared/types'
+import type { IRect, ITree, IValue } from '../../shared/types'
 import { FTree } from '../tree'
 import getPosition from 'ph-position'
 import MediqQuery from '../../shared/media-query'

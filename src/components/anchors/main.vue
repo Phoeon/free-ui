@@ -8,7 +8,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, defineEmits, PropType, reactive, onMounted, onBeforeUnmount } from 'vue'
-import { IAnchor } from '../../shared/types'
+import type { IAnchor } from '../../shared/types'
 import evt from '../../shared/evt'
 const emits = defineEmits(['update:modelValue','navigate'])
 const props = defineProps({

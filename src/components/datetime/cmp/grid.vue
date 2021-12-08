@@ -13,7 +13,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, PropType } from 'vue'
-import { IGridItem } from '../../../shared/types'
+import type { IGridItem } from '../../../shared/types'
 import DtBtn from './btn.vue'
 
 const props = defineProps({

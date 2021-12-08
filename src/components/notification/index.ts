@@ -1,7 +1,7 @@
 import Evt from 'ph-evt'
 import NotificationMnger from './main.vue'
 import Env from '../../shared/env'
-import { INotifyOption } from '../../shared/types'
+import type { INotifyOption } from '../../shared/types'
 import { CloseStatus } from './types'
 import { createApp, nextTick } from 'vue'
 // let mnger:InstanceType<typeof NotificationMnger>;

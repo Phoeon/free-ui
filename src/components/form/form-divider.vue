@@ -5,7 +5,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, PropType } from 'vue'
-import { IThemeType } from '../../shared/types'
+import type { IThemeType } from '../../shared/types'
 import GridItem from '../grid/grid-item.vue'
 import FDivider from '../divider/main.vue'
 defineProps({

@@ -28,7 +28,7 @@
 import './popover.scss';
 import { defineProps, nextTick, onMounted, PropType, reactive, ref, computed } from 'vue'
 import { CustomIcon, Tick } from '../icon'
-import { IDropdownItem, IValue, IKey, IRect } from '../../shared/types'
+import type { IDropdownItem, IValue, IKey, IRect } from '../../shared/types'
 import FButton from '../button/main.vue'
 import getPosition from 'ph-position'
 import MediqQuery from '../../shared/media-query'

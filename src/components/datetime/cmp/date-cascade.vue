@@ -67,7 +67,7 @@ import {Time,Arrow} from '../../icon'
 import { defineProps, defineEmits, computed } from 'vue'
 import { compare, printDate } from '../../../shared/datetime'
 import { SharedCascadeProps, DtType } from '../shared'
-import { IDateObject, IGridItem } from '../../../shared/types'
+import type { IDateObject, IGridItem } from '../../../shared/types'
 
 const emits = defineEmits(['update:start','update:end','navigate','done','clear','now','shiftYear','shiftMonth'])
 const cst = {

@@ -10,7 +10,7 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { IThemeType } from '../../shared/types'
+import type { IThemeType } from '../../shared/types'
 import { computed, defineProps, PropType } from 'vue'
 import { Times,Plus } from '../icon'
 const props = defineProps({

@@ -11,7 +11,8 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, computed, StyleValue } from 'vue'
+import { defineProps, defineEmits, computed } from 'vue'
+import type { StyleValue } from 'vue'
 import Slider from '../form/slider.vue'
 
 const emits = defineEmits(['update:h','update:a','reset'])

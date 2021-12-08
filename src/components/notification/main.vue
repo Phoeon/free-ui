@@ -13,7 +13,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, defineExpose, defineProps, PropType, reactive } from 'vue'
-import { INotifyOption, INotifyGroup} from '../../shared/types'
+import type { INotifyOption, INotifyGroup} from '../../shared/types'
 import type IEvt from 'ph-evt'
 import Env from '../../shared/env'
 import NotificationGroup from './group.vue'
